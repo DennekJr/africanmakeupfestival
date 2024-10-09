@@ -7,6 +7,7 @@ import { MarqueeSlide } from "@/app/(home)/components/Marquee";
 import { InvestorsMedia } from "@/app/(home)/components/Investors";
 import { EmojiGrid } from "@/app/(home)/components/EmojiGrid";
 import { BusinessInsiderPoster } from "@/app/(home)/components/BusinessInsiderPoster";
+import { Speakers } from "@/app/(home)/components/Speakers";
 
 const Home: NextPage = () => {
   return (
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
       <InvestorsMedia />
       <EmojiGrid />
       <BusinessInsiderPoster />
+      <Speakers />
     </Box>
   );
 };

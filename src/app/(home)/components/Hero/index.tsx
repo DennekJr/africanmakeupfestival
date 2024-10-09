@@ -104,8 +104,8 @@ export const Hero = () => {
             "flex flex-col lg:flex-row gap-4 w-full items-center justify-center"
           }
         >
-          <WhiteTicketButton />
-          <TransparentArrowButton />
+          <WhiteTicketButton name={"GET A TICKET"} />
+          <TransparentArrowButton name={"BOOK A STAND"} />
         </Box>
       </Box>
     </section>

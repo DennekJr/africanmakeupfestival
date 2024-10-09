@@ -13,7 +13,6 @@ import {
 } from "@/app/components/NavBar/navbar.constants";
 import Link from "next/link";
 import Image from "next/image";
-import { useTheme } from "@mui/material/styles";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { RightArrowButton, WhiteBGButton } from "@/app/utils";
@@ -23,7 +22,6 @@ import { MenuDialog } from "@/app/components/MenuDialog";
 export default function NavBar() {
   const router = useRouter();
   const path = usePathname();
-  const theme = useTheme();
   const windowSize = useWindowSize();
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
@@ -38,7 +36,6 @@ export default function NavBar() {
     }
   };
 
-  const openDialog = () => {};
   return (
     <Box
       className={
