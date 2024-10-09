@@ -18,10 +18,9 @@ export const BusinessInsiderPoster = () => {
               width="830"
               height="789"
               decoding="async"
-              data-nimg="1"
               className="w-full lg:h-full object-cover h-[300px]"
               style={{ color: "transparent" }}
-              src="https://www.africastartupfestival.com/_next/image?url=https%3A%2F%2Fd2qar8dtiykptj.cloudfront.net%2Fafrica-startup-festival%2Fasf-2023-stage-view-00000diyq2ikk.jpg&w=1920&q=75"
+              src="/images/speakers.png"
             />
           </Box>
           <Box className="flex-1 flex flex-col py-8 lg:py-12 px-4 gap-24 justify-between bg-[#09090b]">
@@ -39,9 +38,6 @@ export const BusinessInsiderPoster = () => {
               <Box
                 id="undefined-0"
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
-                data-sentry-element="Comp"
-                data-sentry-component="Children"
-                data-sentry-source-file="render.tsx"
               >
                 <span className="relative max-w-full break-words">
                   BUSINESS
@@ -50,9 +46,6 @@ export const BusinessInsiderPoster = () => {
               <Box
                 id="undefined-1"
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
-                data-sentry-element="Comp"
-                data-sentry-component="Children"
-                data-sentry-source-file="render.tsx"
               >
                 <span className="relative max-w-full break-words">INSIDER</span>
               </Box>
@@ -64,8 +57,6 @@ export const BusinessInsiderPoster = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="absolute -left-[100%] -bottom-1/ w-[210%] lg:-left-[10%] text-[hsla(0,_0%,_99%,_0.05)] z-[1] lg:w-[150%]"
-          data-sentry-element="Icon"
-          data-sentry-source-file="frames.tsx"
         >
           <path
             fillRule="evenodd"
