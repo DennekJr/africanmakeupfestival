@@ -6,6 +6,7 @@ import { Hero } from "@/app/(home)/components/Hero";
 import { MarqueeSlide } from "@/app/(home)/components/Marquee";
 import { InvestorsMedia } from "@/app/(home)/components/Investors";
 import { EmojiGrid } from "@/app/(home)/components/EmojiGrid";
+import { BusinessInsiderPoster } from "@/app/(home)/components/BusinessInsiderPoster";
 
 const Home: NextPage = () => {
   return (
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       <MarqueeSlide />
       <InvestorsMedia />
       <EmojiGrid />
+      <BusinessInsiderPoster />
     </Box>
   );
 };
