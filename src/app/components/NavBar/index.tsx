@@ -42,7 +42,7 @@ export default function NavBar() {
   return (
     <Box
       className={
-        "flex justify-center border-b border-border-secondary bg-[#010101] w-full p-4 text-white z-10 absolute top-0 left-0"
+        "flex justify-center border-b border-border-secondary bg-transparent w-full p-4 text-white z-10 absolute top-0 left-0"
       }
     >
       <Box
