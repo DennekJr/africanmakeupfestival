@@ -1,16 +1,7 @@
 "use client";
 import Box from "@mui/material/Box";
 import React from "react";
-import {
-  RightArrowButton,
-  TransparentArrowButton,
-  WhiteBGButton,
-  WhiteTicketButton,
-} from "@/app/utils";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import { Typography } from "@mui/material";
+import { TransparentArrowButton, WhiteTicketButton } from "@/app/utils";
 
 export const Hero = () => {
   return (
