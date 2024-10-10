@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import { TransparentArrowButton } from "@/app/utils";
 import { useMemo } from "react";
 import { SPEAKERPHOTOGRID_MENU } from "@/app/(home)/components/Speakers/SpeakersGrid/speakerGrid.constants";
+import Image from "next/image";
 
 export const SpeakersGrid = () => {
   const speakers = useMemo(() => Object.values(SPEAKERPHOTOGRID_MENU), []);
@@ -39,13 +40,12 @@ export const SpeakersGrid = () => {
         <Box className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 w-full">
           {speakers.map((speaker, index) => (
             <Box className="grid gap-5" key={index}>
-              <img
+              <Image
                 alt={speaker.name}
                 fetchPriority="high"
                 width="316"
                 height="347"
                 decoding="async"
-                data-nimg="1"
                 className="w-full rounded-sm aspect-[1/1.1] object-cover"
                 style={{ color: "transparent" }}
                 src={speaker.src}
