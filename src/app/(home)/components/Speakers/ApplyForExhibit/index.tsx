@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import { SpeakersImgScribble, WhiteBGButton } from "@/app/utils";
+import Image from "next/image";
 
 export const ApplyForExhibit = () => {
   return (
@@ -60,7 +61,7 @@ export const ApplyForExhibit = () => {
         </Box>
         <Box className={"col-span-1 relative"}>
           <SpeakersImgScribble />
-          <img
+          <Image
             alt="ASF 2023 Highlight - Remita Rep"
             loading="lazy"
             width="640"

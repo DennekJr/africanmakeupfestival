@@ -24,7 +24,7 @@ export const SpeakerVideo = () => {
         <div className="w-full h-full">
           <iframe
             className="w-full h-full"
-            allowFullScreen=""
+            allowFullScreen
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             title="Africa Startup Festival 2023 Recap"
