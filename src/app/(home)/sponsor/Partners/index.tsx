@@ -6,6 +6,7 @@ import { PARTNERS_MENU } from "@/app/(home)/sponsor/Partners/partners.constants"
 import { FortyFiveDegreeArrow } from "@/app/(home)/sponsor/Hero/utils";
 import { Button } from "@mui/material";
 import * as React from "react";
+import Typography from "@mui/material/Typography";
 
 export const Partners = () => {
   const sponsors = useMemo(() => Object.values(PARTNERS_MENU), []);
@@ -59,12 +60,13 @@ export const Partners = () => {
         <Box className={"flex justify-center"}>
           <Button
             className={
-              // "!bg-[#0A090B] !text-[#FCFCFC] hover:bg-gray-1300/90 !text-xl !lg:text-[44.25px] font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-full !px-10 !py-8 w-auto"
-              "partnerButton whitespace-nowrap ring-offset-background disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] !text-xl !lg:text-[44.25px] !font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-full !px-10 !py-8 !w-max"
+              "partnerButton whitespace-nowrap ring-offset-background disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] !font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-full !px-10 !py-8 !w-max"
             }
             endIcon={<FortyFiveDegreeArrow />}
           >
-            Become A Partner
+            <Typography className={"capitalize !text-xl lg:!text-[2.8rem]"}>
+              Become a partner
+            </Typography>
           </Button>
         </Box>
       </Box>
