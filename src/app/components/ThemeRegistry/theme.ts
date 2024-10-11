@@ -117,9 +117,9 @@ let theme = createTheme({
     // grey1300: {
     //   default: "hsl(270 10% 4%)",
     // },
-    // background: {
-    //   default: "hsl(0 0% 100%)",
-    // },
+    background: {
+      default: "hsl(0 0% 100%)",
+    },
     // foreground: {
     //   default: "hsl(240 10% 3.9%)",
     // },
