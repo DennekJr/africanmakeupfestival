@@ -1,4 +1,4 @@
-import { NavBarItem } from "/navbar.types";
+import { NavBarItem } from "./navbar.types";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export const NAV_MENU: Record<string, NavBarItem> = {
