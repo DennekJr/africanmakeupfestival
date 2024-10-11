@@ -3,8 +3,6 @@ import * as React from "react";
 import { Hero } from "@/app/(home)/sponsor/Hero";
 import { MarqueeSlide } from "@/app/(home)/components/Marquee";
 import { Partners } from "@/app/(home)/sponsor/Partners";
-import { Button } from "@mui/material";
-import { FortyFiveDegreeArrow } from "@/app/(home)/sponsor/Hero/utils";
 
 const Speakers: () => Promise<React.JSX.Element> = async () => {
   return (

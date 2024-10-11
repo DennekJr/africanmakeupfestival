@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import { HeroWhiteScribble } from "@/app/(home)/speakers/Hero/utils";
 import Image from "next/image";
 import { FortyFiveDegreeArrow } from "@/app/(home)/sponsor/Hero/utils";
 
