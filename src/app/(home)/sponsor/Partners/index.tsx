@@ -12,7 +12,11 @@ export const Partners = () => {
 
   return (
     <section className={"w-full py-24 lg:py-32 bg-[#ffffff]"}>
-      <Box className={"mx-auto max-w-[1320px] grid gap-16 px-6"}>
+      <Box
+        className={
+          "[&>button]:justify-center mx-auto max-w-[1320px] grid gap-16 px-6"
+        }
+      >
         <Box>
           <pre
             id="undefined-0"
@@ -52,15 +56,17 @@ export const Partners = () => {
             );
           })}
         </Box>
-        <Button
-          className={
-            // "!bg-[#0A090B] !text-[#FCFCFC] hover:bg-gray-1300/90 !text-xl !lg:text-[44.25px] font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-full !px-10 !py-8 w-auto"
-            "whitespace-nowrap ring-offset-background disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] !text-xl !lg:text-[44.25px] !font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-full !px-10 !py-8 !w-auto"
-          }
-          endIcon={<FortyFiveDegreeArrow />}
-        >
-          Become A Partner
-        </Button>
+        <Box className={"flex justify-center"}>
+          <Button
+            className={
+              // "!bg-[#0A090B] !text-[#FCFCFC] hover:bg-gray-1300/90 !text-xl !lg:text-[44.25px] font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-full !px-10 !py-8 w-auto"
+              "partnerButton whitespace-nowrap ring-offset-background disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] !text-xl !lg:text-[44.25px] !font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-full !px-10 !py-8 !w-max"
+            }
+            endIcon={<FortyFiveDegreeArrow />}
+          >
+            Become A Partner
+          </Button>
+        </Box>
       </Box>
     </section>
   );
