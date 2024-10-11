@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
 import * as React from "react";
-import { Hero } from "@/app/(home)/sponsor/Hero";
-import { MarqueeSlide } from "@/app/(home)/components/Marquee";
-import { Partners } from "@/app/(home)/sponsor/Partners";
+import { Hero } from "./Hero";
+import { MarqueeSlide } from "../components/Marquee";
+import { Partners } from "./Partners";
 
 const Speakers: () => Promise<React.JSX.Element> = async () => {
   return (
