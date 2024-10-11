@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { HeroWhiteScribble } from "@/app/(home)/speakers/Hero/utils";
+import { HeroWhiteScribble } from "./utils";
 import Image from "next/image";
 
 export const Hero = () => {

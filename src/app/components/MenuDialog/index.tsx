@@ -10,11 +10,11 @@ import Box from "@mui/material/Box";
 import {
   NAV_BUTTONS,
   NAV_MENU,
-} from "@/app/components/NavBar/navbar.constants";
+} from "../NavBar/navbar.constants";
 import ListItem from "@mui/material/ListItem";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { RightArrowButton, WhiteBGButton } from "@/app/utils";
+import { RightArrowButton, WhiteBGButton } from "../../utils";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 

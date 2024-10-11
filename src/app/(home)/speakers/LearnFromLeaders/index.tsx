@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { MonthScribbleIcon } from "/utils";
+import { MonthScribbleIcon } from "./utils";
 
 export const LearnFromLeaders = () => {
   return (

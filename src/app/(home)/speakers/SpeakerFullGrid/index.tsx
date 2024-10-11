@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { useMemo } from "react";
-import { SPEAKERFULLGRID_MENU } from "/speakerFullGrid.constants";
+import { SPEAKERFULLGRID_MENU } from "./speakerFullGrid.constants";
 
 export const SpeakerFullGrid = () => {
   const speakers = useMemo(() => Object.values(SPEAKERFULLGRID_MENU), []);
