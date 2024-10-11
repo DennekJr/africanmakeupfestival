@@ -2,8 +2,8 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import Box from "@mui/material/Box";
-import NavBar from "@/app/components/NavBar";
-import { Footer } from "@/app/components/Footer";
+import NavBar from "../NavBar";
+import { Footer } from "../Footer";
 
 export default function WebWrapper({ children }: { children: ReactNode }) {
   return (

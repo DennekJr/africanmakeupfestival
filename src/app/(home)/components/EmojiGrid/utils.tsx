@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import Image from "next/image";
-import { EmojiGridType } from "@/app/(home)/components/EmojiGrid/emojigrid.types";
+import { EmojiGridType } from "./emojigrid.types";
 
 export const EmojiLoop = ({
   emojiGroups,

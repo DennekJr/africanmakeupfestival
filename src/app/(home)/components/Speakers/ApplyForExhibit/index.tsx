@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { SpeakersImgScribble, WhiteBGButton } from "@/app/utils";
+import { SpeakersImgScribble, WhiteBGButton } from "../../../../utils";
 import Image from "next/image";
 
 export const ApplyForExhibit = () => {

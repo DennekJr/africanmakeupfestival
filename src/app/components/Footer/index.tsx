@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/system";
-import { FOOTER_MENULINKS } from "@/app/components/Footer/footer.constants";
+import { FOOTER_MENULINKS } from "./footer.constants";
 import { useMemo } from "react";
 import Link from "next/link";
 import { Divider, Typography } from "@mui/material";

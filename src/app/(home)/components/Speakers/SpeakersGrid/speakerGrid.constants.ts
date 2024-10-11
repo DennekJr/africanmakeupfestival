@@ -1,4 +1,4 @@
-import { SpeakerPhotoGridType } from "@/app/(home)/components/Speakers/SpeakersGrid/speakerGrid.types";
+import { SpeakerPhotoGridType } from "/speakerGrid.types";
 
 export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
   will: {

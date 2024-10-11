@@ -1,4 +1,4 @@
-import { FooterItem } from "@/app/components/Footer/footer.types";
+import { FooterItem } from "/footer.types";
 
 export const FOOTER_MENULINKS: Record<string, FooterItem> = {
   navigate: {

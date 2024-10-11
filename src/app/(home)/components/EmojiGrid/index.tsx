@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { useMemo } from "react";
-import { EMOJIGRID_EMOJIS } from "@/app/(home)/components/EmojiGrid/emojiGrid.constants";
-import { EmojiLoop } from "@/app/(home)/components/EmojiGrid/utils";
+import { EMOJIGRID_EMOJIS } from "./emojiGrid.constants";
+import { EmojiLoop } from "./utils";
 
 export const EmojiGrid = () => {
   const emojiGroups = useMemo(() => Object.values(EMOJIGRID_EMOJIS), []);

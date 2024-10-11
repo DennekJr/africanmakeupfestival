@@ -1,9 +1,9 @@
 "use client";
 import Box from "@mui/material/Box";
-import { WhiteBgArrowButton } from "@/app/utils";
-import { SpeakerVideo } from "@/app/(home)/components/Speakers/SpeakerVideo";
-import { ApplyForExhibit } from "@/app/(home)/components/Speakers/ApplyForExhibit";
-import { SpeakersGrid } from "@/app/(home)/components/Speakers/SpeakersGrid";
+import { WhiteBgArrowButton } from "../../../utils";
+import { SpeakerVideo } from "./SpeakerVideo";
+import { ApplyForExhibit } from "./ApplyForExhibit";
+import { SpeakersGrid } from "./SpeakersGrid";
 
 export const Speakers = () => {
   return (

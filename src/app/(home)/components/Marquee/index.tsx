@@ -1,6 +1,6 @@
 "use client";
 import Marquee from "react-fast-marquee";
-import { MarqueeStarIcon } from "@/app/utils";
+import { MarqueeStarIcon } from "../../../utils";
 export const MarqueeSlide = () => {
   return (
     <Marquee
