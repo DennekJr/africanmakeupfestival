@@ -1,9 +1,9 @@
 import Box from "@mui/material/Box";
-import { PartnerUnderScore } from "@/app/(home)/sponsor/Partners/utils";
+import { PartnerUnderScore } from "./utils";
 import Image from "next/image";
 import { useMemo } from "react";
-import { PARTNERS_MENU } from "@/app/(home)/sponsor/Partners/partners.constants";
-import { FortyFiveDegreeArrow } from "@/app/(home)/sponsor/Hero/utils";
+import { PARTNERS_MENU } from "./partners.constants";
+import { FortyFiveDegreeArrow } from "../Hero/utils";
 import { Button } from "@mui/material";
 import * as React from "react";
 import Typography from "@mui/material/Typography";
