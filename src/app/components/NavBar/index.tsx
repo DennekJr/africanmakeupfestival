@@ -10,14 +10,14 @@ import { useRouter, usePathname } from "next/navigation";
 import {
   NAV_BUTTONS,
   NAV_MENU,
-} from "@/app/components/NavBar/navbar.constants";
+} from "./navbar.constants";
 import Link from "next/link";
 import Image from "next/image";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
-import { RightArrowButton, WhiteBGButton } from "@/app/utils";
+import { RightArrowButton, WhiteBGButton } from "../../utils";
 import { useWindowSize } from "../../../hooks/useWindowSize";
-import { MenuDialog } from "@/app/components/MenuDialog";
+import { MenuDialog } from "../MenuDialog";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
