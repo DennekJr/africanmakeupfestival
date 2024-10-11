@@ -16,7 +16,7 @@ import Image from "next/image";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { RightArrowButton, WhiteBGButton } from "@/app/utils";
-import { useWindowSize } from "@/hooks/useWindowSize";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 import { MenuDialog } from "@/app/components/MenuDialog";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
