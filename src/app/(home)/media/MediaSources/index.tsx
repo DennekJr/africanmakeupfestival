@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { useMemo } from "react";
-import { MEDIASOURCES_MENU } from "@/app/(home)/media/MediaSources/mediaSources.constants";
+import { MEDIASOURCES_MENU } from "./mediaSources.constants";
 import Image from "next/image";
 
 export const MediaSources = () => {
@@ -24,7 +24,7 @@ export const MediaSources = () => {
           {sources.map((mediaSource, index) => (
             <a
               key={index}
-              class="aspect-square rounded-xl overflow-clip relative"
+              className="aspect-square rounded-xl overflow-clip relative"
               href=""
             >
               <Image
@@ -33,7 +33,7 @@ export const MediaSources = () => {
                 width="208"
                 height="208"
                 decoding="async"
-                class="w-full h-auto object-cover"
+                className="w-full h-auto object-cover"
                 src={mediaSource.src}
                 style={{color: 'transparent'}}
               />
