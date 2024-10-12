@@ -21,9 +21,8 @@ export const ProgramSchedule = () => {
               <Box>
                 <Box
                   role="tablist"
-                  aria-orientation="horizontal"
                   className="h-10 items-center rounded-md p-1 text-muted-foreground flex gap-3 justify-start bg-transparent"
-                  tabIndex="0"
+                  tabIndex={0}
                   style={{ outline: "none" }}
                 >
                   <button
