@@ -29,7 +29,6 @@ export const MediaSources = () => {
             >
               <Image
                 alt={mediaSource.title}
-                fetchpriority="high"
                 width="208"
                 height="208"
                 decoding="async"
@@ -37,7 +36,7 @@ export const MediaSources = () => {
                 src={mediaSource.src}
                 style={{color: 'transparent'}}
               />
-              <div class="absolute top-0 left-0 right-0 bottom-0 bg-black/30 text-white p-4 font-medium text-5xl leading-[52.8px] tracking-[-1px]">
+              <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/30 text-white p-4 font-medium text-5xl leading-[52.8px] tracking-[-1px]">
                 {mediaSource.title}
               </div>
             </a>
