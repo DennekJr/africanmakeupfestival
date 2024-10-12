@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { useMemo } from "react";
-import { SPONSORGIRD_MENU } from "@/app/(home)/components/Sponsors/sponsors.constants";
+import { SPONSORGIRD_MENU } from "./sponsors.constants";
 
 export const SponsorIcons = () => {
   const sponsors = useMemo(() => Object.values(SPONSORGIRD_MENU), []);

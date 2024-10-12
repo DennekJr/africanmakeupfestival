@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import { TransparentArrowButton } from "@/app/utils";
+import { TransparentArrowButton } from "../../../../utils";
 import { useMemo } from "react";
-import { SPEAKERPHOTOGRID_MENU } from "@/app/(home)/components/Speakers/SpeakersGrid/speakerGrid.constants";
+import { SPEAKERPHOTOGRID_MENU } from "./speakerGrid.constants";
 import Image from "next/image";
 
 export const SpeakersGrid = () => {

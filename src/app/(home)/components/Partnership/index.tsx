@@ -6,8 +6,8 @@ import {
   PartnerSixStrokes,
   SponsorUnderStrokes,
   WhiteBgArrowButton,
-} from "@/app/utils";
-import { PartnershipText } from "@/app/(home)/components/Partnership/utils";
+} from "../../../utils";
+import { PartnershipText } from "./utils";
 
 export const Partnership = () => {
   return (

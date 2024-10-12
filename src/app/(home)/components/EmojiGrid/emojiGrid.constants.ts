@@ -1,4 +1,4 @@
-import { EmojiGridType } from "@/app/(home)/components/EmojiGrid/emojigrid.types";
+import { EmojiGridType } from "./emojigrid.types";
 
 export const EMOJIGRID_EMOJIS: Record<string, EmojiGridType> = {
   attendees: {

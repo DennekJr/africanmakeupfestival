@@ -1,4 +1,4 @@
-import { SponsorType } from "@/app/(home)/components/Sponsors/sponsors.types";
+import { SponsorType } from "./sponsors.types";
 
 export const SPONSORGIRD_MENU: Record<string, SponsorType> = {
   ruby: {

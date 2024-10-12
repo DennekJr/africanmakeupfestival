@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { SponsorIcons } from "@/app/(home)/components/Sponsors/utils";
+import { SponsorIcons } from "./utils";
 
 export const Sponsors = () => {
   return (
