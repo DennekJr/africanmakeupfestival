@@ -30,7 +30,7 @@ export const ProgramSchedule = () => {
                     role="tab"
                     id="radix"
                     className="bg-[#fff] text-[#09090B] inline-flex items-center justify-center whitespace-nowrap rounded-[12px] px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-                    tabIndex="-1"
+                    tabIndex={-1}
                   >
                     16th
                   </button>
@@ -48,7 +48,7 @@ export const ProgramSchedule = () => {
               role="tabpanel"
               aria-labelledby="radix-:r4:-trigger-66ce29531434f40964fdab43"
               id="radix-:r4:-content-66ce29531434f40964fdab43"
-              tabIndex="0"
+              tabIndex={0}
               className="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 space-y-8"
               style={{ animationDuration: "0s" }}
             >
