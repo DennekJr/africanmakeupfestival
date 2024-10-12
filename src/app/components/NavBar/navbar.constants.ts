@@ -29,7 +29,7 @@ export const NAV_MENU: Record<string, NavBarItem> = {
   },
   program2024: {
     id: "2024-program",
-    route: "2024-program",
+    route: "program",
     name: "2024 Program",
     disabled: false,
   },
