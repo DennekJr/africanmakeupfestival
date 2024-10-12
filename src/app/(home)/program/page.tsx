@@ -1,6 +1,9 @@
+"use client"
 import Box from "@mui/material/Box";
 import * as React from "react";
-import { Hero } from "@/app/(home)/sponsor/Hero";
+import { Hero } from "./Hero";
+import { Stages } from "./Stages";
+import { ProgramSchedule } from "./ProgramSchedule";
 
 const Program: () => Promise<React.JSX.Element> = async () => {
   return (
@@ -10,6 +13,10 @@ const Program: () => Promise<React.JSX.Element> = async () => {
       }
     >
       <Hero />
+      <Box className={'bg-[#ffffff] w-full'}>
+        <Stages />
+        <ProgramSchedule />
+      </Box>
     </Box>
   );
 };
