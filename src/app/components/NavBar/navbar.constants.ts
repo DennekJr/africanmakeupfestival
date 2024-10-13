@@ -44,7 +44,7 @@ export const NAV_MENU: Record<string, NavBarItem> = {
 export const NAV_BUTTONS: Record<string, NavBarItem> = {
   getTicket: {
     id: "getTicket",
-    route: "getTicket",
+    route: "ticket",
     name: "Get Ticket",
     disabled: false,
   },
