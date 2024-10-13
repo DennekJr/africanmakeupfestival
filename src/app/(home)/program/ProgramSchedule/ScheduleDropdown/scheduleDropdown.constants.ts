@@ -23,21 +23,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "somachi",
-          src: "/images/somachi.png",
+          src: "/images/somachi.webp",
           name: "Somachi Chris-Asoluka",
           company: "The Tony Elumelu Foundation",
           position: "CEO",
         },
         {
           id: "ore",
-          src: "/images/ore.png",
+          src: "/images/ore.webp",
           name: "Ore Ogunbiyi",
           company: "The Economist",
           position: "Africa Correspondent",
         },
         {
           id: "alyune",
-          src: "/images/alyune.jpeg",
+          src: "/images/alyune.webp",
           name: "Alyune Diop",
           company: "LoftyInc Capital",
           position: "Senior Investment Associate",
@@ -54,7 +54,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "will",
-          src: "/images/will.png",
+          src: "/images/will.webp",
           name: "Somachi Chris-Asoluka",
           company: "U.S. Consulate General Lagos",
           position: "Consul General",
@@ -74,21 +74,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/oyin.png",
+          src: "/images/oyin.webp",
           name: "Oyin Solebo",
           company: "Techstars Lagos",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/bernard.png",
+          src: "/images/bernard.webp",
           name: "Bernard Ghartey",
           company: "Norrsken22",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/uwem.jpeg",
+          src: "/images/uwem.webp",
           name: "Uwem Uwemakpan",
           company: "Launch Africa VC",
           position: "Head of Investment",
@@ -105,7 +105,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "Anendlessocean",
-          src: "/images/oyin.png",
+          src: "/images/oyin.webp",
           name: "Anendlessocean",
           position: "Musical Artiste",
         },
@@ -124,21 +124,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/oyin.png",
+          src: "/images/oyin.webp",
           name: "Oyin Solebo",
           company: "Techstars Lagos",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/bernard.png",
+          src: "/images/bernard.webp",
           name: "Bernard Ghartey",
           company: "Norrsken22",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/uwem.jpeg",
+          src: "/images/uwem.webp",
           name: "Uwem Uwemakpan",
           company: "Launch Africa VC",
           position: "Head of Investment",
@@ -158,21 +158,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/oyin.png",
+          src: "/images/oyin.webp",
           name: "Oyin Solebo",
           company: "Techstars Lagos",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/bernard.png",
+          src: "/images/bernard.webp",
           name: "Bernard Ghartey",
           company: "Norrsken22",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/uwem.jpeg",
+          src: "/images/uwem.webp",
           name: "Uwem Uwemakpan",
           company: "Launch Africa VC",
           position: "Head of Investment",
@@ -192,21 +192,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/oyin.png",
+          src: "/images/oyin.webp",
           name: "Oyin Solebo",
           company: "Techstars Lagos",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/bernard.png",
+          src: "/images/bernard.webp",
           name: "Bernard Ghartey",
           company: "Norrsken22",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/uwem.jpeg",
+          src: "/images/uwem.webp",
           name: "Uwem Uwemakpan",
           company: "Launch Africa VC",
           position: "Head of Investment",
@@ -226,21 +226,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/oyin.png",
+          src: "/images/oyin.webp",
           name: "Oyin Solebo",
           company: "Techstars Lagos",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/bernard.png",
+          src: "/images/bernard.webp",
           name: "Bernard Ghartey",
           company: "Norrsken22",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/uwem.jpeg",
+          src: "/images/uwem.webp",
           name: "Uwem Uwemakpan",
           company: "Launch Africa VC",
           position: "Head of Investment",

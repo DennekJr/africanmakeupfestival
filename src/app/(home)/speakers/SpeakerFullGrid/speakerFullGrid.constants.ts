@@ -7,7 +7,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "U.S. Consulate General Lagos",
     position: "Consul General",
     disabled: false,
-    src: "/images/will.png",
+    src: "/images/will.webp",
   },
 
   oyin: {
@@ -16,7 +16,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Techstars Lagos",
     position: "Managing Director",
     disabled: false,
-    src: "/images/oyin.png",
+    src: "/images/oyin.webp",
   },
   somachi: {
     id: "somachi",
@@ -24,7 +24,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "The Tony Elumelu Foundation",
     position: "Chief Executive Officer",
     disabled: false,
-    src: "/images/somachi.png",
+    src: "/images/somachi.webp",
   },
   bernard: {
     id: "bernard",
@@ -32,7 +32,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Norrsken22",
     position: "Investment Manager",
     disabled: false,
-    src: "/images/bernard.png",
+    src: "/images/bernard.webp",
   },
   satoshi: {
     id: "satoshi",
@@ -40,7 +40,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Verod Kepple Africa Ventures",
     position: "Partner",
     disabled: false,
-    src: "/images/satoshi.png",
+    src: "/images/satoshi.webp",
   },
   joshua: {
     id: "joshua",
@@ -48,7 +48,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Co-founder and Chief Marketing Officer ",
     position: "Piggyvest",
     disabled: false,
-    src: "/images/joshua.jpeg",
+    src: "/images/joshua.webp",
   },
   ore: {
     id: "ore",
@@ -56,7 +56,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "The Economist",
     position: "Africa Correspondent",
     disabled: false,
-    src: "/images/ore.png",
+    src: "/images/ore.webp",
   },
   nnaemeka: {
     id: "nnaemeka",
@@ -64,7 +64,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Spark",
     position: "Chief Executive Officer",
     disabled: false,
-    src: "/images/nnaemeka.jpeg",
+    src: "/images/nnaemeka.webp",
   },
   blessing: {
     id: "blessing",
@@ -72,7 +72,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "",
     position: "Branding and Communications Expert",
     disabled: false,
-    src: "/images/blessing.png",
+    src: "/images/blessing.webp",
   },
   uwem: {
     id: "uwem",
@@ -80,7 +80,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Launch Africa VC.",
     position: "Head of Investment",
     disabled: false,
-    src: "/images/uwem.jpeg",
+    src: "/images/uwem.webp",
   },
   ike: {
     id: "ike",
@@ -96,7 +96,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "E & C Legal",
     position: "Lead Partner / Chief Servant",
     disabled: false,
-    src: "/images/omoruyi.jpeg",
+    src: "/images/omoruyi.webp",
   },
   babajide: {
     id: "babajide",
@@ -104,7 +104,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "M-KOPA",
     position: "General Manager",
     disabled: false,
-    src: "/images/babajide.jpeg",
+    src: "/images/babajide.webp",
   },
   mohini: {
     id: "mohini",
@@ -112,7 +112,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Paystack",
     position: "Marketing Manager",
     disabled: false,
-    src: "/images/mohini.jpeg",
+    src: "/images/mohini.webp",
   },
   obinna: {
     id: "obinna",
@@ -120,7 +120,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Sterling Bank",
     position: "Growth Executive",
     disabled: false,
-    src: "/images/obinna.jpeg",
+    src: "/images/obinna.webp",
   },
   jordy: {
     id: "jordy",
@@ -128,7 +128,7 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Octerra Capital",
     position: "Investment Principal",
     disabled: false,
-    src: "/images/jordy.jpeg",
+    src: "/images/jordy.webp",
   },
   alyune: {
     id: "alyune",
@@ -136,6 +136,6 @@ export const SPEAKERFULLGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "LoftyInc Capital",
     position: "Senior Investment Associate",
     disabled: false,
-    src: "/images/alyune.jpeg",
+    src: "/images/alyune.webp",
   },
 };

@@ -27,7 +27,7 @@ export const Footer = () => {
                 decoding="async"
                 className="!invert dark:invert-0 w-[337px] h-[139px] object-contain object-left"
                 style={{ color: "transparent" }}
-                src="/images/festivalLogo.png"
+                src="/images/festivalLogo.webp"
               />
             </div>
             <Box

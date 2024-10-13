@@ -20,7 +20,7 @@ export const BusinessInsiderPoster = () => {
               decoding="async"
               className="w-full lg:h-full object-cover h-[300px]"
               style={{ color: "transparent" }}
-              src="/images/speakers.png"
+              src="/images/speakers.webp"
             />
           </Box>
           <Box className="flex-1 flex flex-col py-8 lg:py-12 px-4 gap-24 justify-between bg-[#09090b]">

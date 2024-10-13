@@ -19,9 +19,6 @@ export const Hero = () => {
             <pre
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
-              data-sentry-element="Comp"
-              data-sentry-component="Children"
-              data-sentry-source-file="render.tsx"
             >
               <span className="relative max-w-full break-words">
                 The biggest names in the African startup and investment
@@ -76,7 +73,7 @@ export const Hero = () => {
       <Box className={"col-span-1 relative"}>
         <HeroWhiteScribble />
         <Image
-          src={"/images/2024-speakers/2024-speakers.png"}
+          src={"/images/2024-speakers/2024-speakers.webp"}
           alt={"2024 speaker"}
           className={
             "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
