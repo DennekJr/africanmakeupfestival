@@ -4,7 +4,7 @@ import { Hero } from "./Hero";
 import { MarqueeSlide } from "../components/Marquee";
 import { Partners } from "./Partners";
 
-const Speakers: () => Promise<React.JSX.Element> = async () => {
+const Sponsor: () => Promise<React.JSX.Element> = async () => {
   return (
     <Box
       className={
@@ -18,4 +18,4 @@ const Speakers: () => Promise<React.JSX.Element> = async () => {
   );
 };
 
-export default Speakers;
+export default Sponsor;

@@ -1,0 +1,78 @@
+import { TicketPurchaseTypes } from "@/app/(home)/ticket/TicketPurchase/ticketPurchase.types";
+
+export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
+  explorer: {
+    id: "explorer",
+    title: "Explorer",
+    subTitle:
+      "Perfect for attendees who wish to explore event activities with no major commitment",
+    benefits: [
+      "Access to exhibitions",
+      "Access to main-stage sessions",
+      "Access to any perks from partners",
+    ],
+    price: "NGN 14,999",
+  },
+  founder: {
+    id: "founder",
+    title: "Founder",
+    subTitle: "Perfect for startup founders and co-founders",
+    benefits: [
+      "Access to exhibitions.",
+      "Access to all speaker sessions.",
+      "Access to all forums.",
+      "Access to spark database to connect with attending investors.",
+      "Access to night festival.",
+      "Access to Innovator Lounge.",
+      "Breakfast only.",
+      "Access to available ecosystem mixers (If any)",
+    ],
+    price: "NGN 59,999",
+    ticketTag: {
+      tagIcon: "/images/emoji-grid/fire.webp",
+      tagType: "Most Popular",
+    },
+  },
+  investor: {
+    id: "investor",
+    title: "Investor",
+    subTitle: "Designed for investors or participants eager to connect with attending startups",
+    benefits: [
+      "Fast-track entry to the event",
+      "Access to the exhibition",
+      "Priority access to all speaker sessions",
+      "Access to all forums",
+      "Access to the attending startup database via the Spark portal",
+      "Ability to pre-schedule meetings with startups before the event on the Spark portal",
+      "Access to the night festival",
+      "Meeting room access",
+      "AAccess to delegate lounges",
+      "Breakfast and lunch included",
+      "Access to ecosystem mixers",
+    ],
+    price: "NGN 125,000",
+    ticketTag: {
+      tagIcon: "/images/timer.webp",
+      tagType: "Most Popular",
+    },
+  },
+delegate: {
+    id: "delegate",
+    title: "Delegate",
+    subTitle: "Perfect for startup founders and co-founders",
+    benefits: [
+      "Downloadable file of contacts",
+      "Access to the exhibition",
+      "Priority access to all speaker sessions",
+      "Access to all forums",
+      "Access to the attending partners' database",
+      "Ability to pre-arrange meetings with partners",
+      "Access to the night festival",
+      "Meeting room access",
+      "Access to delegate lounges",
+      "Breakfast and lunch included",
+      "Access to ecosystem mixers",
+    ],
+    price: "NGN 187,500",
+  },
+};
