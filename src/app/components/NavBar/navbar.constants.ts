@@ -50,7 +50,7 @@ export const NAV_BUTTONS: Record<string, NavBarItem> = {
   },
   becomeASponsor: {
     id: "becomeASponsor",
-    route: "becomeASponsor",
+    route: "sponsor",
     name: "Become A Sponsor",
     disabled: false,
   },

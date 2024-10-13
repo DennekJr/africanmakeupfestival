@@ -26,7 +26,7 @@ export const InvestorsMedia = () => {
               unoptimized
               decoding={"async"}
               className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
-              src={"/images/investors1.gif"}
+              src={"/images/investors1.webp"}
             />
           </Box>
           <span className={"text-[#09090b]"}>
@@ -50,7 +50,7 @@ export const InvestorsMedia = () => {
               unoptimized
               className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
               style={{ color: "transparent" }}
-              src={"/images/investors2.gif"}
+              src={"/images/investors2.webp"}
             />
           </Box>
         </span>

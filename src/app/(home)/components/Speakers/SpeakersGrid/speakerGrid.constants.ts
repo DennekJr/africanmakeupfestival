@@ -7,7 +7,7 @@ export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "U.S. Consulate General Lagos",
     position: "Consul General",
     disabled: false,
-    src: "/images/will.png",
+    src: "/images/will.webp",
   },
 
   oyin: {
@@ -16,7 +16,7 @@ export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Techstars Lagos",
     position: "Managing Director",
     disabled: false,
-    src: "/images/oyin.png",
+    src: "/images/oyin.webp",
   },
   somachi: {
     id: "somachi",
@@ -24,7 +24,7 @@ export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "The Tony Elumelu Foundation",
     position: "Chief Executive Officer",
     disabled: false,
-    src: "/images/somachi.png",
+    src: "/images/somachi.webp",
   },
   bernard: {
     id: "bernard",
@@ -32,7 +32,7 @@ export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Norrsken22",
     position: "Investment Manager",
     disabled: false,
-    src: "/images/bernard.png",
+    src: "/images/bernard.webp",
   },
   satoshi: {
     id: "satoshi",
@@ -40,7 +40,7 @@ export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Verod Kepple Africa Ventures",
     position: "Partner",
     disabled: false,
-    src: "/images/satoshi.png",
+    src: "/images/satoshi.webp",
   },
   ore: {
     id: "ore",
@@ -48,7 +48,7 @@ export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "The Economist",
     position: "Africa Correspondent",
     disabled: false,
-    src: "/images/ore.png",
+    src: "/images/ore.webp",
   },
   blessing: {
     id: "blessing",
@@ -56,7 +56,7 @@ export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "",
     position: "Branding and Communications Expert",
     disabled: false,
-    src: "/images/blessing.png",
+    src: "/images/blessing.webp",
   },
   ike: {
     id: "ike",
@@ -64,6 +64,6 @@ export const SPEAKERPHOTOGRID_MENU: Record<string, SpeakerPhotoGridType> = {
     companyOfWork: "Beta Ventures",
     position: "Managing Partner",
     disabled: false,
-    src: "/images/ike.png",
+    src: "/images/ike.webp",
   },
 };

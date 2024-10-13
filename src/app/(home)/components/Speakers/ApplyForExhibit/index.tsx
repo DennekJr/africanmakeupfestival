@@ -69,7 +69,7 @@ export const ApplyForExhibit = () => {
             decoding="async"
             className="object-cover max-h-[420px] lg:max-h-none h-full lg:h-[858px] w-[640px] rounded-lg"
             style={{ color: "transparent" }}
-            src="/images/two-speakers.png"
+            src="/images/two-speakers.webp"
           />
         </Box>
       </Box>

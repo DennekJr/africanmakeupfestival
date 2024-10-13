@@ -7,10 +7,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import { useRouter, usePathname } from "next/navigation";
-import {
-  NAV_BUTTONS,
-  NAV_MENU,
-} from "./navbar.constants";
+import { NAV_BUTTONS, NAV_MENU } from "./navbar.constants";
 import Link from "next/link";
 import Image from "next/image";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
@@ -26,19 +23,12 @@ export default function NavBar() {
   const path = usePathname();
   const windowSize = useWindowSize();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  // const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-  //   null,
-  // );
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
   const width = useMemo(() => {
     return windowSize;
   }, [windowSize]);
 
-  // const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   setAnchorEl(event.currentTarget);
-  //   setIsOpen(!isOpen);
-  // };
   const redirectToHome = (route: string) => {
     if (path !== "/") {
       router.push("/" + route);
@@ -68,7 +58,7 @@ export default function NavBar() {
           <Link href={"/"}>
             <Image
               alt={"Makeup Festival logo"}
-              src={"/images/logo.png"}
+              src={"/images/logo.webp"}
               width={80}
               height={30}
             />
@@ -101,19 +91,6 @@ export default function NavBar() {
                         className={"itemText"}
                       />
                       {name === "Exhibitors" && exhibitorIcon()}
-                      {/*<Popover*/}
-                      {/*  id={id}*/}
-                      {/*  open={isOpen}*/}
-                      {/*  anchorEl={anchorEl}*/}
-                      {/*  anchorOrigin={{*/}
-                      {/*    vertical: "bottom",*/}
-                      {/*    horizontal: "left",*/}
-                      {/*  }}*/}
-                      {/*>*/}
-                      {/*  <Typography sx={{ p: 2 }}>*/}
-                      {/*    The content of the Popover.*/}
-                      {/*  </Typography>*/}
-                      {/*</Popover>*/}
                     </ListItemButton>
                   </Link>
                 </ListItem>
