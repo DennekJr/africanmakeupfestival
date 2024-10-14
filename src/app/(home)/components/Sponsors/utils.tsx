@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import Image from "next/image";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { SPONSORGIRD_MENU } from "./sponsors.constants";
+import { ImageComponent } from "../../../components/ImageComponent";
 
 export const SponsorIcons = () => {
   const sponsors = useMemo(() => Object.values(SPONSORGIRD_MENU), []);
@@ -22,15 +22,15 @@ export const SponsorIcons = () => {
                     className="p-6 bg-gray-300 rounded-sm aspect-[1/0.4] flex items-center justify-center"
                     href={group.href}
                   >
-                    <Image
+                    <ImageComponent
+                      fileName={group.src}
+                      className={"object-contain object-center select-none h-16"}
                       alt={group.name}
+                      style={{ color: "transparent" }}
+                      decoding={"async"}
                       loading="lazy"
                       width="270"
                       height="73"
-                      decoding="async"
-                      className="object-contain object-center select-none h-16"
-                      src={group.src}
-                      style={{ color: "transparent" }}
                     />
                   </a>
                 );

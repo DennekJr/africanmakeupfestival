@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
-import Image from "next/image";
+import { ImageComponent } from "../../../../components/ImageComponent";
+import React from "react";
 
 export const TestimonialCarousel = ({src, alt}:{src: string, alt: string}) => {
   return (
@@ -10,14 +11,14 @@ export const TestimonialCarousel = ({src, alt}:{src: string, alt: string}) => {
       style={{transform: 'translate3d(3512px, 0px, 0px)'}}
     >
       <div className="p-1">
-        <Image
+        <ImageComponent
+          fileName={src}
           alt={alt}
           loading="lazy"
           width="998"
           height="663"
           decoding="async"
           className="w-full"
-          src={src}
           style={{color: 'transparent'}}
         />
       </div>

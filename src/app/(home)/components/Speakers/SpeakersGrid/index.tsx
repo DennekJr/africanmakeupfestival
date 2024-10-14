@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
 import { TransparentArrowButton } from "../../../../utils";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { SPEAKERPHOTOGRID_MENU } from "./speakerGrid.constants";
-import Image from "next/image";
+import { ImageComponent } from "../../../../components/ImageComponent";
 
 export const SpeakersGrid = () => {
   const speakers = useMemo(() => Object.values(SPEAKERPHOTOGRID_MENU), []);
@@ -15,9 +15,6 @@ export const SpeakersGrid = () => {
           <pre
             id="undefined-0"
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
-            data-sentry-element="Comp"
-            data-sentry-component="Children"
-            data-sentry-source-file="render.tsx"
           >
             <span className="relative max-w-full break-words">
               2024 Speakers
@@ -40,15 +37,15 @@ export const SpeakersGrid = () => {
         <Box className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 w-full">
           {speakers.map((speaker, index) => (
             <Box className="grid gap-5" key={index}>
-              <Image
+              <ImageComponent
+                fileName={speaker.src}
+                fetchPriority={'high'}
+                className={"w-full rounded-sm aspect-[1/1.1] object-cover"}
                 alt={speaker.name}
-                fetchPriority="high"
+                style={{ color: "transparent" }}
+                decoding={"async"}
                 width="316"
                 height="347"
-                decoding="async"
-                className="w-full rounded-sm aspect-[1/1.1] object-cover"
-                style={{ color: "transparent" }}
-                src={speaker.src}
               />
               <div className="grid gap-1.5 text-left">
                 <div>

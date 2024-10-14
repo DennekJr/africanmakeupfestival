@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
-import Image from "next/image";
+import { ImageComponent } from "@/app/components/ImageComponent";
+import React from "react";
 export const InvestorsMedia = () => {
   return (
     <section className={"w-full px-6 xl:px-0 py-20 mx-auto max-w-[1320px]"}>
@@ -18,15 +19,15 @@ export const InvestorsMedia = () => {
               "sm:inline-block align-bottom pb-4 w-[253px] lg:w-[490px] self-start"
             }
           >
-            <Image
-              alt={"about investors 1"}
-              loading={"lazy"}
+            <ImageComponent
+              fileName={'images/investors1'}
+              className={"w-full h-full object-cover object-center aspect-[16/12] rounded-lg"}
+              alt={'about investors 1'}
+              style={{ color: "transparent" }}
+              unomptimised={true}
               width={1280}
               height={1280}
-              unoptimized
-              decoding={"async"}
-              className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
-              src={"/images/investors1.webp"}
+              loading={"lazy"}
             />
           </Box>
           <span className={"text-[#09090b]"}>
@@ -41,16 +42,16 @@ export const InvestorsMedia = () => {
               "sm:inline-block w-[253px] lg:w-[490px] pt-4 align-top sm:ml-0 ml-auto"
             }
           >
-            <Image
-              alt="About media 2"
-              loading="lazy"
-              width="1280"
-              height="1920"
-              decoding="async"
-              unoptimized
-              className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
+            <ImageComponent
+              fileName={'images/investors2'}
+              className={"w-full h-full object-cover object-center aspect-[16/12] rounded-lg"}
+              alt={'about investors 2'}
               style={{ color: "transparent" }}
-              src={"/images/investors2.webp"}
+              width="1280"
+              decoding={'async'}
+              unoptimized={true}
+              height="1920"
+              loading={"lazy"}
             />
           </Box>
         </span>

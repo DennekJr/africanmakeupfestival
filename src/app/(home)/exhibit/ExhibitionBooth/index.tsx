@@ -41,7 +41,7 @@ export const ExhibitionBooth = () => {
                   </p>
                   <p className="text-[#C6C6CD]">{booth.location}</p>
                 </Box>
-                <Box className={'grid gap-7'}>
+                <Box className={"grid gap-7"}>
                   <ol className="col-span-1 list-disc grid gap-4 text-[#C8C8CB] pl-4 lg:pl-0">
                     {booth.list.map((listItem, index) => (
                       <li className="text-xl" key={index}>
@@ -50,8 +50,12 @@ export const ExhibitionBooth = () => {
                     ))}
                   </ol>
                   <Box>
-                    <WhiteBgArrowButton name={'Book'}
-                                        classNames={'gap-3 h-14 px-6 py-4 rounded-full w-full md:w-auto !text-black'} />
+                    <WhiteBgArrowButton
+                      name={"Book"}
+                      classNames={
+                        "gap-3 h-14 px-6 py-4 rounded-full w-full md:w-auto !text-black"
+                      }
+                    />
                   </Box>
                 </Box>
               </Box>

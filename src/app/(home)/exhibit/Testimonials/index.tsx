@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Box from "@mui/material/Box";
 import {
   NextSlide,
@@ -7,16 +7,17 @@ import {
 } from "@/app/(home)/exhibit/Testimonials/utils";
 import { TestimonialCarousel } from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel";
 import { useMemo } from "react";
-import {
-  TESTIMONIALSCONSTANTSMENU
-} from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel/testimonials.constants";
-import 'swiper/css';
-import 'swiper/css/effect-cards';
+import { TESTIMONIALSCONSTANTSMENU } from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel/testimonials.constants";
+import "swiper/css";
+import "swiper/css/effect-cards";
 
-import 'swiper/swiper-bundle.css';
+import "swiper/swiper-bundle.css";
 
 export const Testimonials = () => {
-  const testimonies = useMemo(() => Object.values(TESTIMONIALSCONSTANTSMENU), []);
+  const testimonies = useMemo(
+    () => Object.values(TESTIMONIALSCONSTANTSMENU),
+    [],
+  );
   const handlePreviousClick = () => {};
   const handleNextClick = () => {};
   return (
@@ -51,20 +52,15 @@ export const Testimonials = () => {
             </span>
           </pre>
         </Box>
-        <Box className={'overflow-hidden'}>
-          <Box className={'flex -ml-4'}>
-            {/*<Swiper*/}
-            {/*  effect={'cards'}*/}
-            {/*  grabCursor={true}*/}
-            {/*  modules={[EffectCards]}*/}
-            {/*  className="mySwiper"*/}
-            {/*>*/}
-              {testimonies.map((testimonial, index) => (
-                // <SwiperSlide>
-                  <TestimonialCarousel key={index} src={testimonial.src} alt={testimonial.alt} />
-                // </SwiperSlide>
-              ))}
-            {/*</Swiper>*/}
+        <Box className={"overflow-hidden"}>
+          <Box className={"flex -ml-4"}>
+            {testimonies.map((testimonial, index) => (
+              <TestimonialCarousel
+                key={index}
+                src={testimonial.src}
+                alt={testimonial.alt}
+              />
+            ))}
           </Box>
         </Box>
       </Box>

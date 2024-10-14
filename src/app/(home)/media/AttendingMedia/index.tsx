@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import Image from "next/image";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { ATTENDINGMEDIA_MENU } from "@/app/(home)/media/AttendingMedia/attendingMedia.constants";
+import { ImageComponent } from "@/app/components/ImageComponent";
 
 export const AttendingMedia = () => {
   const images = useMemo(() => Object.values(ATTENDINGMEDIA_MENU), []);
@@ -21,14 +21,14 @@ export const AttendingMedia = () => {
         <Box className={"grid grid-cols-2 lg:grid-cols-5 lg:gap-8 gap-4"}>
           {images.map((image, index) => (
             <div key={index} className="col-span-1 rounded-md aspect-square w-full bg-[#F2F2F2] grid place-content-center p-5">
-              <Image
+              <ImageComponent
                 alt={image.id}
                 fetchPriority="high"
                 width="208"
                 height="208"
                 decoding="async"
                 className="w-full h-auto object-contain"
-                src={image.src}
+                fileName={image.src}
                 style={{ color: 'transparent' }}
               />
             </div>

@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
-import Image from "next/image";
+import { ImageComponent } from "../../../components/ImageComponent";
+import React from "react";
 
 export const Hero = () => {
   return (
@@ -104,16 +105,14 @@ export const Hero = () => {
         </div>
       </Box>
       <Box className={"col-span-1 relative"}>
-        <Image
-          src={"/images/sponsorHero.webp"}
-          alt={"2024 speaker"}
-          className={
-            "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
-          }
+        <ImageComponent
+          fileName={'images/sponsorHero'}
+          className={"object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"}
+          alt={'2024 speaker'}
+          style={{ color: "transparent" }}
+          decoding={"async"}
           width="2208"
           height="2028"
-          decoding="async"
-          style={{ color: "transparent" }}
         />
       </Box>
     </section>

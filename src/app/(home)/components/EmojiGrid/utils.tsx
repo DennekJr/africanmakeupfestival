@@ -1,7 +1,8 @@
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import Image from "next/image";
 import { EmojiGridType } from "./emojigrid.types";
+import { ImageComponent } from "../../../components/ImageComponent";
+import React from "react";
 
 export const EmojiLoop = ({
   emojiGroups,
@@ -29,17 +30,15 @@ export const EmojiLoop = ({
               </Box>
               <Box className={"flex"}>
                 {emojiGrid.emojis.map((emoji, index) => (
-                  <Image
+                  <ImageComponent
                     key={index}
+                    fileName={emoji.src}
+                    className={"size-9 !lg:size-16"}
                     alt={emoji.alt}
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                    decoding="async"
-                    data-nimg="1"
-                    className="size-9 lg:size-16"
                     style={{ color: "transparent" }}
-                    src={emoji.src}
+                    height={"60"}
+                    width={"60"}
+                    loading={"lazy"}
                   />
                 ))}
               </Box>

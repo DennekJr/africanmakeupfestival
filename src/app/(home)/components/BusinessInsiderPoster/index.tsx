@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import React from "react";
-import Image from "next/image";
+import { ImageComponent } from "@/app/components/ImageComponent";
 
 export const BusinessInsiderPoster = () => {
   return (
@@ -12,15 +12,13 @@ export const BusinessInsiderPoster = () => {
       >
         <Box className="col-span-1 flex flex-col lg:flex-row z-[2]">
           <Box className="w-full lg:w-[62.88%]">
-            <Image
-              alt="ASF 2023 stage view"
-              loading="lazy"
-              width="830"
-              height="789"
-              decoding="async"
-              className="w-full lg:h-full object-cover h-[300px]"
-              style={{ color: "transparent" }}
-              src="/images/speakers.webp"
+            <ImageComponent
+              fileName={"images/speakers"}
+              className={"w-full lg:h-full object-cover h-[300px]"}
+              alt={'ASF 2023 stage view'}
+              height={'789'}
+              width={'830'}
+              loading={'lazy'}
             />
           </Box>
           <Box className="flex-1 flex flex-col py-8 lg:py-12 px-4 gap-24 justify-between bg-[#09090b]">

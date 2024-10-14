@@ -8,12 +8,12 @@ export const SPONSORGIRD_MENU: Record<string, SponsorType> = {
     group: [
       {
         name: "cardtonic",
-        src: "/images/cardatonic.webp",
+        src: "images/cardatonic",
         href: "https://cardtonic.com/",
       },
       {
         name: "pressone",
-        src: "/images/pressone.webp",
+        src: "images/pressone",
         href: "https://pressone.africa/",
       },
     ],
@@ -23,10 +23,10 @@ export const SPONSORGIRD_MENU: Record<string, SponsorType> = {
     name: "Bronze Sponsors",
     disabled: false,
     group: [
-      { name: "aws", src: "/images/aws.webp", href: "https://aws.amazon.com/" },
+      { name: "aws", src: "images/aws", href: "https://aws.amazon.com/" },
       {
         name: "prestmit",
-        src: "/images/prestmit.webp",
+        src: "images/prestmit",
         href: "https://prestmit.io/",
       },
     ],
@@ -36,8 +36,8 @@ export const SPONSORGIRD_MENU: Record<string, SponsorType> = {
     name: "Supporting Sponsors",
     disabled: false,
     group: [
-      { name: "eend", src: "/images/eend.webp", href: "https://veendhq.com/" },
-      { name: "mest", src: "/images/mest.webp", href: "https://meltwater.org/" },
+      { name: "eend", src: "images/eend", href: "https://veendhq.com/" },
+      { name: "mest", src: "images/mest", href: "https://meltwater.org/" },
     ],
   },
 };

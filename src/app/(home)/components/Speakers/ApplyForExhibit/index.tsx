@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import { SpeakersImgScribble, WhiteBGButton } from "../../../../utils";
-import Image from "next/image";
+import { ImageComponent } from "../../../../components/ImageComponent";
+import React from "react";
 
 export const ApplyForExhibit = () => {
   return (
@@ -61,15 +62,15 @@ export const ApplyForExhibit = () => {
         </Box>
         <Box className={"col-span-1 relative"}>
           <SpeakersImgScribble />
-          <Image
-            alt="ASF 2023 Highlight - Remita Rep"
-            loading="lazy"
+          <ImageComponent
+            fileName={'images/two-speakers'}
+            className={"object-cover max-h-[420px] lg:max-h-none h-full lg:h-[858px] w-[640px] rounded-lg"}
+            alt={'ASF 2023 Highlight - Remita Rep'}
+            style={{ color: "transparent" }}
+            loading={"lazy"}
+            decoding="async"
             width="640"
             height="858"
-            decoding="async"
-            className="object-cover max-h-[420px] lg:max-h-none h-full lg:h-[858px] w-[640px] rounded-lg"
-            style={{ color: "transparent" }}
-            src="/images/two-speakers.webp"
           />
         </Box>
       </Box>

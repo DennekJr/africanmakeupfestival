@@ -1,43 +1,43 @@
 export const EVENTSGRIDCONSTANTSMENU:Record<string, { id: string, src: string }> = {
   kora: {
     id: 'kora',
-    src: '/images/exhibitors/kora.webp'
+    src: 'images/exhibitors/kora'
   },
   tryPex: {
     id: 'tryPex',
-    src: '/images/exhibitors/trypex.webp'
+    src: 'images/exhibitors/trypex'
   },
   yellowCard: {
     id: 'kora',
-    src: '/images/exhibitors/yellowCard.webp'
+    src: 'images/exhibitors/yellowCard'
   },
   travelTank: {
     id: 'kora',
-    src: '/images/exhibitors/travelTank.webp'
+    src: 'images/exhibitors/travelTank'
   },
   proDevs: {
     id: 'kora',
-    src: '/images/exhibitors/proDevs.webp'
+    src: 'images/exhibitors/proDevs'
   },
   flick: {
     id: 'kora',
-    src: '/images/exhibitors/flick.webp'
+    src: 'images/exhibitors/flick'
   },
 glovo: {
     id: 'kora',
-    src: '/images/exhibitors/glovo.webp'
+    src: 'images/exhibitors/glovo'
   },
 cafeOne: {
     id: 'kora',
-    src: '/images/exhibitors/cafeOne.webp'
+    src: 'images/exhibitors/cafeOne'
   },
 remita: {
     id: 'kora',
-    src: '/images/exhibitors/remita.webp'
+    src: 'images/exhibitors/remita'
   },
 edenLife: {
     id: 'kora',
-    src: '/images/exhibitors/edenLife.webp'
+    src: 'images/exhibitors/edenLife'
   },
 
 }
