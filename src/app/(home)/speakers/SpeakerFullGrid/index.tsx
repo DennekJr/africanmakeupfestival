@@ -30,6 +30,7 @@ export const SpeakerFullGrid = () => {
                     alt={speaker.name}
                     width="316"
                     height="347"
+                    loading={'eager'}
                     className="w-full rounded-sm aspect-[1/1.1] object-cover"
                     fileName={speaker.src}
                     style={{ color: 'transparent' }}

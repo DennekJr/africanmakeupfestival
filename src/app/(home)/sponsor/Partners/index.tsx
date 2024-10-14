@@ -49,6 +49,7 @@ export const Partners = () => {
                     alt={sponsor.name}
                     className={"w-full h-auto object-contain"}
                     width={208}
+                    loading={'eager'}
                     height={208}
                     fileName={sponsor.src}
                     style={{ color: 'transparent' }}

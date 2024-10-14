@@ -24,6 +24,7 @@ export const AttendingMedia = () => {
               <ImageComponent
                 alt={image.id}
                 width="208"
+                loading={'eager'}
                 height="208"
                 className="w-full h-auto object-contain"
                 fileName={image.src}

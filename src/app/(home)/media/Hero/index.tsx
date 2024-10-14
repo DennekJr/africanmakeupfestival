@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { FortyFiveDegreeArrow } from "../Hero/utils";
+import {ImageComponent} from "../../../components/ImageComponent";
+import React from "react";
 
 export const Hero = () => {
   return (
@@ -66,16 +68,15 @@ export const Hero = () => {
         </Box>
       </Box>
       <Box className={"col-span-1 relative"}>
-        <Image
-          src={"/images/mediaHero.webp"}
-          alt={"2024 speaker"}
-          className={
-            "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
-          }
-          width="2208"
-          height="2028"
-          decoding="async"
-          style={{ color: "transparent" }}
+        <ImageComponent
+            alt={"2024 speaker"}
+            className={
+              "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
+            }
+            width="2208"
+            height="2028"
+            fileName={'images/mediaHero'}
+            style={{ color: 'transparent' }}
         />
       </Box>
     </section>
