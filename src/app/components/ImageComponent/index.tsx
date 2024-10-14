@@ -31,9 +31,9 @@ export async function ImageComponent({
         width={width}
         alt={alt}
         style={style}
-        unoptimized
-        decoding
-        fetchPriority
+        unoptimized={unoptimised}
+        decoding={decoding}
+        fetchPriority={fetchPriority}
       />
     </Suspense>
   );
