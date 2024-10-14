@@ -100,6 +100,7 @@ export const Footer = () => {
               <ImageComponent
                   fileName={'images/SPARK'}
                   alt="Spark Monogram"
+                  className={"visible"}
                   loading="lazy"
                   width="127"
                   height="18"
