@@ -4,38 +4,38 @@ export const ATTENDINGMEDIA_MENU: Record<
 > = {
   arise: {
     id: "arise",
-    src: "/images/attendingMedia/arise.webp",
+    src: "images/attendingMedia/arise",
   },
   bbc: {
     id: "bbc",
-    src: "/images/attendingMedia/bbc.webp",
+    src: "images/attendingMedia/bbc",
   },
   bet: {
     id: "bet",
-    src: "/images/attendingMedia/bet.webp",
+    src: "images/attendingMedia/bet",
   },
   businessday: {
     id: "businessday",
-    src: "/images/attendingMedia/businessday.webp",
+    src: "images/attendingMedia/businessday",
   },
   e: {
     id: "e",
-    src: "/images/attendingMedia/e.webp",
+    src: "images/attendingMedia/e",
   },
   forbes: {
     id: "forbes",
-    src: "/images/attendingMedia/forbes.webp",
+    src: "images/attendingMedia/forbes",
   },
   ft: {
     id: "ft",
-    src: "/images/attendingMedia/ft.webp",
+    src: "images/attendingMedia/ft",
   },
   pulse: {
     id: "pulse",
-    src: "/images/attendingMedia/pulse.webp",
+    src: "images/attendingMedia/pulse",
   },
   techpoint: {
     id: "techpoint",
-    src: "/images/attendingMedia/techpoint.webp",
+    src: "images/attendingMedia/techpoint",
   },
 };

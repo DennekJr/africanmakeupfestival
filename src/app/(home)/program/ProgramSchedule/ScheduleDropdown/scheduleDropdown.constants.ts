@@ -23,21 +23,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "somachi",
-          src: "/images/somachi.webp",
+          src: "images/somachi",
           name: "Somachi Chris-Asoluka",
           company: "The Tony Elumelu Foundation",
           position: "CEO",
         },
         {
           id: "ore",
-          src: "/images/ore.webp",
+          src: "images/ore",
           name: "Ore Ogunbiyi",
           company: "The Economist",
           position: "Africa Correspondent",
         },
         {
           id: "alyune",
-          src: "/images/alyune.webp",
+          src: "images/alyune",
           name: "Alyune Diop",
           company: "LoftyInc Capital",
           position: "Senior Investment Associate",

@@ -5,16 +5,16 @@ export const MEDIASOURCES_MENU: Record<
   photos: {
     id: "images",
     title: "Photos",
-    src: "/images/mediaSources/photoSource.webp",
+    src: "images/mediaSources/photoSource",
   },
   videos: {
     id: "videos",
     title: "videos",
-    src: "/images/mediaSources/videoSource.webp",
+    src: "images/mediaSources/videoSource",
   },
   pressRelease: {
     id: "images",
     title: "Press Release",
-    src: "/images/mediaSources/pressReleaseSource.webp",
+    src: "images/mediaSources/pressReleaseSource",
   },
 };

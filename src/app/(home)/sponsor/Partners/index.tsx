@@ -1,12 +1,12 @@
 import Box from "@mui/material/Box";
 import { PartnerUnderScore } from "./utils";
-import Image from "next/image";
 import { useMemo } from "react";
 import { PARTNERS_MENU } from "./partners.constants";
 import { FortyFiveDegreeArrow } from "../Hero/utils";
 import { Button } from "@mui/material";
 import * as React from "react";
 import Typography from "@mui/material/Typography";
+import {ImageComponent} from "../../../components/ImageComponent";
 
 export const Partners = () => {
   const sponsors = useMemo(() => Object.values(PARTNERS_MENU), []);
@@ -45,13 +45,13 @@ export const Partners = () => {
                   "!col-span-1 rounded-md aspect-square w-full bg-[#F2F2F2] !grid place-content-center p-5"
                 }
               >
-                <Image
-                  width={208}
-                  height={208}
-                  src={sponsor.src}
-                  alt={sponsor.name}
-                  style={{ color: "transparent" }}
-                  className={"w-full h-auto object-contain"}
+                <ImageComponent
+                    alt={sponsor.name}
+                    className={"w-full h-auto object-contain"}
+                    width={208}
+                    height={208}
+                    fileName={sponsor.src}
+                    style={{ color: 'transparent' }}
                 />
               </Box>
             );

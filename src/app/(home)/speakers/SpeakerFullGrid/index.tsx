@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import Image from "next/image";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { SPEAKERFULLGRID_MENU } from "./speakerFullGrid.constants";
+import {ImageComponent} from "../../../components/ImageComponent";
 
 export const SpeakerFullGrid = () => {
   const speakers = useMemo(() => Object.values(SPEAKERFULLGRID_MENU), []);
@@ -26,15 +26,15 @@ export const SpeakerFullGrid = () => {
           <Box className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 w-full">
             {speakers.map((speaker, index) => (
               <Box className="grid gap-5" key={index}>
-                <Image
-                  alt={speaker.name}
-                  fetchPriority="high"
-                  width="316"
-                  height="347"
-                  decoding="async"
-                  className="w-full rounded-sm aspect-[1/1.1] object-cover"
-                  style={{ color: "transparent" }}
-                  src={speaker.src}
+                <ImageComponent
+                    alt={speaker.name}
+                    fetchPriority="high"
+                    width="316"
+                    height="347"
+                    decoding="async"
+                    className="w-full rounded-sm aspect-[1/1.1] object-cover"
+                    fileName={speaker.src}
+                    style={{ color: 'transparent' }}
                 />
                 <div className="grid gap-1.5 text-left">
                   <div>

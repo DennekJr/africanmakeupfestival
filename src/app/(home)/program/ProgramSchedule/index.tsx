@@ -43,8 +43,6 @@ export const ProgramSchedule = () => {
           ></div>
           <Box className={"flex-1 grid gap-8 p-6 lg:p-12"}>
             <div
-              data-state="active"
-              data-orientation="horizontal"
               role="tabpanel"
               aria-labelledby="radix-:r4:-trigger-66ce29531434f40964fdab43"
               id="radix-:r4:-content-66ce29531434f40964fdab43"

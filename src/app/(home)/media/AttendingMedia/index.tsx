@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import React, { useMemo } from "react";
-import { ATTENDINGMEDIA_MENU } from "@/app/(home)/media/AttendingMedia/attendingMedia.constants";
-import { ImageComponent } from "@/app/components/ImageComponent";
+import { ATTENDINGMEDIA_MENU } from "./attendingMedia.constants";
+import { ImageComponent } from "../../../components/ImageComponent";
 
 export const AttendingMedia = () => {
   const images = useMemo(() => Object.values(ATTENDINGMEDIA_MENU), []);

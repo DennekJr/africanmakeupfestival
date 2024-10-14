@@ -5,8 +5,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import ListItemText from "@mui/material/ListItemText";
 import Box from "@mui/material/Box";
-import Image from "next/image";
 import { SCHEDULEDROPDOWNMENU } from "../ScheduleDropdown/scheduleDropdown.constants";
+import { ImageComponent } from "@/app/components/ImageComponent";
 
 export const ScheduleDropdown = () => {
   const initialState = [
@@ -87,14 +87,14 @@ export const ScheduleDropdown = () => {
                               return (
                                 <div className="flex gap-2" key={index}>
                                   <div className="overflow-clip rounded-md">
-                                    <Image
+                                    <ImageComponent
                                       alt={participant.name}
                                       loading="lazy"
                                       width="60"
                                       height="60"
                                       decoding="async"
                                       className="size-24 object-cover"
-                                      src={participant.src}
+                                      fileName={participant.src}
                                       style={{ color: "transparent" }}
                                     />
                                   </div>

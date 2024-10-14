@@ -21,7 +21,6 @@ export async function ImageComponent({
     token: process.env.BLOB_READ_WRITE_TOKEN,
   });
   const { url } = blobs[0];
-
   return (
     <Suspense fallback={<p>Loading image...</p>}>
       <Image
@@ -32,9 +31,9 @@ export async function ImageComponent({
         width={width}
         alt={alt}
         style={style}
-        unoptimized={unoptimised}
-        decoding={decoding}
-        fetchPriority={fetchPriority}
+        unoptimized
+        decoding
+        fetchPriority
       />
     </Suspense>
   );

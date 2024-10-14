@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import { HeroWhiteScribble } from "./utils";
-import Image from "next/image";
+import {ImageComponent} from "../../../components/ImageComponent";
+import React from "react";
 
 export const Hero = () => {
   return (
@@ -72,16 +73,16 @@ export const Hero = () => {
       </Box>
       <Box className={"col-span-1 relative"}>
         <HeroWhiteScribble />
-        <Image
-          src={"/images/2024-speakers/2024-speakers.webp"}
-          alt={"2024 speaker"}
-          className={
-            "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
-          }
-          width="2208"
-          height="2028"
-          decoding="async"
-          style={{ color: "transparent" }}
+        <ImageComponent
+            alt={"2024 speaker"}
+            className={
+              "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
+            }
+            width="2208"
+            height="2028"
+            decoding="async"
+            fileName={'images/2024-speakers/2024-speakers'}
+            style={{ color: 'transparent' }}
         />
       </Box>
     </section>

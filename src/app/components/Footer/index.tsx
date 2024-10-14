@@ -1,10 +1,10 @@
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/system";
 import { FOOTER_MENULINKS } from "./footer.constants";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { Divider, Typography } from "@mui/material";
-import Image from "next/image";
+import {ImageComponent} from "../../components/ImageComponent";
 
 export const Footer = () => {
   const links = useMemo(() => Object.values(FOOTER_MENULINKS), []);
@@ -19,15 +19,15 @@ export const Footer = () => {
         <Box className={"mx-auto max-w-[1320px] flex flex-col gap-14"}>
           <Box className={"flex flex-col lg:flex-row gap-8 py-8"}>
             <div className="">
-              <Image
-                alt="ASF Logo Full"
-                loading="lazy"
-                width="5207"
-                height="2365"
-                decoding="async"
-                className="!invert dark:invert-0 w-[337px] h-[139px] object-contain object-left"
-                style={{ color: "transparent" }}
-                src="/images/festivalLogo.webp"
+              <ImageComponent
+                  fileName={'images/festivalLogo'}
+                  alt={'ASF Logo Full'}
+                  loading="lazy"
+                  width="5207"
+                  height="2365"
+                  decoding="async"
+                  className="!invert dark:invert-0 w-[337px] h-[139px] object-contain object-left"
+                  style={{ color: "transparent" }}
               />
             </div>
             <Box
@@ -98,14 +98,14 @@ export const Footer = () => {
               </a>
             </Box>
             <Link href="https://sparkafrica.co/">
-              <Image
-                alt="Spark Monogram"
-                loading="lazy"
-                width="127"
-                height="18"
-                decoding="async"
-                style={{ color: "transparent" }}
-                src="/images/SPARK.svg"
+              <ImageComponent
+                  fileName={'images/SPARK'}
+                  alt="Spark Monogram"
+                  loading="lazy"
+                  width="127"
+                  height="18"
+                  decoding="async"
+                  style={{ color: "transparent" }}
               />
             </Link>
           </Box>

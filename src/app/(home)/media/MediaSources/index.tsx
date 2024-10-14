@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { MEDIASOURCES_MENU } from "./mediaSources.constants";
-import Image from "next/image";
+import {ImageComponent} from "../../../components/ImageComponent";
 
 export const MediaSources = () => {
   const sources = useMemo(() => Object.values(MEDIASOURCES_MENU), []);
@@ -27,14 +27,14 @@ export const MediaSources = () => {
               className="aspect-square rounded-xl overflow-clip relative"
               href=""
             >
-              <Image
-                alt={mediaSource.title}
-                width="208"
-                height="208"
-                decoding="async"
-                className="w-full h-auto object-cover"
-                src={mediaSource.src}
-                style={{color: 'transparent'}}
+              <ImageComponent
+                  fileName={mediaSource.src}
+                  alt={mediaSource.title}
+                  width="208"
+                  height="208"
+                  decoding="async"
+                  className="w-full h-auto object-cover"
+                  style={{color: 'transparent'}}
               />
               <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/30 text-white p-4 font-medium text-5xl leading-[52.8px] tracking-[-1px]">
                 {mediaSource.title}

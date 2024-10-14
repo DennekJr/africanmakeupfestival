@@ -4,10 +4,10 @@ import {
   NextSlide,
   PreviousSlide,
   TestimonialsUnderscore,
-} from "@/app/(home)/exhibit/Testimonials/utils";
-import { TestimonialCarousel } from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel";
+} from "./utils";
+import { TestimonialCarousel } from "./TestimonialCarousel";
 import { useMemo } from "react";
-import { TESTIMONIALSCONSTANTSMENU } from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel/testimonials.constants";
+import { TESTIMONIALSCONSTANTSMENU } from "./TestimonialCarousel/testimonials.constants";
 import "swiper/css";
 import "swiper/css/effect-cards";
 
