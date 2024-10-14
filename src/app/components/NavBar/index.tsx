@@ -60,6 +60,8 @@ export default function NavBar() {
                 fileName={'images/logo'}
                 alt={"Makeup Festival logo"}
                 width={80}
+                loading={'eager'}
+                className={'visible'}
                 height={30}
                 style={{visibility: 'visible'}}
             />
