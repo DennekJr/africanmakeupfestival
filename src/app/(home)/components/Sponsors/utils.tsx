@@ -27,7 +27,6 @@ export const SponsorIcons = () => {
                       className={"object-contain object-center select-none h-16"}
                       alt={group.name}
                       style={{ color: "transparent" }}
-                      decoding={"async"}
                       loading="lazy"
                       width="270"
                       height="73"

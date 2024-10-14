@@ -68,7 +68,6 @@ export const ApplyForExhibit = () => {
             alt={'ASF 2023 Highlight - Remita Rep'}
             style={{ color: "transparent" }}
             loading={"lazy"}
-            decoding="async"
             width="640"
             height="858"
           />

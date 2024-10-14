@@ -12,10 +12,8 @@ export const EventsGrid = () => {
           <ImageComponent
             fileName={exhibitor.src}
             alt={exhibitor.id}
-            fetchPriority="high"
             width="208"
             height="208"
-            decoding="async"
             className="w-full h-auto object-contain"
             style={{color: 'transparent'}}
           />

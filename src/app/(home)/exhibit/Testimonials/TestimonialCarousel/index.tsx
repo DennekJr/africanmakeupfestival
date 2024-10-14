@@ -17,7 +17,6 @@ export const TestimonialCarousel = ({src, alt}:{src: string, alt: string}) => {
           loading="lazy"
           width="998"
           height="663"
-          decoding="async"
           className="w-full"
           style={{color: 'transparent'}}
         />

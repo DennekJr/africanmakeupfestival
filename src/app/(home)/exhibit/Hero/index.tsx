@@ -110,7 +110,6 @@ export const Hero = () => {
           className={"object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"}
           alt={'2024 speaker'}
           style={{ color: "transparent" }}
-          decoding={"async"}
           width="2208"
           height="2028"
         />

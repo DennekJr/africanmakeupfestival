@@ -23,10 +23,8 @@ export const AttendingMedia = () => {
             <div key={index} className="col-span-1 rounded-md aspect-square w-full bg-[#F2F2F2] grid place-content-center p-5">
               <ImageComponent
                 alt={image.id}
-                fetchPriority="high"
                 width="208"
                 height="208"
-                decoding="async"
                 className="w-full h-auto object-contain"
                 fileName={image.src}
                 style={{ color: 'transparent' }}

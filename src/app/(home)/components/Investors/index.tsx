@@ -24,7 +24,6 @@ export const InvestorsMedia = () => {
               className={"w-full h-full object-cover object-center aspect-[16/12] rounded-lg"}
               alt={'about investors 1'}
               style={{ color: "transparent" }}
-              unomptimised={true}
               width={1280}
               height={1280}
               loading={"lazy"}
@@ -48,8 +47,6 @@ export const InvestorsMedia = () => {
               alt={'about investors 2'}
               style={{ color: "transparent" }}
               width="1280"
-              decoding={'async'}
-              unoptimized={true}
               height="1920"
               loading={"lazy"}
             />

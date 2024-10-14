@@ -39,11 +39,9 @@ export const SpeakersGrid = () => {
             <Box className="grid gap-5" key={index}>
               <ImageComponent
                 fileName={speaker.src}
-                fetchPriority={'high'}
                 className={"w-full rounded-sm aspect-[1/1.1] object-cover"}
                 alt={speaker.name}
                 style={{ color: "transparent" }}
-                decoding={"async"}
                 width="316"
                 height="347"
               />
