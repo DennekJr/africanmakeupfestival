@@ -12,6 +12,7 @@ export const EventsGrid = () => {
           <ImageComponent
             fileName={exhibitor.src}
             alt={exhibitor.id}
+            loading={'eager'}
             width="208"
             height="208"
             className="w-full h-auto object-contain"
