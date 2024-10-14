@@ -80,7 +80,6 @@ export const Hero = () => {
             }
             width="2208"
             height="2028"
-            decoding="async"
             fileName={'images/2024-speakers/2024-speakers'}
             style={{ color: 'transparent' }}
         />

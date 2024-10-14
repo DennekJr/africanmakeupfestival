@@ -83,7 +83,6 @@ export const Hero = () => {
             }
             width="2208"
             height="2028"
-            decoding="async"
             fileName={'images/sponsorHero'}
             style={{ color: 'transparent' }}
         />

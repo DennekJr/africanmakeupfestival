@@ -17,6 +17,7 @@ export const BusinessInsiderPoster = () => {
               className={"w-full lg:h-full object-cover h-[300px]"}
               alt={'ASF 2023 stage view'}
               height={'789'}
+              style={{color: 'transparent'}}
               width={'830'}
               loading={'lazy'}
             />

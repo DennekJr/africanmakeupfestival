@@ -28,10 +28,8 @@ export const SpeakerFullGrid = () => {
               <Box className="grid gap-5" key={index}>
                 <ImageComponent
                     alt={speaker.name}
-                    fetchPriority="high"
                     width="316"
                     height="347"
-                    decoding="async"
                     className="w-full rounded-sm aspect-[1/1.1] object-cover"
                     fileName={speaker.src}
                     style={{ color: 'transparent' }}

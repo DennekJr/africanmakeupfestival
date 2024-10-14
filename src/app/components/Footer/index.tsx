@@ -25,7 +25,6 @@ export const Footer = () => {
                   loading="lazy"
                   width="5207"
                   height="2365"
-                  decoding="async"
                   className="!invert dark:invert-0 w-[337px] h-[139px] object-contain object-left"
                   style={{ color: "transparent" }}
               />
@@ -104,7 +103,6 @@ export const Footer = () => {
                   loading="lazy"
                   width="127"
                   height="18"
-                  decoding="async"
                   style={{ color: "transparent" }}
               />
             </Link>

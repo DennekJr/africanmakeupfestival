@@ -61,6 +61,7 @@ export default function NavBar() {
                 alt={"Makeup Festival logo"}
                 width={80}
                 height={30}
+                style={{visibility: 'visible'}}
             />
           </Link>
         </Box>

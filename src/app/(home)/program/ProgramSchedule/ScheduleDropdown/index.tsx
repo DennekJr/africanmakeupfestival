@@ -92,7 +92,6 @@ export const ScheduleDropdown = () => {
                                       loading="lazy"
                                       width="60"
                                       height="60"
-                                      decoding="async"
                                       className="size-24 object-cover"
                                       fileName={participant.src}
                                       style={{ color: "transparent" }}
