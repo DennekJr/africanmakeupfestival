@@ -12,13 +12,7 @@ import {
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 
-// import required modules
-import { EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import dynamic from "next/dynamic"; // Import Swiper styles globally
-
-const Swiper = dynamic(() => import('swiper/react').then(mod => mod.Swiper), { ssr: false });
-const SwiperSlide = dynamic(() => import('swiper/react').then(mod => mod.SwiperSlide), { ssr: false });
 
 export const Testimonials = () => {
   const testimonies = useMemo(() => Object.values(TESTIMONIALSCONSTANTSMENU), []);
@@ -40,8 +34,8 @@ export const Testimonials = () => {
               </span>
             </pre>
             <div className="flex justify-end gap-5 lg:gap-10">
-              <PreviousSlide onClick={handlePreviousClick} />
-              <NextSlide onClick={handleNextClick} />
+              <PreviousSlide handleClick={handlePreviousClick} />
+              <NextSlide handleClick={handleNextClick} />
             </div>
           </div>
           <pre

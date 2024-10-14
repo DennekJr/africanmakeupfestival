@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import { FortyFiveDegreeArrow } from "./utils";
 
 export const Hero = () => {
   return (
