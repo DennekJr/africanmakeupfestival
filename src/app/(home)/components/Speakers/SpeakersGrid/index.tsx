@@ -43,6 +43,7 @@ export const SpeakersGrid = () => {
                 alt={speaker.name}
                 style={{ color: "transparent" }}
                 width="316"
+                loading={'lazy'}
                 height="347"
               />
               <div className="grid gap-1.5 text-left">
