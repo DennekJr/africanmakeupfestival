@@ -9,7 +9,6 @@ export async function VideoComponent({ fileName }) {
     token: process.env.BLOB_READ_WRITE_TOKEN,
   });
   const { url } = blobs[0];
-
   return (
     <Suspense fallback={<p>Loading video...</p>}>
       <video
