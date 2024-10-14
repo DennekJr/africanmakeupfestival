@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import Image from "next/image";
 import { FortyFiveDegreeArrow } from "../Hero/utils";
 import {ImageComponent} from "../../../components/ImageComponent";
 import React from "react";
