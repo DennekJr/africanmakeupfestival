@@ -77,7 +77,7 @@ export default function NavBar() {
                 onMouseEnter={() => setIsOpen(true)}
                 key={index}
                 disablePadding
-                id={`${name === "Exhibitors" ? 'exhibitor': ''}`}
+                id={id + `${name === "Exhibitors" ? ' exhibitor': ''}`}
                 sx={{ display: "block" }}
               >
                 <Link
