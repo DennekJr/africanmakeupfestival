@@ -12,22 +12,17 @@ import Link from "next/link";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { RightArrowButton, WhiteBGButton } from "../../utils";
-import { useWindowSize } from "../../../hooks/useWindowSize";
 import { MenuDialog } from "../MenuDialog";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import {ImageComponent} from "../../components/ImageComponent";
+import { ImageComponent } from "../../components/ImageComponent";
 
 export default function NavBar() {
   const router = useRouter();
   const path = usePathname();
-  const windowSize = useWindowSize();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
-  const width = useMemo(() => {
-    return windowSize;
-  }, [windowSize]);
 
   const redirectToHome = (route: string) => {
     if (path !== "/") {
@@ -41,12 +36,11 @@ export default function NavBar() {
     }
     return <ExpandLessIcon />;
   };
-
   return (
     <Box
       className={
         `${path == "/" ? "!bg-transparent " : "!bg-[#000000] "}` +
-        "flex justify-center border-b border-border-secondary bg-transparent w-full p-4 text-white z-10 static lg:absolute top-0 left-0"
+        "flex justify-center border-b border-border-secondary w-full p-4 text-white z-10 absolute top-0 left-0"
       }
     >
       <Box
@@ -57,100 +51,98 @@ export default function NavBar() {
         <Box>
           <Link href={"/"}>
             <ImageComponent
-                fileName={'images/logo'}
-                alt={"Makeup Festival logo"}
-                width={80}
-                loading={'eager'}
-                className={'visible'}
-                height={30}
-                style={{visibility: 'visible'}}
+              fileName={"images/logo"}
+              alt={"Makeup Festival logo"}
+              width={80}
+              loading={"eager"}
+              className={"visible"}
+              height={30}
+              style={{ visibility: "visible" }}
             />
           </Link>
         </Box>
-        {width! > 970 && (
-          <Box>
-            <List
-              component={"nav"}
-              className={"flex flex-1 items-center justify-between"}
-            >
-              {navBarItems.map(({ name, id, route }, index) => (
-                <ListItem key={index} disablePadding sx={{ display: "block" }}>
-                  <Link
-                    onClick={() => {
-                      if (name === "Exhibitors") {
-                        setIsOpen(!isOpen);
-                      } else {
-                        return redirectToHome(route);
-                      }
-                    }}
-                    key={id}
-                    className="nav-link"
-                    href={route}
-                  >
-                    <ListItemButton className={"w-max !py-0"}>
-                      <ListItemText
-                        primary={name}
-                        primaryTypographyProps={{ fontWeight: "600" }}
-                        className={"itemText"}
-                      />
-                      {name === "Exhibitors" && exhibitorIcon()}
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        )}
-        {width! > 970 && (
-          <Box>
-            <List
-              component={"nav"}
-              className={"flex flex-1 items-center justify-between gap-4 !py-0"}
-            >
-              {navBarButtons.map(({ name, id, route }) => (
-                <ListItem key={id} disablePadding sx={{ display: "block" }}>
-                  <Link
-                    onClick={() => redirectToHome(route)}
-                    key={id}
-                    className="nav-link"
-                    href={route}
-                  >
-                    {id === "getTicket" ? (
-                      <WhiteBGButton
-                        className={`!rounded-full whitespace-nowrap`}
-                        variant="contained"
-                        endIcon={<ConfirmationNumberIcon />}
-                      >
-                        <ListItemButton className={"w-max !p-0"}>
-                          <ListItemText
-                            primary={name}
-                            primaryTypographyProps={{ fontWeight: "600" }}
-                            className={"itemText"}
-                          />
-                        </ListItemButton>
-                      </WhiteBGButton>
-                    ) : (
-                      <RightArrowButton
-                        className={`!rounded-full whitespace-nowrap`}
-                        variant="outlined"
-                        endIcon={<ArrowOutwardIcon />}
-                      >
-                        <ListItemButton className={"w-max !p-0"}>
-                          <ListItemText
-                            primary={name}
-                            primaryTypographyProps={{ fontWeight: "600" }}
-                            className={"itemText"}
-                          />
-                        </ListItemButton>
-                      </RightArrowButton>
-                    )}
-                  </Link>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        )}
-        {width! < 970 && <MenuDialog />}
+        <Box className={"min-[1100px]:visible max-[1099px]:hidden"}>
+          <List
+            component={"nav"}
+            className={"flex flex-1 items-center justify-between"}
+          >
+            {navBarItems.map(({ name, id, route }, index) => (
+              <ListItem key={index} disablePadding sx={{ display: "block" }}>
+                <Link
+                  onClick={() => {
+                    if (name === "Exhibitors") {
+                      setIsOpen(!isOpen);
+                    } else {
+                      return redirectToHome(route);
+                    }
+                  }}
+                  key={id}
+                  className="nav-link"
+                  href={route}
+                >
+                  <ListItemButton className={"w-max !py-0"}>
+                    <ListItemText
+                      primary={name}
+                      primaryTypographyProps={{ fontWeight: "600" }}
+                      className={"itemText"}
+                    />
+                    {name === "Exhibitors" && exhibitorIcon()}
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+        <Box className={"min-[1100px]:visible max-[1099px]:hidden"}>
+          <List
+            component={"nav"}
+            className={"flex flex-1 items-center justify-between gap-4 !py-0"}
+          >
+            {navBarButtons.map(({ name, id, route }) => (
+              <ListItem key={id} disablePadding sx={{ display: "block" }}>
+                <Link
+                  onClick={() => redirectToHome(route)}
+                  key={id}
+                  className="nav-link"
+                  href={route}
+                >
+                  {id === "getTicket" ? (
+                    <WhiteBGButton
+                      className={`!rounded-full whitespace-nowrap`}
+                      variant="contained"
+                      endIcon={<ConfirmationNumberIcon />}
+                    >
+                      <ListItemButton className={"w-max !p-0"}>
+                        <ListItemText
+                          primary={name}
+                          primaryTypographyProps={{ fontWeight: "600" }}
+                          className={"itemText"}
+                        />
+                      </ListItemButton>
+                    </WhiteBGButton>
+                  ) : (
+                    <RightArrowButton
+                      className={`!rounded-full whitespace-nowrap`}
+                      variant="outlined"
+                      endIcon={<ArrowOutwardIcon />}
+                    >
+                      <ListItemButton className={"w-max !p-0"}>
+                        <ListItemText
+                          primary={name}
+                          primaryTypographyProps={{ fontWeight: "600" }}
+                          className={"itemText"}
+                        />
+                      </ListItemButton>
+                    </RightArrowButton>
+                  )}
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+        <Box className={'max-[1099px]:visible min-[1100px]:hidden'}>
+          <MenuDialog />
+        </Box>
       </Box>
     </Box>
   );
