@@ -16,6 +16,7 @@ const Home: NextPage = () => {
     <Box sx={{ flexGrow: 1, overflow: "hidden" }}>
       <NavBar />
       <Hero />
+      <MarqueeSlide />
       <InvestorsMedia />
       <Sponsors />
       <EmojiGrid />

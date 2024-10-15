@@ -1,3 +1,4 @@
+"use clients"
 import React, { useMemo, useState } from "react";
 import { Collapse } from "@mui/material";
 import List from "@mui/material/List";
@@ -5,9 +6,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import ListItemText from "@mui/material/ListItemText";
 import Box from "@mui/material/Box";
-import { SCHEDULEDROPDOWNMENU } from "../ScheduleDropdown/scheduleDropdown.constants";
-import { ImageComponent } from "../../../../components/ImageComponent";
 import Image from "next/image";
+import { SCHEDULEDROPDOWNMENU } from "../ScheduleDropdown/scheduleDropdown.constants";
 
 export const ScheduleDropdown = () => {
   const initialState = [
@@ -25,7 +25,6 @@ export const ScheduleDropdown = () => {
   const [openSlide, setOpenSlide] = useState(initialState);
   const schedules = useMemo(() => Object.values(SCHEDULEDROPDOWNMENU), []);
   const handleClick = (id: string) => {
-    console.log("clicked");
     const newState = openSlide.map((item) => {
       if (item.slide !== id) {
         return item;
@@ -89,13 +88,14 @@ export const ScheduleDropdown = () => {
                               return (
                                 <div className="flex gap-2" key={index}>
                                   <div className="overflow-clip rounded-md">
-                                    <ImageComponent
+                                    <Image
                                       alt={participant.name}
                                       loading="lazy"
                                       width="60"
                                       height="60"
+                                      decoding="async"
                                       className="size-24 object-cover"
-                                      fileName={participant.src}
+                                      src={participant.src}
                                       style={{ color: "transparent" }}
                                     />
                                   </div>

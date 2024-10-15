@@ -5,7 +5,7 @@ import { Hero } from "./Hero";
 import { Stages } from "./Stages";
 import { ProgramSchedule } from "./ProgramSchedule";
 
-const Program: () => Promise<React.JSX.Element> = async () => {
+const Program = () => {
   return (
     <Box
       className={
