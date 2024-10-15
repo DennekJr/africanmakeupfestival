@@ -7,8 +7,7 @@ export const TestimonialCarousel = ({src, alt}:{src: string, alt: string}) => {
     <Box
       role="group"
       aria-roledescription="slide"
-      className="min-w-0 shrink-0 grow-0 basis-full pl-4 md:basis-4/6"
-    >
+      className="min-w-0 shrink-0 grow-0 basis-full pl-4 md:basis-4/6">
       <div className="p-1">
         <ImageComponent
           fileName={src}

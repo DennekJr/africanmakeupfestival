@@ -6,7 +6,8 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import ListItemText from "@mui/material/ListItemText";
 import Box from "@mui/material/Box";
 import { SCHEDULEDROPDOWNMENU } from "../ScheduleDropdown/scheduleDropdown.constants";
-import { ImageComponent } from "@/app/components/ImageComponent";
+import { ImageComponent } from "../../../../components/ImageComponent";
+import Image from "next/image";
 
 export const ScheduleDropdown = () => {
   const initialState = [
@@ -24,6 +25,7 @@ export const ScheduleDropdown = () => {
   const [openSlide, setOpenSlide] = useState(initialState);
   const schedules = useMemo(() => Object.values(SCHEDULEDROPDOWNMENU), []);
   const handleClick = (id: string) => {
+    console.log("clicked");
     const newState = openSlide.map((item) => {
       if (item.slide !== id) {
         return item;

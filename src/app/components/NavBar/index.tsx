@@ -1,3 +1,4 @@
+'use client'
 import * as React from "react";
 import {useEffect, useMemo, useState} from "react";
 import Box from "@mui/material/Box";
@@ -105,7 +106,7 @@ export default function NavBar() {
             className={"flex flex-1 items-center justify-between gap-4 !py-0"}
           >
             {navBarButtons.map(({ name, id, route }) => (
-              <ListItem key={id} disablePadding sx={{ display: "block" }}>
+              <ListItem key={id} className={'hover:cursor-pointer'} disablePadding sx={{ display: "block" }}>
                 <Link
                   onClick={() => redirectToHome(route)}
                   key={id}
