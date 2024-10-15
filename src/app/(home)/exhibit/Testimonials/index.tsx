@@ -1,17 +1,9 @@
 "use client";
 import Box from "@mui/material/Box";
-import {
-  NextSlide,
-  PreviousSlide,
-  TestimonialsUnderscore,
-} from "./utils";
+import { NextSlide, PreviousSlide, TestimonialsUnderscore } from "./utils";
 import { TestimonialCarousel } from "./TestimonialCarousel";
 import { useMemo } from "react";
 import { TESTIMONIALSCONSTANTSMENU } from "./TestimonialCarousel/testimonials.constants";
-import "swiper/css";
-import "swiper/css/effect-cards";
-
-import "swiper/swiper-bundle.css";
 
 export const Testimonials = () => {
   const testimonies = useMemo(

@@ -8,7 +8,6 @@ export const TestimonialCarousel = ({src, alt}:{src: string, alt: string}) => {
       role="group"
       aria-roledescription="slide"
       className="min-w-0 shrink-0 grow-0 basis-full pl-4 md:basis-4/6"
-      style={{transform: 'translate3d(3512px, 0px, 0px)'}}
     >
       <div className="p-1">
         <ImageComponent
@@ -17,7 +16,7 @@ export const TestimonialCarousel = ({src, alt}:{src: string, alt: string}) => {
           loading="lazy"
           width="998"
           height="663"
-          className="w-full"
+          className="!max-w-[806px] !max-h-[556px]"
           style={{color: 'transparent'}}
         />
       </div>

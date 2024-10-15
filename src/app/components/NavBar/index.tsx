@@ -1,6 +1,5 @@
-"use client";
 import * as React from "react";
-import { useMemo, useState } from "react";
+import {useEffect, useMemo, useState} from "react";
 import Box from "@mui/material/Box";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
@@ -23,19 +22,26 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
-
+  useEffect(() => {
+    if(document){
+      const el = document.querySelector('#exhibitor');
+      console.log(el);
+    }
+  }, []);
   const redirectToHome = (route: string) => {
     if (path !== "/") {
       router.push("/" + route);
     }
   };
-
   const exhibitorIcon = () => {
     if (!isOpen) {
-      return <ExpandMoreIcon />;
+      return (
+        <ExpandMoreIcon />
+      );
     }
     return <ExpandLessIcon />;
   };
+
   return (
     <Box
       className={
@@ -61,22 +67,21 @@ export default function NavBar() {
             />
           </Link>
         </Box>
-        <Box className={"min-[1100px]:visible max-[1099px]:hidden"}>
+        <Box className={"min-[1183px]:visible max-[1182px]:hidden"}>
           <List
             component={"nav"}
             className={"flex flex-1 items-center justify-between"}
           >
             {navBarItems.map(({ name, id, route }, index) => (
-              <ListItem key={index} disablePadding sx={{ display: "block" }}>
+              <ListItem
+                onMouseEnter={() => setIsOpen(true)}
+                key={index}
+                disablePadding
+                id={`${name === "Exhibitors" ? 'exhibitor': ''}`}
+                sx={{ display: "block" }}
+              >
                 <Link
-                  onClick={() => {
-                    if (name === "Exhibitors") {
-                      setIsOpen(!isOpen);
-                    } else {
-                      return redirectToHome(route);
-                    }
-                  }}
-                  key={id}
+                  onClick={() => redirectToHome(route)}
                   className="nav-link"
                   href={route}
                 >
@@ -87,13 +92,14 @@ export default function NavBar() {
                       className={"itemText"}
                     />
                     {name === "Exhibitors" && exhibitorIcon()}
+                    {name === "Travel" && exhibitorIcon()}
                   </ListItemButton>
                 </Link>
               </ListItem>
             ))}
           </List>
         </Box>
-        <Box className={"min-[1100px]:visible max-[1099px]:hidden"}>
+        <Box className={"min-[1183px]:visible max-[1182px]:hidden"}>
           <List
             component={"nav"}
             className={"flex flex-1 items-center justify-between gap-4 !py-0"}
@@ -140,7 +146,7 @@ export default function NavBar() {
             ))}
           </List>
         </Box>
-        <Box className={'max-[1099px]:visible min-[1100px]:hidden'}>
+        <Box className={"max-[1182px]:visible min-[1183px]:hidden"}>
           <MenuDialog />
         </Box>
       </Box>
