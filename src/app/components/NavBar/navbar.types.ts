@@ -4,6 +4,7 @@ import { SvgIconTypeMap } from "@mui/material";
 export type NavBarItem = {
   id: string;
   route: string;
+  subRoute?: string[];
   name: string;
   icon?: OverridableComponent<SvgIconTypeMap> & { muiName: string };
   disabled: boolean;

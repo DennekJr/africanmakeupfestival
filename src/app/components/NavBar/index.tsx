@@ -16,11 +16,18 @@ import { RightArrowButton, WhiteBGButton } from "../../utils";
 import { MenuDialog } from "../MenuDialog";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import Popover from '@mui/material/Popover';
+
 
 export default function NavBar() {
+  const initialState = [
+    { name: "Exhibitors", isOpen: false },
+    { name: "Travel", isOpen: false },
+  ];
   const router = useRouter();
   const path = usePathname();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(initialState);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
 
@@ -30,8 +37,33 @@ export default function NavBar() {
     }
   };
 
-  const exhibitorIcon = () => {
-    if (!isOpen) {
+  const handleMouseEnter = (name: string, event: React.MouseEvent<HTMLElement>) => {
+    if(event.currentTarget.innerText === "Exhibitors" || event.currentTarget.innerText === "Travel"){
+      setAnchorEl(event.currentTarget);
+    }
+    const newState = isOpen.map((item) => {
+      if (item.name !== name) {
+        return item;
+      } else {
+        return {
+          ...item,
+          isOpen: true,
+        };
+      }
+    });
+    setIsOpen(newState);
+  };
+  const handleMouseLeave = () => {
+    console.log('left');
+    setIsOpen(initialState);
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
+  const exhibitorIcon = (route: string) => {
+    const open = isOpen.find((item) => item.name === route)?.isOpen;
+    if (!open) {
       return <ExpandMoreIcon />;
     }
     return <ExpandLessIcon />;
@@ -64,9 +96,8 @@ export default function NavBar() {
             component={"nav"}
             className={"flex flex-1 items-center justify-between"}
           >
-            {navBarItems.map(({ name, id, route }, index) => (
+            {navBarItems.map(({ name, id, route, subRoute }, index) => (
               <ListItem
-                onMouseEnter={() => setIsOpen(true)}
                 key={index}
                 disablePadding
                 id={id}
@@ -77,15 +108,46 @@ export default function NavBar() {
                   className="nav-link"
                   href={route}
                 >
-                  <ListItemButton className={"w-max !py-0"}>
+                  <ListItemButton
+                    className={"w-max !py-0"}
+                    aria-owns={open ? 'mouse-over-popover' : undefined}
+                    aria-haspopup="true"
+                    onMouseEnter={(e) => handleMouseEnter(name, e)}
+                  >
                     <ListItemText
                       primary={name}
                       primaryTypographyProps={{ fontWeight: "600" }}
                       className={"itemText"}
                     />
-                    {name === "Exhibitors" && exhibitorIcon()}
-                    {name === "Travel" && exhibitorIcon()}
+                    {name === "Exhibitors" && exhibitorIcon(name)}
+                    {name === "Travel" && exhibitorIcon(name)}
                   </ListItemButton>
+                  <Popover
+                    id="mouse-over-popover"
+                    sx={{ pointerEvents: 'none' }}
+                    open={open}
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'left',
+                    }}
+                    onClose={handleMouseLeave}
+                    disableRestoreFocus
+                  >
+                    {/*{subRoute !== 'undefined' && >}*/}
+                    {subRoute?.map((route, index) => (
+                      <ListItemText
+                        key={index}
+                        primary={route}
+                        primaryTypographyProps={{ fontWeight: "600" }}
+                        className={"itemText bg-white text-black p-3"}
+                        />
+                    ))}
+                  </Popover>
                 </Link>
               </ListItem>
             ))}
@@ -97,7 +159,12 @@ export default function NavBar() {
             className={"flex flex-1 items-center justify-between gap-4 !py-0"}
           >
             {navBarButtons.map(({ name, id, route }) => (
-              <ListItem key={id} className={'hover:cursor-pointer'} disablePadding sx={{ display: "block" }}>
+              <ListItem
+                key={id}
+                className={"hover:cursor-pointer"}
+                disablePadding
+                sx={{ display: "block" }}
+              >
                 <Link
                   onClick={() => redirectToHome(route)}
                   key={id}
