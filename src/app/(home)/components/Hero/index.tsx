@@ -1,4 +1,3 @@
-// "use client";
 import Box from "@mui/material/Box";
 import React from "react";
 import { TransparentArrowButton, WhiteTicketButton } from "../../../utils";
@@ -6,7 +5,6 @@ import { VideoComponent } from "./VideoComponent";
 
 
 export const Hero = () => {
-  console.log('Hero');
   return (
     <section className={"relative w-full lg:min-h-screen"}>
       <VideoComponent fileName={'LandingPage'} />

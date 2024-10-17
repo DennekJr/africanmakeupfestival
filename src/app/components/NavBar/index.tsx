@@ -1,6 +1,5 @@
-'use client'
 import * as React from "react";
-import {useEffect, useMemo, useState} from "react";
+import { useMemo, useState} from "react";
 import Box from "@mui/material/Box";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
@@ -23,12 +22,7 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
-  useEffect(() => {
-    if(document){
-      const el = document.querySelector('#exhibitor');
-      console.log(el);
-    }
-  }, []);
+
   const redirectToHome = (route: string) => {
     if (path !== "/") {
       router.push("/" + route);
@@ -47,7 +41,7 @@ export default function NavBar() {
     <Box
       className={
         `${path == "/" ? "!bg-transparent " : "!bg-[#000000] "}` +
-        "flex justify-center border-b border-border-secondary w-full p-4 text-white z-10 absolute top-0 left-0"
+        "flex justify-center border-b border-border-secondary w-full p-4 text-white z-10 static lg:absolute top-0 left-0"
       }
     >
       <Box

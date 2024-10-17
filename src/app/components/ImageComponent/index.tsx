@@ -11,7 +11,7 @@ export async function ImageComponent({
   alt,
   style,
   loading,
-}, props) {
+}) {
   const { blobs } = await list({
     prefix: fileName,
     limit: 1,
@@ -28,7 +28,6 @@ export async function ImageComponent({
         width={width}
         alt={alt}
         style={style}
-        {...props}
       />
     </Suspense>
   );

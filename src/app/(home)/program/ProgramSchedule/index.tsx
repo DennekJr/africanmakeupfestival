@@ -1,7 +1,12 @@
 import Box from "@mui/material/Box";
 import { ScheduleDropdown } from "./ScheduleDropdown";
+import { useEffect } from "react";
 
 export const ProgramSchedule = () => {
+  useEffect(() => {
+    console.log('UseEffect');
+  }, []);
+  console.log('in program page');
   return (
     <Box className={"w-full"}>
       <section className={"w-full sm:py-6 lg:py-32 sm:px-6"}>
