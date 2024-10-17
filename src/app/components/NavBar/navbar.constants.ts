@@ -39,6 +39,12 @@ export const NAV_MENU: Record<string, NavBarItem> = {
     name: "Media",
     disabled: false,
   },
+  travel: {
+    id: "travel",
+    route: "travel",
+    name: "Travel",
+    disabled: false,
+  },
 };
 
 export const NAV_BUTTONS: Record<string, NavBarItem> = {

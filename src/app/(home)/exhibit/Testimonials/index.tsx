@@ -5,20 +5,29 @@ import {
   PreviousSlide,
   TestimonialsUnderscore,
 } from "@/app/(home)/exhibit/Testimonials/utils";
-import { TestimonialCarousel } from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import {
   TESTIMONIALSCONSTANTSMENU
 } from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel/testimonials.constants";
-import 'swiper/css';
-import 'swiper/css/effect-cards';
+import { useSwiper } from 'swiper/react';
+import TestimonialSlider from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel/Slider";
 
-import 'swiper/swiper-bundle.css';
 
 export const Testimonials = () => {
+  const swiperRef = useRef();
   const testimonies = useMemo(() => Object.values(TESTIMONIALSCONSTANTSMENU), []);
-  const handlePreviousClick = () => {};
-  const handleNextClick = () => {};
+  const swiper = useSwiper();
+  const handlePreviousClick = () => {
+    if(swiperRef !== null){
+      swiperRef.current.slidePrev();
+    }
+    console.log()
+  };
+  const handleNextClick = () => {
+    if(swiper !== null){
+      swiperRef.current.slideNext();
+    }
+  };
   return (
     <section className={"w-full py-24 lg:py-32"}>
       <Box className={"relative w-full grid gap-6 lg:gap-12"}>
@@ -53,18 +62,7 @@ export const Testimonials = () => {
         </Box>
         <Box className={'overflow-hidden'}>
           <Box className={'flex -ml-4'}>
-            {/*<Swiper*/}
-            {/*  effect={'cards'}*/}
-            {/*  grabCursor={true}*/}
-            {/*  modules={[EffectCards]}*/}
-            {/*  className="mySwiper"*/}
-            {/*>*/}
-              {testimonies.map((testimonial, index) => (
-                // <SwiperSlide>
-                  <TestimonialCarousel key={index} src={testimonial.src} alt={testimonial.alt} />
-                // </SwiperSlide>
-              ))}
-            {/*</Swiper>*/}
+            <TestimonialSlider data={testimonies} swiperRef={swiperRef}/>
           </Box>
         </Box>
       </Box>

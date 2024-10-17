@@ -1,6 +1,6 @@
 export const PreviousSlide = ({ handleClick }: { handleClick: () => void }) => {
   return (
-    <button onClick={handleClick} className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent h-[30.25px] w-[30.25px] lg:h-16 lg:w-16 rounded-full border-gray-1000 text-gray-1000">
+    <button onClick={handleClick} className="review-swiper-button-prev inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent h-[30.25px] w-[30.25px] lg:h-16 lg:w-16 rounded-full !border-[#504E56] !text-[#504E56]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -22,7 +22,7 @@ export const PreviousSlide = ({ handleClick }: { handleClick: () => void }) => {
 
 export const NextSlide = ({ handleClick }: { handleClick: () => void }) => {
   return (
-    <button onClick={handleClick} className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent h-[30.25px] w-[30.25px] lg:h-16 lg:w-16 rounded-full border-gray-1000 text-gray-1000">
+    <button onClick={handleClick} className="review-swiper-button-next inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent h-[30.25px] w-[30.25px] lg:h-16 lg:w-16 rounded-full !border-[#504E56] !text-[#504E56]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

@@ -1,3 +1,4 @@
+"use client"
 import React, { useMemo, useState } from "react";
 import { Collapse } from "@mui/material";
 import List from "@mui/material/List";
