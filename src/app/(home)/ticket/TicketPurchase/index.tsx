@@ -5,13 +5,16 @@ import React, { useMemo, useState } from "react";
 import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Minus, Plus, TicketTag } from "./utils";
+import { FortyFiveDegreeArrow } from "@/app/(home)/sponsor/Hero/utils";
+import { useMyContext } from "../../../components/CheckoutContext";
+import { useRouter } from "next/navigation";
 
 export const TicketPurchase = () => {
   const initialState = [
-    { ticketName: "explorer", isOpen: false, value: 0 },
-    { ticketName: "founder", isOpen: false, value: 0 },
-    { ticketName: "investor", isOpen: false, value: 0 },
-    { ticketName: "delegate", isOpen: false, value: 0 },
+    { ticketName: "explorer", isOpen: false },
+    { ticketName: "founder", isOpen: false },
+    { ticketName: "investor", isOpen: false },
+    { ticketName: "delegate", isOpen: false },
   ];
   const initialValue = [
     { ticketName: "explorer", value: 0 },
@@ -22,7 +25,10 @@ export const TicketPurchase = () => {
 
   const [isOpen, setIsOpen] = useState(initialState);
   const [values, setValues] = useState(initialValue);
+  const router = useRouter();
+  const { setData } = useMyContext();
   const tickets = useMemo(() => Object.values(TICKETPURCHASEMENU), []);
+
   const handleClick = (id: string) => {
     const newState = isOpen.map((item) => {
       if (item.ticketName !== id) {
@@ -55,6 +61,18 @@ export const TicketPurchase = () => {
     });
     setValues(newState);
   };
+
+  const handleProceedToCheckout = () => {
+    // if(router){
+    //   router.push({
+    //     pathname: '/second-page',
+    //     query: { value: someValue },
+    //   });
+    // }
+    setData(values);
+    router.push('/checkout');
+
+  }
   return (
     <>
       {tickets.map((ticket, index) => {
@@ -125,6 +143,16 @@ export const TicketPurchase = () => {
           </Box>
         );
       })}
+      <Box className="py-10 lg:py-12 flex justify-center">
+        {" "}
+        <button
+          onClick={handleProceedToCheckout}
+          className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#0A090B] text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 py-4 rounded-full mx-auto min-w-[80%]"
+        >
+          <span>PROCEED TO CHECK OUT</span>
+          <FortyFiveDegreeArrow />
+        </button>
+      </Box>
     </>
   );
 };

@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import * as React from "react";
 import { TicketPurchase } from "./TicketPurchase";
-import { FortyFiveDegreeArrow } from "../sponsor/Hero/utils";
 
 const Ticket: () => Promise<React.JSX.Element> = async () => {
   return (
@@ -23,12 +22,6 @@ const Ticket: () => Promise<React.JSX.Element> = async () => {
           }
         >
           <TicketPurchase />
-          <Box className="py-10 lg:py-12 flex justify-center">
-            <button className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-1300 text-[#FCFCFC] hover:bg-gray-1300/90 h-14 px-6 py-4 rounded-full mx-auto min-w-[80%]">
-              <span>PROCEED TO CHECK OUT</span>
-              <FortyFiveDegreeArrow />
-            </button>
-          </Box>
         </Box>
       </Box>
     </Box>
