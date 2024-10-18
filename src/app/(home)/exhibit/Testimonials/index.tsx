@@ -26,6 +26,7 @@ export const Testimonials = () => {
   };
   const handleNextClick = () => {
     if (swiperRef && swiperRef?.current) {
+      // @ts-expect-error  The error displayed is due to null types passed through useRef
       swiperRef?.current.slideNext(); // Call slidePrev safely
     } else {
       console.warn("Swiper instance is not available.");
