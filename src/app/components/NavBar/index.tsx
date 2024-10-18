@@ -130,7 +130,6 @@ export default function NavBar() {
                     {subRoute?.map((hoverRoute, index) => (
                       <Link key={index} href={hoverRoute}>
                         <ListItemText
-                          href={hoverRoute}
                           primary={hoverRoute}
                           primaryTypographyProps={{ fontWeight: "600" }}
                           className={
