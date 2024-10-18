@@ -5,26 +5,27 @@ import {
   PreviousSlide,
   TestimonialsUnderscore,
 } from "@/app/(home)/exhibit/Testimonials/utils";
-import { useMemo, useRef } from "react";
+import { MutableRefObject, useMemo, useRef } from "react";
 import {
   TESTIMONIALSCONSTANTSMENU
 } from "./TestimonialCarousel/testimonials.constants";
 import TestimonialSlider from "./TestimonialCarousel/Slider";
+import { Swiper as SwiperType } from "swiper";
 
 
 export const Testimonials = () => {
-  const swiperRef = useRef();
+  const swiperRef: SwiperType |  MutableRefObject<undefined> | null = useRef();
   const testimonies = useMemo(() => Object.values(TESTIMONIALSCONSTANTSMENU), []);
   const handlePreviousClick = () => {
-    if (swiperRef && swiperRef.current) {
-      swiperRef.current.slideNext(); // Call slidePrev safely
+    if (swiperRef && swiperRef?.current) {
+      swiperRef?.current.slideNext(); // Call slidePrev safely
     } else {
       console.warn("Swiper instance is not available.");
     }
   };
   const handleNextClick = () => {
-    if (swiperRef && swiperRef.current) {
-      swiperRef.current.slideNext(); // Call slidePrev safely
+    if (swiperRef && swiperRef?.current) {
+      swiperRef?.current.slideNext(); // Call slidePrev safely
     } else {
       console.warn("Swiper instance is not available.");
     }

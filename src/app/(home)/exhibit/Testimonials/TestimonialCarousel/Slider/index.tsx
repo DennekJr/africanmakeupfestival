@@ -42,7 +42,7 @@ const TestimonialSlider: React.FC<DemoSliderProps> = ({ data, swiperRef }) => {
         prevEl: ".review-swiper-button-prev",
       }}
       onSwiper={(swiper) => {
-        if (swiperRef && swiperRef.current) {
+        if (swiperRef.current) {
           swiperRef.current = swiper;
         } else {
           console.warn("Swiper instance is not available.");
