@@ -42,7 +42,9 @@ const TestimonialSlider: React.FC<DemoSliderProps> = ({ data, swiperRef }) => {
         prevEl: ".review-swiper-button-prev",
       }}
       onSwiper={(swiper) => {
+        // @ts-expect-error The error displayed is due to null types passed through useRef
         if (swiperRef?.current) {
+          // @ts-expect-error The error displayed is due to null types passed through useRef
           swiperRef.current = swiper;
         } else {
           console.warn("Swiper instance is not available.");
