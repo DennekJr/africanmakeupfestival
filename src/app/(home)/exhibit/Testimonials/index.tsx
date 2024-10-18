@@ -17,7 +17,6 @@ export const Testimonials = () => {
   const swiperRef: MutableRefObject<null> | SwiperType | null = useRef(null);
   const testimonies = useMemo(() => Object.values(TESTIMONIALSCONSTANTSMENU), []);
   const handlePreviousClick = () => {
-    // @ts-expect-error The error displayed is due to null types passed through useRef
     if (swiperRef && swiperRef?.current) {
       // @ts-expect-error The error displayed is due to null types passed through useRef
       swiperRef?.current.slideNext(); // Call slidePrev safely
