@@ -4,10 +4,15 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { TextField, Box } from "@mui/material";
 import { useState } from "react";
 import { styled } from "@mui/system";
+import "./checkout.module.css";
+import { HiddenFormDropdown } from "@/app/(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 
 const CssTextField = styled(TextField)({
   "& label": {
     color: "#1E1C21",
+  },
+  "& fieldset": {
+    borderColor: "#D0D4DD",
   },
 });
 export const CheckoutForm = () => {
@@ -73,19 +78,36 @@ export const CheckoutForm = () => {
             </p>
           </Box>
           <Box className={"space-y-5"}>
-            <Box className={"grid lg:grid-cols-2 gap-5"}>
+            <Box className={"grid lg:grid-cols-2 gap-5 fields"}>
               {values.map((field, index) => {
+                if (field.name === "Phone Number") {
+                  return (
+                    <CssTextField
+                      className={
+                        "margin-top: calc(.5rem*calc(1-0))" +
+                        " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input"
+                      }
+                      sx={{
+                        input: { color: "#1E1C21", borderColor: "#D0D4DD" },
+                      }}
+                      value={field.value}
+                      onChange={(e) => handleInputChange(e, field)}
+                      name={field.name}
+                      label={field.name}
+                      key={index}
+                    />
+                  );
+                }
                 return (
                   <CssTextField
                     className={
                       "margin-top: calc(.5rem*calc(1-0))" +
-                      " margin-bottom: calc(.5rem*0) border-[#D0D4DD] border-[1px]"
+                      " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input"
                     }
-                    sx={{ input: { color: '#1E1C21' } }}
+                    sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
                     value={field.value}
                     onChange={(e) => handleInputChange(e, field)}
                     name={field.name}
-                    color={'primary'}
                     label={field.name}
                     key={index}
                   />
@@ -95,6 +117,20 @@ export const CheckoutForm = () => {
           </Box>
         </Box>
       </Box>
+      <HiddenFormDropdown
+        title={"Select the ticket that belongs to you."}
+        subTitle={
+          "Tickets will only be assigned to the email address(es) you provide"
+        }
+        displayTicketDropdown={true}
+      />
+      <HiddenFormDropdown
+        title={"Assign other tickets to different e-mail addresses?"}
+        subTitle={
+          "Tickets will only be assigned to the email address(es) you provide"
+        }
+        displayTicketDropdown={false}
+      />
     </Box>
   );
 };
