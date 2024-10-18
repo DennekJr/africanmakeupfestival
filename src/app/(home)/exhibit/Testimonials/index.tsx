@@ -8,24 +8,25 @@ import {
 import { useMemo, useRef } from "react";
 import {
   TESTIMONIALSCONSTANTSMENU
-} from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel/testimonials.constants";
-import { useSwiper } from 'swiper/react';
-import TestimonialSlider from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel/Slider";
+} from "./TestimonialCarousel/testimonials.constants";
+import TestimonialSlider from "./TestimonialCarousel/Slider";
 
 
 export const Testimonials = () => {
   const swiperRef = useRef();
   const testimonies = useMemo(() => Object.values(TESTIMONIALSCONSTANTSMENU), []);
-  const swiper = useSwiper();
   const handlePreviousClick = () => {
-    if(swiperRef !== null){
-      swiperRef.current.slidePrev();
+    if (swiperRef && swiperRef.current) {
+      swiperRef.current.slideNext(); // Call slidePrev safely
+    } else {
+      console.warn("Swiper instance is not available.");
     }
-    console.log()
   };
   const handleNextClick = () => {
-    if(swiper !== null){
-      swiperRef.current.slideNext();
+    if (swiperRef && swiperRef.current) {
+      swiperRef.current.slideNext(); // Call slidePrev safely
+    } else {
+      console.warn("Swiper instance is not available.");
     }
   };
   return (
