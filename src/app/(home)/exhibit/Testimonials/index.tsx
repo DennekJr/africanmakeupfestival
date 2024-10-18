@@ -14,7 +14,7 @@ import { Swiper as SwiperType } from "swiper";
 
 
 export const Testimonials = () => {
-  const swiperRef: MutableRefObject<undefined> | SwiperType | null = useRef(null);
+  const swiperRef: MutableRefObject<null> | SwiperType | null = useRef(null);
   const testimonies = useMemo(() => Object.values(TESTIMONIALSCONSTANTSMENU), []);
   const handlePreviousClick = () => {
     if (swiperRef && swiperRef?.current) {
