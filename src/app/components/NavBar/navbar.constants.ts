@@ -16,7 +16,8 @@ export const NAV_MENU: Record<string, NavBarItem> = {
   },
   exhibitors: {
     id: "exhibitors",
-    route: "",
+    route: "exhibit",
+    subRoute: ['exhibit', '2024-exhibitors'],
     name: "Exhibitors",
     icon: ExpandMoreIcon,
     disabled: false,
@@ -37,6 +38,13 @@ export const NAV_MENU: Record<string, NavBarItem> = {
     id: "media",
     route: "media",
     name: "Media",
+    disabled: false,
+  },
+  travel: {
+    id: "travel",
+    route: "travel",
+    subRoute: ['travel'],
+    name: "Travel",
     disabled: false,
   },
 };

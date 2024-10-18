@@ -13,21 +13,20 @@ import Image from "next/image";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { RightArrowButton, WhiteBGButton } from "../../utils";
-import { useWindowSize } from "../../../hooks/useWindowSize";
 import { MenuDialog } from "../MenuDialog";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 export default function NavBar() {
+  const initialState = [
+    { name: "Exhibitors", isOpen: false },
+    { name: "Travel", isOpen: false },
+  ];
   const router = useRouter();
   const path = usePathname();
-  const windowSize = useWindowSize();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(initialState);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
-  const width = useMemo(() => {
-    return windowSize;
-  }, [windowSize]);
 
   const redirectToHome = (route: string) => {
     if (path !== "/") {
@@ -35,8 +34,26 @@ export default function NavBar() {
     }
   };
 
-  const exhibitorIcon = () => {
-    if (!isOpen) {
+  const handleMouseEnter = (name: string) => {
+    const newState = isOpen.map((item) => {
+      if (item.name !== name) {
+        return item;
+      } else {
+        return {
+          ...item,
+          isOpen: true,
+        };
+      }
+    });
+    setIsOpen(newState);
+  };
+  const handleMouseLeave = () => {
+    setIsOpen(initialState);
+  };
+
+  const exhibitorIcon = (route: string) => {
+    const open = isOpen.find((item) => item.name === route)?.isOpen;
+    if (!open) {
       return <ExpandMoreIcon />;
     }
     return <ExpandLessIcon />;
@@ -64,90 +81,124 @@ export default function NavBar() {
             />
           </Link>
         </Box>
-        {width! > 970 && (
-          <Box>
-            <List
-              component={"nav"}
-              className={"flex flex-1 items-center justify-between"}
-            >
-              {navBarItems.map(({ name, id, route }, index) => (
-                <ListItem key={index} disablePadding sx={{ display: "block" }}>
+        <Box className={"min-[1183px]:visible max-[1182px]:hidden"}>
+          <List
+            component={"nav"}
+            className={"flex flex-1 items-center justify-between"}
+          >
+            {navBarItems.map(({ name, id, route, subRoute }, index) => {
+              return (
+                <ListItem
+                  onMouseEnter={() => {
+                    if (name !== "Exhibitors" && name !== "Travel") {
+                      handleMouseLeave();
+                    }
+                  }}
+                  onMouseLeave={handleMouseLeave}
+                  key={index}
+                  className={"relative"}
+                  disablePadding
+                  id={id}
+                  sx={{ display: "block" }}
+                >
                   <Link
-                    onClick={() => {
-                      if (name === "Exhibitors") {
-                        setIsOpen(!isOpen);
-                      } else {
-                        return redirectToHome(route);
-                      }
-                    }}
-                    key={id}
+                    onClick={() => redirectToHome(route)}
                     className="nav-link"
                     href={route}
                   >
-                    <ListItemButton className={"w-max !py-0"}>
+                    <ListItemButton
+                      className={"w-max !py-0"}
+                      aria-haspopup="true"
+                      onMouseEnter={() => handleMouseEnter(name)}
+                    >
                       <ListItemText
                         primary={name}
                         primaryTypographyProps={{ fontWeight: "600" }}
                         className={"itemText"}
                       />
-                      {name === "Exhibitors" && exhibitorIcon()}
+                      {name === "Exhibitors" && exhibitorIcon(name)}
+                      {name === "Travel" && exhibitorIcon(name)}
                     </ListItemButton>
                   </Link>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        )}
-        {width! > 970 && (
-          <Box>
-            <List
-              component={"nav"}
-              className={"flex flex-1 items-center justify-between gap-4 !py-0"}
-            >
-              {navBarButtons.map(({ name, id, route }) => (
-                <ListItem key={id} disablePadding sx={{ display: "block" }}>
-                  <Link
-                    onClick={() => redirectToHome(route)}
-                    key={id}
-                    className="nav-link"
-                    href={route}
+                  <Box
+                    onMouseLeave={handleMouseLeave}
+                    className={
+                      "absolute bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
+                      `${isOpen.find((route) => route.name === name)?.isOpen ? " flex flex-col" : " invisible"}`
+                    }
                   >
-                    {id === "getTicket" ? (
-                      <WhiteBGButton
-                        className={`!rounded-full whitespace-nowrap`}
-                        variant="contained"
-                        endIcon={<ConfirmationNumberIcon />}
-                      >
-                        <ListItemButton className={"w-max !p-0"}>
-                          <ListItemText
-                            primary={name}
-                            primaryTypographyProps={{ fontWeight: "600" }}
-                            className={"itemText"}
-                          />
-                        </ListItemButton>
-                      </WhiteBGButton>
-                    ) : (
-                      <RightArrowButton
-                        className={`!rounded-full whitespace-nowrap`}
-                        variant="outlined"
-                        endIcon={<ArrowOutwardIcon />}
-                      >
-                        <ListItemButton className={"w-max !p-0"}>
-                          <ListItemText
-                            primary={name}
-                            primaryTypographyProps={{ fontWeight: "600" }}
-                            className={"itemText"}
-                          />
-                        </ListItemButton>
-                      </RightArrowButton>
-                    )}
-                  </Link>
+                    {subRoute?.map((hoverRoute, index) => (
+                      <Link key={index} href={hoverRoute}>
+                        <ListItemText
+                          primary={hoverRoute}
+                          primaryTypographyProps={{ fontWeight: "600" }}
+                          className={
+                            "capitalize itemText px-3 text-[#C8C8CB] hover:text-black hover:cursor-pointer"
+                          }
+                        />
+                      </Link>
+                    ))}
+                  </Box>
                 </ListItem>
-              ))}
-            </List>
-          </Box>
-        )}
-        {width! < 970 && <MenuDialog />}
+              );
+            })}
+          </List>
+        </Box>
+        <Box className={"min-[1183px]:visible max-[1182px]:hidden"}>
+          <List
+            component={"nav"}
+            className={"flex flex-1 items-center justify-between gap-4 !py-0"}
+          >
+            {navBarButtons.map(({ name, id, route }) => (
+              <ListItem
+                key={id}
+                className={"hover:cursor-pointer"}
+                disablePadding
+                sx={{ display: "block" }}
+              >
+                <Link
+                  onClick={() => redirectToHome(route)}
+                  key={id}
+                  className="nav-link"
+                  href={route}
+                >
+                  {id === "getTicket" ? (
+                    <WhiteBGButton
+                      className={`!rounded-full whitespace-nowrap`}
+                      variant="contained"
+                      endIcon={<ConfirmationNumberIcon />}
+                    >
+                      <ListItemButton className={"w-max !p-0"}>
+                        <ListItemText
+                          primary={name}
+                          primaryTypographyProps={{ fontWeight: "600" }}
+                          className={"itemText"}
+                        />
+                      </ListItemButton>
+                    </WhiteBGButton>
+                  ) : (
+                    <RightArrowButton
+                      className={`!rounded-full whitespace-nowrap`}
+                      variant="outlined"
+                      endIcon={<ArrowOutwardIcon />}
+                    >
+                      <ListItemButton className={"w-max !p-0"}>
+                        <ListItemText
+                          primary={name}
+                          primaryTypographyProps={{ fontWeight: "600" }}
+                          className={"itemText"}
+                        />
+                      </ListItemButton>
+                    </RightArrowButton>
+                  )}
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+        <Box className={"max-[1182px]:visible min-[1183px]:hidden"}>
+          <MenuDialog />
+        </Box>
       </Box>
     </Box>
   );

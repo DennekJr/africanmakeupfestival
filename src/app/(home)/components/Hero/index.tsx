@@ -1,33 +1,15 @@
-"use client";
+// "use client";
 import Box from "@mui/material/Box";
 import React from "react";
 import { TransparentArrowButton, WhiteTicketButton } from "../../../utils";
+import { VideoComponent } from "./VideoComponent";
+
 
 export const Hero = () => {
+  console.log('Hero');
   return (
     <section className={"relative w-full lg:min-h-screen"}>
-      <video
-        poster={
-          "https://d2qar8dtiykptj.cloudfront.net/africa-startup-festival/home-page-hero-video-poster-000024zdmii89.png"
-        }
-        preload={"none"}
-        className={
-          "w-full min-h-[622px] lg:min-h-screen !h-full object-cover relative bg-gray-1300"
-        }
-        autoPlay
-        muted
-        loop
-        playsInline
-        disablePictureInPicture
-      >
-        <source
-          src={
-            "https://d2qar8dtiykptj.cloudfront.net/africa-startup-festival/asf-5s-corrected-3-00002dcm0rmo9.mp4"
-          }
-          type={"video/mp4"}
-        />
-        Your browser does not support the video tag.
-      </video>
+      <VideoComponent fileName={'LandingPage'} />
       <Box
         className={
           "absolute top-0 right-0 bottom-0 left-0 z-[2] bg-overlay w-full h-full flex flex-col items-center justify-end lg:justify-center text-gray-100 gap-8 p-4"
