@@ -17,7 +17,7 @@ import "./slider.styles.css";
 
 interface DemoSliderProps {
   data: { id: string; src: string; alt: string }[];
-  swiperRef: SwiperType |  MutableRefObject<undefined> | null;
+  swiperRef: MutableRefObject<undefined> | SwiperType | null;
 }
 
 const TestimonialSlider: React.FC<DemoSliderProps> = ({ data, swiperRef }) => {
