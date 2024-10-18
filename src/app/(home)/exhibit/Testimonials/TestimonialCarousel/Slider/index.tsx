@@ -28,7 +28,6 @@ const TestimonialSlider: React.FC<DemoSliderProps> = ({ data, swiperRef }) => {
               depth: 100,
               modifier: 1,
             }}
-            sliderPerView={3}
             slidesPerGroup={1}
             autoplay={true}
             loop={true}

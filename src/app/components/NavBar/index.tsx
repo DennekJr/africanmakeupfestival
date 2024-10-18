@@ -16,8 +16,6 @@ import { RightArrowButton, WhiteBGButton } from "../../utils";
 import { MenuDialog } from "../MenuDialog";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import Popover from '@mui/material/Popover';
-
 
 export default function NavBar() {
   const initialState = [
@@ -27,7 +25,6 @@ export default function NavBar() {
   const router = useRouter();
   const path = usePathname();
   const [isOpen, setIsOpen] = useState(initialState);
-  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
 
@@ -37,10 +34,7 @@ export default function NavBar() {
     }
   };
 
-  const handleMouseEnter = (name: string, event: React.MouseEvent<HTMLElement>) => {
-    if(event.currentTarget.innerText === "Exhibitors" || event.currentTarget.innerText === "Travel"){
-      setAnchorEl(event.currentTarget);
-    }
+  const handleMouseEnter = (name: string) => {
     const newState = isOpen.map((item) => {
       if (item.name !== name) {
         return item;
@@ -54,12 +48,8 @@ export default function NavBar() {
     setIsOpen(newState);
   };
   const handleMouseLeave = () => {
-    console.log('left');
     setIsOpen(initialState);
-    setAnchorEl(null);
   };
-
-  const open = Boolean(anchorEl);
 
   const exhibitorIcon = (route: string) => {
     const open = isOpen.find((item) => item.name === route)?.isOpen;
@@ -96,61 +86,63 @@ export default function NavBar() {
             component={"nav"}
             className={"flex flex-1 items-center justify-between"}
           >
-            {navBarItems.map(({ name, id, route, subRoute }, index) => (
-              <ListItem
-                key={index}
-                disablePadding
-                id={id}
-                sx={{ display: "block" }}
-              >
-                <Link
-                  onClick={() => redirectToHome(route)}
-                  className="nav-link"
-                  href={route}
+            {navBarItems.map(({ name, id, route, subRoute }, index) => {
+              return (
+                <ListItem
+                  onMouseEnter={() => {
+                    if (name !== "Exhibitors" && name !== "Travel") {
+                      handleMouseLeave();
+                    }
+                  }}
+                  onMouseLeave={handleMouseLeave}
+                  key={index}
+                  className={"relative"}
+                  disablePadding
+                  id={id}
+                  sx={{ display: "block" }}
                 >
-                  <ListItemButton
-                    className={"w-max !py-0"}
-                    aria-owns={open ? 'mouse-over-popover' : undefined}
-                    aria-haspopup="true"
-                    onMouseEnter={(e) => handleMouseEnter(name, e)}
+                  <Link
+                    onClick={() => redirectToHome(route)}
+                    className="nav-link"
+                    href={route}
                   >
-                    <ListItemText
-                      primary={name}
-                      primaryTypographyProps={{ fontWeight: "600" }}
-                      className={"itemText"}
-                    />
-                    {name === "Exhibitors" && exhibitorIcon(name)}
-                    {name === "Travel" && exhibitorIcon(name)}
-                  </ListItemButton>
-                  <Popover
-                    id="mouse-over-popover"
-                    sx={{ pointerEvents: 'none' }}
-                    open={open}
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'left',
-                    }}
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'left',
-                    }}
-                    onClose={handleMouseLeave}
-                    disableRestoreFocus
-                  >
-                    {/*{subRoute !== 'undefined' && >}*/}
-                    {subRoute?.map((route, index) => (
+                    <ListItemButton
+                      className={"w-max !py-0"}
+                      aria-haspopup="true"
+                      onMouseEnter={() => handleMouseEnter(name)}
+                    >
                       <ListItemText
-                        key={index}
-                        primary={route}
+                        primary={name}
                         primaryTypographyProps={{ fontWeight: "600" }}
-                        className={"itemText bg-white text-black p-3"}
+                        className={"itemText"}
+                      />
+                      {name === "Exhibitors" && exhibitorIcon(name)}
+                      {name === "Travel" && exhibitorIcon(name)}
+                    </ListItemButton>
+                  </Link>
+                  <Box
+                    onMouseLeave={handleMouseLeave}
+                    className={
+                      "absolute bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
+                      `${isOpen.find((route) => route.name === name)?.isOpen ? " flex flex-col" : " invisible"}`
+                    }
+                  >
+                    {subRoute?.map((hoverRoute, index) => (
+                      <Link key={index} href={hoverRoute}>
+                        <ListItemText
+                          href={hoverRoute}
+                          primary={hoverRoute}
+                          primaryTypographyProps={{ fontWeight: "600" }}
+                          className={
+                            "capitalize itemText px-3 text-[#C8C8CB] hover:text-black hover:cursor-pointer"
+                          }
                         />
+                      </Link>
                     ))}
-                  </Popover>
-                </Link>
-              </ListItem>
-            ))}
+                  </Box>
+                </ListItem>
+              );
+            })}
           </List>
         </Box>
         <Box className={"min-[1183px]:visible max-[1182px]:hidden"}>

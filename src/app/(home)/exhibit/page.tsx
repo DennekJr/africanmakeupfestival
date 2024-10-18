@@ -7,7 +7,7 @@ import { Benefits } from "./Benefits";
 import { ExhibitionBooth } from "./ExhibitionBooth";
 import { Testimonials } from "./Testimonials";
 
-const Sponsor: () => Promise<React.JSX.Element> = async () => {
+const Exhibit: () => Promise<React.JSX.Element> = async () => {
   return (
     <Box
       className={
@@ -24,4 +24,4 @@ const Sponsor: () => Promise<React.JSX.Element> = async () => {
   );
 };
 
-export default Sponsor;
+export default Exhibit;
