@@ -8,7 +8,7 @@ import {
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TestimonialCarousel } from "@/app/(home)/exhibit/Testimonials/TestimonialCarousel";
-import { Swiper as SwiperType } from "swiper"; // Import the Swiper type
+import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -42,7 +42,7 @@ const TestimonialSlider: React.FC<DemoSliderProps> = ({ data, swiperRef }) => {
         prevEl: ".review-swiper-button-prev",
       }}
       onSwiper={(swiper) => {
-        if (swiperRef.current) {
+        if (swiperRef?.current) {
           swiperRef.current = swiper;
         } else {
           console.warn("Swiper instance is not available.");
