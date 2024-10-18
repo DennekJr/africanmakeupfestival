@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { MutableRefObject } from "react";
 import {
   Autoplay,
   EffectCoverflow,
@@ -17,7 +17,7 @@ import "./slider.styles.css";
 
 interface DemoSliderProps {
   data: { id: string; src: string; alt: string }[];
-  swiperRef: SwiperType | null;
+  swiperRef: SwiperType |  MutableRefObject<undefined> | null;
 }
 
 const TestimonialSlider: React.FC<DemoSliderProps> = ({ data, swiperRef }) => {
