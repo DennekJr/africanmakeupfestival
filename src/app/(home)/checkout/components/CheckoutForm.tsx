@@ -1,20 +1,13 @@
 "use client";
 import * as React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { TextField, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
-import { styled } from "@mui/system";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "@/app/(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
+import { CssTextField } from "@/app/(home)/checkout/components/utils";
+import { useRouter } from "next/navigation";
 
-const CssTextField = styled(TextField)({
-  "& label": {
-    color: "#1E1C21",
-  },
-  "& fieldset": {
-    borderColor: "#D0D4DD",
-  },
-});
 export const CheckoutForm = () => {
   const initialValues = [
     { name: "First Name", value: "" },
@@ -29,7 +22,7 @@ export const CheckoutForm = () => {
     { name: "How did you hear about the event", value: "" },
   ];
   const [values, setValues] = useState(initialValues);
-
+  const router = useRouter();
   const handleInputChange = (e, name) => {
     const newState = values.map((item) => {
       if (item.name !== name.name) {
@@ -57,7 +50,7 @@ export const CheckoutForm = () => {
       >
         <Box className={"lg:col-span-6 space-y-8"}>
           <Box className={"space-y-3"}>
-            <Box className={"flex items-center gap-3"}>
+            <Box className={"flex items-center gap-3"} onClick={() => router.push('/tickets')}>
               <button
                 className={
                   "inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap rounded-[calc(1rem-2px)] text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent border-[#504E56] text-[#504E56] size-6"
