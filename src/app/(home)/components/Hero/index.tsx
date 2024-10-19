@@ -6,7 +6,6 @@ import { VideoComponent } from "./VideoComponent";
 
 
 export const Hero = () => {
-  console.log('Hero');
   return (
     <section className={"relative w-full lg:min-h-screen"}>
       <VideoComponent fileName={'LandingPage'} />

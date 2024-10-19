@@ -6,8 +6,10 @@ import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Minus, Plus, TicketTag } from "./utils";
 import { FortyFiveDegreeArrow } from "@/app/(home)/sponsor/Hero/utils";
-import { useMyContext } from "../../../components/CheckoutContext";
 import { useRouter } from "next/navigation";
+import { setTickets } from "@/app/lib/features/checkout/checkoutSlice";
+import { useAppDispatch } from "@/app/lib/hooks";
+import { useSelector } from "react-redux";
 
 export const TicketPurchase = () => {
   const initialState = [
@@ -16,18 +18,12 @@ export const TicketPurchase = () => {
     { ticketName: "investor", isOpen: false },
     { ticketName: "delegate", isOpen: false },
   ];
-  const initialValue = [
-    { ticketName: "explorer", value: 0 },
-    { ticketName: "founder", value: 0 },
-    { ticketName: "investor", value: 0 },
-    { ticketName: "delegate", value: 0 },
-  ];
 
   const [isOpen, setIsOpen] = useState(initialState);
-  const [values, setValues] = useState(initialValue);
+  const values = useSelector((state) => state.checkout.tickets);
   const router = useRouter();
-  const { setData } = useMyContext();
   const tickets = useMemo(() => Object.values(TICKETPURCHASEMENU), []);
+  const dispatch = useAppDispatch()
 
   const handleClick = (id: string) => {
     const newState = isOpen.map((item) => {
@@ -59,19 +55,11 @@ export const TicketPurchase = () => {
         };
       }
     });
-    setValues(newState);
+    dispatch(setTickets(newState));
   };
 
   const handleProceedToCheckout = () => {
-    // if(router){
-    //   router.push({
-    //     pathname: '/second-page',
-    //     query: { value: someValue },
-    //   });
-    // }
-    setData(values);
     router.push('/checkout');
-
   }
   return (
     <>

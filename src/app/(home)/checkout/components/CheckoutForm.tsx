@@ -2,11 +2,12 @@
 import * as React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "@/app/(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { CssTextField } from "@/app/(home)/checkout/components/utils";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 export const CheckoutForm = () => {
   const initialValues = [
@@ -23,6 +24,15 @@ export const CheckoutForm = () => {
   ];
   const [values, setValues] = useState(initialValues);
   const router = useRouter();
+  const { tickets } = useSelector((state) => state.checkout);
+
+
+  useEffect(() => {
+    const currentValues = Object.values(tickets).filter((ticket) => ticket.value > 0);
+    if(currentValues.length === 0){
+      router.push('/ticket');
+    }
+  }, []);
   const handleInputChange = (e, name) => {
     const newState = values.map((item) => {
       if (item.name !== name.name) {
