@@ -27,7 +27,6 @@ export const HiddenFormDropdown = ({
     { name: "Organisation Website", value: "", id: "" },
     { name: "Organisation Role", value: "", id: "" },
   ];
-  const [values, setValues] = useState<unknown[]>([]);
   const [displaySelectMenu, setDisplaySelectMenu] = React.useState(false);
   const [tickets, setTickets] = React.useState();
   const [displaySelectTicketError, setDisplaySelectTicketError] =
@@ -44,7 +43,6 @@ export const HiddenFormDropdown = ({
   }, [leftOverTickets, tickets]);
   useEffect(() => {
     setTickets(Tickets);
-    setValues(leftOverTicketFormValues);
   }, [tickets]);
   const handleDisplaySelectMenu = () => {
     if (title.includes("Assign")) {
@@ -107,7 +105,6 @@ export const HiddenFormDropdown = ({
         return leftOverTicket;
       }
     });
-    setValues(newLeftOverTicketsValues);
     dispatch(setLeftOverTicketsForms(newLeftOverTicketsValues));
   };
   return (
@@ -195,9 +192,9 @@ export const HiddenFormDropdown = ({
                   return Array.from(
                     { length: ticket.value },
                     (_, ticketIndex) => {
-                      const form = Object.values(leftOverTicketFormValues).find((value) => Object.keys(value as object)[0] == `${ticket.ticketName}${ticketIndex}`);
-                      console.log('Form for this ticket', form, `${ticket.ticketName}-${ticketIndex}`);
-                      console.log('leftOverTicketFormValues', Object.values(leftOverTicketFormValues));
+                      const form = Object.values(currentLeftOverTickets).find((value) => Object.keys(value as object)[0] == `${ticket.ticketName}${ticketIndex}`);
+                      console.log('form', form, currentLeftOverTickets);
+                      const value = Object.values(form as object)[0];
                       return (
                         <Box
                           key={`${ticket.ticketName}-${ticketIndex}`}
@@ -235,10 +232,7 @@ export const HiddenFormDropdown = ({
                               </CssSelectField>
                             </FormControl>
                           </Box>
-                          {Object.values(leftOverTicketFormValues).map((field, fieldIndex) => {
-                            console.log('field', field);
-                            const formValues = Object.values(field as object);
-                            console.log('form values', formValues);
+                          {value.map((field, fieldIndex) => {
                             return <CssTextField
                                   className={
                                     "margin-top: calc(.5rem*calc(1-0))" +
@@ -259,8 +253,8 @@ export const HiddenFormDropdown = ({
                                       `${ticket.ticketName}${ticketIndex}`,
                                     )
                                   }
-                                  name={form.name}
-                                  label={form.name}
+                                  name={field.name}
+                                  label={field.name}
                                   key={fieldIndex}
                                 />
                           })}
