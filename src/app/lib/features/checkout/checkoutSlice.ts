@@ -116,7 +116,7 @@ export const checkoutSlice = createSlice({
     // Reset all ticket values and leftover
     resetTickets: (state) => {
       state.tickets.forEach(ticket => (ticket.value = 0));
-      state.leftover = [];
+      state.leftOverTickets = [];
     },
 
     // Set a ticket's value by ticketName and calculate leftovers for the rest
