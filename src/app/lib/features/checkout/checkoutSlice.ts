@@ -1,8 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
-// Define a type for the slice state
-
-// Define the initial state using that type
 const initialState = {
   tickets: [
     { ticketName: "explorer", value: 0 },
@@ -17,7 +14,9 @@ const initialState = {
     { ticketName: "investor", value: 0 },
     { ticketName: "delegate", value: 0 },
   ],
-  leftOverTicketFormValues: []
+  leftOverTicketFormValues: [],
+  formValues: {},
+  billingInfo: {}
 }
 
 const initialValues = [
@@ -44,6 +43,23 @@ export const checkoutSlice = createSlice({
       state.tickets = action.payload;
     },
 
+    setFormValues: (state, action) => {
+      state.formValues = ({
+        ...state.formValues,
+        [action.payload.id]: action.payload.data,
+      });
+    },
+
+    setBillingForm: (state, action) => {
+      state.billingForm = ({
+        [action.payload.ticket]: action.payload.data,
+      });
+    },
+
+    setBillingTotal: (state, action) => {
+      console.log(action.payload);
+    },
+
     // Set the leftover value as an array of leftover tickets
     setLeftoverTickets: (state, action) => {
       action.payload.forEach((ticket, index) => {
@@ -68,7 +84,7 @@ export const checkoutSlice = createSlice({
   }
 })
 
-export const { setTickets, setMyTicket, setLeftoverTickets, resetTickets, setLeftOverTicketsForms } = checkoutSlice.actions
+export const { setTickets, setMyTicket, setLeftoverTickets, setFormValues, setLeftOverTicketsForms, setBillingForm } = checkoutSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 // export const tickets = (state: RootState) => state.tickets;

@@ -1,13 +1,15 @@
 "use client";
 import * as React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { Box } from "@mui/material";
+import { Box, FormGroup } from "@mui/material";
 import { useEffect, useState } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "@/app/(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { CssTextField } from "@/app/(home)/checkout/components/utils";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/app/lib/hooks";
+import { setBillingForm } from "@/app/lib/features/checkout/checkoutSlice";
 
 export const CheckoutForm = () => {
   const initialValues = [
@@ -23,14 +25,34 @@ export const CheckoutForm = () => {
     { name: "How did you hear about the event", value: "" },
   ];
   const [values, setValues] = useState(initialValues);
+  const [total, setTotal] = useState(0);
   const router = useRouter();
-  const { tickets } = useSelector((state) => state.checkout);
-
-
+  const { tickets, myTicket } = useSelector((state) => state.checkout);
+  const dispatch = useAppDispatch();
+  const ExplorerTicket = 14999;
+  const FounderTicket = 59999;
+  const InvestorTicket = 125000;
+  const DelegateTicket = 187500;
   useEffect(() => {
-    const currentValues = Object.values(tickets).filter((ticket) => ticket.value > 0);
-    if(currentValues.length === 0){
-      router.push('/ticket');
+    Object.values(tickets).forEach((ticket) => {
+      console.log(ticket.ticketName);
+      if(ticket.value < 1) return;
+      const value =
+        ticket.ticketName === "investor"
+          ? InvestorTicket * ticket.value
+          : ticket.ticketName === "founder"
+            ? FounderTicket * ticket.value
+            : ticket.ticketName === "explorer"
+              ? ExplorerTicket * ticket.value
+              : DelegateTicket * ticket.value;
+      setTotal(total + value);
+      return total + value;
+    });
+    const currentValues = Object.values(tickets).filter(
+      (ticket) => ticket.value > 0,
+    );
+    if (currentValues.length === 0) {
+      router.push("/ticket");
     }
   }, []);
   const handleInputChange = (e, name) => {
@@ -44,7 +66,15 @@ export const CheckoutForm = () => {
         };
       }
     });
+    const billingData = { ticket: myTicket.ticketName, data: newState };
     setValues(newState);
+    dispatch(setBillingForm(billingData));
+  };
+
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    console.log(values);
+    console.log(e.target);
   };
 
   return (
@@ -60,7 +90,10 @@ export const CheckoutForm = () => {
       >
         <Box className={"lg:col-span-6 space-y-8"}>
           <Box className={"space-y-3"}>
-            <Box className={"flex items-center gap-3"} onClick={() => router.push('/tickets')}>
+            <Box
+              className={"flex items-center gap-3"}
+              onClick={() => router.push("/tickets")}
+            >
               <button
                 className={
                   "inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap rounded-[calc(1rem-2px)] text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent border-[#504E56] text-[#504E56] size-6"
@@ -81,7 +114,8 @@ export const CheckoutForm = () => {
             </p>
           </Box>
           <Box className={"space-y-5"}>
-            <Box className={"grid lg:grid-cols-2 gap-5 fields"}>
+            {/*<Box className={"grid lg:grid-cols-2 gap-5 fields"}>*/}
+            <FormGroup className={'"grid lg:grid-cols-2 gap-5 fields"'}>
               {values.map((field, index) => {
                 if (field.name === "Phone Number") {
                   return (
@@ -116,8 +150,54 @@ export const CheckoutForm = () => {
                   />
                 );
               })}
-            </Box>
+            </FormGroup>
+            {/*</Box>*/}
           </Box>
+        </Box>
+        <Box className="hidden lg:block lg:col-start-8 lg:col-span-4 space-y-8">
+          <Box className="space-y-6">
+            <p className="text-[#0A090B] text-4xl xl:text-5xl 2xl:text-6xl !font-medium">
+              Summary
+            </p>
+            <div className="border-y border-[#7F7D82] space-y-2 py-3">
+              {Object.values(tickets).map((ticket, index) => {
+                if (ticket.value < 1) return;
+                const value =
+                  ticket.ticketName === "investor"
+                    ? InvestorTicket * ticket.value
+                    : ticket.ticketName === "founder"
+                      ? FounderTicket * ticket.value
+                      : ticket.ticketName === "explorer"
+                        ? ExplorerTicket * ticket.value
+                        : DelegateTicket * ticket.value;
+                return (
+                  <div
+                    key={index}
+                    className="flex justify-between gap-4 text-[#0A090B]"
+                  >
+                    <p className="text-[#0A090B] font-medium">
+                      {ticket.value}x {ticket.ticketName.toUpperCase()}
+                    </p>
+                    <p>NGN {value}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="text-[#0A090B] flex justify-between text-lg">
+              <p>Total</p>
+              <p className="font-medium">NGN {total}</p>
+            </div>
+          </Box>
+          <button
+            onClick={handleSubmit}
+            type={"submit"}
+            form={"otherTickets"}
+            className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+          >
+            <span className="text-center w-full h-full">
+              CONTINUE TO PAYMENT
+            </span>
+          </button>
         </Box>
       </Box>
       <HiddenFormDropdown
