@@ -65,7 +65,7 @@ export const HiddenFormDropdown = ({
         };
       } else return ticket;
     });
-    const newArr = [];
+    const newArr:unknown[] = [];
     leftOverTickets.map((ticket) => {
       if (ticket.value > 0) {
         for (let i = 0; i < ticket.value; i++) {
