@@ -11,7 +11,7 @@ import {
   setLeftoverTickets,
   setLeftOverTicketsForms,
   setMyTicket,
-  setBillingForm
+  setBillingInfo
 } from "../../../../lib/features/checkout/checkoutSlice";
 import { BillingForm } from "../../../checkout/components/Form/Form";
 
@@ -32,7 +32,7 @@ export const HiddenFormDropdown = ({
     tickets: Tickets,
     myTicket,
     leftOverTickets,
-    billingForm,
+    billingInfo,
   } = useAppSelector((state) => state.checkout);
   const dispatch = useAppDispatch();
   const currentLeftOverTickets = useMemo(() => {
@@ -56,7 +56,7 @@ export const HiddenFormDropdown = ({
   };
   const handleChange = (e) => {
     dispatch(setMyTicket({ ticketName: e.target.value, value: 1 }));
-    dispatch(setBillingForm({ticket: e.target.value, data: Object.values(billingForm)}));
+    dispatch(setBillingInfo({ticket: e.target.value, data: Object.values(billingInfo)}));
     const leftOverTickets = tickets.map((ticket) => {
       if (ticket.ticketName === e.target.value) {
         return {

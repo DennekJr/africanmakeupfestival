@@ -8,7 +8,7 @@ import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFo
 import { CssTextField } from "../../../(home)/checkout/components/utils";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
-import { setBillingForm } from "../../../lib/features/checkout/checkoutSlice";
+import { setBillingInfo } from "../../../lib/features/checkout/checkoutSlice";
 
 export const CheckoutForm = () => {
   const initialValues = [
@@ -67,7 +67,7 @@ export const CheckoutForm = () => {
     });
     const billingData = { ticket: myTicket.ticketName, data: newState };
     setValues(newState);
-    dispatch(setBillingForm(billingData));
+    dispatch(setBillingInfo(billingData));
   };
 
   const handleSubmit = (e) => {

@@ -50,8 +50,8 @@ export const checkoutSlice = createSlice({
       });
     },
 
-    setBillingForm: (state, action) => {
-      state.billingForm = ({
+    setBillingInfo: (state, action) => {
+      state.billingInfo = ({
         [action.payload.ticket]: action.payload.data,
       });
     },
@@ -84,7 +84,7 @@ export const checkoutSlice = createSlice({
   }
 })
 
-export const { setTickets, setMyTicket, setLeftoverTickets, setFormValues, setLeftOverTicketsForms, setBillingForm } = checkoutSlice.actions
+export const { setTickets, setMyTicket, setLeftoverTickets, setFormValues, setLeftOverTicketsForms, setBillingInfo } = checkoutSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 // export const tickets = (state: RootState) => state.tickets;
