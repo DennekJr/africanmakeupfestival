@@ -52,7 +52,6 @@ export const BillingForm = ({ticket}:{ticket: string}) => {
     };
     setFormData(newFormData);
     dispatch(setFormValues({ id: ticket, data: newFormData }));
-    console.log(newFormData);
   }
   return (
     <form id={'otherTickets'} name={ticket}>

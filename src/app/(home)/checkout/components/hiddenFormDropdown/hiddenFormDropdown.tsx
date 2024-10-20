@@ -5,8 +5,8 @@ import Box from "@mui/material/Box";
 import {
   CssSelectField,
 } from "../../../checkout/components/utils";
-import { connect, useSelector } from "react-redux";
-import { useAppDispatch } from "../../../../lib/hooks";
+import { connect } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../../lib/hooks";
 import {
   setLeftoverTickets,
   setLeftOverTicketsForms,
@@ -33,7 +33,7 @@ export const HiddenFormDropdown = ({
     myTicket,
     leftOverTickets,
     billingForm,
-  } = useSelector((state) => state.checkout);
+  } = useAppSelector((state) => state.checkout);
   const dispatch = useAppDispatch();
   const currentLeftOverTickets = useMemo(() => {
     return leftOverTickets;

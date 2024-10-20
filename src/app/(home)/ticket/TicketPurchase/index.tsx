@@ -5,11 +5,10 @@ import React, { useMemo, useState } from "react";
 import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Minus, Plus, TicketTag } from "./utils";
-import { FortyFiveDegreeArrow } from "@/app/(home)/sponsor/Hero/utils";
+import { FortyFiveDegreeArrow } from "../../../(home)/sponsor/Hero/utils";
 import { useRouter } from "next/navigation";
-import { setTickets } from "@/app/lib/features/checkout/checkoutSlice";
-import { useAppDispatch } from "@/app/lib/hooks";
-import { useSelector } from "react-redux";
+import { setTickets } from "../../../lib/features/checkout/checkoutSlice";
+import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 
 export const TicketPurchase = () => {
   const initialState = [
@@ -20,7 +19,7 @@ export const TicketPurchase = () => {
   ];
 
   const [isOpen, setIsOpen] = useState(initialState);
-  const values = useSelector((state) => state.checkout.tickets);
+  const values = useAppSelector((state) => state.checkout.tickets);
   const router = useRouter();
   const tickets = useMemo(() => Object.values(TICKETPURCHASEMENU), []);
   const dispatch = useAppDispatch()

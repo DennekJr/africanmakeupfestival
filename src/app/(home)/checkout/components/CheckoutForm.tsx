@@ -7,8 +7,7 @@ import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { CssTextField } from "../../../(home)/checkout/components/utils";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../../lib/hooks";
+import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 import { setBillingForm } from "../../../lib/features/checkout/checkoutSlice";
 
 export const CheckoutForm = () => {
@@ -27,7 +26,7 @@ export const CheckoutForm = () => {
   const [values, setValues] = useState(initialValues);
   const [total, setTotal] = useState(0);
   const router = useRouter();
-  const { tickets, myTicket } = useSelector((state) => state.checkout);
+  const { tickets, myTicket } = useAppSelector((state) => state.checkout);
   const dispatch = useAppDispatch();
   const ExplorerTicket = 14999;
   const FounderTicket = 59999;
