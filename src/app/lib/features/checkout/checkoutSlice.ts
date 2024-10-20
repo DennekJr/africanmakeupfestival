@@ -1,6 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit";
+type TicketBilingInfo = {
+  form_firstName: string;
+  form_lastName: string;
+  form_email: string;
+  form_confirmEmail: string;
+  form_organisation: string;
+  form_organisationWebsite: string;
+  form_organisationRole: string;
+  Ticket: string;
+  quantity: number;
+};
 
-const initialState = {
+const initialValues = [
+  { name: "First Name", value: ""},
+  { name: "Last Name", value: ""},
+  { name: "Phone Number", value: ""},
+  { name: "Country", value: ""},
+  { name: "Email", value: ""},
+  { name: "Confirm Email", value: ""},
+  { name: "Organisation", value: ""},
+  { name: "Organisation Website", value: ""},
+  { name: "Organisation Role", value: ""},
+];
+const initialFormValue = {
+  form_firstName: '',
+  form_lastName: '',
+  form_email: '',
+  form_confirmEmail: '',
+  form_organisation: '',
+  form_organisationWebsite: '',
+  form_organisationRole: '',
+  Ticket: 'Delegate', // Default ticket type
+  quantity: 1,
+};
+
+type initialStateType = {
+  tickets: {ticketName: string, value: number}[]
+  leftOverTickets: {ticketName: string, value: number}[]
+  myTicket: {ticketName: string, value: number},
+  formValues: {id: string, data: TicketBilingInfo},
+  billingInfo: {name: string, value: string}[],
+  leftOverTicketFormValues: unknown[],
+}
+
+const initialState:initialStateType = {
   tickets: [
     { ticketName: "explorer", value: 0 },
     { ticketName: "founder", value: 0 },
@@ -15,21 +58,9 @@ const initialState = {
     { ticketName: "delegate", value: 0 },
   ],
   leftOverTicketFormValues: [],
-  formValues: {},
-  billingInfo: {}
-}
-
-const initialValues = [
-  { name: "First Name", value: "", id: '' },
-  { name: "Last Name", value: "", id: '' },
-  { name: "Phone Number", value: "", id: '' },
-  { name: "Country", value: "", id: '' },
-  { name: "Email", value: "", id: '' },
-  { name: "Confirm Email", value: "", id: '' },
-  { name: "Organisation", value: "", id: '' },
-  { name: "Organisation Website", value: "", id: '' },
-  { name: "Organisation Role", value: "", id: '' },
-];
+  formValues: {id: '', data: initialFormValue},
+  billingInfo: [{name: '', value: ''}]
+};
 
 // const initTicketFormValues:Array<Record<string, Array<{ name: string, value: string}>>> = [];
 
