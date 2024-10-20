@@ -88,7 +88,7 @@ export const checkoutSlice = createSlice({
     setFormValues: (state, action) => {
       state.formValues = ({
         ...state.formValues,
-        [action.payload.id]: action.payload.data,
+        [`${action.payload.id}`]: action.payload.data,
       });
     },
 
