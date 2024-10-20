@@ -59,7 +59,7 @@ const initialState:initialStateType = {
   ],
   leftOverTicketFormValues: [],
   formValues: {id: '', data: initialFormValue},
-  billingInfo: {ticket: '', data: [
+  billingInfo: {'': [
       { name: "First Name", value: "" },
       { name: "Last Name", value: "" },
       { name: "Phone Number", value: "" },
