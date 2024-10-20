@@ -39,7 +39,7 @@ type initialStateType = {
   leftOverTickets: {ticketName: string, value: number}[]
   myTicket: {ticketName: string, value: number},
   formValues: {id: string, data: TicketBilingInfo},
-  billingInfo: {['']: { name: string, value: string}[]},
+  billingInfo: {[ticket:string] : { name: string, value: string}[]},
   leftOverTicketFormValues: unknown[],
 }
 
@@ -88,13 +88,13 @@ export const checkoutSlice = createSlice({
     setFormValues: (state, action) => {
       state.formValues = ({
         ...state.formValues,
-        [`${action.payload.id}`]: action.payload.data,
+        [action.payload.id]: action.payload.data,
       });
     },
 
     setBillingInfo: (state, action) => {
       state.billingInfo = ({
-        [action.payload.ticket]: action.payload.data,
+        [`${action.payload.ticket}`]: action.payload.data,
       });
     },
 
