@@ -5,10 +5,10 @@ import {
 import React, { useState } from "react";
 import { useAppDispatch } from "../../../../lib/hooks";
 
-const StyledInput = ({ id, onChange }:{id: string, onChange: (e) => void}) => {
+const StyledInput = ({ id, onChange, className }:{id: string, className: string, onChange: (e) => void}) => {
   return <Input onChange={onChange} id={id} aria-describedby="my-helper-text" className={
     "margin-top: calc(.5rem*calc(1-0))" +
-    " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input"
+    " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input "+ className
   }
          sx={{
            input: {
