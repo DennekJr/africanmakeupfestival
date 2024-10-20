@@ -39,7 +39,7 @@ type initialStateType = {
   leftOverTickets: {ticketName: string, value: number}[]
   myTicket: {ticketName: string, value: number},
   formValues: {id: string, data: TicketBilingInfo},
-  billingInfo: {ticket: '', data: { name: string, value: string}[]},
+  billingInfo: {'': { name: string, value: string}[]},
   leftOverTicketFormValues: unknown[],
 }
 
