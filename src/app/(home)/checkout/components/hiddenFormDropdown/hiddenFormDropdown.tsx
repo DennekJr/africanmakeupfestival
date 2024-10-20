@@ -4,16 +4,16 @@ import React, { useEffect, useMemo } from "react";
 import Box from "@mui/material/Box";
 import {
   CssSelectField,
-} from "@/app/(home)/checkout/components/utils";
+} from "../../../checkout/components/utils";
 import { connect, useSelector } from "react-redux";
-import { useAppDispatch } from "@/app/lib/hooks";
+import { useAppDispatch } from "../../../../lib/hooks";
 import {
   setLeftoverTickets,
   setLeftOverTicketsForms,
   setMyTicket,
   setBillingForm
-} from "@/app/lib/features/checkout/checkoutSlice";
-import { BillingForm } from "@/app/(home)/checkout/components/Form/Form";
+} from "../../../../lib/features/checkout/checkoutSlice";
+import { BillingForm } from "../../../checkout/components/Form/Form";
 
 export const HiddenFormDropdown = ({
   title,

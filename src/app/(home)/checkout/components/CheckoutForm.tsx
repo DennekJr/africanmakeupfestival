@@ -4,12 +4,12 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Box, FormGroup } from "@mui/material";
 import { useEffect, useState } from "react";
 import "./checkout.module.css";
-import { HiddenFormDropdown } from "@/app/(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
-import { CssTextField } from "@/app/(home)/checkout/components/utils";
+import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
+import { CssTextField } from "../../../(home)/checkout/components/utils";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "@/app/lib/hooks";
-import { setBillingForm } from "@/app/lib/features/checkout/checkoutSlice";
+import { useAppDispatch } from "../../../lib/hooks";
+import { setBillingForm } from "../../../lib/features/checkout/checkoutSlice";
 
 export const CheckoutForm = () => {
   const initialValues = [

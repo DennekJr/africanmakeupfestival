@@ -1,9 +1,9 @@
 import { FormControl, InputLabel, Input } from "@mui/material";
 import {
   setFormValues
-} from "@/app/lib/features/checkout/checkoutSlice";
+} from "../../../../lib/features/checkout/checkoutSlice";
 import React, { useState } from "react";
-import { useAppDispatch } from "@/app/lib/hooks";
+import { useAppDispatch } from "../../../../lib/hooks";
 
 const StyledInput = ({ id, onChange }:{id: string, onChange: (e) => void}) => {
   return <Input onChange={onChange} id={id} aria-describedby="my-helper-text" className={
