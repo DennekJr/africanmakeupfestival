@@ -56,7 +56,7 @@ export const BillingForm = ({ticket}:{ticket: string}) => {
   return (
     <form id={'otherTickets'} name={ticket}>
       <FormControl>
-        <InputLabel htmlFor="form_firstName" className={'text-[#1E1C21]'}>First Name</InputLabel>
+        <InputLabel htmlFor="form_firstName" sx={{color: '#1E1C21'}}>First Name</InputLabel>
         <StyledInput onChange={handleChange} id={'form_firstName'} className={ticket} />
       </FormControl>
       <FormControl>
