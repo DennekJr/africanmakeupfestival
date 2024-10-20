@@ -25,7 +25,7 @@ export const HiddenFormDropdown = ({
   displayTicketDropdown: boolean;
 }) => {
   const [displaySelectMenu, setDisplaySelectMenu] = React.useState(false);
-  const [tickets, setTickets] = React.useState();
+  const [tickets, setTickets] = React.useState<{ ticketName: string; value: number; }[]>([]);
   const [displaySelectTicketError, setDisplaySelectTicketError] =
     React.useState("");
   const {
