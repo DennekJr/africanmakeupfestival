@@ -1,6 +1,5 @@
 import React from "react";
 import WebWrapper from "../../app/components/Wrapper";
-import { CheckoutProvider } from "../components/CheckoutContext";
 export default function RootLayout({
   children,
 }: {
@@ -8,7 +7,7 @@ export default function RootLayout({
 }) {
   return (
     <WebWrapper>
-      <CheckoutProvider>{children}</CheckoutProvider>
+      {children}
     </WebWrapper>
   );
 }
