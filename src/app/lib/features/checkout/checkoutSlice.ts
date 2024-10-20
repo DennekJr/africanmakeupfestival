@@ -39,7 +39,7 @@ type initialStateType = {
   leftOverTickets: {ticketName: string, value: number}[]
   myTicket: {ticketName: string, value: number},
   formValues: {id: string, data: TicketBilingInfo},
-  billingInfo: {name: string, value: string}[],
+  billingInfo: {ticket: '', data: { name: string, value: string}[]},
   leftOverTicketFormValues: unknown[],
 }
 
@@ -59,7 +59,18 @@ const initialState:initialStateType = {
   ],
   leftOverTicketFormValues: [],
   formValues: {id: '', data: initialFormValue},
-  billingInfo: [{name: '', value: ''}]
+  billingInfo: {ticket: '', data: [
+      { name: "First Name", value: "" },
+      { name: "Last Name", value: "" },
+      { name: "Phone Number", value: "" },
+      { name: "Country", value: "" },
+      { name: "Email", value: "" },
+      { name: "Confirm Email", value: "" },
+      { name: "Organisation", value: "" },
+      { name: "Organisation Website", value: "" },
+      { name: "Organisation Role", value: "" },
+      { name: "How did you hear about the event", value: "" },
+    ]}
 };
 
 // const initTicketFormValues:Array<Record<string, Array<{ name: string, value: string}>>> = [];
