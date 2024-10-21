@@ -4,6 +4,7 @@ import ThemeRegistry from "../app/components/ThemeRegistry/ThemeRegistry";
 import React from "react";
 import StoreProvider from "@/app/storeProvider";
 
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export default function RootLayout({
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans`}>
+    {/*<head>*/}
+    {/*  <script src="https://js.paystack.co/v2/inline.js">*/}
+    {/*</head>*/}
+    <body className={`${inter.variable} font-sans`}>
         <ThemeRegistry>
           <StoreProvider>
             {children}

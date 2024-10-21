@@ -8,7 +8,15 @@ import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFo
 import { CssTextField } from "../../../(home)/checkout/components/utils";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
-import { setBillingInfo } from "../../../lib/features/checkout/checkoutSlice";
+import {
+  DelegateTicket,
+  ExplorerTicket,
+  FounderTicket,
+  InvestorTicket,
+  setBillingInfo
+} from "../../../lib/features/checkout/checkoutSlice";
+// import PaystackPop from '@paystack/inline-js';
+
 
 export const CheckoutForm = () => {
   const initialValues = [
@@ -24,29 +32,10 @@ export const CheckoutForm = () => {
     { name: "How did you hear about the event", value: "" },
   ];
   const [values, setValues] = useState(initialValues);
-  const [total, setTotal] = useState(0);
   const router = useRouter();
-  const { tickets, myTicket } = useAppSelector((state) => state.checkout);
+  const { tickets, myTicket, total, billingInfo, leftOverTickets } = useAppSelector((state) => state.checkout);
   const dispatch = useAppDispatch();
-  const ExplorerTicket = 14999;
-  const FounderTicket = 59999;
-  const InvestorTicket = 125000;
-  const DelegateTicket = 187500;
   useEffect(() => {
-    Object.values(tickets).forEach((ticket) => {
-      console.log(ticket.ticketName);
-      if(ticket.value < 1) return;
-      const value =
-        ticket.ticketName === "investor"
-          ? InvestorTicket * ticket.value
-          : ticket.ticketName === "founder"
-            ? FounderTicket * ticket.value
-            : ticket.ticketName === "explorer"
-              ? ExplorerTicket * ticket.value
-              : DelegateTicket * ticket.value;
-      setTotal(total + value);
-      return total + value;
-    });
     const currentValues = Object.values(tickets).filter(
       (ticket) => ticket.value > 0,
     );
@@ -54,6 +43,7 @@ export const CheckoutForm = () => {
       router.push("/ticket");
     }
   }, []);
+
   const handleInputChange = (e, name) => {
     const newState = values.map((item) => {
       if (item.name !== name.name) {
@@ -70,10 +60,58 @@ export const CheckoutForm = () => {
     dispatch(setBillingInfo(billingData));
   };
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    console.log(values);
-    console.log(e.target);
+  const postTicket = async (ticketData) => {
+    try {
+      const response = await fetch('/api/tickets', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ticketData), // Stringify the object
+      });
+
+      console.log('response from api', response);
+
+      const data = await response.json(); // Parse the JSON response
+      if (response.ok) {
+        console.log('Ticket posted successfully:', data);
+      } else {
+        console.error('Error posting ticket:', data);
+      }
+    } catch (error) {
+      console.error('Request failed:', error);
+    }
+  };
+  const initiatePaystackTransaction = async () => {
+    try {
+      const response = await fetch('/api/paystack', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: 'customer@email.com', // Replace with actual customer email
+          amount: 500000, // Amount in kobo (Paystack uses kobo for amounts)
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Transaction initialized:', data);
+        // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+      } else {
+        console.error('Error initializing transaction:', data);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    initiatePaystackTransaction().then((e) => console.log('Result of paystack call', e));
+    postTicket({ billingInfo: billingInfo, leftOverTickets: leftOverTickets }).then((e) => console.log("Post call" + e));
   };
 
   return (
@@ -91,7 +129,7 @@ export const CheckoutForm = () => {
           <Box className={"space-y-3"}>
             <Box
               className={"flex items-center gap-3"}
-              onClick={() => router.push("/tickets")}
+              onClick={() => router.push("/ticket")}
             >
               <button
                 className={
@@ -113,8 +151,7 @@ export const CheckoutForm = () => {
             </p>
           </Box>
           <Box className={"space-y-5"}>
-            {/*<Box className={"grid lg:grid-cols-2 gap-5 fields"}>*/}
-            <FormGroup className={'"grid lg:grid-cols-2 gap-5 fields"'}>
+            <FormGroup className={"!grid lg:!grid-cols-2 !gap-5 fields"}>
               {values.map((field, index) => {
                 if (field.name === "Phone Number") {
                   return (

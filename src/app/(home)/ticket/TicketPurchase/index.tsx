@@ -2,12 +2,16 @@
 import Box from "@mui/material/Box";
 import { Collapse } from "@mui/material";
 import React, { useMemo, useState } from "react";
-import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 import { Minus, Plus, TicketTag } from "./utils";
 import { FortyFiveDegreeArrow } from "../../../(home)/sponsor/Hero/utils";
-import { useRouter } from "next/navigation";
-import { setTickets } from "../../../lib/features/checkout/checkoutSlice";
+import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
+import {
+  setTickets,
+  InvestorTicket,
+  FounderTicket, ExplorerTicket, DelegateTicket, setBillingTotal
+} from "../../../lib/features/checkout/checkoutSlice";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 
 export const TicketPurchase = () => {
@@ -54,7 +58,22 @@ export const TicketPurchase = () => {
         };
       }
     });
+    const newTotal = Object.values(newState).reduce((acc, ticket) => {
+      if (ticket.value < 1) return acc;
+
+      const value =
+        ticket.ticketName === 'investor'
+          ? InvestorTicket * ticket.value
+          : ticket.ticketName === 'founder'
+            ? FounderTicket * ticket.value
+            : ticket.ticketName === 'explorer'
+              ? ExplorerTicket * ticket.value
+              : DelegateTicket * ticket.value;
+
+      return acc + value;
+    }, 0);
     dispatch(setTickets(newState));
+    dispatch(setBillingTotal(newTotal));
   };
 
   const handleProceedToCheckout = () => {

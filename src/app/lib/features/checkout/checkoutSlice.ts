@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-type TicketBilingInfo = {
+
+export type TicketBilingInfo = {
   form_firstName: string;
   form_lastName: string;
   form_email: string;
@@ -22,6 +23,7 @@ const initialValues = [
   { name: "Organisation Website", value: ""},
   { name: "Organisation Role", value: ""},
 ];
+
 const initialFormValue = {
   form_firstName: '',
   form_lastName: '',
@@ -41,6 +43,7 @@ type initialStateType = {
   formValues: {id: string, data: TicketBilingInfo},
   billingInfo: {[ticket:string] : { name: string, value: string}[]},
   leftOverTicketFormValues: unknown[],
+  total: number;
 }
 
 const initialState:initialStateType = {
@@ -70,15 +73,18 @@ const initialState:initialStateType = {
       { name: "Organisation Website", value: "" },
       { name: "Organisation Role", value: "" },
       { name: "How did you hear about the event", value: "" },
-    ]}
+    ]},
+  total: 0,
 };
 
-// const initTicketFormValues:Array<Record<string, Array<{ name: string, value: string}>>> = [];
+export const ExplorerTicket = 14999;
+export const FounderTicket = 59999;
+export const InvestorTicket = 125000;
+export const DelegateTicket = 187500;
 
 
 export const checkoutSlice = createSlice({
   name: 'checkout',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     setTickets: (state, action) => {
@@ -99,7 +105,7 @@ export const checkoutSlice = createSlice({
     },
 
     setBillingTotal: (state, action) => {
-      console.log(action.payload);
+      state.total = action.payload;
     },
 
     // Set the leftover value as an array of leftover tickets
@@ -113,7 +119,7 @@ export const checkoutSlice = createSlice({
     setLeftOverTicketsForms: (state, action) => {
       state.leftOverTicketFormValues = action.payload;
     },
-    // Reset all ticket values and leftover
+
     resetTickets: (state) => {
       state.tickets.forEach(ticket => (ticket.value = 0));
       state.leftOverTickets = [];
@@ -126,9 +132,5 @@ export const checkoutSlice = createSlice({
   }
 })
 
-export const { setTickets, setMyTicket, setLeftoverTickets, setFormValues, setLeftOverTicketsForms, setBillingInfo } = checkoutSlice.actions
-
-// Other code such as selectors can use the imported `RootState` type
-// export const tickets = (state: RootState) => state.tickets;
-
+export const { setTickets, setMyTicket, setLeftoverTickets, setFormValues, setLeftOverTicketsForms, setBillingInfo, setBillingTotal } = checkoutSlice.actions;
 export default checkoutSlice.reducer

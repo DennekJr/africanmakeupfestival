@@ -163,7 +163,6 @@ export const HiddenFormDropdown = ({
                         return (
                           <Box
                             key={`${ticket.ticketName}-${ticketIndex}`}
-                            className={"grid lg:grid-cols-2 gap-5"}
                           >
                             <Box className={"space-y-2 lg:col-span-2"}>
                               <FormControl fullWidth>
