@@ -20,6 +20,7 @@ export const RightArrowButton = styled(Button)({
 export const WhiteTicketButton = ({ name }: { name: string }) => {
   return (
     <a
+      href={'/ticket'}
       className={
         "text-[#09090b] inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#ffffff] text-secondary-foreground hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
       }
@@ -49,7 +50,7 @@ export const TransparentArrowButton = ({ name }: { name: string }) => {
     <a
       className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 bg-transparent text-gray-100 h-14 px-6 py-4 rounded-full w-full md:w-auto"
       data-sentry-component="Button_"
-      href="/en/exhibit"
+      href="/exhibit"
     >
       <span>{name}</span>
       <svg

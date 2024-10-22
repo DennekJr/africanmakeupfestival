@@ -25,7 +25,6 @@ export const BillingForm = ({ ticket }: { ticket: string }) => {
       quantity: 1,
       [id]: value,
     };
-    console.log("New Form Data", newFormData);
     setFormData(newFormData);
     dispatch(setFormValues({ id: ticket, data: newFormData }));
   };

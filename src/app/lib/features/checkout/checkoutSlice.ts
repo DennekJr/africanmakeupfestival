@@ -12,7 +12,7 @@ export type TicketBilingInfo = {
   quantity: number;
 };
 
-const initialValues = [
+export const initialValues = [
   { name: "First Name", value: ""},
   { name: "Last Name", value: ""},
   { name: "Phone Number", value: ""},
