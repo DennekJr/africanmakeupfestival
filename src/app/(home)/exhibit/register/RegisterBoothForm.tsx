@@ -31,7 +31,7 @@ export const RegisterBoothForm = () => {
   });
   const [booth, setBooth] = useState("");
   const dispatch = useAppDispatch();
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { id, value } = e.target;
     const newFormData: ExhibitionBoothBillingInfo = {
       ...formData,
@@ -89,7 +89,7 @@ export const RegisterBoothForm = () => {
                 }}
                 className={'text-[#1E1C21] [&>div]:text-[#1E1C21]'}
                 value={booth}
-                onChange={handleSelectChange}
+                onChange={(e) => handleSelectChange(e)}
               >
                 <MenuItem
                   key={`90${index}-${field.id}1`}
