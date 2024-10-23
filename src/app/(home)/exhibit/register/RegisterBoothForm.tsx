@@ -31,7 +31,7 @@ export const RegisterBoothForm = () => {
   });
   const [booth, setBooth] = useState("");
   const dispatch = useAppDispatch();
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     const newFormData: ExhibitionBoothBillingInfo = {
       ...formData,
