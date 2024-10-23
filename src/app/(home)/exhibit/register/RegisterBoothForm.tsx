@@ -40,7 +40,7 @@ export const RegisterBoothForm = () => {
     setFormData(newFormData);
     dispatch(setFormValues({ booth: id, data: newFormData }));
   };
-  const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
     const newFormData: ExhibitionBoothBillingInfo = {
       ...formData,
