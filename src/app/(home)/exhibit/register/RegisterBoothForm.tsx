@@ -41,12 +41,12 @@ export const RegisterBoothForm = () => {
     dispatch(setFormValues({ booth: id, data: newFormData }));
   };
   const handleSelectChange = (e: SelectChangeEvent<unknown>) => {
-    const { value } = e.target;
+    const value = e.target.value as string;
     const newFormData: ExhibitionBoothBillingInfo = {
       ...formData,
-      ['form_booth']: value.toString(),
+      ['form_booth']: value,
     };
-    setBooth(value.toString());
+    setBooth(value);
     setFormData(newFormData);
     dispatch(setFormValues({ booth: value, data: newFormData }));
   };
