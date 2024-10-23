@@ -37,9 +37,18 @@ export const RegisterBoothForm = () => {
       ...formData,
       [id]: value,
     };
-    console.log("Exhibition form data", id, value);
-    // setFormData(newFormData);
-    // dispatch(setFormValues({ booth: id, data: newFormData }));
+    setFormData(newFormData);
+    dispatch(setFormValues({ booth: id, data: newFormData }));
+  };
+  const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const newFormData: ExhibitionBoothBillingInfo = {
+      ...formData,
+      ['form_booth']: value,
+    };
+    setBooth(value);
+    setFormData(newFormData);
+    dispatch(setFormValues({ booth: value, data: newFormData }));
   };
   const handlePhoneInputChange = (phoneNumber, id) => {
     const newFormData: ExhibitionBoothBillingInfo = {
@@ -78,18 +87,19 @@ export const RegisterBoothForm = () => {
                     borderColor: "#D0D4DD",
                   },
                 }}
-                value={"field.formField"}
-                onChange={handleChange}
+                className={'text-[#1E1C21] [&>div]:text-[#1E1C21]'}
+                value={booth}
+                onChange={handleSelectChange}
               >
                 <MenuItem
-                  key={index}
+                  key={`90${index}-${field.id}1`}
                   className={"capitalize"}
                   value={"OASIS (3x3) NGN 850,000"}
                 >
                   {"OASIS (3x3) NGN 850,000"}
                 </MenuItem>
                 <MenuItem
-                  key={index}
+                  key={`98${index}-${field.id}2`}
                   className={"capitalize"}
                   value={"NEXT GEN (3x3) NGN 1,200,000"}
                 >

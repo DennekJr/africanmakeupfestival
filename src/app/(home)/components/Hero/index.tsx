@@ -22,7 +22,7 @@ export const Hero = () => {
             }
           >
             <span className={"relative max-w-full break-words"}>
-              Africa’s Foremost
+              Africa’s Foremost{" "}
             </span>
             <span className={"relative max-w-full break-words"}>
               Deal-mak

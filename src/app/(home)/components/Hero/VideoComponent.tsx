@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { list } from "@vercel/blob";
 import * as process from "process";
+import { Skeleton } from "@mui/material";
 
 export async function VideoComponent({ fileName }) {
   const { blobs } = await list({
@@ -10,7 +11,7 @@ export async function VideoComponent({ fileName }) {
   });
   const { url } = blobs[0];
   return (
-    <Suspense fallback={<p>Loading video...</p>}>
+    <Suspense fallback={<Skeleton variant="rectangular" width={'100%'} height={622} />}>
       <video
         poster={
           "https://d2qar8dtiykptj.cloudfront.net/africa-startup-festival/home-page-hero-video-poster-000024zdmii89.png"

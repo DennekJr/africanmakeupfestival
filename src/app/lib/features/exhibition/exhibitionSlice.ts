@@ -48,6 +48,10 @@ export const exhibitionSlice = createSlice({
       });
     },
 
+    setTotal: (state, action) => {
+      state.total = action.payload;
+    },
+
     resetTickets: (state) => {
       state.tickets.forEach(ticket => (ticket.value = 0));
       state.leftOverTickets = [];
@@ -60,5 +64,5 @@ export const exhibitionSlice = createSlice({
   }
 })
 
-export const { setFormValues } = exhibitionSlice.actions;
+export const { setFormValues, setTotal } = exhibitionSlice.actions;
 export default exhibitionSlice.reducer

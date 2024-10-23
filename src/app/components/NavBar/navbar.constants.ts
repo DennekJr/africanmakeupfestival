@@ -17,7 +17,7 @@ export const NAV_MENU: Record<string, NavBarItem> = {
   exhibitors: {
     id: "exhibitors",
     route: "/exhibit",
-    subRoute: ['/exhibit', '/2024-exhibitors'],
+    subRoute: ['exhibit', '2024-exhibitors'],
     name: "Exhibitors",
     icon: ExpandMoreIcon,
     disabled: false,

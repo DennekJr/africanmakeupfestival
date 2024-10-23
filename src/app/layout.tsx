@@ -1,8 +1,9 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import ThemeRegistry from "../app/components/ThemeRegistry/ThemeRegistry";
-import React from "react";
-import StoreProvider from "@/app/storeProvider";
+import React, { Suspense } from "react";
+import StoreProvider from "../app/storeProvider";
+import TopLoader from "../app/components/TopLoader";
 
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -14,16 +15,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    {/*<head>*/}
-    {/*  <script src="https://js.paystack.co/v2/inline.js">*/}
-    {/*</head>*/}
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com/" />
+      <title>Africa Makeup Festival</title>
+    </head>
     <body className={`${inter.variable} font-sans`}>
-        <ThemeRegistry>
-          <StoreProvider>
-            {children}
-          </StoreProvider>
-        </ThemeRegistry>
-      </body>
+    <ThemeRegistry>
+      <StoreProvider>
+        <TopLoader />
+        {children}
+      </StoreProvider>
+    </ThemeRegistry>
+    </body>
     </html>
   );
 }
