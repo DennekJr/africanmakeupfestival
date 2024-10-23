@@ -21,6 +21,7 @@
     "@vercel/blob": "^0.25.0",
     "axios": "^1.7.7",
     "express": "^4.21.1",
+    "formik": "^2.4.6",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
     "mongodb": "^6.9.0",
@@ -34,7 +35,8 @@
     "react-select": "^5.8.1",
     "react-select-country-list": "^2.2.3",
     "swiper": "^11.1.14",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20.16.11",

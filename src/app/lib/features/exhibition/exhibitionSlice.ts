@@ -1,4 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
+import * as Yup from 'yup';
+
+export const ExhibitionFormSchema = Yup.object().shape({
+  form_companyName: Yup.string()
+    .min(1, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  form_contactName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  form_jobTitle: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  form_country: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  form_industry: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  form_briefDescription: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  form_howDidYouHearAboutEvent: Yup.string()
+    .min(25, 'Too Short!')
+    .max(100, 'Too Long!')
+    .required('Required'),
+
+  form_email: Yup.string().email('Invalid email').required('Required'),
+});
 
 export type ExhibitionBoothBillingInfo = {
   form_booth: string,

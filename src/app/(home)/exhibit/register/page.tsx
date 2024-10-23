@@ -36,7 +36,6 @@ const Register: () => Promise<React.JSX.Element> = async () => {
           </Box>
           <Box className={"max-w-[573px] mx-auto w-full"}>
             <RegisterBoothForm />
-            <PaynowAndPrivacyPolicy />
           </Box>
         </Box>
       </Box>
