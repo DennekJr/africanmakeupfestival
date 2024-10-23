@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import ThemeRegistry from "../app/components/ThemeRegistry/ThemeRegistry";
-import React, { Suspense } from "react";
+import React from "react";
 import StoreProvider from "../app/storeProvider";
 import TopLoader from "../app/components/TopLoader";
 

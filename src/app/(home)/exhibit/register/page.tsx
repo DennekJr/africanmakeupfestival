@@ -1,9 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { RegisterBoothForm } from "@/app/(home)/exhibit/register/RegisterBoothForm";
-import { Button } from "@mui/material";
-import { RightArrowButton } from "@/app/utils";
-import { FortyFiveDegreeArrow } from "@/app/(home)/media/Hero/utils";
 import { PaynowAndPrivacyPolicy } from "@/app/(home)/exhibit/register/PaynowAndPrivacyPolicy";
 
 const Register: () => Promise<React.JSX.Element> = async () => {
