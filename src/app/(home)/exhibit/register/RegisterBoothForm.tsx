@@ -68,7 +68,7 @@ export const RegisterBoothForm = () => {
     dispatch(setFormValues({ id: id, data: newFormData }));
   };
   return (
-    <FormGroup className={"space-y-8"} action={"post"}>
+    <FormGroup className={"space-y-8"}>
       {formFields.map((field, index) => {
         if (field.fieldType === "Select") {
           return (
