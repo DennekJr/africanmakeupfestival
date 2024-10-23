@@ -4,7 +4,7 @@ import {
   CssSelectField,
   CssTextField,
 } from "../../../(home)/checkout/components/utils";
-import { FormControl, FormGroup, MenuItem } from "@mui/material";
+import { FormControl, FormGroup, MenuItem, SelectChangeEvent } from "@mui/material";
 import { useMemo, useState } from "react";
 import { REGISTERFORMMENU } from "../../../(home)/exhibit/register/register.constants";
 import { useAppDispatch } from "../../../lib/hooks";
@@ -40,13 +40,13 @@ export const RegisterBoothForm = () => {
     setFormData(newFormData);
     dispatch(setFormValues({ booth: id, data: newFormData }));
   };
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (e: SelectChangeEvent<unknown>) => {
     const { value } = e.target;
     const newFormData: ExhibitionBoothBillingInfo = {
       ...formData,
-      ['form_booth']: value,
+      ['form_booth']: value.toString(),
     };
-    setBooth(value);
+    setBooth(value.toString());
     setFormData(newFormData);
     dispatch(setFormValues({ booth: value, data: newFormData }));
   };
