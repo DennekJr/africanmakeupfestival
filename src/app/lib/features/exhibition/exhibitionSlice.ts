@@ -52,11 +52,6 @@ export const exhibitionSlice = createSlice({
       state.total = action.payload;
     },
 
-    resetTickets: (state) => {
-      state.tickets.forEach(ticket => (ticket.value = 0));
-      state.leftOverTickets = [];
-    },
-
     // Set a ticket's value by ticketName and calculate leftovers for the rest
     setMyTicket: (state, action) => {
       state.myTicket = action.payload;
