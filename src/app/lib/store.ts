@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import checkoutReducer from './features/checkout/checkoutSlice'
+import exhibitionReducer from './features/exhibition/exhibitionSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      checkout: checkoutReducer
+      checkout: checkoutReducer,
+      exhibition: exhibitionReducer,
     }
   })
 }

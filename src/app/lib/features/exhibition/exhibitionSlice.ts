@@ -43,7 +43,6 @@ export const exhibitionSlice = createSlice({
 
     setFormValues: (state, action) => {
       state.formValues = ({
-        ...state.formValues,
         [action.payload.booth]: action.payload.data,
       });
     },

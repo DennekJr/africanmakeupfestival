@@ -10,7 +10,7 @@ import { REGISTERFORMMENU } from "../../../(home)/exhibit/register/register.cons
 import { useAppDispatch } from "../../../lib/hooks";
 import {
   ExhibitionBoothBillingInfo,
-  setFormValues,
+  setFormValues, setTotal
 } from "../../../lib/features/exhibition/exhibitionSlice";
 import { CountryPhoneInput } from "../../../components/Inputs/PhoneInput";
 import { CountryDropdown } from "../../../components/Inputs/CountryDropdown";
@@ -38,7 +38,7 @@ export const RegisterBoothForm = () => {
       [id]: value,
     };
     setFormData(newFormData);
-    dispatch(setFormValues({ booth: id, data: newFormData }));
+    dispatch(setFormValues({ booth: booth, data: newFormData }));
   };
   const handleSelectChange = (e: SelectChangeEvent<unknown>) => {
     const value = e.target.value as string;
@@ -47,7 +47,10 @@ export const RegisterBoothForm = () => {
       ['form_booth']: value,
     };
     setBooth(value);
+    const priceWithComma = value.split(' ').pop();
+    const price = Number(priceWithComma.replace(/,/g, ''))
     setFormData(newFormData);
+    dispatch(setTotal(price));
     dispatch(setFormValues({ booth: value, data: newFormData }));
   };
   const handlePhoneInputChange = (phoneNumber, id) => {
@@ -56,7 +59,7 @@ export const RegisterBoothForm = () => {
       [id]: phoneNumber,
     };
     setFormData(newFormData);
-    dispatch(setFormValues({ id: id, data: newFormData }));
+    dispatch(setFormValues({ booth: booth, data: newFormData }));
   };
 
   const handleCountryDropdownChange = (e, id) => {
@@ -65,7 +68,7 @@ export const RegisterBoothForm = () => {
       [id]: e.label,
     };
     setFormData(newFormData);
-    dispatch(setFormValues({ id: id, data: newFormData }));
+    dispatch(setFormValues({ booth: booth, data: newFormData }));
   };
   return (
     <FormGroup className={"space-y-8"}>

@@ -1,17 +1,58 @@
+"use client";
 import { FortyFiveDegreeArrow } from "@/app/(home)/media/Hero/utils";
 import { Button, Checkbox } from "@mui/material";
 import * as React from "react";
 import Box from "@mui/material/Box";
+import { useAppSelector } from "@/app/lib/hooks";
+import { useState } from "react";
 
-const labelProps = { inputProps: { 'aria-label': 'Checkbox demo' } };
+const labelProps = {
+  inputProps: { "aria-label": "Checkbox", style: { backgroundColor: "red" } },
+};
+
+const postBooth = async (booth) => {
+  try {
+    const response = await fetch("/api/exhibitBooths", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(booth), // Stringify the object
+    });
+
+    const data = await response.json(); // Parse the JSON response
+    if (response.ok) {
+      console.log("Booth purchased successfully:", data);
+    } else {
+      console.error("Error posting ticket:", data);
+    }
+  } catch (error) {
+    console.error("Request failed:", error);
+  }
+};
 export const PaynowAndPrivacyPolicy = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const { formValues, total } = useAppSelector((state) => state.exhibition);
+
+  const dataPlusCost = {
+    buyerDetails: formValues,
+    boothCost: total,
+  };
+  const handlePayment = async () => {
+    if(isChecked){
+      postBooth(dataPlusCost).then((e) => {
+        console.log("Call result", e);
+      });
+    }
+  };
   return (
-    <Box className={'my-[calc(2rem*calc(1-0))]'}>
+    <Box className={"my-[calc(2rem*calc(1-0))]"}>
       <Button
         className={
           "inline-flex items-center justify-center gap-3 my-[calc(2rem*calc(1-0))] space-y-8 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 !py-4 !rounded-full relative w-full"
         }
         endIcon={<FortyFiveDegreeArrow />}
+        onClick={handlePayment}
       >
         Pay Now
       </Button>
@@ -26,9 +67,16 @@ export const PaynowAndPrivacyPolicy = () => {
         </p>
         <div
           className="space-y-2 flex items-center space-x-3"
-          style={{position: 'relative'}}
+          style={{ position: "relative" }}
         >
-          <Checkbox className={'bg-black !border-black border-2'} {...labelProps} />
+          <Checkbox
+            onClick={() => setIsChecked(!isChecked)}
+            checked={isChecked}
+            className={
+              "bg-black !border-black border-2 [&>svg]:border-black [&>svg]:border-[.5px] [&>svg]:border-solid [&>svg]:rounded-md"
+            }
+            {...labelProps}
+          />
           <label
             className=" text-[#1E1C21] peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-gray-1200 !mt-0"
             htmlFor=":rh:-form-item"
