@@ -51,11 +51,6 @@ export const exhibitionSlice = createSlice({
     setTotal: (state, action) => {
       state.total = action.payload;
     },
-
-    // Set a ticket's value by ticketName and calculate leftovers for the rest
-    setMyTicket: (state, action) => {
-      state.myTicket = action.payload;
-    }
   }
 })
 
