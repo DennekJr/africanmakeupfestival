@@ -34,4 +34,8 @@ export const CssSelectField = styled(Select)({
     color: "#1E1C21",
     textTransform: 'capitalize',
   },
+
+  ".mui-99wn1p-MuiList-root-MuiMenu-list": {
+    background: '#ffffff !important'
+  }
 });

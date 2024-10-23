@@ -5,7 +5,6 @@ export const CountryPhoneInput = (props) => {
   return (
     <PhoneInput
       {...props}
-      placeholder={'Phone Number'}
       className={
         "text-[#1E1C21] w-full PhoneInputInput"
       }

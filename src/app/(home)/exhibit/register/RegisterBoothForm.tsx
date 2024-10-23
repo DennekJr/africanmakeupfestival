@@ -87,20 +87,28 @@ export const RegisterBoothForm = () => {
                     borderColor: "#D0D4DD",
                   },
                 }}
+                MenuProps={{
+                  sx: {
+                    "&& .MuiList-root": {
+                      color: 'black',
+                      backgroundColor: 'white',
+                    },
+                  }
+                }}
                 className={'text-[#1E1C21] [&>div]:text-[#1E1C21]'}
                 value={booth}
                 onChange={(e) => handleSelectChange(e)}
               >
                 <MenuItem
                   key={`90${index}-${field.id}1`}
-                  className={"capitalize"}
+                  className={"capitalize  hover:!bg-gray-100"}
                   value={"OASIS (3x3) NGN 850,000"}
                 >
                   {"OASIS (3x3) NGN 850,000"}
                 </MenuItem>
                 <MenuItem
                   key={`98${index}-${field.id}2`}
-                  className={"capitalize"}
+                  className={"capitalize  hover:!bg-gray-100"}
                   value={"NEXT GEN (3x3) NGN 1,200,000"}
                 >
                   {"NEXT GEN (3x3) NGN 1,200,000"}
@@ -140,6 +148,10 @@ export const RegisterBoothForm = () => {
         }
         return (
           <FormControl key={`${index}-${field.id}`} className={"space-y-2"}>
+            <label
+              className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
+              {field.formField}
+            </label>
             <CssTextField
               className={
                 "margin-top: calc(.5rem*calc(1-0))" +
@@ -149,7 +161,7 @@ export const RegisterBoothForm = () => {
               id={field.id}
               onChange={handleChange}
               name={field.formField}
-              label={field.formField}
+              // label={field.formField}
             />
           </FormControl>
         );

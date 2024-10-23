@@ -16,10 +16,10 @@
 
 .flag-dropdown {
     background: transparent !important;
-    border: none !important;
-    & .selected-flag {
-        padding: 0 !important;
-    }
+    border-right: none !important;
+    /*& .selected-flag {*/
+    /*    padding: 0 !important;*/
+    /*}*/
 }
 
 .mui-1jqq78o-placeholder {

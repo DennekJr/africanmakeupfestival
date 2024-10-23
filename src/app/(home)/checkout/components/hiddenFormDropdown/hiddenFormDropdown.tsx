@@ -116,11 +116,19 @@ export const HiddenFormDropdown = ({
               <CssSelectField
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                sx={{
+                  sx={{
                   input: {
                     color: "#1E1C21",
                     borderColor: "#D0D4DD",
                   },
+                }}
+                MenuProps={{
+                  sx: {
+                    "&& .MuiList-root": {
+                      color: 'black',
+                      backgroundColor: 'white',
+                    },
+                  }
                 }}
                 value={myTicket.ticketName}
                 onChange={handleChange}
@@ -131,7 +139,7 @@ export const HiddenFormDropdown = ({
                   return (
                     <MenuItem
                       key={index}
-                      className={"capitalize"}
+                      className={"capitalize hover:!bg-gray-100 px-4"}
                       value={ticket.ticketName}
                     >
                       {ticket.ticketName}
