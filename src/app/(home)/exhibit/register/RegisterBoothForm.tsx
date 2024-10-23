@@ -48,7 +48,7 @@ export const RegisterBoothForm = () => {
     };
     setBooth(value);
     const priceWithComma = value.split(' ').pop();
-    const price = Number(priceWithComma.replace(/,/g, ''))
+    const price = Number(priceWithComma?.replace(/,/g, ''))
     setFormData(newFormData);
     dispatch(setTotal(price));
     dispatch(setFormValues({ booth: value, data: newFormData }));
@@ -164,7 +164,6 @@ export const RegisterBoothForm = () => {
               id={field.id}
               onChange={handleChange}
               name={field.formField}
-              // label={field.formField}
             />
           </FormControl>
         );
