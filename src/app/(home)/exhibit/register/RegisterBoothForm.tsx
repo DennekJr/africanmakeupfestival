@@ -4,19 +4,25 @@ import {
   CssSelectField,
   CssTextField,
 } from "../../../(home)/checkout/components/utils";
-import { FormControl, FormGroup, MenuItem, SelectChangeEvent } from "@mui/material";
+import {
+  FormControl,
+  FormGroup,
+  MenuItem,
+  SelectChangeEvent, Typography
+} from "@mui/material";
 import { useMemo, useState } from "react";
 import { REGISTERFORMMENU } from "../../../(home)/exhibit/register/register.constants";
 import { useAppDispatch } from "../../../lib/hooks";
 import {
-  ExhibitionBoothBillingInfo, ExhibitionFormSchema,
-  setFormValues, setTotal
+  ExhibitionBoothBillingInfo,
+  ExhibitionFormSchema,
+  setFormValues,
+  setTotal,
 } from "../../../lib/features/exhibition/exhibitionSlice";
 import { CountryPhoneInput } from "../../../components/Inputs/PhoneInput";
 import { CountryDropdown } from "../../../components/Inputs/CountryDropdown";
-import { useFormik } from "formik";
+import { ErrorMessage, Field, useFormik } from "formik";
 import { PaynowAndPrivacyPolicy } from "@/app/(home)/exhibit/register/PaynowAndPrivacyPolicy";
-
 
 export const initialFormData = {
   form_booth: "",
@@ -57,11 +63,11 @@ export const RegisterBoothForm = () => {
     const value = e.target.value as string;
     const newFormData: ExhibitionBoothBillingInfo = {
       ...formData,
-      ['form_booth']: value,
+      ["form_booth"]: value,
     };
     setBooth(value);
-    const priceWithComma = value.split(' ').pop();
-    const price = Number(priceWithComma?.replace(/,/g, ''))
+    const priceWithComma = value.split(" ").pop();
+    const price = Number(priceWithComma?.replace(/,/g, ""));
     setFormData(newFormData);
     dispatch(setTotal(price));
     dispatch(setFormValues({ booth: value, data: newFormData }));
@@ -83,13 +89,24 @@ export const RegisterBoothForm = () => {
     setFormData(newFormData);
     dispatch(setFormValues({ booth: booth, data: newFormData }));
   };
+
+  const handlePayment = () => {
+    console.log("HANDLE PAYMENT");
+    // if(formik.errors){
+      console.log(formik.errors)
+    // }
+  };
   return (
-      <form onSubmit={formik.handleSubmit} id={'registerBooth'} className={'space-y-8'}>
-        <FormGroup className={"space-y-8"}>
+    <form onSubmit={formik.handleSubmit} className={"space-y-8"}>
+      <FormGroup className={"space-y-8"}>
         {formFields.map((field, index) => {
           if (field.fieldType === "Select") {
             return (
-              <FormControl required key={`${index}-${field.id}`} className={"space-y-2"}>
+              <FormControl
+                required
+                key={`${index}-${field.id}`}
+                className={"space-y-2"}
+              >
                 <label
                   className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]"
                   htmlFor="selectBooth"
@@ -108,14 +125,19 @@ export const RegisterBoothForm = () => {
                   MenuProps={{
                     sx: {
                       "&& .MuiList-root": {
-                        color: 'black',
-                        backgroundColor: 'white',
+                        color: "black",
+                        backgroundColor: "white",
                       },
-                    }
+                    },
                   }}
-                  className={'text-[#1E1C21] [&>div]:text-[#1E1C21]'}
+                  className={"text-[#1E1C21] [&>div]:text-[#1E1C21]"}
                   value={booth}
                   onChange={(e) => handleSelectChange(e)}
+                  name={field.id}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched[field.id] && Boolean(formik.errors[field.id])
+                  }
                 >
                   <MenuItem
                     key={`90${index}-${field.id}1`}
@@ -137,7 +159,12 @@ export const RegisterBoothForm = () => {
           }
           if (field.fieldType === "Phone Number") {
             return (
-              <FormControl required key={`${index}-${field.id}`} className={"space-y-2"}>
+              <FormControl
+                required
+                key={`${index}-${field.id}`}
+                className={"space-y-2"}
+                error={true}
+              >
                 <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
                   {field.formField}
                 </label>
@@ -149,13 +176,19 @@ export const RegisterBoothForm = () => {
                   onChange={(e) => {
                     handlePhoneInputChange(e, field.id);
                   }}
+                  name={field.id}
+                  defaultErrorMessage="Phone number is not valid"
                 />
               </FormControl>
             );
           }
           if (field.fieldType === "Country") {
             return (
-              <FormControl required key={`${index}-${field.id}`} className={"space-y-2"}>
+              <FormControl
+                required
+                key={`${index}-${field.id}`}
+                className={"space-y-2"}
+              >
                 <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
                   {field.formField}
                 </label>
@@ -163,19 +196,60 @@ export const RegisterBoothForm = () => {
                   key={index}
                   onChange={(e) => handleCountryDropdownChange(e, field.id)}
                 />
+                {formData[field.id] == "" && <Typography color={'error text-[0.75rem]'}>Select a country</Typography>}
+              </FormControl>
+            );
+          }
+          if (field.id === "form_briefDescription") {
+            return (
+              <FormControl
+                required
+                key={`${index}-${field.id}`}
+                className={"space-y-2"}
+              >
+                <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
+                  {field.formField}
+                </label>
+                <CssTextField
+                  className={
+                    "margin-top: calc(.5rem*calc(1-0))" +
+                    " margin-bottom: calc(.5rem*0) rounded-[6px] outline-[0] border border-input [&>p]:mx-0 text-[#1E1C21] py-[16px] px-[14px]"
+                  }
+                  sx={{
+                    input: { color: "#1E1C21", borderColor: "#D0D4DD" }
+                  }}
+                  id={field.id}
+                  onChange={(e) => {
+                    formik.handleChange(e);
+                    handleChange(e);
+                  }}
+                  multiline={"true"}
+                  minRows={4}
+                  name={field.id}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched[field.id] && Boolean(formik.errors[field.id])
+                  }
+                  helperText={
+                    formik.touched[field.id] && formik.errors[field.id]
+                  }
+                />
               </FormControl>
             );
           }
           return (
-            <FormControl required key={`${index}-${field.id}`} className={"space-y-2"}>
-              <label
-                className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
+            <FormControl
+              required
+              key={`${index}-${field.id}`}
+              className={"space-y-2"}
+            >
+              <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
                 {field.formField}
               </label>
               <CssTextField
                 className={
                   "margin-top: calc(.5rem*calc(1-0))" +
-                  " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input "
+                  " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input [&>p]:mx-0 text-[#1E1C21]"
                 }
                 sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
                 id={field.id}
@@ -185,16 +259,16 @@ export const RegisterBoothForm = () => {
                 }}
                 name={field.id}
                 onBlur={formik.handleBlur}
-                error={formik.touched[field.id] && Boolean(formik.errors[field.id])}
+                error={
+                  formik.touched[field.id] && Boolean(formik.errors[field.id])
+                }
                 helperText={formik.touched[field.id] && formik.errors[field.id]}
-                // helperText={error ? "Required" : ""}
-                // error={error}
               />
             </FormControl>
           );
         })}
-        </FormGroup>
-        <PaynowAndPrivacyPolicy />
-      </form>
+      </FormGroup>
+      <PaynowAndPrivacyPolicy handlePayment={handlePayment} />
+    </form>
   );
 };

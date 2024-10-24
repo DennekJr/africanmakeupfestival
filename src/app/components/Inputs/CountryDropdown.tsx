@@ -4,5 +4,5 @@ import { useMemo } from "react";
 
 export const CountryDropdown = (props) => {
   const options = useMemo(() => countryList().getData(), []);
-  return <Select placeholder={'Country'} className={'selectCountryContainer'} {...props} options={options} />;
+  return <Select className={'selectCountryContainer'} {...props} options={options} />;
 };

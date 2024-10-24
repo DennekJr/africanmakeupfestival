@@ -30,7 +30,7 @@ const postBooth = async (booth) => {
     console.error("Request failed:", error);
   }
 };
-export const PaynowAndPrivacyPolicy = () => {
+export const PaynowAndPrivacyPolicy = ({handlePayment}: {handlePayment: () => void}) => {
   const [isChecked, setIsChecked] = useState(false);
   const { formValues, total } = useAppSelector((state) => state.exhibition);
 
@@ -38,24 +38,15 @@ export const PaynowAndPrivacyPolicy = () => {
     buyerDetails: formValues,
     boothCost: total,
   };
-  const handlePayment = async () => {
-    if(isChecked){
-      // postBooth(dataPlusCost).then((e) => {
-      //   console.log("Call result", e);
-      // });
-      console.log('submit is callled');
-    }
-  };
   return (
     <Box className={"my-[calc(2rem*calc(1-0))]"}>
       <Button
         type={'submit'}
-        form={'registerBooth'}
         className={
           "inline-flex items-center justify-center gap-3 my-[calc(2rem*calc(1-0))] space-y-8 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 !py-4 !rounded-full relative w-full"
         }
         endIcon={<FortyFiveDegreeArrow />}
-        // onClick={handlePayment}
+        onClick={handlePayment}
       >
         Pay Now
       </Button>

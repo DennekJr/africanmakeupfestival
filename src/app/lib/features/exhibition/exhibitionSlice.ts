@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as Yup from 'yup';
 
+export const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 export const ExhibitionFormSchema = Yup.object().shape({
   form_companyName: Yup.string()
     .min(1, 'Too Short!')
@@ -14,21 +15,17 @@ export const ExhibitionFormSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
-  form_country: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
   form_industry: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
   form_briefDescription: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
+    .min(25, 'Too Short!')
+    .max(150, 'Too Long!')
     .required('Required'),
   form_howDidYouHearAboutEvent: Yup.string()
-    .min(25, 'Too Short!')
-    .max(100, 'Too Long!')
+    .min(3, 'Too Short!')
+    .max(25, 'Too Long!')
     .required('Required'),
 
   form_email: Yup.string().email('Invalid email').required('Required'),
