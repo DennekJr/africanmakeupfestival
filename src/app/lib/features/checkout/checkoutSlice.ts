@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import * as Yup from "yup";
 
 export type TicketBilingInfo = {
   form_firstName: string;
@@ -12,41 +13,83 @@ export type TicketBilingInfo = {
   quantity: number;
 };
 
+export const OtherOrdersFormSchema = Yup.object().shape({
+  form_firstName: Yup.string()
+    .min(1, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  form_lastName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  form_confirmEmail: Yup.string()
+    .oneOf([Yup.ref('form_email')], 'Email must match')
+    .required("Required"),
+  form_organisation: Yup.string()
+    .required("Required"),
+  form_organisationWebsite: Yup.string()
+    .required("Required"),
+  form_organisationRole: Yup.string()
+    .required("Required"),
+  form_email: Yup.string().email("Invalid email").required("Required"),
+});
+export const BillingFormSchema = Yup.object().shape({
+  'First Name': Yup.string()
+    .min(1, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  'Last Name': Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  'Confirm Email': Yup.string()
+    .oneOf([Yup.ref('form_email')], 'Email must match')
+    .required("Required"),
+  'Organisation': Yup.string()
+    .required("Required"),
+  'Organisation Website': Yup.string()
+    .required("Required"),
+  'Organisation Role': Yup.string()
+    .required("Required"),
+  'Email': Yup.string().email("Invalid email").required("Required"),
+});
+
 export const initialValues = [
-  { name: "First Name", value: ""},
-  { name: "Last Name", value: ""},
-  { name: "Phone Number", value: ""},
-  { name: "Country", value: ""},
-  { name: "Email", value: ""},
-  { name: "Confirm Email", value: ""},
-  { name: "Organisation", value: ""},
-  { name: "Organisation Website", value: ""},
-  { name: "Organisation Role", value: ""},
+  { name: "First Name", value: "" },
+  { name: "Last Name", value: "" },
+  { name: "Phone Number", value: "" },
+  { name: "Country", value: "" },
+  { name: "Email", value: "" },
+  { name: "Confirm Email", value: "" },
+  { name: "Organisation", value: "" },
+  { name: "Organisation Website", value: "" },
+  { name: "Organisation Role", value: "" },
 ];
 
-const initialFormValue = {
-  form_firstName: '',
-  form_lastName: '',
-  form_email: '',
-  form_confirmEmail: '',
-  form_organisation: '',
-  form_organisationWebsite: '',
-  form_organisationRole: '',
-  Ticket: 'Delegate', // Default ticket type
+export const initialFormValue = {
+  form_firstName: "",
+  form_lastName: "",
+  form_email: "",
+  form_confirmEmail: "",
+  form_organisation: "",
+  form_organisationWebsite: "",
+  form_organisationRole: "",
+  Ticket: "Delegate", // Default ticket type
   quantity: 1,
 };
 
 type initialStateType = {
-  tickets: {ticketName: string, value: number}[]
-  leftOverTickets: {ticketName: string, value: number}[]
-  myTicket: {ticketName: string, value: number},
-  formValues: {id: string, data: TicketBilingInfo},
-  billingInfo: {[ticket:string] : { name: string, value: string}[]},
-  leftOverTicketFormValues: unknown[],
+  tickets: { ticketName: string; value: number }[];
+  leftOverTickets: { ticketName: string; value: number }[];
+  myTicket: { ticketName: string; value: number };
+  formValues: { id: string; data: TicketBilingInfo };
+  formErrors: { id: string; data: TicketBilingInfo };
+  billingInfo: { [ticket: string]: { name: string; value: string }[] };
+  leftOverTicketFormValues: unknown[];
   total: number;
-}
+};
 
-const initialState:initialStateType = {
+const initialState: initialStateType = {
   tickets: [
     { ticketName: "explorer", value: 0 },
     { ticketName: "founder", value: 0 },
@@ -61,8 +104,10 @@ const initialState:initialStateType = {
     { ticketName: "delegate", value: 0 },
   ],
   leftOverTicketFormValues: [],
-  formValues: {id: '', data: initialFormValue},
-  billingInfo: {['']: [
+  formValues: { id: "", data: initialFormValue },
+  formErrors: { id: "", data: initialFormValue },
+  billingInfo: {
+    [""]: [
       { name: "First Name", value: "" },
       { name: "Last Name", value: "" },
       { name: "Phone Number", value: "" },
@@ -73,7 +118,8 @@ const initialState:initialStateType = {
       { name: "Organisation Website", value: "" },
       { name: "Organisation Role", value: "" },
       { name: "How did you hear about the event", value: "" },
-    ]},
+    ],
+  },
   total: 0,
 };
 
@@ -82,9 +128,8 @@ export const FounderTicket = 59999;
 export const InvestorTicket = 125000;
 export const DelegateTicket = 187500;
 
-
 export const checkoutSlice = createSlice({
-  name: 'checkout',
+  name: "checkout",
   initialState,
   reducers: {
     setTickets: (state, action) => {
@@ -92,16 +137,22 @@ export const checkoutSlice = createSlice({
     },
 
     setFormValues: (state, action) => {
-      state.formValues = ({
+      state.formValues = {
         ...state.formValues,
         [action.payload.id]: action.payload.data,
-      });
+      };
     },
+    setOtherTicketsFormErrors: (state, action) => {
+          state.formValues = {
+            ...state.formValues,
+            [action.payload.id]: action.payload.data,
+          };
+        },
 
     setBillingInfo: (state, action) => {
-      state.billingInfo = ({
+      state.billingInfo = {
         [`${action.payload.ticket}`]: action.payload.data,
-      });
+      };
     },
 
     setBillingTotal: (state, action) => {
@@ -111,8 +162,10 @@ export const checkoutSlice = createSlice({
     // Set the leftover value as an array of leftover tickets
     setLeftoverTickets: (state, action) => {
       action.payload.forEach((ticket, index) => {
-        state.leftOverTicketFormValues.push(...state.leftOverTicketFormValues, { [`${ticket.ticketName}${index}`]: initialValues });
-      })
+        state.leftOverTicketFormValues.push(...state.leftOverTicketFormValues, {
+          [`${ticket.ticketName}${index}`]: initialValues,
+        });
+      });
       state.leftOverTickets = action.payload;
     },
 
@@ -121,16 +174,25 @@ export const checkoutSlice = createSlice({
     },
 
     resetTickets: (state) => {
-      state.tickets.forEach(ticket => (ticket.value = 0));
+      state.tickets.forEach((ticket) => (ticket.value = 0));
       state.leftOverTickets = [];
     },
 
     // Set a ticket's value by ticketName and calculate leftovers for the rest
     setMyTicket: (state, action) => {
       state.myTicket = action.payload;
-    }
-  }
-})
+    },
+  },
+});
 
-export const { setTickets, setMyTicket, setLeftoverTickets, setFormValues, setLeftOverTicketsForms, setBillingInfo, setBillingTotal } = checkoutSlice.actions;
-export default checkoutSlice.reducer
+export const {
+  setTickets,
+  setMyTicket,
+  setLeftoverTickets,
+  setFormValues,
+  setOtherTicketsFormErrors,
+  setLeftOverTicketsForms,
+  setBillingInfo,
+  setBillingTotal,
+} = checkoutSlice.actions;
+export default checkoutSlice.reducer;

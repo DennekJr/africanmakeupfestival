@@ -1,22 +1,19 @@
 import { FormControl } from "@mui/material";
-import { setFormValues, TicketBilingInfo } from "../../../../lib/features/checkout/checkoutSlice";
+import {
+  OtherOrdersFormSchema,
+  initialFormValue,
+  setFormValues,
+  setOtherTicketsFormErrors,
+  TicketBilingInfo
+} from "../../../../lib/features/checkout/checkoutSlice";
 import React, { useState } from "react";
 import { useAppDispatch } from "../../../../lib/hooks";
-import { CssTextField } from "@/app/(home)/checkout/components/utils";
+import { useFormik } from "formik";
+import { BillingTextField } from "@/app/(home)/checkout/components/Form/utils";
 
 export const BillingForm = ({ ticket }: { ticket: string }) => {
   const dispatch = useAppDispatch();
-  const [formData, setFormData] = useState({
-    form_firstName: "",
-    form_lastName: "",
-    form_email: "",
-    form_confirmEmail: "",
-    form_organisation: "",
-    form_organisationWebsite: "",
-    form_organisationRole: "",
-    Ticket: "Delegate", // Default ticket type
-    quantity: 1,
-  });
+  const [formData, setFormData] = useState(initialFormValue);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     const newFormData: TicketBilingInfo = {
@@ -27,110 +24,44 @@ export const BillingForm = ({ ticket }: { ticket: string }) => {
     };
     setFormData(newFormData);
     dispatch(setFormValues({ id: ticket, data: newFormData }));
+    dispatch(setOtherTicketsFormErrors({ id: ticket, data: formik.errors }));
   };
+
+  const formik = useFormik({
+    initialValues: initialFormValue,
+    validationSchema: OtherOrdersFormSchema,
+    validateOnBlur: true,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
     <form
       id={"otherTickets"}
       name={ticket}
+      onSubmit={formik.handleSubmit}
       className={"!grid lg:!grid-cols-2 !gap-5 mt-6"}
     >
       <FormControl className={"space-y-2"}>
-        <CssTextField
-          className={
-            "margin-top: calc(.5rem*calc(1-0))" +
-            " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input " +
-            ticket
-          }
-          sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
-          id={"form_firstName"}
-          onChange={handleChange}
-          name={"First Name"}
-          label={"First Name"}
-        />
+        <BillingTextField id={'form_firstName'} name={'First Name'} ticket={ticket} formik={formik} handleChange={handleChange} />
       </FormControl>
       <FormControl className={"space-y-2"}>
-        <CssTextField
-          className={
-            "margin-top: calc(.5rem*calc(1-0))" +
-            " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input " +
-            ticket
-          }
-          sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
-          id={"form_lastName"}
-          onChange={handleChange}
-          name={"Last Name"}
-          label={"Last Name"}
-        />
+        <BillingTextField id={'form_lastName'} name={'Last Name'} ticket={ticket} formik={formik} handleChange={handleChange} />
       </FormControl>
       <FormControl className={"space-y-2"}>
-        <CssTextField
-          className={
-            "margin-top: calc(.5rem*calc(1-0))" +
-            " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input " +
-            ticket
-          }
-          sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
-          id={"form_Email"}
-          onChange={handleChange}
-          name={"Email"}
-          label={"Email"}
-        />
+        <BillingTextField id={'form_email'} name={'Email'} ticket={ticket} formik={formik} handleChange={handleChange} />
       </FormControl>
       <FormControl className={"space-y-2"}>
-        <CssTextField
-          className={
-            "margin-top: calc(.5rem*calc(1-0))" +
-            " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input " +
-            ticket
-          }
-          sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
-          id={"form_confirmEmail"}
-          onChange={handleChange}
-          name={"Confirm Email"}
-          label={"Confirm Email"}
-        />
+        <BillingTextField id={'form_confirmEmail'} name={'Confirm Email'} ticket={ticket} formik={formik} handleChange={handleChange} />
       </FormControl>
       <FormControl className={"space-y-2"}>
-        <CssTextField
-          className={
-            "margin-top: calc(.5rem*calc(1-0))" +
-            " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input " +
-            ticket
-          }
-          sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
-          id={"form_organisation"}
-          onChange={handleChange}
-          name={"Organisation"}
-          label={"Organisation"}
-        />
+        <BillingTextField id={'form_organisation'} name={'Organisation'} ticket={ticket} formik={formik} handleChange={handleChange} />
       </FormControl>
       <FormControl className={"space-y-2"}>
-        <CssTextField
-          className={
-            "margin-top: calc(.5rem*calc(1-0))" +
-            " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input " +
-            ticket
-          }
-          sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
-          id={"form_organisationWebsite"}
-          onChange={handleChange}
-          name={"Organisation Website"}
-          label={"Organisation Website"}
-        />
+        <BillingTextField id={'form_organisationWebsite'} name={'Organisation Website'} ticket={ticket} formik={formik} handleChange={handleChange} />
       </FormControl>
       <FormControl className={"space-y-2"}>
-        <CssTextField
-          className={
-            "margin-top: calc(.5rem*calc(1-0))" +
-            " margin-bottom: calc(.5rem*0) rounded-[6px] border border-input " +
-            ticket
-          }
-          sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
-          id={"form_organisationRole"}
-          onChange={handleChange}
-          name={"Organisation Role"}
-          label={"Organisation Role"}
-        />
+        <BillingTextField id={'form_organisationRole'} name={'Organisation Role'} ticket={ticket} formik={formik} handleChange={handleChange} />
       </FormControl>
     </form>
   );

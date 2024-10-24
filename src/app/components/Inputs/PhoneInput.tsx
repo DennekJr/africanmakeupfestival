@@ -10,7 +10,7 @@ const StyledPhoneInput = styled(PhoneInput)({
     top: '62px',
   },
   '.form-control.invalid-number': {
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent !important',
     border: '1px solid #f44336'
   },
   // '.flag-dropdown.invalid-number': {

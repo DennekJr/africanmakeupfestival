@@ -1,15 +1,20 @@
 "use client";
-import { FormControl, FormGroup } from "@mui/material";
+import { FormControl, FormGroup, Typography } from "@mui/material";
 import { CountryPhoneInput } from "../../../../components/Inputs/PhoneInput";
 import { CountryDropdown } from "../../../../components/Inputs/CountryDropdown";
 import { CssTextField } from "../../../../(home)/checkout/components/utils";
 import * as React from "react";
 import {
+  BillingFormSchema,
   initialValues,
-  setBillingInfo,
+  setBillingInfo
 } from "../../../../lib/features/checkout/checkoutSlice";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../lib/hooks";
+import { useFormik } from "formik";
+import { ExhibitionFormSchema } from "@/app/lib/features/exhibition/exhibitionSlice";
+import { postBooth } from "@/app/(home)/exhibit/register/utils";
+import { initialFormData } from "@/app/(home)/exhibit/register/RegisterBoothForm";
 
 export const CheckoutClientForm = () => {
   const [values, setValues] = useState(initialValues);
@@ -61,6 +66,14 @@ export const CheckoutClientForm = () => {
     setValues(newState);
     dispatch(setBillingInfo(billingData));
   };
+
+  const formik = useFormik({
+    initialValues: initialFormData,
+    validationSchema: BillingFormSchema,
+    onSubmit: async (values) => {
+      // postBooth(dataPlusCost).then(() => navigate.push('/'));
+    },
+  });
   return (
     <FormGroup className={"!grid lg:!grid-cols-2 !gap-5 fields"}>
       {values.map((field, index) => {
@@ -88,6 +101,7 @@ export const CheckoutClientForm = () => {
                 key={index}
                 onChange={(e) => handleCountryDropdownChange(e, field.name)}
               />
+              {values[field.name] == "" && <Typography color={'error text-[0.75rem]'}>Select a country</Typography>}
             </FormControl>
           );
         }
@@ -103,6 +117,11 @@ export const CheckoutClientForm = () => {
             name={field.name}
             label={field.name}
             key={index}
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched[field.name] && Boolean(formik.errors[field.name])
+            }
+            helperText={formik.touched[field.name] && formik.errors[field.name]}
           />
         );
       })}

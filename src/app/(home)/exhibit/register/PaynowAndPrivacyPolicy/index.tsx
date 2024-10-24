@@ -9,35 +9,9 @@ import { useState } from "react";
 const labelProps = {
   inputProps: { "aria-label": "Checkbox", style: { backgroundColor: "red" } },
 };
-
-const postBooth = async (booth) => {
-  try {
-    const response = await fetch("/api/exhibitBooths", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(booth), // Stringify the object
-    });
-
-    const data = await response.json(); // Parse the JSON response
-    if (response.ok) {
-      console.log("Booth purchased successfully:", data);
-    } else {
-      console.error("Error posting ticket:", data);
-    }
-  } catch (error) {
-    console.error("Request failed:", error);
-  }
-};
 export const PaynowAndPrivacyPolicy = ({handlePayment}: {handlePayment: () => void}) => {
   const [isChecked, setIsChecked] = useState(false);
-  const { formValues, total } = useAppSelector((state) => state.exhibition);
 
-  const dataPlusCost = {
-    buyerDetails: formValues,
-    boothCost: total,
-  };
   return (
     <Box className={"my-[calc(2rem*calc(1-0))]"}>
       <Button

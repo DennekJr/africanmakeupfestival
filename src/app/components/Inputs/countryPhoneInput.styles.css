@@ -27,5 +27,9 @@
 }
 
 .selectCountryContainer > div {
-    padding: 16px 14px;
+    padding: 14px 14px;
+}
+
+.mui-1ahbqh7-container:focus-visible {
+
 }

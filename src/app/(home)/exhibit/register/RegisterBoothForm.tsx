@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useMemo, useState } from "react";
 import { REGISTERFORMMENU } from "../../../(home)/exhibit/register/register.constants";
-import { useAppDispatch } from "../../../lib/hooks";
+import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 import {
   ExhibitionBoothBillingInfo,
   ExhibitionFormSchema,
@@ -21,8 +21,10 @@ import {
 } from "../../../lib/features/exhibition/exhibitionSlice";
 import { CountryPhoneInput } from "../../../components/Inputs/PhoneInput";
 import { CountryDropdown } from "../../../components/Inputs/CountryDropdown";
-import { ErrorMessage, Field, useFormik } from "formik";
+import { useFormik } from "formik";
 import { PaynowAndPrivacyPolicy } from "@/app/(home)/exhibit/register/PaynowAndPrivacyPolicy";
+import { Label, postBooth } from "@/app/(home)/exhibit/register/utils";
+import { useRouter } from "next/navigation";
 
 export const initialFormData = {
   form_booth: "",
@@ -42,12 +44,18 @@ export const RegisterBoothForm = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [booth, setBooth] = useState("");
   const dispatch = useAppDispatch();
+  const { formValues, total } = useAppSelector((state) => state.exhibition);
+  const navigate = useRouter();
+  const dataPlusCost = {
+    buyerDetails: formValues,
+    boothCost: total,
+  };
 
   const formik = useFormik({
     initialValues: initialFormData,
     validationSchema: ExhibitionFormSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      postBooth(dataPlusCost).then(() => navigate.push('/'));
     },
   });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,7 +101,7 @@ export const RegisterBoothForm = () => {
   const handlePayment = () => {
     console.log("HANDLE PAYMENT");
     // if(formik.errors){
-      console.log(formik.errors)
+      console.log(Object.keys(formik.errors).length)
     // }
   };
   return (
@@ -107,12 +115,7 @@ export const RegisterBoothForm = () => {
                 key={`${index}-${field.id}`}
                 className={"space-y-2"}
               >
-                <label
-                  className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]"
-                  htmlFor="selectBooth"
-                >
-                  {field.formField}
-                </label>
+                <Label label={field.formField} />
                 <CssSelectField
                   displayEmpty
                   id={field.id}
@@ -189,9 +192,7 @@ export const RegisterBoothForm = () => {
                 key={`${index}-${field.id}`}
                 className={"space-y-2"}
               >
-                <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
-                  {field.formField}
-                </label>
+                <Label label={field.formField} />
                 <CountryDropdown
                   key={index}
                   onChange={(e) => handleCountryDropdownChange(e, field.id)}
@@ -207,9 +208,7 @@ export const RegisterBoothForm = () => {
                 key={`${index}-${field.id}`}
                 className={"space-y-2"}
               >
-                <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
-                  {field.formField}
-                </label>
+                <Label label={field.formField} />
                 <CssTextField
                   className={
                     "margin-top: calc(.5rem*calc(1-0))" +
@@ -243,9 +242,7 @@ export const RegisterBoothForm = () => {
               key={`${index}-${field.id}`}
               className={"space-y-2"}
             >
-              <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]">
-                {field.formField}
-              </label>
+              <Label label={field.formField} />
               <CssTextField
                 className={
                   "margin-top: calc(.5rem*calc(1-0))" +
@@ -268,7 +265,7 @@ export const RegisterBoothForm = () => {
           );
         })}
       </FormGroup>
-      <PaynowAndPrivacyPolicy handlePayment={handlePayment} />
+      <PaynowAndPrivacyPolicy formik={formik} handlePayment={handlePayment} />
     </form>
   );
 };
