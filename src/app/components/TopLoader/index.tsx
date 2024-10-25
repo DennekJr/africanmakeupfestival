@@ -13,7 +13,7 @@ export default function TopLoader() {
         crawl={true}
         showSpinner={false}
         easing="ease"
-        speed={300}
+        speed={500}
         shadow="0 0 10px #2299DD,0 0 5px #2299DD"
       />
     </>

@@ -2,6 +2,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import'./countryPhoneInput.styles.css';
 import { styled } from "@mui/system";
+import { useState } from "react";
 
 const StyledPhoneInput = styled(PhoneInput)({
   '.invalid-number-message': {
@@ -13,11 +14,9 @@ const StyledPhoneInput = styled(PhoneInput)({
     backgroundColor: 'transparent !important',
     border: '1px solid #f44336'
   },
-  // '.flag-dropdown.invalid-number': {
-  //   borderColor: '#D0D4DD',
-  // }
 })
 export const CountryPhoneInput = (props) => {
+  const [isTyping, setIsTyping] = useState(false)
   return (
     <StyledPhoneInput
       {...props}
@@ -25,13 +24,13 @@ export const CountryPhoneInput = (props) => {
         "text-[#1E1C21] w-full PhoneInputInput"
       }
       country={"Nigeria"}
-      isValid={(value, country) => {
+      onBlur={() => {
+        setIsTyping(true);
+      }}
+      isValid={(value) => {
         const phoneRegex = /^(\+|\d)[0-9]{7,16}$/;
-        if (phoneRegex.test(value)) {
-          return true;
-        } else {
-          return false;
-        }
+        if(!isTyping) return true;
+        return phoneRegex.test(value);
       }}
     />
   );

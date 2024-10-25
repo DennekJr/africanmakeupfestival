@@ -43,7 +43,7 @@ export const BillingFormSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Required"),
   'Confirm Email': Yup.string()
-    .oneOf([Yup.ref('form_email')], 'Email must match')
+    .oneOf([Yup.ref('Email')], 'Email must match')
     .required("Required"),
   'Organisation': Yup.string()
     .required("Required"),
@@ -83,7 +83,16 @@ type initialStateType = {
   leftOverTickets: { ticketName: string; value: number }[];
   myTicket: { ticketName: string; value: number };
   formValues: { id: string; data: TicketBilingInfo };
-  formErrors: { id: string; data: TicketBilingInfo };
+  otherTicketFormErrors: { id: string; data: TicketBilingInfo };
+  formErrors: {
+    "Confirm Email": string,
+    'Email': string,
+    "First Name": string,
+    "Last Name": string,
+    'Organisation': string,
+    "Organisation Role": string,
+    "Organisation Website": string,
+  };
   billingInfo: { [ticket: string]: { name: string; value: string }[] };
   leftOverTicketFormValues: unknown[];
   total: number;
@@ -105,7 +114,16 @@ const initialState: initialStateType = {
   ],
   leftOverTicketFormValues: [],
   formValues: { id: "", data: initialFormValue },
-  formErrors: { id: "", data: initialFormValue },
+  formErrors: {
+  "Confirm Email": "",
+    'Email': "",
+    "First Name": "",
+    "Last Name": "",
+    'Organisation': "",
+    "Organisation Role": "",
+    "Organisation Website": "",
+},
+  otherTicketFormErrors: { id: "", data: initialFormValue },
   billingInfo: {
     [""]: [
       { name: "First Name", value: "" },
@@ -142,9 +160,13 @@ export const checkoutSlice = createSlice({
         [action.payload.id]: action.payload.data,
       };
     },
+    setFormErrors: (state, action) => {
+      console.log('Form Error checkout slice', action.payload);
+      state.formErrors = action.payload;
+    },
     setOtherTicketsFormErrors: (state, action) => {
-          state.formValues = {
-            ...state.formValues,
+          state.otherTicketFormErrors = {
+            ...state.otherTicketFormErrors,
             [action.payload.id]: action.payload.data,
           };
         },
@@ -194,5 +216,6 @@ export const {
   setLeftOverTicketsForms,
   setBillingInfo,
   setBillingTotal,
+  setFormErrors,
 } = checkoutSlice.actions;
 export default checkoutSlice.reducer;

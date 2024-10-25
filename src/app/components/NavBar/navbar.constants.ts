@@ -43,7 +43,7 @@ export const NAV_MENU: Record<string, NavBarItem> = {
   travel: {
     id: "travel",
     route: "/travel",
-    subRoute: ['travel'],
+    subRoute: ['Discounted Hotels'],
     name: "Travel",
     disabled: false,
   },

@@ -1,4 +1,5 @@
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import React, { useEffect, useMemo } from "react";
 import Box from "@mui/material/Box";
@@ -80,7 +81,7 @@ export const HiddenFormDropdown = ({
   };
 
   return (
-    <div className="space-y-6 px-6 lg:px-0">
+    <Box className="space-y-6 px-6 lg:px-0">
       <div className="space-y-2">
         <button
           onClick={handleDisplaySelectMenu}
@@ -88,7 +89,7 @@ export const HiddenFormDropdown = ({
           className="items-center gap-2 flex w-full justify-between text-xl !lg:text-3xl xl:text-4xl 2xl:text-5xl font-medium text-[#0A090B] text-left lg:text-center"
         >
           <span>{title}</span>
-          <KeyboardArrowDownIcon />
+          {(displaySelectMenu || displaySelectTicketError == "true") ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </button>
         <p className="text-[#504E56]">{subTitle}</p>
       </div>
@@ -214,7 +215,7 @@ export const HiddenFormDropdown = ({
             </Box>
           )}
       </div>
-    </div>
+    </Box>
   );
 };
 

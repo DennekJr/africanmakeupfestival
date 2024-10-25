@@ -96,7 +96,7 @@ export default function NavBar() {
                   }}
                   onMouseLeave={handleMouseLeave}
                   key={index}
-                  className={"relative"}
+                  className={"relative hover:cursor-pointer"}
                   disablePadding
                   id={id}
                   sx={{ display: "block" }}
@@ -107,14 +107,14 @@ export default function NavBar() {
                     href={route}
                   >
                     <ListItemButton
-                      className={"w-max !py-0"}
+                      className={"w-max !px-[9px] !py-0 hover:!bg-transparent"}
                       aria-haspopup="true"
                       onMouseEnter={() => handleMouseEnter(name)}
                     >
                       <ListItemText
                         primary={name}
-                        primaryTypographyProps={{ fontWeight: "600" }}
-                        className={"itemText"}
+                        primaryTypographyProps={{ fontWeight: "400" }}
+                        className={"itemText text-[#ADACAF]"}
                       />
                       {name === "Exhibitors" && exhibitorIcon(name)}
                       {name === "Travel" && exhibitorIcon(name)}
@@ -123,7 +123,7 @@ export default function NavBar() {
                   <Box
                     onMouseLeave={handleMouseLeave}
                     className={
-                      "absolute bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
+                      "absolute w-max bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
                       `${isOpen.find((route) => route.name === name)?.isOpen ? " flex flex-col" : " invisible"}`
                     }
                   >
@@ -182,7 +182,7 @@ export default function NavBar() {
                       variant="outlined"
                       endIcon={<ArrowOutwardIcon />}
                     >
-                      <ListItemButton className={"w-max !p-0"}>
+                      <ListItemButton className={"w-max !p-0 hover:!bg-transparent"}>
                         <ListItemText
                           primary={name}
                           primaryTypographyProps={{ fontWeight: "600" }}

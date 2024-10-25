@@ -54,10 +54,12 @@ export const RegisterBoothForm = () => {
   const formik = useFormik({
     initialValues: initialFormData,
     validationSchema: ExhibitionFormSchema,
-    onSubmit: async (values) => {
+    onSubmit: async () => {
       postBooth(dataPlusCost).then(() => navigate.push('/'));
     },
   });
+
+  console.log('register booth', formik.errors)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     const newFormData: ExhibitionBoothBillingInfo = {

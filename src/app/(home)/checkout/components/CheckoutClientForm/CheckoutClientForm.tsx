@@ -7,13 +7,11 @@ import * as React from "react";
 import {
   BillingFormSchema,
   initialValues,
-  setBillingInfo
+  setBillingInfo, setFormErrors
 } from "../../../../lib/features/checkout/checkoutSlice";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../lib/hooks";
 import { useFormik } from "formik";
-import { ExhibitionFormSchema } from "@/app/lib/features/exhibition/exhibitionSlice";
-import { postBooth } from "@/app/(home)/exhibit/register/utils";
 import { initialFormData } from "@/app/(home)/exhibit/register/RegisterBoothForm";
 
 export const CheckoutClientForm = () => {
@@ -70,8 +68,7 @@ export const CheckoutClientForm = () => {
   const formik = useFormik({
     initialValues: initialFormData,
     validationSchema: BillingFormSchema,
-    onSubmit: async (values) => {
-      // postBooth(dataPlusCost).then(() => navigate.push('/'));
+    onSubmit: async () => {
     },
   });
   return (
@@ -113,11 +110,18 @@ export const CheckoutClientForm = () => {
             }
             sx={{ input: { color: "#1E1C21", borderColor: "#D0D4DD" } }}
             value={field.value}
-            onChange={(e) => handleInputChange(e, field)}
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleInputChange(e, field);
+            }}
             name={field.name}
             label={field.name}
             key={index}
-            onBlur={formik.handleBlur}
+            onBlur={(e) => {
+              console.log(formik.errors);
+              dispatch(setFormErrors(formik.errors));
+              formik.handleBlur(e);
+            }}
             error={
               formik.touched[field.name] && Boolean(formik.errors[field.name])
             }

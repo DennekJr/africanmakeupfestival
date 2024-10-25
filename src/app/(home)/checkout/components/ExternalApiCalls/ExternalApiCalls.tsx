@@ -36,6 +36,7 @@ export const initiatePaystackTransaction = async () => {
 
     if (response.ok) {
       console.log("Transaction initialized:", data);
+      return data;
       // Redirect user to the Paystack payment URL using data.transactionData.accessCode
     } else {
       console.error("Error initializing transaction:", data);
