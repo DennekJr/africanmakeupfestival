@@ -56,7 +56,7 @@ export const CheckoutForm = () => {
   });
 
   const handleStripePayment = async (e) => {
-    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
     // setLoading(true);
     e.preventDefault();
     const response = await fetch('/api/stripe', {
