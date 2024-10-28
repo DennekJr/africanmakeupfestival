@@ -68,6 +68,7 @@ export const CheckoutForm = () => {
     });
     const {sessionId} = await response.json();
     const stripe = await stripePromise;
+    if(stripe === 'null') return;
     if ("redirectToCheckout" in stripe) {
       const { error } = await stripe.redirectToCheckout({ sessionId });
       if (error) console.warn('Stripe Checkout error:', error.message);
