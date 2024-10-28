@@ -1,6 +1,5 @@
 // This is your test secret API key.
 import { Stripe } from "stripe";
-import clientPromise from "../../lib/mongodb";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -25,7 +24,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 //
 // };
 
-export async function POST(req) {
+export async function POST() {
   try {
     // const { items } = req.body;
 

@@ -2,7 +2,7 @@
 import * as React from "react";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Box } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
@@ -38,9 +38,7 @@ const billingFormValues = {
 
 export const CheckoutForm = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-  const { tickets, myTicket, total, billingInfo, leftOverTickets, payStackCheckout } =
+  const { tickets, formErrors, myTicket, total, billingInfo, leftOverTickets, payStackCheckout } =
     useAppSelector((state) => state.checkout);
   useEffect(() => {
     if (total === 0) {
@@ -59,7 +57,7 @@ export const CheckoutForm = () => {
 
   const handleStripePayment = async (e) => {
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-    setLoading(true);
+    // setLoading(true);
     e.preventDefault();
     const response = await fetch('/api/stripe', {
       method: 'POST',
@@ -74,12 +72,10 @@ export const CheckoutForm = () => {
       const { error } = await stripe.redirectToCheckout({ sessionId });
       if (error) console.warn('Stripe Checkout error:', error.message);
     }
-    setLoading(false);
-    // if (Object.keys(formErrors).length === 0) {
+    // setLoading(false);
+    if (Object.keys(formErrors).length === 0) {
 
-    // } else {
-    //   setShowAlert(true);
-    // }
+    }
   };
 
   const handlePaystackPayment = async () => {

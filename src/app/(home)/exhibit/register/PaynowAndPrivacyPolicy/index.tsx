@@ -3,7 +3,6 @@ import { FortyFiveDegreeArrow } from "@/app/(home)/media/Hero/utils";
 import { Button, Checkbox } from "@mui/material";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { useAppSelector } from "@/app/lib/hooks";
 import { useState } from "react";
 
 const labelProps = {
