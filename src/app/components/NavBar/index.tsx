@@ -114,7 +114,7 @@ export default function NavBar() {
                       <ListItemText
                         primary={name}
                         primaryTypographyProps={{ fontWeight: "400" }}
-                        className={"itemText text-[#ADACAF]"}
+                        className={"itemText " + path !== "/" ? 'text-[#ADACAF]' : '!text-white'}
                       />
                       {name === "Exhibitors" && exhibitorIcon(name)}
                       {name === "Travel" && exhibitorIcon(name)}

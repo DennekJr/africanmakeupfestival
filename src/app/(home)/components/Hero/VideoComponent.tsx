@@ -7,7 +7,7 @@ export async function VideoComponent({ fileName }) {
   const { blobs } = await list({
     prefix: fileName,
     limit: 1,
-    token: process.env.BLOB_READ_WRITE_TOKEN,
+    token: process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN,
   });
   const { url } = blobs[0];
   return (

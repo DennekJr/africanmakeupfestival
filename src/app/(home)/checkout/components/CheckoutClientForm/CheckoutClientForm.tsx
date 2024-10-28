@@ -7,7 +7,7 @@ import * as React from "react";
 import {
   BillingFormSchema,
   initialValues,
-  setBillingInfo, setFormErrors
+  setBillingInfo, setFormErrors, setPayStackCheckoutData
 } from "../../../../lib/features/checkout/checkoutSlice";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../lib/hooks";
@@ -16,13 +16,16 @@ import { initialFormData } from "@/app/(home)/exhibit/register/RegisterBoothForm
 
 export const CheckoutClientForm = () => {
   const [values, setValues] = useState(initialValues);
-  const { myTicket } = useAppSelector((state) => state.checkout);
+  const { myTicket, total } = useAppSelector((state) => state.checkout);
   const dispatch = useAppDispatch();
   const handleInputChange = (e, name) => {
     const newState = values.map((item) => {
       if (item.name !== name.name) {
         return item;
       } else {
+        if(item.name === 'Email'){
+          dispatch(setPayStackCheckoutData({email: e.target.value, total: total * 100})); // store total in kobo
+        }
         return {
           ...item,
           value: e.target.value,

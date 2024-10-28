@@ -19,7 +19,7 @@ export const postTicket = async (ticketData) => {
   }
 };
 
-export const initiatePaystackTransaction = async () => {
+export const initiatePaystackTransaction = async ({ email, total }) => {
   try {
     const response = await fetch("/api/paystack", {
       method: "POST",
@@ -27,8 +27,8 @@ export const initiatePaystackTransaction = async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: "customer@email.com", // Replace with actual customer email
-        amount: 500000, // Amount in kobo (Paystack uses kobo for amounts)
+        email: email, // Replace with actual customer email
+        amount: total, // Amount in kobo (Paystack uses kobo for amounts)
       }),
     });
 

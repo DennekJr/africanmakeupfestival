@@ -96,6 +96,7 @@ type initialStateType = {
   billingInfo: { [ticket: string]: { name: string; value: string }[] };
   leftOverTicketFormValues: unknown[];
   total: number;
+  payStackCheckout: {email: string, total: number};
 };
 
 const initialState: initialStateType = {
@@ -139,6 +140,7 @@ const initialState: initialStateType = {
     ],
   },
   total: 0,
+  payStackCheckout: {email: '', total: 0},
 };
 
 export const ExplorerTicket = 14999;
@@ -159,6 +161,9 @@ export const checkoutSlice = createSlice({
         ...state.formValues,
         [action.payload.id]: action.payload.data,
       };
+    },
+    setPayStackCheckoutData: (state, action) => {
+      state.payStackCheckout = action.payload;
     },
     setFormErrors: (state, action) => {
       console.log('Form Error checkout slice', action.payload);
@@ -217,5 +222,6 @@ export const {
   setBillingInfo,
   setBillingTotal,
   setFormErrors,
+  setPayStackCheckoutData,
 } = checkoutSlice.actions;
 export default checkoutSlice.reducer;

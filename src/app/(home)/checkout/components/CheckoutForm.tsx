@@ -21,6 +21,9 @@ import {
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
 import PaystackPop from '@paystack/inline-js';
+import { loadStripe } from '@stripe/stripe-js';
+import * as process from "process";
+
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -31,10 +34,13 @@ const billingFormValues = {
   "Organisation Role": "",
   "Organisation Website": "",
 };
+
+
 export const CheckoutForm = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const { tickets, total } =
+  const { tickets, myTicket, total, billingInfo, leftOverTickets, payStackCheckout } =
     useAppSelector((state) => state.checkout);
   useEffect(() => {
     if (total === 0) {
@@ -51,21 +57,40 @@ export const CheckoutForm = () => {
     },
   });
 
-  const handleSubmit = async (e) => {
+  const handleStripePayment = async (e) => {
+    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+    setLoading(true);
     e.preventDefault();
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: { myTicket: myTicket, total: total } // Example item,
+      }),
+    });
+    const {sessionId} = await response.json();
+    const stripe = await stripePromise;
+    if ("redirectToCheckout" in stripe) {
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) console.warn('Stripe Checkout error:', error.message);
+    }
+    setLoading(false);
     // if (Object.keys(formErrors).length === 0) {
-      initiatePaystackTransaction().then((e) => {
-          const accessCode = e.transactionData.access_code;
-          popup.resumeTransaction(accessCode);
-        }
-        // postTicket({
-        //   billingInfo: billingInfo,
-        //   leftOverTickets: leftOverTickets,
-        // }).then((e) => console.log("Post call" + e)),
-      );
+
     // } else {
     //   setShowAlert(true);
     // }
+  };
+
+  const handlePaystackPayment = async () => {
+    initiatePaystackTransaction(payStackCheckout).then(async (e) => {
+      const accessCode = e.transactionData.access_code;
+      popup.resumeTransaction(accessCode)
+      await postTicket({
+        billingInfo: billingInfo,
+        leftOverTickets: leftOverTickets,
+      });
+    });
   };
 
   return (
@@ -146,12 +171,21 @@ export const CheckoutForm = () => {
               </div>
             </Box>
             <button
-              onClick={handleSubmit}
+              onClick={handlePaystackPayment}
               type={"submit"}
               className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                CONTINUE TO PAYMENT
+                CONTINUE TO LOCAL PAYMENT
+              </span>
+            </button>
+            <button
+              onClick={handleStripePayment}
+              type={"submit"}
+              className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+            >
+              <span className="text-center w-full h-full">
+                CONTINUE TO INTERNATIONAL PAYMENT
               </span>
             </button>
           </Box>

@@ -12,12 +12,16 @@ export const CssTextField = styled(TextField)({
   "&:hover": {
     "&& fieldset": {
       borderColor: "#D0D4DD",
-      borderWidth: '2px',
-    }
+      borderWidth: "2px",
+    },
   },
   "& textarea": {
-    color: '#000000',
-  }
+    color: "#000000",
+  },
+  "& .mui-rg9sn3-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill": {
+    "-webkit-box-shadow": "0 0 0 100px white inset",
+    "-webkit-text-fill-color": "black",
+  },
 });
 
 export const CssTextArea = styled(TextareaAutosize)({
@@ -31,9 +35,9 @@ export const CssTextArea = styled(TextareaAutosize)({
   "&:hover": {
     "&& fieldset": {
       borderColor: "#D0D4DD",
-      borderWidth: '2px',
-    }
-  }
+      borderWidth: "2px",
+    },
+  },
 });
 
 export const CssSelectField = styled(Select)({
@@ -46,18 +50,19 @@ export const CssSelectField = styled(Select)({
   "&:hover": {
     "&& fieldset": {
       borderColor: "#D0D4DD",
-      borderWidth: '1.5px',
-    }
+      borderWidth: "1.5px",
+    },
   },
-  '& #demo-simple-select': {
+  "& #demo-simple-select": {
     color: "#1E1C21",
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
   },
 
   ".mui-99wn1p-MuiList-root-MuiMenu-list": {
-    background: '#ffffff !important'
+    background: "#ffffff !important",
   },
-  // '& .mui-hv4rbq-MuiInputBase-root-MuiOutlinedInput-root.Mui-error' : {
-  //   borderColor: '#D0D4DD !important',
-  // }
+  "& .mui-rg9sn3-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill": {
+    "-webkit-box-shadow": "0 0 0 100px white inset",
+    "-webkit-text-fill-color": "black",
+  },
 });
