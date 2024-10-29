@@ -224,7 +224,7 @@ export const RegisterBoothForm = () => {
                     formik.handleChange(e);
                     handleChange(e);
                   }}
-                  multiline={"true"}
+                  multiline={true}
                   minRows={4}
                   name={field.id}
                   onBlur={formik.handleBlur}
