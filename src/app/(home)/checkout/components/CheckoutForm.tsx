@@ -130,7 +130,7 @@ export const CheckoutForm = () => {
               </p>
             </Box>
             <Box className={"space-y-5"}>
-              <CheckoutClientForm formik={formik} />
+              <CheckoutClientForm />
             </Box>
           </Box>
           <Box className="hidden lg:block lg:col-start-8 lg:col-span-4 space-y-8">
