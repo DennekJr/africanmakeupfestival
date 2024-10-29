@@ -9,10 +9,6 @@ import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
 import {
   BillingFormSchema,
-  DelegateTicket,
-  ExplorerTicket,
-  FounderTicket,
-  InvestorTicket,
 } from "../../../lib/features/checkout/checkoutSlice";
 import {
   initiatePaystackTransaction,
@@ -23,6 +19,7 @@ import { useFormik } from "formik";
 import PaystackPop from '@paystack/inline-js';
 import { loadStripe } from '@stripe/stripe-js';
 import * as process from "process";
+import { getTicketCost } from "@/app/(home)/checkout/components/utils";
 
 
 const billingFormValues = {
@@ -38,7 +35,7 @@ const billingFormValues = {
 
 const CheckoutForm = () => {
   const router = useRouter();
-  const { tickets, formErrors, myTicket, total, billingInfo, leftOverTickets, payStackCheckout } =
+  const { tickets, formErrors, total, billingInfo, leftOverTickets, payStackCheckout } =
     useAppSelector((state) => state.checkout);
   useEffect(() => {
     if (total === 0) {
@@ -56,14 +53,30 @@ const CheckoutForm = () => {
   });
 
   const handleStripePayment = async (e) => {
+    e.preventDefault();
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
     // setLoading(true);
-    e.preventDefault();
+    const stripeData = [];
+    Object.values(tickets).filter((item) => item.value > 0).map((ticket) => {
+      const value = getTicketCost(ticket);
+      const item = {
+        price_data: {
+          currency: 'ngn',
+          product_data: {
+            name: String(ticket.ticketName).charAt(0).toUpperCase() + String(ticket.ticketName).slice(1),
+          },
+          unit_amount: value * 100,
+        },
+        quantity: ticket.value,
+      }
+      stripeData.push(item);
+    });
+
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        items: { myTicket: myTicket, total: total } // Example item,
+        items: stripeData // Example item,
       }),
     });
     const {sessionId} = await response.json();
@@ -141,14 +154,7 @@ const CheckoutForm = () => {
               <div className="border-y border-[#7F7D82] space-y-2 py-3">
                 {Object.values(tickets).map((ticket, index) => {
                   if (ticket.value < 1) return;
-                  const value =
-                    ticket.ticketName === "investor"
-                      ? InvestorTicket * ticket.value
-                      : ticket.ticketName === "founder"
-                        ? FounderTicket * ticket.value
-                        : ticket.ticketName === "explorer"
-                          ? ExplorerTicket * ticket.value
-                          : DelegateTicket * ticket.value;
+                  const value = getTicketCost(ticket);
                   return (
                     <div
                       key={index}

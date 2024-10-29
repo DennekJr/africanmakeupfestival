@@ -1,5 +1,11 @@
 import { styled } from "@mui/system";
 import { Select, TextareaAutosize, TextField } from "@mui/material";
+import {
+  DelegateTicket,
+  ExplorerTicket,
+  FounderTicket,
+  InvestorTicket
+} from "@/app/lib/features/checkout/checkoutSlice";
 
 export const CssTextField = styled(TextField)({
   "& label": {
@@ -66,3 +72,13 @@ export const CssSelectField = styled(Select)({
     "-webkit-text-fill-color": "black",
   },
 });
+
+export const getTicketCost = (ticket) => {
+  return ticket.ticketName === "investor"
+    ? InvestorTicket * ticket.value
+    : ticket.ticketName === "founder"
+      ? FounderTicket * ticket.value
+      : ticket.ticketName === "explorer"
+        ? ExplorerTicket * ticket.value
+        : DelegateTicket * ticket.value;
+}
