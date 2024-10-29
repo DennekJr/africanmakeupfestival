@@ -267,7 +267,7 @@ export const RegisterBoothForm = () => {
           );
         })}
       </FormGroup>
-      <PaynowAndPrivacyPolicy formik={formik} handlePayment={handlePayment} />
+      <PaynowAndPrivacyPolicy handlePayment={handlePayment} />
     </form>
   );
 };
