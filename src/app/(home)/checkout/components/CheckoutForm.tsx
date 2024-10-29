@@ -87,7 +87,7 @@ const CheckoutForm = () => {
         billingInfo: billingInfo,
         leftOverTickets: leftOverTickets,
       });
-    });
+    }).then((result) => console.log(result));
   };
 
   return (
