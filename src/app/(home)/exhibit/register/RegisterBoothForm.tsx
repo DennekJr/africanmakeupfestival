@@ -60,7 +60,7 @@ export const RegisterBoothForm = () => {
   });
 
   console.log('register booth', formik.errors)
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     const newFormData: ExhibitionBoothBillingInfo = {
       ...formData,
