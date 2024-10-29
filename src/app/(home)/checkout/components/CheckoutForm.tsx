@@ -36,7 +36,7 @@ const billingFormValues = {
 };
 
 
-export const CheckoutForm = () => {
+const CheckoutForm = () => {
   const router = useRouter();
   const { tickets, formErrors, myTicket, total, billingInfo, leftOverTickets, payStackCheckout } =
     useAppSelector((state) => state.checkout);
@@ -206,3 +206,5 @@ export const CheckoutForm = () => {
     </form>
   );
 };
+
+export default CheckoutForm;
