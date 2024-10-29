@@ -56,7 +56,7 @@ const CheckoutForm = () => {
     e.preventDefault();
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
     // setLoading(true);
-    const stripeData = [];
+    const stripeData:{price_data: {currency: string, product_data: {name: string}, unit_amount: number}, quantity: number}[] = [];
     Object.values(tickets).filter((item) => item.value > 0).map((ticket) => {
       const value = getTicketCost(ticket);
       const item = {
