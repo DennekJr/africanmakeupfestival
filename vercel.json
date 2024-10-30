@@ -1,6 +1,6 @@
 {
   "functions": {
-    "src/api/*.js": {
+    "api/paystack/*.js": {
       "maxDuration": 10
     }
   }
