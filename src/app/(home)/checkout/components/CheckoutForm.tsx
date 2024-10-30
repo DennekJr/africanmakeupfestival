@@ -101,7 +101,7 @@ const CheckoutForm = () => {
         leftOverTickets: leftOverTickets,
       });
     }).catch((error) => {
-      console.error("Paystack transaction error:", error);
+      console.error("Paystack transaction error: ", error);
     });
   };
 
