@@ -8,6 +8,19 @@
   --color: hsl(240 10% 3.9%);
 }
 
+input,
+select {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+input:-webkit-autofill {
+  transition: background-color 5000s;
+}
+input:is(:-webkit-autofill, :autofill) {
+  background: none;
+}
+
+
 body {
   color: var(--foreground);
   background: var(--background);
