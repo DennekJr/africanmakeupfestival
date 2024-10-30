@@ -95,12 +95,14 @@ const CheckoutForm = () => {
   const handlePaystackPayment = async () => {
     initiatePaystackTransaction(payStackCheckout).then(async (e) => {
       const accessCode = e.transactionData.access_code;
-      popup.resumeTransaction(accessCode)
+      popup.resumeTransaction(accessCode);
       await postTicket({
         billingInfo: billingInfo,
         leftOverTickets: leftOverTickets,
       });
-    }).then((result) => console.log(result));
+    }).catch((error) => {
+      console.error("Paystack transaction error:", error);
+    });
   };
 
   return (
