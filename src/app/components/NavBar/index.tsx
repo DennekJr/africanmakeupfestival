@@ -27,6 +27,10 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(initialState);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
+  const getPath = (route: string) => {
+    console.log(path, route, path === route);
+    return path === route;
+  }
 
   const redirectToHome = (route: string) => {
     if (path !== "/") {
@@ -114,7 +118,7 @@ export default function NavBar() {
                       <ListItemText
                         primary={name}
                         primaryTypographyProps={{ fontWeight: "400" }}
-                        className={"itemText " + path !== "/" ? 'text-[#ADACAF]' : '!text-white'}
+                        className={'itemText ' + getPath(path?.toLowerCase() as string) ? '' : 'text-[#ADACAF]'}
                       />
                       {name === "Exhibitors" && exhibitorIcon(name)}
                       {name === "Travel" && exhibitorIcon(name)}

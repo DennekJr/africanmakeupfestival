@@ -12,7 +12,6 @@ import {
 } from "../../../lib/features/checkout/checkoutSlice";
 import {
   initiatePaystackTransaction,
-  postTicket,
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -35,7 +34,7 @@ const billingFormValues = {
 
 const CheckoutForm = () => {
   const router = useRouter();
-  const { tickets, formErrors, total, billingInfo, leftOverTickets, payStackCheckout } =
+  const { tickets, formErrors, total, payStackCheckout } =
     useAppSelector((state) => state.checkout);
   useEffect(() => {
     if (total === 0) {
@@ -84,6 +83,7 @@ const CheckoutForm = () => {
     if(stripe === null) return;
     if ("redirectToCheckout" in stripe) {
       const { error } = await stripe.redirectToCheckout({ sessionId });
+      console.log('session id', sessionId,)
       if (error) console.warn('Stripe Checkout error:', error.message);
     }
     // setLoading(false);
@@ -96,10 +96,10 @@ const CheckoutForm = () => {
     initiatePaystackTransaction(payStackCheckout).then(async (e) => {
       const accessCode = e.transactionData.access_code;
       popup.resumeTransaction(accessCode);
-      await postTicket({
-        billingInfo: billingInfo,
-        leftOverTickets: leftOverTickets,
-      });
+      // await postTicket({
+      //   billingInfo: billingInfo,
+      //   leftOverTickets: leftOverTickets,
+      // });
     }).catch((error) => {
       console.error("Paystack transaction error: ", error);
     });

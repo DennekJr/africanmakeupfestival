@@ -8,11 +8,10 @@ import { Minus, Plus, TicketTag } from "./utils";
 import { FortyFiveDegreeArrow } from "../../../(home)/sponsor/Hero/utils";
 import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
 import {
-  setTickets,
-  InvestorTicket,
-  FounderTicket, ExplorerTicket, DelegateTicket, setBillingTotal
+  setTickets, setBillingTotal
 } from "../../../lib/features/checkout/checkoutSlice";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
+import { getTicketCost } from "@/app/(home)/checkout/components/utils";
 
 export const TicketPurchase = () => {
   const initialState = [
@@ -61,14 +60,7 @@ export const TicketPurchase = () => {
     const newTotal = Object.values(newState).reduce((acc, ticket) => {
       if (ticket.value < 1) return acc;
 
-      const value =
-        ticket.ticketName === 'investor'
-          ? InvestorTicket * ticket.value
-          : ticket.ticketName === 'founder'
-            ? FounderTicket * ticket.value
-            : ticket.ticketName === 'explorer'
-              ? ExplorerTicket * ticket.value
-              : DelegateTicket * ticket.value;
+      const value = getTicketCost(ticket);
 
       return acc + value;
     }, 0);

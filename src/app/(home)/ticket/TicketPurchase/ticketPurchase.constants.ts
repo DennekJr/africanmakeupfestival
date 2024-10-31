@@ -1,4 +1,6 @@
 import { TicketPurchaseTypes } from "@/app/(home)/ticket/TicketPurchase/ticketPurchase.types";
+import {ExplorerTicket, FounderTicket, InvestorTicket, DelegateTicket} from '../../../lib/features/checkout/checkoutSlice'
+import { formatCurrency } from "@/app/(home)/checkout/components/utils";
 
 export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
   explorer: {
@@ -11,7 +13,7 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
       "Access to main-stage sessions",
       "Access to any perks from partners",
     ],
-    price: "NGN 14,999",
+    price: "NGN " + formatCurrency(ExplorerTicket),
   },
   founder: {
     id: "founder",
@@ -27,7 +29,7 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
       "Breakfast only.",
       "Access to available ecosystem mixers (If any)",
     ],
-    price: "NGN 59,999",
+    price: "NGN " + formatCurrency(FounderTicket),
     ticketTag: {
       tagIcon: "/images/emoji-grid/fire.webp",
       tagType: "Most Popular",
@@ -50,7 +52,7 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
       "Breakfast and lunch included",
       "Access to ecosystem mixers",
     ],
-    price: "NGN 125,000",
+    price: "NGN " + formatCurrency(InvestorTicket),
     ticketTag: {
       tagIcon: "/images/timer.webp",
       tagType: "Most Popular",
@@ -73,6 +75,6 @@ delegate: {
       "Breakfast and lunch included",
       "Access to ecosystem mixers",
     ],
-    price: "NGN 187,500",
+    price: "NGN " + formatCurrency(DelegateTicket),
   },
 };

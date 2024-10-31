@@ -4,7 +4,8 @@ import axios from 'axios';
 export async function POST(request) {
   try {
     const client = await clientPromise;
-    const db = client.db('africamakeupfestival'); // Replace with your MongoDB database name
+    const db = client.db('AfricaMakeupFestival'); // Replace with your MongoDB database name
+
 
     // Parse the request body
     const { email, amount } = await request.json(); // Assuming you're sending 'email' and 'amount' in the request body
@@ -25,13 +26,14 @@ export async function POST(request) {
       const transactionData = paystackResponse.data.data;
 
       // Store the transaction data in MongoDB
-      const result = await db.collection('transactions').insertOne({
+      const result = await db.collection('Ticket-Types').insertOne({
         email: email,
         amount: amount,
         transactionRef: transactionData.reference,
         accessCode: transactionData.access_code,
-        createdAt: new Date(),
+        createdAt: new Date(), // change to date.now
       });
+      console.log("Db transaction result", result);
 
       return new Response(JSON.stringify({ message: 'Transaction initialized successfully', transactionData, result }), {
         status: 200,
