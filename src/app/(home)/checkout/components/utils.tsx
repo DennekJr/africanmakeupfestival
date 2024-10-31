@@ -82,3 +82,7 @@ export const getTicketCost = (ticket) => {
         ? ExplorerTicket * ticket.value
         : DelegateTicket * ticket.value;
 }
+
+export const formatCurrency = (x: number) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

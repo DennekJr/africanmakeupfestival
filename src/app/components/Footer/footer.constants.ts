@@ -38,7 +38,7 @@ export const FOOTER_MENULINKS: Record<string, FooterItem> = {
     subLinks: [
       { id: "volunteerAtASF", name: "Volunteer at ASF", route: "" },
       { id: "applyToSpeak", name: "Apply to Speak", route: "" },
-      { id: "contactUs", name: "Contact Us", route: "" },
+      { id: "contactUs", name: "Contact Us", route: "/contactus" },
       { id: "beAMentor", name: "Be a Mentor", route: "" },
     ],
     disabled: false,
