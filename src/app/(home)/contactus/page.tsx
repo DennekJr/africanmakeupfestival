@@ -4,15 +4,15 @@ import {StarIcon} from './utils';
 
 const ContactUs: () => Promise<React.JSX.Element> = async () => {
   return (
-    <Box classNameName={"flex flex-col items-center justify-between text-black"}>
-      <Box classNameName={"w-full grid lg:grid-cols-2 min-h-screen"}>
-        <Box classNameName={"lg:py-32 bg-[#0A090B]"}>
+    <Box className={"flex flex-col items-center justify-between text-black"}>
+      <Box className={"w-full grid lg:grid-cols-2 min-h-screen"}>
+        <Box className={"lg:py-32 bg-[#0A090B]"}>
           <Box
-            classNameName={
+            className={
               "w-full text-[#FCFCFC] px-6 lg:px-0 py-16 flex flex-col gap-20 ml-auto max-w-[660px]"
             }
           >
-            <div classNameName="grid gap-5">
+            <div className="grid gap-5">
               <pre
                 id="undefined-0"
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
