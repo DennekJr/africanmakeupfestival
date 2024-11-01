@@ -41,6 +41,26 @@ export const PostStripeTicketPurchases = async (ticketData) => {
     console.error("Request failed:", error);
   }
 };
+export const PostTransaction = async (ticketData) => {
+  try {
+    const response = await fetch("/api/transactions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(ticketData), // Stringify the object
+    });
+
+    const data = await response.json(); // Parse the JSON response
+    if (response.ok) {
+      console.log("Ticket posted successfully:", data);
+    } else {
+      console.error("Error posting ticket:", data);
+    }
+  } catch (error) {
+    console.error("Request failed:", error);
+  }
+};
 
 
 type ticketPurchaseDataType = {

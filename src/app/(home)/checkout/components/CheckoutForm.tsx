@@ -11,7 +11,7 @@ import {
   BillingFormSchema,
 } from "../../../lib/features/checkout/checkoutSlice";
 import {
-  initiatePaystackTransaction, PostPaystackTicketPurchases, PostStripeTicketPurchases
+  initiatePaystackTransaction, PostPaystackTicketPurchases, PostStripeTicketPurchases, PostTransaction
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -88,7 +88,17 @@ const CheckoutForm = () => {
     const stripe = await stripePromise;
     if(stripe === null) return;
     if ("redirectToCheckout" in stripe) {
-      await PostStripeTicketPurchases({ ticketData, session });
+      await PostStripeTicketPurchases({ ticketData, session }).then(async () => {
+          const transactionToPost = {
+            Paystack_Id: '',
+            Stripe_Id: sessionId,
+            Currency: session.currency,
+            Email: payStackCheckout.email,
+            UnitNumber: payStackCheckout.total,
+          }
+          console.log("Transaction to post", transactionToPost);
+          await PostTransaction(transactionToPost);
+        })
       const { error } = await stripe.redirectToCheckout({ sessionId });
       if (error) console.warn('Stripe Checkout error:', error.message);
     }
@@ -107,9 +117,19 @@ const CheckoutForm = () => {
       }
     };
     initiatePaystackTransaction(ticketPurchaseData).then(async ({ticketData, transactionData}) => {
-      // const accessCode = transactionData.access_code;
-      // popup.resumeTransaction(accessCode);
+      const accessCode = transactionData.access_code;
+      popup.resumeTransaction(accessCode);
       await PostPaystackTicketPurchases({ ticketData, transactionData });
+      return {paystackData: payStackCheckout, transactionData: transactionData};
+    }).then(async ({paystackData, transactionData}) => {
+      const transactionToPost = {
+        Paystack_Id: transactionData.reference,
+        Stripe_Id: '',
+        Currency: 'ngn',
+        Email: paystackData.email,
+        UnitNumber: paystackData.total,
+      }
+      await PostTransaction(transactionToPost);
     }).catch((error) => {
       console.error("Paystack transaction error: ", error);
     });
