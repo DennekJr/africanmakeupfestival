@@ -28,7 +28,6 @@ export default function NavBar() {
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
   const getPath = (route: string) => {
-    console.log(path, route, path === route);
     return path === route;
   }
 

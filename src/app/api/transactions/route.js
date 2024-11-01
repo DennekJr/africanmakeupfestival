@@ -1,28 +1,4 @@
-import clientPromise from '../../lib/mongodb';
-
-// export default async function handler(req, res) {
-//   try {
-//     const client = await clientPromise;
-//     const db = client.db('myDatabase'); // Replace with your database name
-//
-//     switch (req.method) {
-//       case 'POST':
-//         const { ticketName } = req.body;
-//         const newTicket = await db.collection('tickets').insertOne({ name: ticketName });
-//         res.status(201).json(newTicket);
-//         break;
-//       case 'GET':
-//         const tickets = await db.collection('tickets').find({}).toArray();
-//         res.status(200).json(tickets);
-//         break;
-//       default:
-//         res.setHeader('Allow', ['GET', 'POST']);
-//         res.status(405).end(`Method ${req.method} Not Allowed`);
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error: 'Database connection failed' + error });
-//   }
-// }
+import clientPromise from '../../lib/mongo/mongodb';
 
 export async function GET() {
   try {

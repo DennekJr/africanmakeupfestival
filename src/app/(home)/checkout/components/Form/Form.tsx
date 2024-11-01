@@ -22,6 +22,7 @@ export const BillingForm = ({ ticket }: { ticket: string }) => {
       quantity: 1,
       [id]: value,
     };
+    console.log('Form values', { id: ticket, data: newFormData });
     setFormData(newFormData);
     dispatch(setFormValues({ id: ticket, data: newFormData }));
     dispatch(setOtherTicketsFormErrors({ id: ticket, data: formik.errors }));

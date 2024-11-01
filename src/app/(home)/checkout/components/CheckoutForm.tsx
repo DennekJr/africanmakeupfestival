@@ -11,7 +11,7 @@ import {
   BillingFormSchema,
 } from "../../../lib/features/checkout/checkoutSlice";
 import {
-  initiatePaystackTransaction,
+  initiatePaystackTransaction, PostPaystackTicketPurchases, PostStripeTicketPurchases
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -34,7 +34,7 @@ const billingFormValues = {
 
 const CheckoutForm = () => {
   const router = useRouter();
-  const { tickets, formErrors, total, payStackCheckout } =
+  const { tickets, formErrors, total, payStackCheckout, billingInfo, formValues } =
     useAppSelector((state) => state.checkout);
   useEffect(() => {
     if (total === 0) {
@@ -54,7 +54,6 @@ const CheckoutForm = () => {
   const handleStripePayment = async (e) => {
     e.preventDefault();
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
-    // setLoading(true);
     const stripeData:{price_data: {currency: string, product_data: {name: string}, unit_amount: number}, quantity: number}[] = [];
     Object.values(tickets).filter((item) => item.value > 0).map((ticket) => {
       const value = getTicketCost(ticket);
@@ -70,36 +69,47 @@ const CheckoutForm = () => {
       }
       stripeData.push(item);
     });
-
+    const ticketPurchaseData = {
+      stripeCheckoutData: stripeData,
+      ticketData: {
+        buyerForm: billingInfo,
+        otherTicketForms: formValues
+      }
+    };
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        items: stripeData // Example item,
+        items: ticketPurchaseData // Example item,
       }),
     });
-    const {sessionId} = await response.json();
+    const {session, ticketData} = await response.json();
+    const sessionId = session.id;
     const stripe = await stripePromise;
     if(stripe === null) return;
     if ("redirectToCheckout" in stripe) {
+      await PostStripeTicketPurchases({ ticketData, session });
       const { error } = await stripe.redirectToCheckout({ sessionId });
-      console.log('session id', sessionId,)
       if (error) console.warn('Stripe Checkout error:', error.message);
     }
-    // setLoading(false);
     if (Object.keys(formErrors).length === 0) {
 
     }
   };
 
   const handlePaystackPayment = async () => {
-    initiatePaystackTransaction(payStackCheckout).then(async (e) => {
-      const accessCode = e.transactionData.access_code;
-      popup.resumeTransaction(accessCode);
-      // await postTicket({
-      //   billingInfo: billingInfo,
-      //   leftOverTickets: leftOverTickets,
-      // });
+    console.log('Form values', formValues);
+    const ticketPurchaseData = {
+      payStackCheckout: payStackCheckout,
+      ticketData: {
+        buyerForm: billingInfo,
+        otherTicketForms: formValues
+      }
+    };
+    initiatePaystackTransaction(ticketPurchaseData).then(async ({ticketData, transactionData}) => {
+      // const accessCode = transactionData.access_code;
+      // popup.resumeTransaction(accessCode);
+      await PostPaystackTicketPurchases({ ticketData, transactionData });
     }).catch((error) => {
       console.error("Paystack transaction error: ", error);
     });
@@ -203,7 +213,7 @@ const CheckoutForm = () => {
           displayTicketDropdown={true}
         />
         <HiddenFormDropdown
-          title={"Assign other tickets to different e-mail addresses?"}
+          title={"Assign other paystackTickets to different e-mail addresses?"}
           subTitle={
             "Tickets will only be assigned to the email address(es) you provide"
           }

@@ -51,6 +51,8 @@ export const BillingFormSchema = Yup.object().shape({
     .required("Required"),
   'Organisation Role': Yup.string()
     .required("Required"),
+  'How did you hear about the event': Yup.string()
+    .required("Required"),
   'Email': Yup.string().email("Invalid email").required("Required"),
 });
 
@@ -64,6 +66,7 @@ export const initialValues = [
   { name: "Organisation", value: "" },
   { name: "Organisation Website", value: "" },
   { name: "Organisation Role", value: "" },
+  { name: "How did you hear about the event", value: "" },
 ];
 
 export const initialFormValue = {
@@ -186,7 +189,7 @@ export const checkoutSlice = createSlice({
       state.total = action.payload;
     },
 
-    // Set the leftover value as an array of leftover tickets
+    // Set the leftover value as an array of leftover paystackTickets
     setLeftoverTickets: (state, action) => {
       action.payload.forEach((ticket, index) => {
         state.leftOverTicketFormValues.push(...state.leftOverTicketFormValues, {
@@ -198,6 +201,7 @@ export const checkoutSlice = createSlice({
 
     setLeftOverTicketsForms: (state, action) => {
       state.leftOverTicketFormValues = action.payload;
+      console.log('left over ticket form values', action.payload);
     },
 
     resetTickets: (state) => {
