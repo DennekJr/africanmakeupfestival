@@ -1,10 +1,11 @@
 import { formatCurrency } from "@/app/(home)/checkout/components/utils";
 import { Box } from "@mui/material";
 import { useAppSelector } from "@/app/lib/hooks";
+import { ExhibitionBoothBillingInfo } from "@/app/lib/features/exhibition/exhibitionSlice";
 
 export const CheckoutItems = () => {
   const { formValues, total } = useAppSelector((state) => state.exhibition);
-  const formData = Object.values(formValues)[2];
+  const formData:ExhibitionBoothBillingInfo = Object.values(formValues)[2] as ExhibitionBoothBillingInfo;
   return <Box className="grid gap-8">
     <h3 className="text-5xl tracking-[-1px] font-medium">
       Cart Items
@@ -12,9 +13,9 @@ export const CheckoutItems = () => {
     <ul className="grid gap-2.5 w-full max-w-[448px] mr-auto">
       <li className="w-full flex justify-between items-start gap-2 text-xl">
         <p className="font-medium">
-          {(formData as object).form_booth.slice(
+          {formData.form_booth.slice(
             0,
-            (formData as object).form_booth.indexOf(" ("),
+            formData.form_booth.indexOf(" ("),
           )}
         </p>
         <p className="text-[#C8C8CB]">
