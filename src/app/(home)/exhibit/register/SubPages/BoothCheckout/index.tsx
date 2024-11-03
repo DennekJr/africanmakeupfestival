@@ -1,14 +1,17 @@
 import { Box, FormControlLabel, Radio } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
 import { DiscountCheckout } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/DiscountCheckout";
 import { Summary } from "@/app/(home)/exhibit/register/SubPages/BoothCheckout/Summary";
-import '../subpages.styles.css';
+import "../subpages.styles.css";
+import { useAppDispatch, useAppSelector } from "@/app/lib/hooks";
+import { setPaymentMethod } from "@/app/lib/features/register/registerSlice";
 
 export const BoothCheckout = () => {
-  const [isChecked, setIsChecked] = useState('');
+  const { total } = useAppSelector((state) => state.exhibition);
+  const { addOnTotal, paymentMethod } = useAppSelector((state) => state.register);
+  const dispatch = useAppDispatch();
   return (
-    <section id={'pageTop'} className={"w-full mt-16 animateContainer"}>
+    <section id={"pageTop"} className={"w-full mt-16 animateContainer"}>
       <form
         className={
           "w-full py-0 pb-8 md:py-8 lg:py-24 xl:py-28 2xl:py-32 grid gap-24"
@@ -43,17 +46,23 @@ export const BoothCheckout = () => {
                   style={{ outline: "none" }}
                 >
                   <div
-                    className="space-y-2 flex rounded-2xl px-6 py-12 border border-gray-1100"
+                    onClick={() => dispatch(setPaymentMethod("paystack"))}
+                    className="space-y-2 flex rounded-2xl px-6 py-12 border border-[#2C2A32]"
                     style={{ position: "relative" }}
                   >
                     <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#FCFCFC] text-base leading-[22.4px] font-normal flex justify-between flex-1">
                       <div
                         className="flex items-center space-x-3 space-y-0 "
-                        onClick={() => setIsChecked('paystack')}
                       >
                         <FormControlLabel
                           value="Paystack"
-                          control={<Radio className={'!text-white'} defaultChecked={isChecked === 'paystack'} />}
+                          control={
+                            <Radio
+                              className={"!text-white"}
+                              // onClick={() => console.log("clicked")}
+                              checked={paymentMethod === "paystack"}
+                            />
+                          }
                           label={""}
                         />
                         <input
@@ -84,18 +93,24 @@ export const BoothCheckout = () => {
                     </label>
                   </div>
                   <div
-                    className="space-y-2 flex rounded-2xl px-6 py-12 border border-gray-1100"
+                    className="space-y-2 flex rounded-2xl px-6 py-12 border border-[#2C2A32]"
                     style={{ position: "relative" }}
+                    onClick={() => dispatch(setPaymentMethod("stripe"))}
                   >
                     <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#FCFCFC] text-base leading-[22.4px] font-normal flex flex-col space-y-2.5 flex-1">
                       <div className="flex justify-between flex-1">
                         <div
                           className="flex items-center space-x-3 space-y-0 "
-                          onClick={() => setIsChecked('stripe')}
                         >
                           <FormControlLabel
                             value="Stripe"
-                            control={<Radio className={'!text-white'} defaultChecked={isChecked === 'stripe'} />}
+                            control={
+                              <Radio
+                                className={"!text-white"}
+                                // onClick={() => console.log("clicked")}
+                                checked={paymentMethod === "stripe"}
+                              />
+                            }
                             label={""}
                           />
                           <input
@@ -129,7 +144,11 @@ export const BoothCheckout = () => {
                   </div>
                 </div>
               </Box>
-              <DiscountCheckout nextPage={''} addOnTotal={0} total={0} />
+              <DiscountCheckout
+                nextPage={""}
+                addOnTotal={addOnTotal}
+                total={total}
+              />
             </Box>
             <Summary />
           </Box>

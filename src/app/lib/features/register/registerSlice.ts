@@ -4,12 +4,14 @@ type initialStateType = {
   subPage: string;
   addOnTotal: number;
   addOns: string[];
+  paymentMethod: string;
 }
 
 const initialState:initialStateType = {
   subPage: 'boothForm',
   addOns: [],
   addOnTotal: 0,
+  paymentMethod: '',
 };
 
 export const registerSlice = createSlice({
@@ -25,6 +27,11 @@ export const registerSlice = createSlice({
     setAddOns: (state, action) => {
       state.addOns = action.payload;
     },
+
+    setPaymentMethod: (state, action) => {
+      state.paymentMethod = action.payload;
+    },
+
     resetSubPage: (state) => {
       state.subPage = 'boothForm';
       state.addOnTotal = 0;
@@ -33,5 +40,5 @@ export const registerSlice = createSlice({
   }
 })
 
-export const { resetSubPage, setAddOnTotal, setSubPage, setAddOns } = registerSlice.actions;
+export const { setPaymentMethod, setAddOnTotal, setSubPage, setAddOns } = registerSlice.actions;
 export default  registerSlice.reducer

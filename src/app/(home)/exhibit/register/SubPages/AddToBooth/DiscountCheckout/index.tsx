@@ -3,9 +3,15 @@ import { Discount } from "@mui/icons-material";
 import { formatCurrency } from "@/app/(home)/checkout/components/utils";
 import { setSubPage } from "@/app/lib/features/register/registerSlice";
 import { useAppDispatch } from "@/app/lib/hooks";
+import { useRouter } from "next/navigation";
 
 export const DiscountCheckout = ({addOnTotal, total, nextPage}: {addOnTotal: number, total: number, nextPage: string}) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const handleNavigate = () => {
+    router.push('/exhibit/register')
+  }
   return (
     <Box className={"grid gap-24"}>
       <Box className={"space-y-4"}>
@@ -48,6 +54,7 @@ export const DiscountCheckout = ({addOnTotal, total, nextPage}: {addOnTotal: num
             <span className="text-center w-full h-full">CHECKOUT NOW</span>
           </button>
           <button
+            onClick={handleNavigate}
             className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 bg-transparent text-gray-100 h-14 px-6 py-4 rounded-full w-full"
             type="button"
           >
