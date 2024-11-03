@@ -169,7 +169,6 @@ export const checkoutSlice = createSlice({
       state.payStackCheckout = action.payload;
     },
     setFormErrors: (state, action) => {
-      console.log('Form Error checkout slice', action.payload);
       state.formErrors = action.payload;
     },
     setOtherTicketsFormErrors: (state, action) => {
@@ -201,7 +200,6 @@ export const checkoutSlice = createSlice({
 
     setLeftOverTicketsForms: (state, action) => {
       state.leftOverTicketFormValues = action.payload;
-      console.log('left over ticket form values', action.payload);
     },
 
     resetTickets: (state) => {

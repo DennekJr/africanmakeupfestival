@@ -100,9 +100,7 @@ export const RegisterBoothForm = () => {
   };
 
   const handlePayment = () => {
-    console.log("HANDLE PAYMENT");
     // if(formik.errors){
-      console.log(Object.keys(formik.errors).length)
     // }
   };
   return (

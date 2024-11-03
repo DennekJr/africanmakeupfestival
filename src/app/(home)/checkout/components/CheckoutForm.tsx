@@ -100,12 +100,12 @@ const CheckoutForm = () => {
         items: ticketPurchaseData, // Example item,
       }),
     });
-    const { session, ticketData } = await response.json();
+    const { session, itemData } = await response.json();
     const sessionId = session.id;
     const stripe = await stripePromise;
     if (stripe === null) return;
     if ("redirectToCheckout" in stripe) {
-      await PostStripeTicketPurchases({ ticketData, session }).then(
+      await PostStripeTicketPurchases({ itemData, session }).then(
         async () => {
           const transactionToPost = {
             Paystack_Id: "",
@@ -126,7 +126,6 @@ const CheckoutForm = () => {
   };
 
   const handlePaystackPayment = async () => {
-    console.log("Form values", formValues);
     const ticketPurchaseData = {
       payStackCheckout: payStackCheckout,
       ticketData: {

@@ -121,7 +121,6 @@ export const CheckoutClientForm = () => {
             label={field.name}
             key={index}
             onBlur={(e) => {
-              console.log(formik.errors);
               dispatch(setFormErrors(formik.errors));
               formik.handleBlur(e);
             }}

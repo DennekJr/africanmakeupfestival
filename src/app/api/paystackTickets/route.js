@@ -39,36 +39,15 @@ export async function POST(request) {
         form_country: detail[0][3].value
       }
       const BuyerTicketPurchase = {
-        Paystack_Id: '',
-        Stripe_Id: session.id,
-        Access_Code: '',
+        Paystack_Id: session.reference,
+        Stripe_Id: '',
+        Access_Code: session.access_code,
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
       };
       await db.collection('Ticket-Purchases').insertOne(BuyerTicketPurchase);
     });
     // Array to add other ticket forms
-    Object.values(ticketData.otherTicketForms).map(async (forms) => {
-      if(forms === 'undefined' || forms === '' || forms.form_firstName === '') return;
-      const buyerTicketPurchaseDetails = {
-        form_firstName: forms.form_firstName,
-        form_lastName: forms.form_lastName,
-        form_email: forms.form_email,
-        form_confirmEmail: forms.form_confirmEmail,
-        form_organisation: forms.form_organisation,
-        form_organisationWebsite: forms.form_organisationWebsite,
-        form_organisationRole: forms.form_organisationRole,
-        Ticket: forms.Ticket.split("-")[0].toUpperCase(), // Default ticket type
-      }
-      const BuyerTicketPurchase = {
-        Paystack_Id: '',
-        Stripe_Id: session.id,
-        Access_Code: '',
-        Created_At: new Date(),
-        TicketDetails: buyerTicketPurchaseDetails,
-      };
-      await db.collection('Ticket-Purchases').insertOne(BuyerTicketPurchase);
-    })
     return new Response(JSON.stringify('Data successfully added to Ticket-Purchases'), {
       status: 201,
       headers: { 'Content-Type': 'application/json' },

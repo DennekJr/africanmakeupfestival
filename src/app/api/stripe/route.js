@@ -6,7 +6,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(request) {
   try {
     const { items } = await request.json(); // Assuming you're sending 'email' and 'amount' in the request body
-    console.log(items);
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
@@ -15,10 +14,10 @@ export async function POST(request) {
       cancel_url: `http://localhost:3000/ticket`,
     });
 
-    const ticketData = items.ticketData;
+    const itemData = items.ticketData;
 
     // return new Response(JSON.stringify({ session: session, ticketData: items.ticketData }), {
-    return new Response(JSON.stringify({ message: 'Transaction initialized successfully', session, ticketData }), {
+    return new Response(JSON.stringify({ message: 'Transaction initialized successfully', session, itemData }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });

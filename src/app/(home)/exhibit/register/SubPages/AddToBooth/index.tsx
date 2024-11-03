@@ -15,7 +15,7 @@ export const AddToBooth = () => {
   const { total } = useAppSelector((state) => state.exhibition);
   const { addOnTotal } = useAppSelector((state) => state.register);
   return (
-    <section id={'pageTop'} className={"w-full mt-16 animateContainer"}>
+    <section id={"pageTop"} className={"w-full mt-16 animateContainer"}>
       <form
         className={
           "w-full py-0 pb-8 md:py-8 lg:py-24 xl:py-28 2xl:py-32 grid gap-24"
