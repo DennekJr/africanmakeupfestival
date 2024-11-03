@@ -4,7 +4,7 @@ import { useAppSelector } from "@/app/lib/hooks";
 
 export const CheckoutItems = () => {
   const { formValues, total } = useAppSelector((state) => state.exhibition);
-  const formData = Object.values(formValues)[1];
+  const formData = Object.values(formValues)[2];
   return <Box className="grid gap-8">
     <h3 className="text-5xl tracking-[-1px] font-medium">
       Cart Items
@@ -12,9 +12,9 @@ export const CheckoutItems = () => {
     <ul className="grid gap-2.5 w-full max-w-[448px] mr-auto">
       <li className="w-full flex justify-between items-start gap-2 text-xl">
         <p className="font-medium">
-          {formData.form_booth.slice(
+          {(formData as object).form_booth.slice(
             0,
-            formData.form_booth.indexOf(" ("),
+            (formData as object).form_booth.indexOf(" ("),
           )}
         </p>
         <p className="text-[#C8C8CB]">

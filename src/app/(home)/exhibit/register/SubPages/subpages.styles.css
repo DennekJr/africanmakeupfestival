@@ -12,5 +12,5 @@
 }
 
 .animateContainer {
-  animation: fade-in 0.5s forwards;
+  animation: fade-in 1s forwards;
 }
