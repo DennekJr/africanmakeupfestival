@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import checkoutReducer from './features/checkout/checkoutSlice'
 import exhibitionReducer from './features/exhibition/exhibitionSlice'
+import registerReducer from './features/register/registerSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       checkout: checkoutReducer,
       exhibition: exhibitionReducer,
+      register: registerReducer,
     }
   })
 }

@@ -55,11 +55,10 @@ export const RegisterBoothForm = () => {
     initialValues: initialFormData,
     validationSchema: ExhibitionFormSchema,
     onSubmit: async () => {
-      postBooth(dataPlusCost).then(() => navigate.push('/'));
+      // postBooth(dataPlusCost).then(() => navigate.push('/'));
     },
   });
 
-  console.log('register booth', formik.errors)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     const newFormData: ExhibitionBoothBillingInfo = {
@@ -100,7 +99,7 @@ export const RegisterBoothForm = () => {
     dispatch(setFormValues({ booth: booth, data: newFormData }));
   };
 
-  const handlePayment = () => {
+  const handlePayment = (e) => {
     console.log("HANDLE PAYMENT");
     // if(formik.errors){
       console.log(Object.keys(formik.errors).length)

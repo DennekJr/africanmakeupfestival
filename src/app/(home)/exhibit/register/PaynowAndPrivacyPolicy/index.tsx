@@ -4,22 +4,32 @@ import { Button, Checkbox } from "@mui/material";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { useState } from "react";
+import { useAppDispatch } from "@/app/lib/hooks";
+import { setSubPage } from "@/app/lib/features/register/registerSlice";
 
 const labelProps = {
   inputProps: { "aria-label": "Checkbox", style: { backgroundColor: "red" } },
 };
-export const PaynowAndPrivacyPolicy = ({handlePayment}: {handlePayment: () => void}) => {
+export const PaynowAndPrivacyPolicy = ({handlePayment}: {handlePayment: (e) => void}) => {
   const [isChecked, setIsChecked] = useState(false);
+  const dispatch = useAppDispatch();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(isChecked){
+      dispatch(setSubPage('addToBooth'));
+      handlePayment(e);
+    }
+  }
   return (
-    <Box className={"my-[calc(2rem*calc(1-0))]"}>
+    <Box>
       <Button
         type={'submit'}
         className={
-          "inline-flex items-center justify-center gap-3 my-[calc(2rem*calc(1-0))] space-y-8 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 !py-4 !rounded-full relative w-full"
+          "inline-flex items-center justify-center gap-3 my-[calc(2rem*calc(1-0))] ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 !py-4 !rounded-full relative w-full"
         }
         endIcon={<FortyFiveDegreeArrow />}
-        onClick={handlePayment}
+        onClick={(e) => handleSubmit(e)}
       >
         Pay Now
       </Button>

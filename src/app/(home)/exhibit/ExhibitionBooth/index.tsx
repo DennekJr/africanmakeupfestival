@@ -55,7 +55,7 @@ export const ExhibitionBooth = () => {
                       </li>
                     ))}
                   </ol>
-                  <Box onClick={handleNavigate}>
+                  <Box onClick={handleNavigate} className={'hover:cursor-pointer'}>
                     <WhiteBgArrowButton
                       name={"Book"}
                       classNames={

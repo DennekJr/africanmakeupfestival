@@ -68,7 +68,7 @@ const initialState:initialStateType = {
 };
 
 export const exhibitionSlice = createSlice({
-  name: 'checkout',
+  name: 'exhibition',
   initialState,
   reducers: {
 

@@ -1,25 +1,25 @@
 "use client";
 import * as React from "react";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Box } from "@mui/material";
 import { useEffect } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
+import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
 import {
-  BillingFormSchema,
-} from "../../../lib/features/checkout/checkoutSlice";
-import {
-  initiatePaystackTransaction, PostPaystackTicketPurchases, PostStripeTicketPurchases, PostTransaction
+  initiatePaystackTransaction,
+  PostPaystackTicketPurchases,
+  PostStripeTicketPurchases,
+  PostTransaction,
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
-import PaystackPop from '@paystack/inline-js';
-import { loadStripe } from '@stripe/stripe-js';
+import PaystackPop from "@paystack/inline-js";
+import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
-
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -31,108 +31,132 @@ const billingFormValues = {
   "Organisation Website": "",
 };
 
-
 const CheckoutForm = () => {
   const router = useRouter();
-  const { tickets, formErrors, total, payStackCheckout, billingInfo, formValues } =
-    useAppSelector((state) => state.checkout);
+  const {
+    tickets,
+    formErrors,
+    total,
+    payStackCheckout,
+    billingInfo,
+    formValues,
+  } = useAppSelector((state) => state.checkout);
   useEffect(() => {
     if (total === 0) {
       router.push("/ticket");
     }
   }, []);
 
-  const popup = new PaystackPop()
+  const popup = new PaystackPop();
 
   const formik = useFormik({
     initialValues: billingFormValues,
     validationSchema: BillingFormSchema,
-    onSubmit: async () => {
-    },
+    onSubmit: async () => {},
   });
 
   const handleStripePayment = async (e) => {
     e.preventDefault();
-    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
-    const stripeData:{price_data: {currency: string, product_data: {name: string}, unit_amount: number}, quantity: number}[] = [];
-    Object.values(tickets).filter((item) => item.value > 0).map((ticket) => {
-      const value = getTicketCost(ticket);
-      const item = {
-        price_data: {
-          currency: 'ngn',
-          product_data: {
-            name: String(ticket.ticketName).charAt(0).toUpperCase() + String(ticket.ticketName).slice(1),
+    const stripePromise = loadStripe(
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
+    );
+    const stripeData: {
+      price_data: {
+        currency: string;
+        product_data: { name: string };
+        unit_amount: number;
+      };
+      quantity: number;
+    }[] = [];
+    Object.values(tickets)
+      .filter((item) => item.value > 0)
+      .map((ticket) => {
+        const value = getTicketCost(ticket);
+        const item = {
+          price_data: {
+            currency: "ngn",
+            product_data: {
+              name:
+                String(ticket.ticketName).charAt(0).toUpperCase() +
+                String(ticket.ticketName).slice(1),
+            },
+            unit_amount: value * 100,
           },
-          unit_amount: value * 100,
-        },
-        quantity: ticket.value,
-      }
-      stripeData.push(item);
-    });
+          quantity: ticket.value,
+        };
+        stripeData.push(item);
+      });
     const ticketPurchaseData = {
       stripeCheckoutData: stripeData,
       ticketData: {
         buyerForm: billingInfo,
-        otherTicketForms: formValues
-      }
+        otherTicketForms: formValues,
+      },
     };
-    const response = await fetch('/api/stripe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        items: ticketPurchaseData // Example item,
+        items: ticketPurchaseData, // Example item,
       }),
     });
-    const {session, ticketData} = await response.json();
+    const { session, ticketData } = await response.json();
     const sessionId = session.id;
     const stripe = await stripePromise;
-    if(stripe === null) return;
+    if (stripe === null) return;
     if ("redirectToCheckout" in stripe) {
-      await PostStripeTicketPurchases({ ticketData, session }).then(async () => {
+      await PostStripeTicketPurchases({ ticketData, session }).then(
+        async () => {
           const transactionToPost = {
-            Paystack_Id: '',
+            Paystack_Id: "",
             Stripe_Id: sessionId,
             Currency: session.currency,
             Email: payStackCheckout.email,
             UnitNumber: payStackCheckout.total,
-          }
+          };
           console.log("Transaction to post", transactionToPost);
           await PostTransaction(transactionToPost);
-        })
+        },
+      );
       const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) console.warn('Stripe Checkout error:', error.message);
+      if (error) console.warn("Stripe BoothCheckout error:", error.message);
     }
     if (Object.keys(formErrors).length === 0) {
-
     }
   };
 
   const handlePaystackPayment = async () => {
-    console.log('Form values', formValues);
+    console.log("Form values", formValues);
     const ticketPurchaseData = {
       payStackCheckout: payStackCheckout,
       ticketData: {
         buyerForm: billingInfo,
-        otherTicketForms: formValues
-      }
+        otherTicketForms: formValues,
+      },
     };
-    initiatePaystackTransaction(ticketPurchaseData).then(async ({ticketData, transactionData}) => {
-      const accessCode = transactionData.access_code;
-      popup.resumeTransaction(accessCode);
-      await PostPaystackTicketPurchases({ ticketData, transactionData });
-      return {paystackData: payStackCheckout, transactionData: transactionData};
-    }).then(async ({paystackData, transactionData}) => {
-      const transactionToPost = {
-        Paystack_Id: transactionData.reference,
-        Stripe_Id: '',
-        Currency: 'ngn',
-        Email: paystackData.email,
-        UnitNumber: paystackData.total,
-      }
-      await PostTransaction(transactionToPost);
-    }).catch((error) => {
-      console.error("Paystack transaction error: ", error);
-    });
+    initiatePaystackTransaction(ticketPurchaseData)
+      .then(async ({ ticketData, transactionData }) => {
+        const accessCode = transactionData.access_code;
+        popup.resumeTransaction(accessCode);
+        await PostPaystackTicketPurchases({ ticketData, transactionData });
+        return {
+          paystackData: payStackCheckout,
+          transactionData: transactionData,
+        };
+      })
+      .then(async ({ paystackData, transactionData }) => {
+        const transactionToPost = {
+          Paystack_Id: transactionData.reference,
+          Stripe_Id: "",
+          Currency: "ngn",
+          Email: paystackData.email,
+          UnitNumber: paystackData.total,
+        };
+        await PostTransaction(transactionToPost);
+      })
+      .catch((error) => {
+        console.error("Paystack transaction error: ", error);
+      });
   };
 
   return (
@@ -160,11 +184,7 @@ const CheckoutForm = () => {
                   }
                   onClick={() => router.push("/ticket")}
                 >
-                  <ChevronLeftIcon
-                    className={
-                      "!size-2"
-                    }
-                  />
+                  <ChevronLeftIcon className={"!size-2"} />
                 </button>
                 <p className="text-[#7F7D82] cursor-default">
                   Go back to tickets
