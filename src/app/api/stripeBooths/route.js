@@ -1,6 +1,4 @@
 import clientPromise from "../../lib/mongo/mongodb";
-import { ExhibitionBoothBillingInfo } from "../../lib/features/exhibition/exhibitionSlice";
-
 export async function POST(request) {
   try {
     const client = await clientPromise;
