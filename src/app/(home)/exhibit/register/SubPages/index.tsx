@@ -9,7 +9,7 @@ export const SubPages = () => {
   const { subPage } = useAppSelector((state) => state.register);
   const booth = useMemo(() => subPage, [subPage]);
   useEffect(() => {
-    if (window) {
+    if (typeof window !== 'undefined') {
       if (booth === "addToBooth" || booth === "payment") {
         window.scrollTo({
           top: 0,
@@ -18,8 +18,8 @@ export const SubPages = () => {
         });
       }
     }
-  }, [booth, subPage]);
+  }, [booth]);
   if (booth === "addToBooth") return <AddToBooth />;
   if (booth === "payment") return <BoothCheckout />;
-  else return <RegisterBooth />;
+  return <RegisterBooth />;
 };

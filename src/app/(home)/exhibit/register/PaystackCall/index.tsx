@@ -28,7 +28,6 @@ export const HandlePaystackTransaction = async ({payStackCheckout, boothData}: {
 
 export const HandlePaystackBoothPurhase = async (boothData) => {
     try {
-      console.log('HandlePaystackBoothPurhase', boothData);
       const response = await fetch("/api/paystackBooths", {
         method: "POST",
         headers: {

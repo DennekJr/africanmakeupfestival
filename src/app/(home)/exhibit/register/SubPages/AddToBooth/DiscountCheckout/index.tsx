@@ -1,3 +1,4 @@
+"use client";
 import { Box } from "@mui/material";
 import { Discount } from "@mui/icons-material";
 import { formatCurrency } from "@/app/(home)/checkout/components/utils";
@@ -13,39 +14,21 @@ import {
 } from "@/app/(home)/exhibit/register/PaystackCall";
 import PaystackPop from "@paystack/inline-js";
 
-export const DiscountCheckout = ({
-  addOnTotal,
-  total,
-  nextPage,
-}: {
-  addOnTotal: number;
-  total: number;
-  nextPage: string;
-}) => {
-  const dispatch = useAppDispatch();
+const DiscountCheckout = () => {
   const popup = new PaystackPop();
+  const dispatch = useAppDispatch();
   const router = useRouter();
-  const { formValues } = useAppSelector((state) => state.exhibition);
-  const { paymentMethod } = useAppSelector((state) => state.register);
+  const { formValues, total } = useAppSelector((state) => state.exhibition);
+  const { paymentMethod, addOnTotal, subPage } = useAppSelector(
+    (state) => state.register,
+  );
   const formData: ExhibitionBoothBillingInfo = Object.values(
     formValues,
   )[2] as ExhibitionBoothBillingInfo;
 
-  const handlePayment = async () => {
-    if (nextPage !== "") {
-      dispatch(setSubPage(nextPage));
-    } else {
-      if (paymentMethod === "stripe") {
-        await handleStripePayment();
-      } else {
-        await handlePaystackPayment();
-      }
-    }
-  };
   const handleCancel = () => {
     router.push("/exhibit/register");
   };
-
   const handleStripePayment = async () => {
     const item = [
       {
@@ -105,6 +88,19 @@ export const DiscountCheckout = ({
         console.error("Paystack transaction error: ", error);
       });
   };
+
+  const handlePayment = async () => {
+    if (subPage === "addToBooth") {
+      dispatch(setSubPage('payment'));
+    } else {
+      if (paymentMethod === "stripe") {
+        await handleStripePayment();
+      } else {
+        await handlePaystackPayment();
+      }
+    }
+  };
+
   return (
     <Box className={"grid gap-24"}>
       <Box className={"space-y-4"}>
@@ -158,3 +154,5 @@ export const DiscountCheckout = ({
     </Box>
   );
 };
+
+export default DiscountCheckout;

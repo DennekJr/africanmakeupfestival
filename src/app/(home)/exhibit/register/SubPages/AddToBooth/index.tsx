@@ -5,15 +5,14 @@ import {
   KeyboardArrowLeft,
 } from "@mui/icons-material";
 import { BoothsSlider } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/Slider";
-import { useAppSelector } from "@/app/lib/hooks";
-import { DiscountCheckout } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/DiscountCheckout";
 import { AddOnList } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/AddOnList";
 import { CheckoutItems } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/CheckoutItems";
 import '../subpages.styles.css';
+import dynamic from "next/dynamic";
+
+const DiscountCheckout = dynamic(() => import('./DiscountCheckout'), { ssr: false });
 
 export const AddToBooth = () => {
-  const { total } = useAppSelector((state) => state.exhibition);
-  const { addOnTotal } = useAppSelector((state) => state.register);
   return (
     <section id={"pageTop"} className={"w-full mt-16 animateContainer"}>
       <form
@@ -59,7 +58,7 @@ export const AddToBooth = () => {
             >
               <CheckoutItems />
               <AddOnList />
-              <DiscountCheckout nextPage={'payment'} addOnTotal={addOnTotal} total={total} />
+              <DiscountCheckout />
             </Box>
           </Box>
         </Box>

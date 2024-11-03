@@ -1,14 +1,15 @@
 import { Box, FormControlLabel, Radio } from "@mui/material";
 import Image from "next/image";
-import { DiscountCheckout } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/DiscountCheckout";
 import { Summary } from "@/app/(home)/exhibit/register/SubPages/BoothCheckout/Summary";
 import "../subpages.styles.css";
 import { useAppDispatch, useAppSelector } from "@/app/lib/hooks";
 import { setPaymentMethod } from "@/app/lib/features/register/registerSlice";
+import dynamic from "next/dynamic";
+
+const DiscountCheckout = dynamic(() => import('../AddToBooth/DiscountCheckout'), { ssr: false });
 
 export const BoothCheckout = () => {
-  const { total } = useAppSelector((state) => state.exhibition);
-  const { addOnTotal, paymentMethod } = useAppSelector((state) => state.register);
+  const { paymentMethod } = useAppSelector((state) => state.register);
   const dispatch = useAppDispatch();
   return (
     <section id={"pageTop"} className={"w-full mt-16 animateContainer"}>
@@ -144,11 +145,7 @@ export const BoothCheckout = () => {
                   </div>
                 </div>
               </Box>
-              <DiscountCheckout
-                nextPage={""}
-                addOnTotal={addOnTotal}
-                total={total}
-              />
+              <DiscountCheckout />
             </Box>
             <Summary />
           </Box>
