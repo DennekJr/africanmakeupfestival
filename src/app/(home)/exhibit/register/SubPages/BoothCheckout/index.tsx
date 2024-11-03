@@ -57,11 +57,8 @@ export const BoothCheckout = () => {
                           label={""}
                         />
                         <input
-                          aria-hidden="true"
-                          tabIndex="-1"
                           type="radio"
                           value="PAYSTACK"
-                          checked=""
                           style={{
                             transform: "translateX(-100%)",
                             position: "absolute",
