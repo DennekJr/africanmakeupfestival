@@ -1,17 +1,16 @@
 @keyframes fade-in {
   from {
-      background-color: rgba(0,0,0, 0.25);
+    background-color: rgba(0, 0, 0, 0.25);
     transform: translate(50vh);
-      opacity: 0;
+    opacity: 0;
   }
   to {
     transform: translate(0);
-      opacity: 1;
-      background-color: rgba(0,0,0,0);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 
 .animateContainer {
-    animation: fade-in 0.5s forwards ;
-  /*scrollt*/
+  animation: fade-in 0.5s forwards;
 }

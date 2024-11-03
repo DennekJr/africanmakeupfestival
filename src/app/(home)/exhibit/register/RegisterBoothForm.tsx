@@ -55,7 +55,7 @@ export const RegisterBoothForm = () => {
     initialValues: initialFormData,
     validationSchema: ExhibitionFormSchema,
     onSubmit: async () => {
-      // postBooth(dataPlusCost).then(() => navigate.push('/'));
+      postBooth(dataPlusCost).then(() => navigate.push('/'));
     },
   });
 
@@ -99,7 +99,7 @@ export const RegisterBoothForm = () => {
     dispatch(setFormValues({ booth: booth, data: newFormData }));
   };
 
-  const handlePayment = (e) => {
+  const handlePayment = () => {
     console.log("HANDLE PAYMENT");
     // if(formik.errors){
       console.log(Object.keys(formik.errors).length)
