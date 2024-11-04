@@ -32,8 +32,8 @@ export const Sponsors = () => {
       <SponsorIcons />
       <Box className="mx-auto">
         <a
-          className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-1300 text-gray-100 hover:bg-gray-1300/90 h-14 px-6 py-4 rounded-full w-full md:w-auto"
-          href="/en/sponsor"
+          className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#0A090B] text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 py-4 rounded-full w-full md:w-auto"
+          href="/"
         >
           <span>BECOME A SPONSOR</span>
         </a>
