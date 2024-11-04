@@ -6,7 +6,6 @@ export async function POST(request) {
     // Get the data from the request body
     const {itemData, session} = await request.json();
     const formDetail = Object.values(itemData.billingForm);
-    console.log('Form', formDetail);
     // Object.values(ticketData.billingForm).map(async (booth) => {
       const buyerTicketPurchaseDetails = {
         form_booth: formDetail[0],

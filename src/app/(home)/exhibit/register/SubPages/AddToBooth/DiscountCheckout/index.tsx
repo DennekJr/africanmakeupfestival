@@ -95,7 +95,7 @@ const DiscountCheckout = () => {
     } else {
       if (paymentMethod === "stripe") {
         await handleStripePayment();
-      } else {
+      } else if(paymentMethod === "paystack") {
         await handlePaystackPayment();
       }
     }

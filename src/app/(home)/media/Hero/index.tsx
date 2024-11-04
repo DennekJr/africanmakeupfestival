@@ -1,8 +1,28 @@
+'use client'
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { FortyFiveDegreeArrow } from "../Hero/utils";
+import { useEffect } from "react";
 
 export const Hero = () => {
+  useEffect(() => {
+    try {
+      fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: 'hello',
+      }).then((data) => {
+        const res = data.json();
+        return res;
+      }).then((data) => {
+        console.log('data from api', data);
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }, []);
   return (
     <section
       className={

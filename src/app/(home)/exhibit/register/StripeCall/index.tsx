@@ -9,7 +9,6 @@ export const StripeCall = async ({ ticketPurchaseData, formData, total }: {ticke
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
   );
-  console.log(ticketPurchaseData);
   const response = await fetch("/api/stripe", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

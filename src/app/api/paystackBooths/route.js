@@ -5,7 +5,6 @@ export async function POST(request) {
     const client = await clientPromise;
     const db = client.db("AfricaMakeupFestival"); // Replace with your database name
     // Get the data from the request body
-    const { boothData, transactionData } = await request.json();
     console.log(boothData, transactionData);
     const formDetail = Object.values(boothData.buyerForm);
     const buyerBoothPurchaseDetails = {
