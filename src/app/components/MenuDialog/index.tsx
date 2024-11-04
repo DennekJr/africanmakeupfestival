@@ -14,7 +14,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { RightArrowButton, WhiteBGButton } from "../../utils";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import Image from "next/image";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 const useStyles = makeStyles({
