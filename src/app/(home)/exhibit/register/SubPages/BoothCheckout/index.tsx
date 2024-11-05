@@ -107,7 +107,6 @@ export const BoothCheckout = () => {
                             control={
                               <Radio
                                 className={"!text-white"}
-                                // onClick={() => console.log("clicked")}
                                 checked={paymentMethod === "stripe"}
                               />
                             }

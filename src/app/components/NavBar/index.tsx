@@ -65,8 +65,8 @@ export default function NavBar() {
   return (
     <Box
       className={
-        `${path == "/" ? "!bg-transparent " : "!bg-[#000000] "}` +
-        "flex justify-center border-b border-border-secondary bg-transparent w-full p-4 text-white z-10 absolute top-0 left-0"
+        `${path == "/" ? "lg:bg-transparent " : "!bg-[#000000] "}` +
+        "flex bg-[#000000] justify-center border-b border-border-secondary w-full p-4 text-white z-10 absolute top-0 left-0"
       }
     >
       <Box
@@ -98,7 +98,7 @@ export default function NavBar() {
             />
           </Link>
         </Box>
-        <Box className={"min-[1183px]:visible max-[1182px]:hidden"}>
+        <Box className={"min-[1230px]:visible max-[1230px]:hidden"}>
           <List
             component={"nav"}
             className={"flex flex-1 items-center justify-between"}
@@ -161,7 +161,7 @@ export default function NavBar() {
             })}
           </List>
         </Box>
-        <Box className={"min-[1183px]:visible max-[1182px]:hidden"}>
+        <Box className={"min-[1183px]:visible max-[1230px]:hidden"}>
           <List
             component={"nav"}
             className={"flex flex-1 items-center justify-between gap-4 !py-0"}
@@ -213,7 +213,7 @@ export default function NavBar() {
             ))}
           </List>
         </Box>
-        <Box className={"max-[1182px]:visible min-[1183px]:hidden"}>
+        <Box className={"max-[1230px]:visible min-[1230px]:hidden"}>
           <MenuDialog />
         </Box>
       </Box>

@@ -4,7 +4,6 @@ import { Discount } from "@mui/icons-material";
 import { formatCurrency } from "@/app/(home)/checkout/components/utils";
 import { setSubPage } from "@/app/lib/features/register/registerSlice";
 import { useAppDispatch, useAppSelector } from "@/app/lib/hooks";
-import { useRouter } from "next/navigation";
 import { ExhibitionBoothBillingInfo } from "@/app/lib/features/exhibition/exhibitionSlice";
 import { PostTransaction } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { StripeCall } from "@/app/(home)/exhibit/register/StripeCall";
@@ -17,7 +16,6 @@ import PaystackPop from "@paystack/inline-js";
 const DiscountCheckout = () => {
   const popup = new PaystackPop();
   const dispatch = useAppDispatch();
-  const router = useRouter();
   const { formValues, total } = useAppSelector((state) => state.exhibition);
   const { paymentMethod, addOnTotal, subPage } = useAppSelector(
     (state) => state.register,
@@ -27,7 +25,7 @@ const DiscountCheckout = () => {
   )[2] as ExhibitionBoothBillingInfo;
 
   const handleCancel = () => {
-    router.push("/exhibit/register");
+    dispatch(setSubPage(''));
   };
   const handleStripePayment = async () => {
     const item = [
@@ -88,7 +86,6 @@ const DiscountCheckout = () => {
         console.error("Paystack transaction error: ", error);
       });
   };
-
   const handlePayment = async () => {
     if (subPage === "addToBooth") {
       dispatch(setSubPage('payment'));

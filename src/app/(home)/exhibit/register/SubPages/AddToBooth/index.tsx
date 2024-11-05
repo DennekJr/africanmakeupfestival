@@ -1,18 +1,48 @@
 "use client";
 import { Box } from "@mui/material";
-import {
-  KeyboardArrowRight,
-  KeyboardArrowLeft,
-} from "@mui/icons-material";
+import { KeyboardArrowRight, KeyboardArrowLeft } from "@mui/icons-material";
 import { BoothsSlider } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/Slider";
 import { AddOnList } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/AddOnList";
 import { CheckoutItems } from "@/app/(home)/exhibit/register/SubPages/AddToBooth/CheckoutItems";
-import '../subpages.styles.css';
+import "../subpages.styles.css";
 import dynamic from "next/dynamic";
+import { MutableRefObject, useEffect, useMemo, useRef, useState } from "react";
+import { Swiper as SwiperType } from "swiper";
+import { useWindowSize } from "../../../../../../hooks/useWindowSize";
 
-const DiscountCheckout = dynamic(() => import('./DiscountCheckout'), { ssr: false });
+const DiscountCheckout = dynamic(() => import("./DiscountCheckout"), {
+  ssr: false,
+});
 
 export const AddToBooth = () => {
+  const swiperRef: MutableRefObject<null> | SwiperType | null = useRef(null);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const width = useWindowSize();
+  const memoizedWith = useMemo(() => width, [width]);
+
+  useEffect(() => {
+    if(memoizedWith > 768){
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  }, [memoizedWith]);
+  const handlePreviousClick = (e) => {
+    e.preventDefault();
+    if (swiperRef && swiperRef?.current) {
+      swiperRef?.current.slideNext();
+    } else {
+      console.warn("Swiper instance is not available.");
+    }
+  };
+  const handleNextClick = (e) => {
+    e.preventDefault();
+    if (swiperRef && swiperRef?.current) {
+      swiperRef?.current.slideNext();
+    } else {
+      console.warn("Swiper instance is not available.");
+    }
+  };
   return (
     <section id={"pageTop"} className={"w-full mt-16 animateContainer"}>
       <form
@@ -29,18 +59,26 @@ export const AddToBooth = () => {
                 </h3>
               </div>
               <div className="flex justify-end gap-5 lg:gap-10">
-                <button className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent h-[30.25px] w-[30.25px] lg:h-16 lg:w-16 rounded-full border-[#504E56] text-[#504E56]">
+                <button
+                  onClick={handlePreviousClick}
+                  disabled={isDisabled}
+                  className={`${ isDisabled ? "opacity-50 " : "" }` + "booth-swiper-button-prev inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent h-[30.25px] w-[30.25px] lg:h-16 lg:w-16 rounded-full border-[#504E56] text-[#504E56]"}
+                >
                   <KeyboardArrowLeft className={"w-4 h-4"} />
                   <span className="sr-only">Previous slide</span>
                 </button>
-                <button className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent h-[30.25px] w-[30.25px] lg:h-16 lg:w-16 rounded-full border-[#504E56] text-[#504E56]">
+                <button
+                  onClick={handleNextClick}
+                  disabled={isDisabled}
+                  className={`${ isDisabled ? "opacity-50 " : "" }` + "booth-swiper-button-next inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-transparent h-[30.25px] w-[30.25px] lg:h-16 lg:w-16 rounded-full border-[#504E56] text-[#504E56]"}
+                >
                   <KeyboardArrowRight className={"w-4 h-4"} />
                   <span className="sr-only">Next slide</span>
                 </button>
               </div>
             </div>
           </div>
-          <BoothsSlider />
+          <BoothsSlider swiperRef={swiperRef} />
         </Box>
         <Box
           className={
