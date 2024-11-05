@@ -1,44 +1,39 @@
-// // import { NEXT_METADATA_BASE } from "@/config/config";
-//
-// const METADATA_CONFIG = {
-//   // metadataBase: new URL(NEXT_METADATA_BASE),
-//   title: { template: "%s | Makeup Festival", default: "Makeup Festival" },
-//   description: "Nigerian Makeup Festival",
-//   applicationName: "MakeupFestival",
-//   keywords: [
-//     "Event Hosting",
-//     "Event Management",
-//     "Event Tickets",
-//     "Event Planning",
-//     "Makeup Services",
-//     "Beauty Services",
-//     "Shopping",
-//     "Food and Drinks",
-//     "Entertainment",
-//     "Event Discovery",
-//     "Social Networking",
-//     "Local Services",
-//     "Online Booking",
-//     "Community",
-//     " Lifestyle Services",
-//     "Nigeria",
-//   ],
-//   alternates: {
-//     canonical: "",
-//   },
-//   openGraph: {
-//     title: "Africa Makeup Festival",
-//     description: "",
-//     url: "",
-//     siteName: "Africa Makeup Festival",
-//     locale: "en",
-//     type: "website",
-//   },
-//   appLinks: {
-//     web: {
-//       url: "",
-//     },
-//   },
-// };
-//
-// export default METADATA_CONFIG;
+import { NEXT_METADATA_BASE } from "./config";
+
+const METADATA_CONFIG = {
+  metadataBase: new URL(NEXT_METADATA_BASE),
+  title: { template: "%s | Africa Skincare Festival", default: "Africa Skincare Festival" },
+  description: "African Skincare Festival ",
+  applicationName: "AfricaSkincareFestival",
+  keywords: [
+    "Event Hosting",
+    "Event Management",
+    "Event Tickets",
+    "Event Planning",
+    "Makeup Services",
+    "Beauty Services",
+    "Skincare",
+    "Local Services",
+    "Online Booking",
+    "Community",
+    "Nigeria",
+  ],
+  alternates: {
+    canonical: "",
+  },
+  openGraph: {
+    title: "Africa Skincare Festival",
+    description: "",
+    url: "https://africaskincarefestival.com/",
+    siteName: "Africa Skincare Festival",
+    // locale: "en",
+    type: "website",
+  },
+  appLinks: {
+    web: {
+      url: "https://africaskincarefestival.com/",
+    },
+  },
+};
+
+export default METADATA_CONFIG;
