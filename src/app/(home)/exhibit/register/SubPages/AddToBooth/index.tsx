@@ -31,7 +31,7 @@ export const AddToBooth = () => {
     e.preventDefault();
     if (swiperRef && swiperRef?.current) {
       // @ts-expect-error The error displayed is due to null types passed through useRef
-      swiperRef?.current.slideNext();
+      swiperRef?.current.slidePrev();
     } else {
       console.warn("Swiper instance is not available.");
     }
