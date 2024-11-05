@@ -42,14 +42,14 @@ export const EMOJIGRID_EMOJIS: Record<string, EmojiGridType> = {
       {
         id: "countries1",
         alt: "Nigerian flag",
-        src: "/images/flags/nigerianFlag.webp",
+        src: "/images/flags/nigerianflag.webp",
       },
       { id: "countries2", alt: "Flag 2", src: "/images/flags/flag2.webp" },
       { id: "countries3", alt: "flag 3", src: "/images/flags/flag3.webp" },
       {
         id: "countries4",
         alt: "Ghana Flag",
-        src: "/images/flags/ghanaflag4.png",
+        src: "/images/flags/ghanaflag4.webp",
       },
       { id: "countries5", alt: "Usa Flag", src: "/images/flags/usaflag5.webp" },
       { id: "countries6", alt: "UK Flag", src: "/images/flags/ukflag6.webp" },
