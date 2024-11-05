@@ -15,8 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
     <head>
-      <link rel="icon" href="/images/festivalLogo.webp" sizes="128x128" type="image/svg+xml" className={'!bg-white'} />
-      {/*<link rel="icon" href="/images/footerLogo.svg" style={{background: 'white !important'}} sizes="128x128" type="image/svg+xml" className={'!bg-white'} />*/}
+      <link rel="icon" href="/images/footerLogo.svg" sizes="128x128" type="image/svg+xml" className={'!bg-white'} />
       <link rel="preconnect" href="https://fonts.googleapis.com/" />
     </head>
     <body className={`${inter.variable} font-sans`}>
