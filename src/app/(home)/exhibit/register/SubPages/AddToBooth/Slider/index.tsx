@@ -40,7 +40,7 @@ export const BoothsSlider: React.FC<BoothSliderProps> = ({ swiperRef }) => {
     }
   };
   useEffect(() => {
-    if(typeof memoizedWith === 'undefined' && memoizedWith < 768){
+    if(memoizedWith! < 768){
       setShowSwiper(true);
     } else {
       setShowSwiper(false);
