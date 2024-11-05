@@ -53,7 +53,7 @@ export const Hero = () => {
         <Box className="flex gap-4">
           <a
             className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#F4F4F5] text-[#18181B] hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
-            href="/en/ticket"
+            href="/ticket"
           >
             <span>GET A TICKET</span>
             <svg
@@ -76,7 +76,7 @@ export const Hero = () => {
           src={"/images/2024-speakers/2024-speakers.webp"}
           alt={"2024 speaker"}
           className={
-            "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
+            "object-cover object-center h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
           }
           width="2208"
           height="2028"

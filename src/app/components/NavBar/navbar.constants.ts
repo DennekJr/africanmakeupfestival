@@ -10,13 +10,13 @@ export const NAV_MENU: Record<string, NavBarItem> = {
   },
   speakers2024: {
     id: "2024speakers",
-    route: "speakers",
+    route: "/speakers",
     name: "2024 speakers",
     disabled: false,
   },
   exhibitors: {
     id: "exhibitors",
-    route: "exhibit",
+    route: "/exhibit",
     subRoute: ['exhibit', '2024-exhibitors'],
     name: "Exhibitors",
     icon: ExpandMoreIcon,
@@ -24,26 +24,26 @@ export const NAV_MENU: Record<string, NavBarItem> = {
   },
   sponsor: {
     id: "sponsor",
-    route: "sponsor",
+    route: "/sponsor",
     name: "Sponsor",
     disabled: false,
   },
   program2024: {
     id: "2024-program",
-    route: "program",
+    route: "/program",
     name: "2024 Program",
     disabled: false,
   },
   media: {
     id: "media",
-    route: "media",
+    route: "/media",
     name: "Media",
     disabled: false,
   },
   travel: {
     id: "travel",
-    route: "travel",
-    subRoute: ['travel'],
+    route: "/travel",
+    subRoute: ['Discounted Hotels'],
     name: "Travel",
     disabled: false,
   },
@@ -52,13 +52,13 @@ export const NAV_MENU: Record<string, NavBarItem> = {
 export const NAV_BUTTONS: Record<string, NavBarItem> = {
   getTicket: {
     id: "getTicket",
-    route: "ticket",
+    route: "/ticket",
     name: "Get Ticket",
     disabled: false,
   },
   becomeASponsor: {
     id: "becomeASponsor",
-    route: "sponsor",
+    route: "/sponsor",
     name: "Become A Sponsor",
     disabled: false,
   },

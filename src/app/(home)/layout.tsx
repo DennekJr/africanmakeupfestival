@@ -5,5 +5,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <WebWrapper>{children}</WebWrapper>;
+  return (
+    <WebWrapper>
+      {children}
+    </WebWrapper>
+  );
 }

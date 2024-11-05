@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "app/api/paystack/route.js": {
+      "maxDuration": 10
+    }
+  }
+}

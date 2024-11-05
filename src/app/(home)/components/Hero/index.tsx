@@ -6,7 +6,6 @@ import { VideoComponent } from "./VideoComponent";
 
 
 export const Hero = () => {
-  console.log('Hero');
   return (
     <section className={"relative w-full lg:min-h-screen"}>
       <VideoComponent fileName={'LandingPage'} />
@@ -23,7 +22,7 @@ export const Hero = () => {
             }
           >
             <span className={"relative max-w-full break-words"}>
-              Africa’s Foremost
+              Africa’s Foremost{" "}
             </span>
             <span className={"relative max-w-full break-words"}>
               Deal-mak
@@ -55,16 +54,10 @@ export const Hero = () => {
           <pre
             id="undefined-1"
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-normal text-base"
-            data-sentry-element="Comp"
-            data-sentry-component="Children"
-            data-sentry-source-file="render.tsx"
           />
           <pre
             id="undefined-2"
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 text-center font-medium heading text-2xl"
-            data-sentry-element="Comp"
-            data-sentry-component="Children"
-            data-sentry-source-file="render.tsx"
           >
             <span className="relative max-w-full break-words">
               Building for Africa, from Africa
@@ -73,9 +66,6 @@ export const Hero = () => {
           <pre
             id="undefined-3"
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-normal text-base"
-            data-sentry-element="Comp"
-            data-sentry-component="Children"
-            data-sentry-source-file="render.tsx"
           ></pre>
         </Box>
         <Box

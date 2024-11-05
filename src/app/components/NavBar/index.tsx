@@ -27,6 +27,9 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(initialState);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
+  const getPath = (route: string) => {
+    return path === route;
+  }
 
   const redirectToHome = (route: string) => {
     if (path !== "/") {
@@ -63,21 +66,35 @@ export default function NavBar() {
     <Box
       className={
         `${path == "/" ? "!bg-transparent " : "!bg-[#000000] "}` +
-        "flex justify-center border-b border-border-secondary bg-transparent w-full p-4 text-white z-10 static lg:absolute top-0 left-0"
+        "flex justify-center border-b border-border-secondary bg-transparent w-full p-4 text-white z-10 absolute top-0 left-0"
       }
     >
       <Box
         className={
-          "w-full flex items-center justify-between transition-colors ease-in-out duration-200 max-w-[1320px]"
+          "w-full relative flex items-center justify-between transition-colors ease-in-out duration-200 max-w-[1320px]"
         }
       >
-        <Box>
+        <Box className={'absolute left-0'}>
           <Link href={"/"}>
             <Image
               alt={"Makeup Festival logo"}
-              src={"/images/logo.webp"}
-              width={80}
-              height={30}
+              src={"/images/navlogo.svg"}
+              width={463}
+              height={270}
+              style={{color: 'white', filter: 'invert(100%) sepia(100%) saturate(0%) hue-rotate(86deg) brightness(109%) contrast(100%)'}}
+              className={'text-white h-auto w-[150px] max-w-[100%]'}
+            />
+          </Link>
+        </Box>
+        <Box className={'invisible w-[150px]'}>
+          <Link href={"/"}>
+            <Image
+              alt={"Makeup Festival logo"}
+              src={"/images/navlogo.svg"}
+              width={463}
+              height={270}
+              style={{color: 'white', filter: 'invert(100%) sepia(100%) saturate(0%) hue-rotate(86deg) brightness(109%) contrast(100%)'}}
+              className={'text-white h-[20px] w-full'}
             />
           </Link>
         </Box>
@@ -96,7 +113,7 @@ export default function NavBar() {
                   }}
                   onMouseLeave={handleMouseLeave}
                   key={index}
-                  className={"relative"}
+                  className={"relative hover:cursor-pointer"}
                   disablePadding
                   id={id}
                   sx={{ display: "block" }}
@@ -107,14 +124,14 @@ export default function NavBar() {
                     href={route}
                   >
                     <ListItemButton
-                      className={"w-max !py-0"}
+                      className={"w-max !px-[9px] !py-0 hover:!bg-transparent"}
                       aria-haspopup="true"
                       onMouseEnter={() => handleMouseEnter(name)}
                     >
                       <ListItemText
                         primary={name}
-                        primaryTypographyProps={{ fontWeight: "600" }}
-                        className={"itemText"}
+                        primaryTypographyProps={{ fontWeight: "400" }}
+                        className={'itemText ' + getPath(path?.toLowerCase() as string) ? '' : 'text-[#ADACAF]'}
                       />
                       {name === "Exhibitors" && exhibitorIcon(name)}
                       {name === "Travel" && exhibitorIcon(name)}
@@ -123,7 +140,7 @@ export default function NavBar() {
                   <Box
                     onMouseLeave={handleMouseLeave}
                     className={
-                      "absolute bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
+                      "absolute w-max bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
                       `${isOpen.find((route) => route.name === name)?.isOpen ? " flex flex-col" : " invisible"}`
                     }
                   >
@@ -182,7 +199,7 @@ export default function NavBar() {
                       variant="outlined"
                       endIcon={<ArrowOutwardIcon />}
                     >
-                      <ListItemButton className={"w-max !p-0"}>
+                      <ListItemButton className={"w-max !p-0 hover:!bg-transparent"}>
                         <ListItemText
                           primary={name}
                           primaryTypographyProps={{ fontWeight: "600" }}

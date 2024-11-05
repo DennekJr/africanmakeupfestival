@@ -81,14 +81,11 @@ export const Hero = () => {
           </div>
         </div>
         <div className="flex gap-4">
-          <button className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-[#FCFCFC] bg-transparent text-[#FCFCFC] h-14 px-6 py-4 rounded-full w-full md:w-auto">
-            <span>BOOK A STAND</span>
-          </button>
           <a
             className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#F4F4F5] text-[#18181B] hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
             href="https://airtable.com/appccZTnrTPxSkiUH/pagqA0t5kero5g0ZP/form"
           >
-            <span>RESERVE A STAND</span>
+            <span>Become a Sponsor</span>
             <svg
               viewBox="0 0 25 24"
               fill="none"
@@ -108,7 +105,7 @@ export const Hero = () => {
           src={"/images/sponsorHero.webp"}
           alt={"2024 speaker"}
           className={
-            "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
+            "object-cover object-center h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
           }
           width="2208"
           height="2028"

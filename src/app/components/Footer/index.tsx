@@ -22,12 +22,12 @@ export const Footer = () => {
               <Image
                 alt="ASF Logo Full"
                 loading="lazy"
-                width="5207"
-                height="2365"
+                width="6207"
+                height="3365"
                 decoding="async"
-                className="!invert dark:invert-0 w-[337px] h-[139px] object-contain object-left"
-                style={{ color: "transparent" }}
-                src="/images/festivalLogo.webp"
+                className="w-[337px] h-full object-contain object-left !text-black"
+                style={{ color: "black" }}
+                src="/images/footerLogo.svg"
               />
             </div>
             <Box

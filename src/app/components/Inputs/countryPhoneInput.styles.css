@@ -1,0 +1,35 @@
+.form-control {
+    width: 100% !important;
+    padding: 16px 14px;
+    height: auto !important;
+}
+
+.mui-1nmdiq5-menu {
+    /*background: black !important;*/
+    color: #1E1C21 !important;
+    z-index: 200 !important;
+}
+
+.form-control::placeholder {
+    color: #1E1C21 !important;
+}
+
+.flag-dropdown {
+    background: transparent !important;
+    border-right: none !important;
+    /*& .selected-flag {*/
+    /*    padding: 0 !important;*/
+    /*}*/
+}
+
+.mui-1jqq78o-placeholder {
+    color: #1E1C21 !important;
+}
+
+.selectCountryContainer > div {
+    padding: 14px 14px;
+}
+
+.mui-1ahbqh7-container:focus-visible {
+
+}

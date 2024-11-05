@@ -1,8 +1,28 @@
+'use client'
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { FortyFiveDegreeArrow } from "../Hero/utils";
+import { useEffect } from "react";
 
 export const Hero = () => {
+  useEffect(() => {
+    try {
+      fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: 'hello',
+      }).then((data) => {
+        const res = data.json();
+        return res;
+      }).then((data) => {
+        console.log('data from api', data);
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }, []);
   return (
     <section
       className={
@@ -70,7 +90,7 @@ export const Hero = () => {
           src={"/images/mediaHero.webp"}
           alt={"2024 speaker"}
           className={
-            "object-cover object-left-bottom h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
+            "object-cover object-center h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"
           }
           width="2208"
           height="2028"

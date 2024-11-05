@@ -13,14 +13,14 @@ import { Sponsors } from "../../app/(home)/components/Sponsors";
 const Home: NextPage = () => {
   return (
     <Box sx={{ flexGrow: 1, overflow: "hidden" }}>
-      <Hero />
-      <MarqueeSlide />
-      <InvestorsMedia />
-      <Sponsors />
-      <EmojiGrid />
-      <BusinessInsiderPoster />
-      <Speakers />
-      <Partnership />
+        <Hero />
+        <MarqueeSlide />
+        <InvestorsMedia />
+        <Sponsors />
+        <EmojiGrid />
+        <BusinessInsiderPoster />
+        <Speakers />
+        <Partnership />
     </Box>
   );
 };

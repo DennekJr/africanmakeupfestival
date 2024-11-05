@@ -2,27 +2,31 @@
 import Box from "@mui/material/Box";
 import { Collapse } from "@mui/material";
 import React, { useMemo, useState } from "react";
-import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 import { Minus, Plus, TicketTag } from "./utils";
+import { FortyFiveDegreeArrow } from "../../../(home)/sponsor/Hero/utils";
+import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
+import {
+  setTickets, setBillingTotal
+} from "../../../lib/features/checkout/checkoutSlice";
+import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
+import { getTicketCost } from "@/app/(home)/checkout/components/utils";
 
 export const TicketPurchase = () => {
   const initialState = [
-    { ticketName: "explorer", isOpen: false, value: 0 },
-    { ticketName: "founder", isOpen: false, value: 0 },
-    { ticketName: "investor", isOpen: false, value: 0 },
-    { ticketName: "delegate", isOpen: false, value: 0 },
-  ];
-  const initialValue = [
-    { ticketName: "explorer", value: 0 },
-    { ticketName: "founder", value: 0 },
-    { ticketName: "investor", value: 0 },
-    { ticketName: "delegate", value: 0 },
+    { ticketName: "explorer", isOpen: false },
+    { ticketName: "founder", isOpen: false },
+    { ticketName: "investor", isOpen: false },
+    { ticketName: "delegate", isOpen: false },
   ];
 
   const [isOpen, setIsOpen] = useState(initialState);
-  const [values, setValues] = useState(initialValue);
+  const values = useAppSelector((state) => state.checkout.tickets);
+  const router = useRouter();
   const tickets = useMemo(() => Object.values(TICKETPURCHASEMENU), []);
+  const dispatch = useAppDispatch()
+
   const handleClick = (id: string) => {
     const newState = isOpen.map((item) => {
       if (item.ticketName !== id) {
@@ -53,8 +57,20 @@ export const TicketPurchase = () => {
         };
       }
     });
-    setValues(newState);
+    const newTotal = Object.values(newState).reduce((acc, ticket) => {
+      if (ticket.value < 1) return acc;
+
+      const value = getTicketCost(ticket);
+
+      return acc + value;
+    }, 0);
+    dispatch(setTickets(newState));
+    dispatch(setBillingTotal(newTotal));
   };
+
+  const handleProceedToCheckout = () => {
+    router.push('/checkout');
+  }
   return (
     <>
       {tickets.map((ticket, index) => {
@@ -125,6 +141,16 @@ export const TicketPurchase = () => {
           </Box>
         );
       })}
+      <Box className="py-10 lg:py-12 flex justify-center">
+        {" "}
+        <button
+          onClick={handleProceedToCheckout}
+          className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#0A090B] text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 py-4 rounded-full mx-auto min-w-[80%]"
+        >
+          <span>PROCEED TO CHECK OUT</span>
+          <FortyFiveDegreeArrow />
+        </button>
+      </Box>
     </>
   );
 };

@@ -8,7 +8,7 @@ export const EmojiGrid = () => {
 
   return (
     <section
-      className={"mx-auto max-w-[1320px] w-full grid gap-3 px-6 md:grid-cols-6"}
+      className={"mx-auto max-w-[1320px] w-full grid gap-3 py-12 px-6 md:grid-cols-6"}
     >
       <Box
         className={
