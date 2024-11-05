@@ -21,6 +21,7 @@ export const AddToBooth = () => {
   const memoizedWith = useMemo(() => width, [width]);
 
   useEffect(() => {
+    if(typeof memoizedWith === 'undefined') return;
     if(memoizedWith > 768){
       setIsDisabled(true);
     } else {
