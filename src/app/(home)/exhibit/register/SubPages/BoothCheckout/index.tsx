@@ -60,7 +60,6 @@ export const BoothCheckout = () => {
                           control={
                             <Radio
                               className={"!text-white"}
-                              // onClick={() => console.log("clicked")}
                               checked={paymentMethod === "paystack"}
                             />
                           }
@@ -88,7 +87,7 @@ export const BoothCheckout = () => {
                         height={48}
                         decoding="async"
                         className="w-32 lg:w-64"
-                        src="/images/addtoBooth/paystack-svg.svg"
+                        src="/images/paystack.svg"
                         style={{ color: "transparent" }}
                       />
                     </label>
@@ -108,7 +107,6 @@ export const BoothCheckout = () => {
                             control={
                               <Radio
                                 className={"!text-white"}
-                                // onClick={() => console.log("clicked")}
                                 checked={paymentMethod === "stripe"}
                               />
                             }
@@ -137,7 +135,7 @@ export const BoothCheckout = () => {
                           decoding="async"
                           data-nimg="1"
                           className="w-32 lg:w-64"
-                          src="/images/addtoBooth/stripe.svg"
+                          src="/images/stripe.svg"
                           style={{ color: "transparent" }}
                         />
                       </div>

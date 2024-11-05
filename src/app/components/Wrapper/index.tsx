@@ -12,7 +12,7 @@ export default function WebWrapper({ children }: { children: ReactNode }) {
       className={"w-screen min-h-dvh flex flex-col relative overflow-x-hidden"}
     >
       <NavBar />
-      <Box component="main">{children}</Box>
+      <Box component="main" className={'pt-[65px] lg:pt-0'}>{children}</Box>
       <Footer />
     </Box>
   );

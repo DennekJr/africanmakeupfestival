@@ -18,7 +18,7 @@ export async function VideoComponent({ fileName }) {
         }
         preload={"none"}
         className={
-          "w-full min-h-[622px] lg:min-h-screen !h-full object-cover relative bg-gray-1300"
+          "w-full min-h-[622px] lg:min-h-screen !h-full object-cover relative bg-[#0A090B]"
         }
         aria-label="Video player"
         autoPlay
