@@ -29,20 +29,20 @@ export const AddToBooth = () => {
   }, [memoizedWith]);
   const handlePreviousClick = (e) => {
     e.preventDefault();
+    // @ts-expect-error The error displayed is due to null types passed through useRef
     if (swiperRef && swiperRef?.current) {
       // @ts-expect-error The error displayed is due to null types passed through useRef
       swiperRef?.current.slideNext();
-      // @ts-expect-error The error displayed is due to null types passed through useRef
     } else {
       console.warn("Swiper instance is not available.");
     }
   };
   const handleNextClick = (e) => {
     e.preventDefault();
+    // @ts-expect-error The error displayed is due to null types passed through useRef
     if (swiperRef && swiperRef?.current) {
       // @ts-expect-error The error displayed is due to null types passed through useRef
       swiperRef?.current.slideNext();
-      // @ts-expect-error The error displayed is due to null types passed through useRef
     } else {
       console.warn("Swiper instance is not available.");
     }
