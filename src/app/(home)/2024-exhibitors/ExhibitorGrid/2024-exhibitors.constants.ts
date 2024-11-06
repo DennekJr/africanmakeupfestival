@@ -5,41 +5,41 @@ export const EXHIBITORSCONSTNATSMENU: Record<
   one: {
     id: "kpi",
     href: "",
-    src: "/images/exhibitors/kpi.webp",
+    src: "/images/piggyvest.svg",
   },
   two: {
     id: "pluhg",
     href: "",
-    src: "/images/exhibitors/pluhg.webp",
+    src: "/images/medPlus.webp",
   },
   three: {
     id: "enyate",
     href: "",
-    src: "/images/exhibitors/enyata.webp",
+    src: "/images/piggyvest.svg",
   },
   four: {
     id: "qoreplay",
     href: "",
-    src: "/images/exhibitors/qoreplay.webp",
+    src: "/images/medPlus.webp",
   },
   five: {
     id: "termii",
     href: "",
-    src: "/images/exhibitors/termii.webp",
+    src: "/images/piggyvest.svg",
   },
   six: {
     id: "travelTank",
     href: "",
-    src: "/images/exhibitors/travelTank.webp",
+    src: "/images/medPlus.webp",
   },
   seven: {
     id: "pocket",
     href: "",
-    src: "/images/exhibitors/pocketFood.webp",
+    src: "/images/piggyvest.svg",
   },
   eight: {
     id: "vegeel",
     href: "",
-    src: "/images/exhibitors/vegeel.webp",
+    src: "/images/medPlus.webp",
   },
 };

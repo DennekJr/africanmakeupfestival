@@ -1,43 +1,43 @@
 export const EVENTSGRIDCONSTANTSMENU:Record<string, { id: string, src: string }> = {
   kora: {
     id: 'kora',
-    src: '/images/exhibitors/kora.webp'
+    src: "/images/piggyvest.svg",
   },
   tryPex: {
     id: 'tryPex',
-    src: '/images/exhibitors/trypex.webp'
+    src: "/images/medPlus.webp",
   },
   yellowCard: {
     id: 'kora',
-    src: '/images/exhibitors/yellowCard.webp'
+    src: "/images/piggyvest.svg",
   },
   travelTank: {
     id: 'kora',
-    src: '/images/exhibitors/travelTank.webp'
+    src: "/images/medPlus.webp",
   },
   proDevs: {
     id: 'kora',
-    src: '/images/exhibitors/proDevs.webp'
+    src: "/images/piggyvest.svg",
   },
   flick: {
     id: 'kora',
-    src: '/images/exhibitors/flick.webp'
+    src: "/images/medPlus.webp",
   },
 glovo: {
     id: 'kora',
-    src: '/images/exhibitors/glovo.webp'
+  src: "/images/piggyvest.svg",
   },
 cafeOne: {
     id: 'kora',
-    src: '/images/exhibitors/cafeOne.webp'
+  src: "/images/medPlus.webp",
   },
 remita: {
     id: 'kora',
-    src: '/images/exhibitors/remita.webp'
+  src: "/images/piggyvest.svg",
   },
 edenLife: {
     id: 'kora',
-    src: '/images/exhibitors/edenLife.webp'
+  src: "/images/medPlus.webp",
   },
 
 }
