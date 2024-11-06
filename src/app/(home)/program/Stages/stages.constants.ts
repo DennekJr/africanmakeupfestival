@@ -21,7 +21,7 @@ export const STAGESMENU: Record<string, StagesTypes> = {
     order: "02",
     textColor: '#000000',
     stageName: 'Startup Stage',
-    stageBody: 'Forum for Startups and Builders',
+    stageBody: 'Forum for Skincare Startups',
     orderColor: "#0A090B",
     stageTitleColor: "#0A090B",
     stageBodyTextColor: "#2C2A32",

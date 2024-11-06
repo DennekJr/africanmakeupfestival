@@ -30,10 +30,10 @@ export const Partnership = () => {
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 text-center font-medium heading text-5xl leading-[52.8px] lg:text-6xl lg:leading-[66px] xl:text-[90px] xl:leading-[90px] tracking-[-3px]"
               >
                 <span className="relative max-w-full break-words">
-                  Become a&nbsp;
+                  Lorem I&nbsp;
                 </span>
                 <span className="relative max-w-full break-words">
-                  Partner
+                  psum
                   <PartnerSixStrokes />
                 </span>
               </pre>
@@ -43,7 +43,7 @@ export const Partnership = () => {
               >
                 <span className="relative max-w-full break-words">or </span>
                 <span className="relative max-w-full break-words">
-                  Sponsor
+                  Dolor
                   <SponsorUnderStrokes />
                 </span>
               </pre>
@@ -53,9 +53,6 @@ export const Partnership = () => {
                 <pre
                   id="undefined-0"
                   className="font-sans w-full break-words whitespace-pre-wrap min-h-6 text-center heading text-xl font-normal"
-                  data-sentry-element="Comp"
-                  data-sentry-component="Children"
-                  data-sentry-source-file="render.tsx"
                 >
                   <PartnershipText />
                 </pre>

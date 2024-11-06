@@ -74,8 +74,8 @@ export const Hero = () => {
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 heading text-xl font-normal text-gray-500"
             >
               <span className="relative max-w-full break-words">
-                See why the likes of Remita, YellowCard, Shuttlers, Flickwheel,
-                Travel Tank, and ProDevs join us as exhibitors.
+                See why the likes of Fenty, CeraVe, Tatcha, Neurogena,
+                Biossance, and Clinique join us as exhibitors.
               </span>
             </pre>
           </div>
@@ -102,7 +102,7 @@ export const Hero = () => {
       </Box>
       <Box className={"col-span-1 relative"}>
         <Image
-          src={"/images/sponsorHero.webp"}
+          src={"/images/exhibitHero.webp"}
           alt={"2024 speaker"}
           className={
             "object-cover object-center h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"

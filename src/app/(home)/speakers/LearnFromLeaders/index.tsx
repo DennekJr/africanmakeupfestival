@@ -18,19 +18,16 @@ export const LearnFromLeaders = () => {
             <pre
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-5xl leading-[52.8px] lg:text-6xl lg:leading-[66px] xl:text-[90px] xl:leading-[90px] tracking-[-3px]"
-              data-sentry-element="Comp"
-              data-sentry-component="Children"
-              data-sentry-source-file="render.tsx"
             >
               <span className="relative max-w-full break-words">
-                This Novembe
+                This Decembe
               </span>
               <span className="relative max-w-full break-words">
                 r,
                 <MonthScribbleIcon />
               </span>
               <span className="relative max-w-full break-words">
-                learn from the leaders in the game.
+                learn from the experts in the game.
               </span>
             </pre>
           </Box>
@@ -41,7 +38,7 @@ export const LearnFromLeaders = () => {
             >
               <span className="relative max-w-full break-words">
                 Our speaker lineup is continually growing, with new thought
-                leaders and industry experts being added every week to ensure
+                leaders and industry experts on skincare being added every week to ensure
                 you receive the most current and comprehensive insights.
               </span>
             </pre>

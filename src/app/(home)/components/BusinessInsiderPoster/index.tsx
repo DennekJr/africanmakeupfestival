@@ -30,7 +30,7 @@ export const BusinessInsiderPoster = () => {
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
               >
                 <span className="relative max-w-full break-words">
-                  “Africa’s foremost deal-making and networking event ”
+                  “Lorem ipsum dolor sit amet, consectetur adipiscing elit.”
                 </span>
               </Box>
             </Box>
@@ -40,14 +40,14 @@ export const BusinessInsiderPoster = () => {
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
               >
                 <span className="relative max-w-full break-words">
-                  BUSINESS
+                  LOREM
                 </span>
               </Box>
               <Box
                 id="undefined-1"
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
               >
-                <span className="relative max-w-full break-words">INSIDER</span>
+                <span className="relative max-w-full break-words">IPSUM</span>
               </Box>
             </Box>
           </Box>

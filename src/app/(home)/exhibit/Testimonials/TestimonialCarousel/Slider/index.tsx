@@ -54,7 +54,7 @@ const TestimonialSlider: React.FC<DemoSliderProps> = ({ data, swiperRef }) => {
       className="mySwiper"
     >
       {data.map(({ id, src, alt }, index) => (
-        <SwiperSlide key={index} id={id}>
+        <SwiperSlide key={index} id={id} className={'!h-[500px]'}>
           <TestimonialCarousel key={index} src={src} alt={alt} />
         </SwiperSlide>
       ))}

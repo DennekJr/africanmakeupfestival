@@ -32,7 +32,7 @@ export const MediaSources = () => {
                 width="208"
                 height="208"
                 decoding="async"
-                className="w-full h-auto object-cover"
+                className="w-full object-cover h-[524px]"
                 src={mediaSource.src}
                 style={{color: 'transparent'}}
               />

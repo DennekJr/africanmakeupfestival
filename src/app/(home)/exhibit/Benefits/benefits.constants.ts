@@ -13,18 +13,18 @@ export const BENEFITSCONSTANTSMENU: Record<
     id: "Exposure",
     title: "Exposure + Lead Generation + Traction",
     list: [
-      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in startups. This provides you with a captive audience to showcase your products or services to.",
-      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in startups. This provides you with a captive audience to showcase your products or services to.",
-      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in startups. This provides you with a captive audience to showcase your products or services to.",
+      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in skincare. This provides you with a captive audience to showcase your products or services to.",
+      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in skincare. This provides you with a captive audience to showcase your products or services to.",
+      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in skincare. This provides you with a captive audience to showcase your products or services to.",
     ],
   },
   three: {
     id: "Exposure",
     title: "Networking Opportunities",
     list: [
-      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in startups. This provides you with a captive audience to showcase your products or services to.",
-      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in startups. This provides you with a captive audience to showcase your products or services to.",
-      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in startups. This provides you with a captive audience to showcase your products or services to.",
+      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in skincare. This provides you with a captive audience to showcase your products or services to.",
+      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in skincare. This provides you with a captive audience to showcase your products or services to.",
+      "Exposure to a targeted audience: The festival attracts a diverse range of attendees, including investors, industry experts, and potential customers who are specifically interested in skincare. This provides you with a captive audience to showcase your products or services to.",
     ],
   },
 };
