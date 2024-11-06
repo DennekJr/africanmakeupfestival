@@ -125,8 +125,6 @@ export const Footer = () => {
                           })}
                         </Collapse>
                         <Box
-                          timeout="auto"
-                          unmountOnExit
                           className={"lg:grid gap-3 text-xl font-medium hidden"}
                         >
                           {link.subLinks?.map((subLink, index) => {
