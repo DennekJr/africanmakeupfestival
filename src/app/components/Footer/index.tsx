@@ -125,7 +125,6 @@ export const Footer = () => {
                           })}
                         </Collapse>
                         <Box
-                          in={footerHeader?.isOpen}
                           timeout="auto"
                           unmountOnExit
                           className={"lg:grid gap-3 text-xl font-medium hidden"}
