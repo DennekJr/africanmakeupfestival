@@ -16,7 +16,7 @@ export const EventsGrid = () => {
             height="208"
             decoding="async"
             className="w-full h-auto object-contain"
-            style={{color: 'transparent'}}
+            style={{color: 'transparent', filter: 'brightness(0)'}}
             src={exhibitor.src}
           />
         </Box>

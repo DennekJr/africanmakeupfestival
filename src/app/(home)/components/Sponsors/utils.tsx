@@ -30,7 +30,7 @@ export const SponsorIcons = () => {
                       decoding="async"
                       className="object-contain object-center select-none h-16"
                       src={group.src}
-                      style={{ color: "transparent" }}
+                      style={{ color: "transparent", filter: 'brightness(0)', boxShadow: '0 0 0px rgba(0, 0, 0, 1)' }}
                     />
                   </a>
                 );

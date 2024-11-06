@@ -20,7 +20,7 @@ export const ExhibitorGrid = () => {
               alt={exhibitor.id}
               width={270}
               height={73}
-              style={{color: "transparent"}}
+              style={{color: "transparent", filter: 'brightness(0)'}}
               className={"object-contain object-center select-none h-16"}
             />
           </Box>
