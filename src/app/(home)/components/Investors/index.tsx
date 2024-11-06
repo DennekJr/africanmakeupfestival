@@ -26,15 +26,16 @@ export const InvestorsMedia = () => {
               unoptimized
               decoding={"async"}
               className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
-              src={"/images/investors1.webp"}
+              src={"/images/investor.webp"}
             />
           </Box>
           <span className={"text-[#09090b]"}>
-            The Africa Startup Festival convenes top investors, founders,
-            builders and operators to delve into how tech advancements and
-            strategic innovations are transforming various industries in Africa.
-            As the premier event in the African startup scene, it sets the tone
-            for 2025.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+            odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
+            quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
+            mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
+            Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad
+            litora torquent per conubia nostra, per inceptos himenaeos.
           </span>
           <Box
             className={
@@ -50,7 +51,7 @@ export const InvestorsMedia = () => {
               unoptimized
               className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
               style={{ color: "transparent" }}
-              src={"/images/investors2.webp"}
+              src={"/images/investor.webp"}
             />
           </Box>
         </span>

@@ -32,7 +32,7 @@ export const Stages = () => {
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 heading !text-xl font-normal"
               >
                 <span className="relative max-w-full break-words">
-                  The Africa Startup Festival 2024 is set to inspire and engage
+                  The Africa Skincare Festival 2024 is set to inspire and engage
                   with its unique format featuring three distinct stages, each
                   dedicated to showcasing innovation, knowledge, and
                   collaboration from around the globe.

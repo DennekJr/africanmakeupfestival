@@ -69,7 +69,7 @@ export const Hero = () => {
               <span className="relative max-w-full break-words">
                 This November, leading journalists from the world&apos;s most
                 influential publications will join forces with trailblazing
-                innovators and companies shaping the future of tech. Will you be
+                innovators and companies shaping the future of skincare. Will you be
                 among them?
               </span>
             </pre>

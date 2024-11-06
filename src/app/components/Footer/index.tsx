@@ -1,13 +1,39 @@
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/system";
 import { FOOTER_MENULINKS } from "./footer.constants";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Divider, Typography } from "@mui/material";
+import { Collapse, Divider, Typography } from "@mui/material";
 import Image from "next/image";
+import {
+  KeyboardArrowDown,
+  KeyboardArrowUp,
+} from "@mui/icons-material";
 
 export const Footer = () => {
+  const collapsibleFooterItems = [
+    { name: "Navigate", isOpen: false },
+    { name: "Event Guide", isOpen: false },
+    { name: "Our Events", isOpen: false },
+    { name: "Connect", isOpen: false },
+  ];
+  const [collapsedFooterHeader, setCollapsedFooterHeader] = useState<
+    { name: string; isOpen: boolean }[]
+  >(collapsibleFooterItems);
   const links = useMemo(() => Object.values(FOOTER_MENULINKS), []);
+  const handleSetCollapsed = (name: string) => {
+    const newState = collapsedFooterHeader.map((item) => {
+      if (item.name !== name) {
+        return item;
+      } else {
+        return {
+          ...item,
+          isOpen: !item.isOpen,
+        };
+      }
+    });
+    setCollapsedFooterHeader(newState);
+  };
 
   return (
     <Box>
@@ -17,16 +43,16 @@ export const Footer = () => {
         }
       >
         <Box className={"mx-auto max-w-[1320px] flex flex-col gap-14"}>
-          <Box className={"flex flex-col lg:flex-row gap-8 py-8"}>
-            <div className="">
+          <Box className={"flex flex-col lg:flex-row gap-8 lg:py-8"}>
+            <div>
               <Image
                 alt="ASF Logo Full"
                 loading="lazy"
                 width="6207"
                 height="3365"
                 decoding="async"
-                className="w-[337px] h-full object-contain object-left !text-black"
-                style={{ color: "black" }}
+                className="md:w-[337px] w-[500px] h-full object-contain object-left"
+                style={{ color: "black", filter: 'drop-shadow(2px 4px 6px black)' }}
                 src="/images/footerLogo.svg"
               />
             </div>
@@ -41,45 +67,92 @@ export const Footer = () => {
                   "!md:gap-4 mb-6 md:mb-0 flex-1 !grid sm:grid-cols-2 lg:grid-cols-4 !gap-6"
                 }
               >
-                {links.map((link, index) => (
-                  <Grid key={index} container direction={"column"}>
-                    <Box
-                      className={
-                        "col-span-1 lg:justify-self-center flex flex-col gap-4 lg:gap-6"
-                      }
-                    >
-                      <Link key={index} href={link.route} className="nav-link">
-                        <Typography
-                          className={
-                            "pb-2 lg:pb-4 hover:cursor-pointer text-[#0A090B] !text-[1.25rem]"
-                          }
+                {links.map((link, index) => {
+                  const footerHeader = collapsedFooterHeader.find((item) => {
+                    if (item.name === link.name) {
+                      return item.isOpen;
+                    }
+                    return false;
+                  });
+                  return (
+                    <Grid key={index} container direction={"column"}>
+                      <Box
+                        className={
+                          "col-span-1 lg:justify-self-center flex flex-col gap-4 lg:gap-6"
+                        }
+                      >
+                        <Box
+                          key={index}
+                          className="nav-link flex justify-between text-[#0A090B]"
+                          onClick={() => handleSetCollapsed(link.name)}
                         >
-                          {link.name}
-                        </Typography>
-                      </Link>
-                      <Box className={"grid gap-3 text-xl font-medium"}>
-                        {link.subLinks?.map((subLink, index) => {
-                          return (
-                            <Link
-                              key={index}
-                              href={subLink.route}
-                              className="nav-link"
-                            >
-                              <Typography
-                                className={
-                                  "!text-[1.25rem] text-[#0A090B] pb-1 md:pb-2 text-xl !font-bold hover:cursor-pointer"
-                                }
-                                key={subLink.id}
+                          <Typography
+                            className={
+                              "pb-2 lg:pb-4 hover:cursor-pointer !text-[1.25rem]"
+                            }
+                          >
+                            {link.name}
+                          </Typography>
+                          {footerHeader?.isOpen ? (
+                            <KeyboardArrowUp className={'lg:!hidden'} />
+                          ) : (
+                            <KeyboardArrowDown className={'lg:!hidden'} />
+                          )}
+                        </Box>
+                        <Collapse
+                          in={footerHeader?.isOpen}
+                          timeout="auto"
+                          unmountOnExit
+                          className={"grid gap-3 text-xl font-medium lg:hidden"}
+                        >
+                          {link.subLinks?.map((subLink, index) => {
+                            return (
+                              <Link
+                                key={index}
+                                href={subLink.route}
+                                className="nav-link"
                               >
-                                {subLink.name}
-                              </Typography>
-                            </Link>
-                          );
-                        })}
+                                <Typography
+                                  className={
+                                    "!text-[1.25rem] text-[#0A090B] pb-1 md:pb-2 text-xl !font-bold hover:cursor-pointer"
+                                  }
+                                  key={subLink.id}
+                                >
+                                  {subLink.name}
+                                </Typography>
+                              </Link>
+                            );
+                          })}
+                        </Collapse>
+                        <Box
+                          in={footerHeader?.isOpen}
+                          timeout="auto"
+                          unmountOnExit
+                          className={"lg:grid gap-3 text-xl font-medium hidden"}
+                        >
+                          {link.subLinks?.map((subLink, index) => {
+                            return (
+                              <Link
+                                key={index}
+                                href={subLink.route}
+                                className="nav-link"
+                              >
+                                <Typography
+                                  className={
+                                    "!text-[1.25rem] text-[#0A090B] pb-1 md:pb-2 text-xl !font-bold hover:cursor-pointer"
+                                  }
+                                  key={subLink.id}
+                                >
+                                  {subLink.name}
+                                </Typography>
+                              </Link>
+                            );
+                          })}
+                        </Box>
                       </Box>
-                    </Box>
-                  </Grid>
-                ))}
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Box>
           </Box>

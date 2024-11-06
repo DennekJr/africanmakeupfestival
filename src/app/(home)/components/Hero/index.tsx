@@ -8,7 +8,7 @@ import { VideoComponent } from "./VideoComponent";
 export const Hero = () => {
   return (
     <section className={"relative w-full lg:min-h-screen"}>
-      <VideoComponent fileName={'LandingPage'} />
+      <VideoComponent />
       <Box
         className={
           "absolute top-0 right-0 bottom-0 left-0 z-[2] bg-overlay w-full h-full flex flex-col items-center justify-end lg:justify-center text-gray-100 gap-8 p-4"
@@ -60,7 +60,7 @@ export const Hero = () => {
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 text-center font-medium heading text-2xl"
           >
             <span className="relative max-w-full break-words">
-              Building for Africa, from Africa
+              Africa Skincare festival
             </span>
           </pre>
           <pre

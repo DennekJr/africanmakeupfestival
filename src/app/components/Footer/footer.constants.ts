@@ -21,13 +21,13 @@ export const FOOTER_MENULINKS: Record<string, FooterItem> = {
     route: "",
     name: "Our Events",
     subLinks: [
-      { id: "africaTechnologyExpo", name: "Africa Technology Expo", route: "" },
+      { id: "africaSkincare", name: "Africa Skincare", route: "" },
       {
-        id: "londonStartupFestival",
-        name: "London Startup Festival",
+        id: "torontoSkincareFestival",
+        name: "Toronto Skincare Festival",
         route: "",
       },
-      { id: "qatarStartupFestival", name: "Qatar Startup Festival", route: "" },
+      { id: "dubaiSkincareFestival", name: "Dubai Skincare Festival", route: "" },
     ],
     disabled: false,
   },

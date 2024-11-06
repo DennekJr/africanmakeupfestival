@@ -10,16 +10,16 @@ export const MarqueeSlide = () => {
       loop={0}
     >
       <span className="px-12">
-        Balmoral Convention Center, Federal Palace, V.I, Lagos, Nigeria.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </span>
       <MarqueeStarIcon />
       <span className="px-12">Sat, 16th November, 2024</span>
       <MarqueeStarIcon />
       <span className="px-12">
-        Balmoral Convention Center, Federal Palace, V.I, Lagos, Nigeria.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </span>
       <MarqueeStarIcon />
-      <span className="px-12">Sat, 16th November, 2024</span>
+      <span className="px-12">Sat, 10th December, 2025</span>
       <MarqueeStarIcon />
     </Marquee>
   );

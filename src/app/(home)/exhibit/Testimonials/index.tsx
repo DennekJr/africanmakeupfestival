@@ -60,7 +60,7 @@ export const Testimonials = () => {
               From innovative startups to thriving enterprises, discover what
               our past exhibitors have to say about the exposure, networking
               opportunities, and business growth they experienced by
-              participating in the Africa Startup Festival.
+              participating in the Africa Skincare Festival.
             </span>
           </pre>
         </Box>

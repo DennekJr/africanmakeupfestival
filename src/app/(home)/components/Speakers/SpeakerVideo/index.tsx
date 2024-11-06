@@ -12,8 +12,8 @@ export const SpeakerVideo = () => {
           id="undefined-0"
           className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
         >
-          <span className="relative max-w-full break-words">2023 </span>
-          <span className="relative max-w-full break-words">Recap </span>
+          <span className="relative max-w-full break-words">2024 </span>
+          <span className="relative max-w-full break-words">Lorem </span>
         </pre>
       </div>
       <div
@@ -24,14 +24,14 @@ export const SpeakerVideo = () => {
         <div className="w-full h-full">
           <iframe
             className="w-full h-full"
-            allowFullScreen
+            title="Africa Skincare Festival 2024 Recap"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            title="Africa Startup Festival 2023 Recap"
             width="640"
             height="360"
-            src="https://www.youtube.com/embed/Apt0flNCM2c?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.africastartupfestival.com&amp;widgetid=1"
             id="widget2"
+            src="/images/speakerHome.mp4"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
           ></iframe>
         </div>
       </div>

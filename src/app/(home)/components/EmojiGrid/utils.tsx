@@ -37,7 +37,7 @@ export const EmojiLoop = ({
                     height="60"
                     decoding="async"
                     data-nimg="1"
-                    className={"size-9 lg:size-16 " + `${index !== 0 ? '-ml-2.5 lg:-ml-5' : ''}`}
+                    className={"size-9 lg:size-16 rounded-full " + `${index !== 0 ? '-ml-2.5 lg:-ml-5 ' : ''}` + `${text === 'Meetings' ? index === 0 ? 'absolute top-4 left-4' : 'absolute bottom-4 right-4' : ''}`}
                     style={{ color: "transparent" }}
                     src={emoji.src}
                   />
