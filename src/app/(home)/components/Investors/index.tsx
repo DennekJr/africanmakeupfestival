@@ -30,11 +30,11 @@ export const InvestorsMedia = () => {
             />
           </Box>
           <span className={"text-[#09090b]"}>
-            The Africa Skincare Festival brings together leading experts,
-            founders, and innovators to explore how advancements in skincare
-            technology and strategic innovation are revolutionizing the beauty
-            industry across Africa. As the premier skincare event in Africa, it
-            sets the trends and standards for 2025.
+            The Africa Skincare Festival gathers top investors, founders,
+            creators, and experts to explore how advancements in skincare
+            technology and strategic innovations are transforming the beauty
+            industry in Africa. As a premier event in African skincare, it
+            sets the tone for 2025.
           </span>
           <Box
             className={
