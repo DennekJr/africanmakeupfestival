@@ -13,9 +13,9 @@ export const ApplyForExhibit = () => {
             id="undefined-0"
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
           >
-            <span className="relative max-w-full break-words">Lorem ip </span>
+            <span className="relative max-w-full break-words">Apply to </span>
             <span className="relative max-w-full break-words">
-              dolor{" "}
+              exhibit{" "}
               <svg
                 width="170"
                 height="102"
@@ -38,19 +38,20 @@ export const ApplyForExhibit = () => {
               </svg>
             </span>
             <span className="relative max-w-full break-words">
-              consectetur adipiscing elit
+              at the Africa Skincare Festival
             </span>
           </pre>
           <div className="flex flex-col gap-8">
             <pre className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-normal text-base">
               <span className="relative max-w-full break-words">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed
-                nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
-                ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
-                Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent
-                taciti sociosqu ad litora torquent per conubia nostra, per
-                inceptos himenaeos.
+                The Africa Skincare Festival (#ASF) is the epicenter of skincare
+                innovation, showcasing the latest advancements and products in
+                the beauty industry. Our exhibitions offer a platform for brands
+                and skincare startups to present their groundbreaking products,
+                drawing key investors, partners, and customers. This year, we&apos;re
+                featuring even more diverse and exciting exhibits, making #ASF
+                the ultimate destination for discovering cutting-edge skincare
+                solutions.
               </span>
             </pre>
             <div className="flex flex-wrap gap-3">

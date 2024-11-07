@@ -1,11 +1,10 @@
 export const PartnershipText = () => {
   return (
     <span className="relative max-w-full break-words">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit
-      purus id est volutpat, et malesuada ipsum posuere. Fusce ut arcu ut erat
-      elementum dignissim et vel purus. Vestibulum ac feugiat metus. Suspendisse
-      id lacus et libero laoreet malesuada eget in ligula. Join us and be part
-      of Lorem ipsum dolor sit amet consectetur!
+      The Africa Skincare Festival relies on strategic partnerships and
+      sponsorships to bring together thousands each year, offering unmatched
+      brand visibility and lead generation for our partners. Join us and be part
+      of Africa’s premier skincare event!
     </span>
   );
 };

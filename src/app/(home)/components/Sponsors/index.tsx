@@ -12,7 +12,7 @@ export const Sponsors = () => {
           className="text-[#09090b] font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
         >
           <span className="relative max-w-full break-words">
-            2025 Sponsors
+            2024 Sponsors
             <svg
               width="317"
               height="34"

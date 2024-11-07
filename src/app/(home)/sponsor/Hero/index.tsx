@@ -24,7 +24,7 @@ export const Hero = () => {
               data-sentry-source-file="render.tsx"
             >
               <span className="relative max-w-full break-words">
-                Airtel, Microsoft, Interswitch, VFD, DebtRecuva, Yebox and many
+                Piggyvest, Medplus Pharmacy and many
                 more have{" "}
               </span>
               <span className="relative max-w-full break-words">
@@ -67,7 +67,7 @@ export const Hero = () => {
         <Box className="flex gap-4">
           <a
             className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#F4F4F5] text-[#18181B] hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
-            href="/en/ticket"
+            href="/ticket"
           >
             <span className={"capitalize"}>Become A Partner</span>
             <FortyFiveDegreeArrow />

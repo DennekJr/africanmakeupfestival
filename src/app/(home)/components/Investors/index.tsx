@@ -25,17 +25,16 @@ export const InvestorsMedia = () => {
               height={1280}
               unoptimized
               decoding={"async"}
-              className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
-              src={"/images/investor.webp"}
+              className="w-full h-full object-cover object-top aspect-[16/12] rounded-lg"
+              src={"/images/homeSpeaker1.webp"}
             />
           </Box>
           <span className={"text-[#09090b]"}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-            odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
-            quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
-            mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
-            Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos.
+            The Africa Skincare Festival gathers top investors, founders,
+            creators, and experts to explore how advancements in skincare
+            technology and strategic innovations are transforming the beauty
+            industry in Africa. As a premier event in African skincare, it
+            sets the tone for 2025.
           </span>
           <Box
             className={
@@ -51,7 +50,7 @@ export const InvestorsMedia = () => {
               unoptimized
               className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
               style={{ color: "transparent" }}
-              src={"/images/investor.webp"}
+              src={"/images/homeSpeaker2.webp"}
             />
           </Box>
         </span>
