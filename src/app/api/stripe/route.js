@@ -10,8 +10,8 @@ export async function POST(request) {
       payment_method_types: ['card'],
       mode: 'payment',
       line_items: items.stripeCheckoutData,
-      success_url: `http://localhost:3000/`,
-      cancel_url: `http://localhost:3000/ticket`,
+      success_url: process.env.BASE_URL,
+      cancel_url: process.env.BASE_URL + `/ticket`,
     });
 
     const itemData = items.ticketData;

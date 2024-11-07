@@ -85,7 +85,7 @@ export const EMOJIGRID_EMOJIS: Record<string, EmojiGridType> = {
   },
   industry_leading_speakers: {
     id: "Industry_Leading_Speakers",
-    regularText: `Skin Industry-Leading Speakers`,
+    regularText: `Skincare Industry-Leading Speakers`,
     boldText: "30+",
     emojis: [
       {
