@@ -67,10 +67,10 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
     time: "12:00 am",
     panelSession: "Second Panel Session",
     title:
-      "Investing In Africa's Tech Future: Trends and Economic Projections",
+      "Investing In Africa's Skincare Future: Trends and Projections",
     content: {
       summary:
-        "Investing in Africa’s tech future is more crucial than ever as the continent emerges as a global innovation hub. But what are the key trends and economic projections shaping this landscape? In this panel, experts from leading investment firms and tech companies will explore the opportunities and challenges of investing in Africa's burgeoning tech sector and discuss strategies for fostering sustainable growth and innovation.",
+        "Investing in Africa’s skincare future is more crucial than ever as the continent emerges as a global innovation hub in beauty and wellness. But what are the key trends and economic projections shaping this landscape? In this panel, experts from leading skincare brands and investment firms will explore the opportunities and challenges of investing in Africa's burgeoning skincare industry and discuss strategies for fostering sustainable growth and innovation.",
       participants: [
         {
           id: "oyin",
@@ -120,7 +120,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       "Angola, Democratic Republic of Congo, Rwanda & Zambia - Unlocking Opportunities for Economic and skincare startup Growth.",
     content: {
       summary:
-        "You might be surprised to learn that Angola, the Democratic Republic of Congo, Rwanda, and Zambia are emerging as key players in Africa's economic and skincare startup ecosystems. This discussion will bring together experts to explore the unique opportunities and challenges within these dynamic markets. We'll delve into the most critical strategies, infrastructure developments, and innovations driving economic and skincare startup growth across these countries, and why now is the time to invest in their potential.",
+        "You might be surprised to learn that Angola, the Democratic Republic of Congo, Rwanda, and Zambia are emerging as key players in Africa's economic and skincare startup ecosystems. This discussion will bring together experts to explore the unique opportunities and challenges within these dynamic markets. We'll delve into the most critical strategies, infrastructure developments, and innovations driving economic and skincare growth across these countries, and why now is the time to invest in their potential.",
       participants: [
         {
           id: "oyin",
@@ -154,7 +154,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       "Angola, Democratic Republic of Congo, Rwanda & Zambia - Unlocking Opportunities for Economic and skincare startup Growth.",
     content: {
       summary:
-        "You might be surprised to learn that Angola, the Democratic Republic of Congo, Rwanda, and Zambia are emerging as key players in Africa's economic and skincare startup ecosystems. This discussion will bring together experts to explore the unique opportunities and challenges within these dynamic markets. We'll delve into the most critical strategies, infrastructure developments, and innovations driving economic and skincare startup growth across these countries, and why now is the time to invest in their potential.",
+        "You might be surprised to learn that Angola, the Democratic Republic of Congo, Rwanda, and Zambia are emerging as key players in Africa's economic and skincare startup ecosystems. This discussion will bring together experts to explore the unique opportunities and challenges within these dynamic markets. We'll delve into the most critical strategies, infrastructure developments, and innovations driving economic and skincare growth across these countries, and why now is the time to invest in their potential.",
       participants: [
         {
           id: "oyin",
@@ -188,7 +188,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       "Angola, Democratic Republic of Congo, Rwanda & Zambia - Unlocking Opportunities for Economic and skincare startup Growth.",
     content: {
       summary:
-        "You might be surprised to learn that Angola, the Democratic Republic of Congo, Rwanda, and Zambia are emerging as key players in Africa's economic and skincare startup ecosystems. This discussion will bring together experts to explore the unique opportunities and challenges within these dynamic markets. We'll delve into the most critical strategies, infrastructure developments, and innovations driving economic and skincare startup growth across these countries, and why now is the time to invest in their potential.",
+        "You might be surprised to learn that Angola, the Democratic Republic of Congo, Rwanda, and Zambia are emerging as key players in Africa's economic and skincare startup ecosystems. This discussion will bring together experts to explore the unique opportunities and challenges within these dynamic markets. We'll delve into the most critical strategies, infrastructure developments, and innovations driving economic and skincare growth across these countries, and why now is the time to invest in their potential.",
       participants: [
         {
           id: "oyin",
@@ -222,7 +222,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       "Angola, Democratic Republic of Congo, Rwanda & Zambia - Unlocking Opportunities for Economic and skincare startup Growth.",
     content: {
       summary:
-        "You might be surprised to learn that Angola, the Democratic Republic of Congo, Rwanda, and Zambia are emerging as key players in Africa's economic and skincare startup ecosystems. This discussion will bring together experts to explore the unique opportunities and challenges within these dynamic markets. We'll delve into the most critical strategies, infrastructure developments, and innovations driving economic and skincare startup growth across these countries, and why now is the time to invest in their potential.",
+        "You might be surprised to learn that Angola, the Democratic Republic of Congo, Rwanda, and Zambia are emerging as key players in Africa's economic and skincare startup ecosystems. This discussion will bring together experts to explore the unique opportunities and challenges within these dynamic markets. We'll delve into the most critical strategies, infrastructure developments, and innovations driving economic and skincare growth across these countries, and why now is the time to invest in their potential.",
       participants: [
         {
           id: "oyin",

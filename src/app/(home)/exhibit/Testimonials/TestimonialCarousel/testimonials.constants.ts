@@ -11,7 +11,7 @@ export const TESTIMONIALSCONSTANTSMENU:Record<string, {id: string, src: string, 
   },
   three: {
     id: 'testimonialThree',
-    src: '/images/testimonials/testimonial1.webp',
+    src: '/images/testimonials/testimonial3.webp',
     alt: 'testimonial three'
   },
 

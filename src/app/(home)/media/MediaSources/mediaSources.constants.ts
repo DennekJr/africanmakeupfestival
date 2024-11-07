@@ -9,7 +9,7 @@ export const MEDIASOURCES_MENU: Record<
   },
   videos: {
     id: "videos",
-    title: "videos",
+    title: "Videos",
     src: "/images/mediaVideos.webp",
   },
   pressRelease: {
