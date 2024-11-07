@@ -23,7 +23,7 @@ export const SpeakerVideo = () => {
       >
         <div className="w-full h-full">
           <iframe
-            className="w-full h-full"
+            className="w-full h-full [&_video]:h-webkit-fill"
             title="Africa Skincare Festival 2024 Recap"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             width="640"

@@ -25,8 +25,8 @@ export const InvestorsMedia = () => {
               height={1280}
               unoptimized
               decoding={"async"}
-              className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
-              src={"/images/investor.webp"}
+              className="w-full h-full object-cover object-top aspect-[16/12] rounded-lg"
+              src={"/images/homeSpeaker1.webp"}
             />
           </Box>
           <span className={"text-[#09090b]"}>
@@ -51,7 +51,7 @@ export const InvestorsMedia = () => {
               unoptimized
               className="w-full h-full object-cover object-center aspect-[16/12] rounded-lg"
               style={{ color: "transparent" }}
-              src={"/images/investor.webp"}
+              src={"/images/homeSpeaker2.webp"}
             />
           </Box>
         </span>
