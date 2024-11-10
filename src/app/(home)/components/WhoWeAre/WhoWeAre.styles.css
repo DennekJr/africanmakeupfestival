@@ -1,0 +1,107 @@
+.whoWeAreSection {
+    z-index: 2;
+    position: relative;
+    animation-name: agora-fadeinup;
+    animation-duration: 750ms;
+    animation-fill-mode: both;
+    visibility: visible;
+    --widgets-spacing: 0px 0px;
+    flex-direction: initial;
+    flex-wrap: initial;
+    justify-content: initial;
+    align-items: initial;
+    align-content: initial;
+    gap: initial;
+    flex-basis: initial;
+    flex-grow: initial;
+    flex-shrink: initial;
+    order: initial;
+    align-self: initial;
+}
+
+.whoWeAreContainer {
+    max-width: calc((calc(100vw - (30px * 2))) + 30px);
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    box-sizing: border-box;
+ }
+
+.whoWeAreColumn {
+    position: relative;
+    min-height: 1px;
+    display: flex;
+    flex-direction: initial;
+    flex-wrap: initial;
+    justify-content: initial;
+    align-items: initial;
+    align-content: initial;
+    gap: initial;
+    flex-basis: initial;
+    flex-grow: initial;
+    flex-shrink: initial;
+    order: initial;
+    align-self: initial;
+}
+
+.whoWeAreWidget {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding: calc(30px / 2);
+}
+
+.whoWeAreInnerSection {
+    width: 100%;
+    position: relative;
+    widgets-spacing: 0px 0px;
+}
+
+.whoWeAreInnerSectionInnerContainer > .elementor-column {
+    position: relative;
+    min-height: 1px;
+    display: flex;
+}
+
+.whoWeAreInnerSectionInnerContainer {
+    max-width: 830px;
+}
+
+@media (max-width: 1279px) {
+    .elementor-section.elementor-section-boxed > .elementor-container {
+        max-width: 1024px;
+    }
+}
+
+@media (max-width: 1279px) {
+    .whoWeAreInnerSectionInnerContainer {
+        max-width: 605px;
+    }
+}
+
+@media (max-width: 1279px) {
+    .whoWeAreContainer {
+        max-width: 1024px;
+        flex-wrap: wrap;
+    }
+    .whoWeAreInnerSectionInnerContainer {
+        max-width: 605px;
+        flex-wrap: wrap;
+    }
+}
+@keyframes agora-fadeinup {
+    0% {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

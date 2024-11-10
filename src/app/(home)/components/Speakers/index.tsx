@@ -4,6 +4,7 @@ import { WhiteBgArrowButton } from "../../../utils";
 import { SpeakerVideo } from "./SpeakerVideo";
 import { ApplyForExhibit } from "./ApplyForExhibit";
 import { SpeakersGrid } from "./SpeakersGrid";
+import '../newHome/buildFromScratchNewHome/newHome.styles.css';
 
 export const Speakers = () => {
   return (

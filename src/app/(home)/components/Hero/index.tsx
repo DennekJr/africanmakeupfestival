@@ -11,7 +11,7 @@ export const Hero = () => {
       <VideoComponent />
       <Box
         className={
-          "absolute top-0 right-0 bottom-0 left-0 z-[2] bg-overlay w-full h-full flex flex-col items-center justify-end lg:justify-center text-gray-100 gap-8 p-4"
+          "absolute top-0 right-0 bottom-0 left-0 z-[2] bg-overlay w-full h-full flex flex-col items-center justify-center text-gray-100 gap-8 p-4"
         }
       >
         <Box className={"lg:max-w-[790px] xl:max-w-[1135px] mx-auto"}>
@@ -22,10 +22,10 @@ export const Hero = () => {
             }
           >
             <span className={"relative max-w-full break-words"}>
-              Africa’s Foremost{" "}
+              Africa’s Skincare{" "}
             </span>
             <span className={"relative max-w-full break-words"}>
-              Deal-mak
+              Fest
               <svg
                 width="266"
                 height="25"
@@ -48,7 +48,7 @@ export const Hero = () => {
               </svg>
             </span>
             <span className={"relative max-w-full break-words"}>
-              ing & Networking Event
+              val
             </span>
           </pre>
           <pre
@@ -60,7 +60,7 @@ export const Hero = () => {
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 text-center font-medium heading text-2xl"
           >
             <span className="relative max-w-full break-words">
-              Africa Skincare festival
+              Discover the Future of Skincare Innovations in Africa
             </span>
           </pre>
           <pre
