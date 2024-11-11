@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export const Speakers = ({ speaker }: { speaker: SpeakerType }) => {
   return (
-    <Box className={"pb-[30px] inline-block align-top pr-[30px] w-[33.33%]"}>
+    <Box className={"pb-[30px] inline-block align-top md:pr-[30px] w-full md:w-[50%] lg:w-[33.33%]"}>
       <AgoraBox className={"h-full w-full inline-block"}>
         {/*IMAGE*/}
         <Box className={'imageContainer overflow-hidden'}>
@@ -38,7 +38,7 @@ export const Speakers = ({ speaker }: { speaker: SpeakerType }) => {
                       "opacity-0 speakerLink transition-all duration-300 top-[20px] relative m-[3px] inline-block align-top leading-[1] text-center"
                     }
                   >
-                    <AgoraTransitionNoTransformSpan className={'flex items-center justify-center text-black bg-white hover:bg-[#E58800] hover:text-white border-none text-[16px] w-[45px] h-[45px] leading-[45px] rounded-full inline-block bg-cover bg-top'}>
+                    <AgoraTransitionNoTransformSpan className={'flex items-center justify-center text-black bg-white hover:bg-[#E58800] hover:text-white border-none text-[16px] w-[45px] h-[45px] leading-[45px] rounded-full bg-cover bg-top'}>
                       <link.icon className={'before:mt-[-1px]'} />
                     </AgoraTransitionNoTransformSpan>
                   </a>

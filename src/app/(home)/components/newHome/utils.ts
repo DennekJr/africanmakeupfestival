@@ -11,7 +11,7 @@ export const AgoraBox = styled(Box)({
     top: 0,
   },
   "& .imageContainer:hover .speakerImg": {
-    transform: 'scale(1.05, 1.05)'
+    transform: "scale(1.05, 1.05)",
   },
   "& .imageContainer:hover a:nth-child(1)": {
     transitionDelay: "0.1s",
@@ -44,6 +44,14 @@ export const AboutUsImageWithTransition = styled(Box)({
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   transition: "background .3s, border .3s, border-radius .3s, box-shadow .3s",
+});
+export const SkinCareAdventuresImageWithTransition = styled("section")({
+  backgroundImage: "url(/images/skinCareAdventure.webp)",
+  backgroundPosition: "center center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  transition:
+    "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform .4s",
 });
 export const AboutUsHoverMaskWithTransition = styled(Box)({
   position: "absolute",
@@ -83,6 +91,11 @@ export const HomeButton = styled("a")({
   padding: "18px 40px",
   borderWidth: "0 !important",
   boxShadow: "none",
+  "@media (max-width: 790px)": {
+    padding: "13px 34px",
+    fontSize: "13px",
+    lineHeight: "20px",
+  },
 });
 
 export const CheckmarkLi = styled("li")({

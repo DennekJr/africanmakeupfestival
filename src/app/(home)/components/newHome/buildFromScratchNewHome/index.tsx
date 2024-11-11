@@ -6,8 +6,9 @@ import { WhoAreWe } from "@/app/(home)/components/newHome/buildFromScratchNewHom
 import { Experiences } from "@/app/(home)/components/newHome/buildFromScratchNewHome/Experiences";
 import '../buildFromScratchNewHome/newHome.styles.css';
 import { CalenderEvents } from "@/app/(home)/components/newHome/buildFromScratchNewHome/CalenderEvents";
-import { AboutUs } from "@/app/(home)/components/newHome/AboutUs";
+import { AboutUs } from "app/(home)/components/newHome/buildFromScratchNewHome/AboutUs";
 import { VisitingSpeakers } from "@/app/(home)/components/newHome/buildFromScratchNewHome/VisitingSpeakers";
+import { SkinCareAdventure } from "@/app/(home)/components/newHome/buildFromScratchNewHome/SkinCareAdventure";
 
 export const BuildFromScratchNewHome = () => {
   return (
@@ -18,6 +19,7 @@ export const BuildFromScratchNewHome = () => {
       <CalenderEvents />
       <AboutUs />
       <VisitingSpeakers />
+      <SkinCareAdventure />
     </Box>
   );
 };
