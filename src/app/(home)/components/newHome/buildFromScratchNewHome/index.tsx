@@ -5,6 +5,9 @@ import { Hero } from "@/app/(home)/components/newHome/buildFromScratchNewHome/He
 import { WhoAreWe } from "@/app/(home)/components/newHome/buildFromScratchNewHome/WhoAreWe";
 import { Experiences } from "@/app/(home)/components/newHome/buildFromScratchNewHome/Experiences";
 import '../buildFromScratchNewHome/newHome.styles.css';
+import { CalenderEvents } from "@/app/(home)/components/newHome/buildFromScratchNewHome/CalenderEvents";
+import { AboutUs } from "@/app/(home)/components/newHome/AboutUs";
+import { VisitingSpeakers } from "@/app/(home)/components/newHome/buildFromScratchNewHome/VisitingSpeakers";
 
 export const BuildFromScratchNewHome = () => {
   return (
@@ -12,6 +15,9 @@ export const BuildFromScratchNewHome = () => {
       <Hero />
       <WhoAreWe />
       <Experiences />
+      <CalenderEvents />
+      <AboutUs />
+      <VisitingSpeakers />
     </Box>
   );
 };
