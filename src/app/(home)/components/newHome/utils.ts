@@ -6,6 +6,25 @@ export const AgoraBox = styled(Box)({
   animationDuration: "750ms",
   animationFillMode: "both",
   visibility: "visible",
+  "& .imageContainer:hover .speakerLink": {
+    opacity: 1,
+    top: 0,
+  },
+  "& .imageContainer:hover .speakerImg": {
+    transform: 'scale(1.05, 1.05)'
+  },
+  "& .imageContainer:hover a:nth-child(1)": {
+    transitionDelay: "0.1s",
+  },
+  "& .imageContainer:hover a:nth-child(2)": {
+    transitionDelay: "0.15s",
+  },
+  "& .imageContainer:hover a:nth-child(3)": {
+    transitionDelay: "0.2s",
+  },
+  "& .imageContainer:hover a:nth-child(4)": {
+    transitionDelay: "0.25s",
+  },
 });
 
 export const AgoraTransitionBox = styled(Box)({
@@ -14,17 +33,39 @@ export const AgoraTransitionBox = styled(Box)({
 });
 
 export const AgoraTransitionNoTransformBox = styled(Box)({
-  transition:
-    "background .3s, border .3s, border-radius .3s, box-shadow .3s",
+  transition: "background .3s, border .3s, border-radius .3s, box-shadow .3s",
+});
+export const AgoraTransitionNoTransformSpan = styled("span")({
+  transition: "background .3s, border .3s, border-radius .3s, box-shadow .3s",
 });
 export const AboutUsImageWithTransition = styled(Box)({
-  backgroundImage:
-    "url(/images/homeHeroFour.webp)",
+  backgroundImage: "url(/images/aboutUs.webp)",
   backgroundPosition: "top center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  transition:
-    "background .3s, border .3s, border-radius .3s, box-shadow .3s",
+  transition: "background .3s, border .3s, border-radius .3s, box-shadow .3s",
+});
+export const AboutUsHoverMaskWithTransition = styled(Box)({
+  position: "absolute",
+  zIndex: 10,
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  overflow: "hidden",
+  opacity: 0,
+  backgroundColor: "rgba(239, 167, 88, 0.8)",
+  transition: "all 0.3s 0.1s ease-out",
+  pointerEvents: "none",
+});
+export const AboutUsLinkWithTransition = styled(Box)({
+  position: "absolute",
+  zIndex: 2,
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  background: "transparent",
 });
 
 export const HomeButton = styled("a")({

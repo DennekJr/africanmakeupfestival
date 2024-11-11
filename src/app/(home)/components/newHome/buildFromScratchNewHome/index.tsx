@@ -11,7 +11,7 @@ import { VisitingSpeakers } from "@/app/(home)/components/newHome/buildFromScrat
 
 export const BuildFromScratchNewHome = () => {
   return (
-    <Box sx={{ flexGrow: 1, overflow: "hidden" }}>
+    <Box sx={{ flexGrow: 1, overflow: "hidden", padding: '5rem 0' }}>
       <Hero />
       <WhoAreWe />
       <Experiences />

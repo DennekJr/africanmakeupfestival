@@ -63,7 +63,7 @@ export const AboutUs = () => {
                   "content-center items-center py-0 flex flex-col w-full"
                 }
               >
-                <Box className={"h-[50px] w-full"}>
+                <Box className={"h-[50px] md:h-[90px] w-full"}>
                   <AgoraTransitionBox>
                     <Box className={"h-[120px]"} />
                   </AgoraTransitionBox>
@@ -89,7 +89,7 @@ export const AboutUs = () => {
                               </span>
                               <h1
                                 className={
-                                  "ml-[-1px] text-[3.4em] font-extrabold text-[#FD4C19]"
+                                  "ml-[-1px] text-[32px] md:text-[44px] lg:text-[3em] font-extrabold text-[#FD4C19]"
                                 }
                                 style={{lineHeight: '1em', letterSpacing: 0}}
                               >
@@ -116,19 +116,19 @@ export const AboutUs = () => {
                           <AgoraTransitionBox className={"mb-0"}>
                             <ul className={"pl-[30px] text-[#FD4C19]"}>
                               <li
-                                className={"mt-0 mb-[10px] relative flex items-center"}
+                                className={"mt-0 mb-[10px] text-[16px] relative flex items-center"}
                               >
                                 <CheckIcon className={'absolute !h-full'} style={{ fontSize: "11px", width: "11px", left: "-30px" }} />
                                 Sed ut perspiciatis unde omnis
                               </li>
                               <li
-                                className={"my-[10px] relative flex"}
+                                className={"my-[10px] text-[16px]  relative flex"}
                               >
                                 <CheckIcon className={'absolute !h-full'} style={{ fontSize: "11px", width: "11px", left: "-30px" }} />
                                 Sed ut perspiciatis unde omnis
                               </li>
                               <li
-                                className={"mb-0 mt-[10px] relative flex"}
+                                className={"mb-0 text-[16px] mt-[10px] relative flex"}
                               >
                                 <CheckIcon className={'absolute !h-full'} style={{ fontSize: "11px", width: "11px", left: "-30px" }} />
                                 Sed ut perspiciatis unde omnis
@@ -148,7 +148,7 @@ export const AboutUs = () => {
                                 "inline-block align-top mb-[-10px] leading-0"
                               }
                             >
-                              <HomeButton style={{ letterSpacing: "1.5px" }}>
+                              <HomeButton style={{ letterSpacing: "1.5px", padding: '' }} className={'bg-[#FE9E11] text-white lg:!py-[18px] lg:!px-[40px] !py-[15px] !px-[36px]'}>
                                 About Us
                               </HomeButton>
                             </Box>
@@ -158,6 +158,11 @@ export const AboutUs = () => {
                     </Box>
                   </Box>
                 </AgoraBox>
+                <Box className={"h-[50px] md:h-[90px] w-full"}>
+                  <AgoraTransitionBox>
+                    <Box className={"h-[120px]"} />
+                  </AgoraTransitionBox>
+                </Box>
               </Box>
             </Box>
           </Box>
