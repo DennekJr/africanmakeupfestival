@@ -11,7 +11,7 @@ export const EmptySpaceWithImageAboveAchievementSection = () => {
           <Box className={"py-0 flex w-full flex-wrap relative"}>
             <Box
               className={
-                "w-[10vw] max-w-10vw top-[5vw] right-[70px] absolute mb-0 z-[1] text-center translate-x-0 translate-y-0 rotate-0 scale-100"
+                "w-[10vw] max-w-10vw top-[4vw] right-[10px] md:right-[70px] absolute mb-0 z-[1] text-center translate-x-0 translate-y-0 rotate-0 scale-100"
               }
             >
               <AgoraTransitionBox className={"text-center"}>
@@ -28,7 +28,7 @@ export const EmptySpaceWithImageAboveAchievementSection = () => {
                 <Box className={"h-[120px]"} />
               </AgoraTransitionBox>
             </Box>
-            <Box className={"h-[20px] w-full"}>
+            <Box className={"h-[10px] lg:h-[20px] w-full"}>
               <AgoraTransitionBox>
                 <Box className={"h-[120px]"} />
               </AgoraTransitionBox>

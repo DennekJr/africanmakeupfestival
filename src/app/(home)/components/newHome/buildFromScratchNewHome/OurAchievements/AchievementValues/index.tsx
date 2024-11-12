@@ -21,7 +21,7 @@ export const AchievementValues = ({
     <section className={"w-full relative"} ref={ref}>
       <Box className={"max-w-[1320px] flex mx-auto relative text-[#FD4C19]"}>
         <Box className={"w-1/2 relative flex"}>
-          <Box className={"pr-[15px] flex w-full flex-wrap content-start"}>
+          <Box className={"pr-[10px] lg:pr-[15px] flex w-full flex-wrap content-start"}>
             <Box className={"w-auto max-w-full"}>
               <AgoraTransitionBox className={"mb-[5px]"}>
                 <Box
@@ -31,7 +31,7 @@ export const AchievementValues = ({
                 >
                   <Box
                     className={
-                      "text-[5.3em] flex flex-1 font-extrabold leading-[1em]"
+                      "text-[60px] lg:text-[5.3em] flex flex-1 font-extrabold leading-[1em]"
                     }
                   >
                     <span
@@ -51,7 +51,7 @@ export const AchievementValues = ({
             </Box>
             <Box className={"w-full"}>
               <AgoraTransitionBox>
-                <Box className={"py-[20px] flex"}>
+                <Box className={"py-[12px] lg:py-[20px] flex"}>
                   <span
                     className={
                       "w-full flex border-[1px] border-solid border-[#FCD9CE]"
@@ -63,14 +63,14 @@ export const AchievementValues = ({
             <Box className={"w-full"}>
               <AgoraTransitionBox>
                 <Box className={"relative"}>
-                  <h5 className={"w-full flex leading-[1.47em]"}>{name1}</h5>
+                  <h5 className={"w-full flex text-[19px] lg:text-[24px] leading-[1.47em]"}>{name1}</h5>
                 </Box>
               </AgoraTransitionBox>
             </Box>
           </Box>
         </Box>
         <Box className={"w-1/2 relative flex"}>
-          <Box className={"pr-[15px] flex w-full flex-wrap content-start"}>
+          <Box className={"pl-[10px] lg:pl-[15px] flex w-full flex-wrap content-start"}>
             <Box className={"w-auto max-w-full"}>
               <AgoraTransitionBox className={"mb-[5px]"}>
                 <Box
@@ -80,7 +80,7 @@ export const AchievementValues = ({
                 >
                   <Box
                     className={
-                      "text-[5.3em] flex flex-1 font-extrabold leading-[1em]"
+                      "text-[60px] lg:text-[5.3em] flex flex-1 font-extrabold leading-[1em]"
                     }
                   >
                     <span
@@ -100,7 +100,7 @@ export const AchievementValues = ({
             </Box>
             <Box className={"w-full"}>
               <AgoraTransitionBox>
-                <Box className={"py-[20px] flex"}>
+                <Box className={"py-[12px] lg:py-[20px] flex"}>
                   <span
                     className={
                       "w-full flex border-[1px] border-solid border-[#FCD9CE]"

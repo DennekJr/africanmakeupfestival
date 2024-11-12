@@ -13,6 +13,12 @@ import {
   EmptySpaceWithImageAboveAchievementSection
 } from "@/app/(home)/components/newHome/buildFromScratchNewHome/EmptySpaceWithImageAboveAchievementSection";
 import { OurAchievements } from "@/app/(home)/components/newHome/buildFromScratchNewHome/OurAchievements";
+import {
+  EmptySpaceBelowCarousel,
+  EmptySpaceWithImageBelowAchievementSection
+} from "@/app/(home)/components/newHome/buildFromScratchNewHome/EmptySpaceWithImageBelowAchievementSection";
+import { ActiveWordsCarousel } from "@/app/(home)/components/newHome/buildFromScratchNewHome/ActiveWordsCarousel";
+import { OurSponsors } from "@/app/(home)/components/newHome/buildFromScratchNewHome/OurSponsors";
 
 export const BuildFromScratchNewHome = () => {
   return (
@@ -26,6 +32,10 @@ export const BuildFromScratchNewHome = () => {
       <SkinCareAdventure />
       <EmptySpaceWithImageAboveAchievementSection />
       <OurAchievements />
+      <EmptySpaceWithImageBelowAchievementSection />
+      {/*<ActiveWordsCarousel />*/}
+      <EmptySpaceBelowCarousel />
+      <OurSponsors />
     </Box>
   );
 };

@@ -1,6 +1,41 @@
 import { Box } from "@mui/material";
-import { styled } from "@mui/system";
+import { styled, keyframes } from "@mui/system";
 
+// Keyframes for the move animation (translate)
+const move = keyframes`
+    //0% {
+    //    transform: rotate(-11deg); /* Start at the top-left corner */
+    //}
+    //100% {
+    //    transform: translateX(100%) translateY(calc(100% * tan(-11deg))) rotate(-11deg); /* Move diagonally at 11deg */
+        //transform: translate(100vw, calc(100vw * tan(-11deg))) rotate(-11deg); /* Move diagonally at 11deg */
+    //}
+    0% {
+        transform: translate3d(-50vw, calc(-50vw * tan(-11deg)), 0) rotate(-11deg);
+    }
+    100% {
+        transform: translate3d(100vw, calc(100vw * tan(-11deg)), 0) rotate(-11deg);
+    }
+`;
+
+// Keyframes for the rotate animation
+const moveWithDelay = keyframes`
+    0% {
+        transform: translate(0, 0); /* Start at the top-left corner */
+    }
+    100% {
+        transform: translate(100vw, calc(100vw * tan(-11deg))); /* Move diagonally at 11deg */
+        animation-delay: 8s;
+    }
+`;
+
+// Styled component using move and rotate animations
+export const AnimatedSection = styled("section")`
+  animation: ${move} 7s infinite linear;
+`;
+export const AnimatedDelayDiv = styled(Box)`
+  animation: ${moveWithDelay} 4s infinite linear;
+`;
 export const AgoraBox = styled(Box)({
   animationName: "agora-fadeinup",
   animationDuration: "750ms",
@@ -30,6 +65,17 @@ export const AgoraBox = styled(Box)({
 export const AgoraTransitionBox = styled(Box)({
   transition:
     "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform .4s",
+
+  '& .sponsorContainer:hover .animateReadMore': {
+    transition: 'visibility 0.4s ease, margin-right 0.3s ease-out, text-indent 0.4s ease-out, opacity 0.4s ease',
+    textIndent: 0,
+    opacity: 1,
+    marginRight: '6px',
+    visibility: 'visible'
+  },
+  '& .sponsorContainer:hover .sponsorImage': {
+    opacity: 1,
+  }
 });
 
 export const AgoraTransitionNoTransformBox = styled(Box)({
@@ -50,6 +96,14 @@ export const SkinCareAdventuresImageWithTransition = styled("section")({
   backgroundPosition: "center center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
+  transition:
+    "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform .4s",
+});
+export const AgoraTransitionWithThreeDashSVG = styled(Box)({
+  backgroundImage: "url(/images/newHomeBuild/threeDash.svg)",
+  backgroundPosition: "top right",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "3vw auto",
   transition:
     "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform .4s",
 });

@@ -89,7 +89,7 @@ export const AboutUs = () => {
                               </span>
                               <h1
                                 className={
-                                  "ml-[-1px] text-[32px] md:text-[44px] lg:text-[3em] font-extrabold text-[#FD4C19]"
+                                  "ml-[-1px] text-[27px] md:text-[44px] lg:text-[3em] font-extrabold text-[#FD4C19]"
                                 }
                                 style={{lineHeight: '1em', letterSpacing: 0}}
                               >

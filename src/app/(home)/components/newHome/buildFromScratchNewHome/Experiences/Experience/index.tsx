@@ -4,7 +4,7 @@ import { ArrowRight } from "@mui/icons-material";
 export const Experience = ({experience}: {experience: {id: string, title: string, subtitle: string, image: string}}) => {
   return (
     <Box
-      className={"pr-[30px] min-h-1 inline-block lg:w-[25%] md:w-[50%] w-full"}
+      className={"md:pr-[30px] min-h-1 inline-block lg:w-[25%] md:w-[50%] w-full"}
     >
       <Box
         className={"relative text-left flex w-full h-full overflow-visible"}

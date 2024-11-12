@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Box from "@mui/material/Box";
 import * as React from "react";
 import { Hero } from "../../app/(home)/components/Hero";
-// import { MarqueeSlide } from "../../app/(home)/components/Marquee";
+import { MarqueeSlide } from "../../app/(home)/components/Marquee";
 // import { InvestorsMedia } from "../../app/(home)/components/Investors";
 // import { EmojiGrid } from "../../app/(home)/components/EmojiGrid";
 // import { BusinessInsiderPoster } from "../../app/(home)/components/BusinessInsiderPoster";
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   return (
     <Box sx={{ flexGrow: 1}}>
         <Hero />
-        {/*<MarqueeSlide />*/}
+        <MarqueeSlide />
         {/*<InvestorsMedia />*/}
         {/*<Sponsors />*/}
         {/*<EmojiGrid />*/}

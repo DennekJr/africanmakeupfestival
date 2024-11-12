@@ -48,7 +48,7 @@ export const CalenderEvents = () => {
                         </span>
                         <h1
                           className={
-                            "ml-[-1px] mt-0 leading-[1em] text-[60px] text-[#FD4C19] font-extrabold"
+                            "ml-[-1px] mt-0 leading-[1em] text-[27px] md:text-[44px] lg:text-[60px] text-[#FD4C19] font-extrabold"
                           }
                         >
                           Next Events
@@ -57,7 +57,7 @@ export const CalenderEvents = () => {
                     </Box>
                   </Box>
                   <Box
-                    className={"w-[65%] lg:w-[45%] relative flex min-h-[1%]"}
+                    className={"w-full md:w-[65%] lg:w-[45%] relative flex min-h-[1%]"}
                   >
                     <Box className={"flex py-0 w-full flex-wrap items-start"}>
                       <Box className={"h-[15px] lg:h-[46px] w-full"} />
@@ -73,7 +73,7 @@ export const CalenderEvents = () => {
                       </Box>
                     </Box>
                   </Box>
-                  <Box className={"w-[35%] lg:w-[21%] text-right"}>
+                  <Box className={"w-full md:w-[35%] lg:w-[21%] text-left md:text-right"}>
                     <Box className={"w-full p-0"}>
                       <Box className={"h-[15px] lg:h-[49px]"} />
                       <Box
@@ -86,7 +86,7 @@ export const CalenderEvents = () => {
                         <Box className={"align-top inline-block"}>
                           <Button
                             className={
-                              "!text-[#FD4C19] !py-0 leading-[20px] !font-semibold mb-[10px]"
+                              "!text-[#FD4C19] !p-0 leading-[20px] !font-semibold mb-[10px]"
                             }
                             endIcon={<ArrowRightAltOutlined />}
                           >
