@@ -158,11 +158,11 @@ export const AboutUs = () => {
                     </Box>
                   </Box>
                 </AgoraBox>
-                <Box className={"h-[50px] md:h-[90px] w-full"}>
-                  <AgoraTransitionBox>
-                    <Box className={"h-[120px]"} />
-                  </AgoraTransitionBox>
-                </Box>
+                  `<Box className={"h-[50px] md:h-[90px] w-full"}>
+                    <AgoraTransitionBox>
+                      <Box className={"h-[120px]"} />
+                    </AgoraTransitionBox>
+                  </Box>`
               </Box>
             </Box>
           </Box>

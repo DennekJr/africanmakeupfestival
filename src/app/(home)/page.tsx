@@ -15,7 +15,7 @@ import { BuildFromScratchNewHome } from "@/app/(home)/components/newHome/buildFr
 
 const Home: NextPage = () => {
   return (
-    <Box sx={{ flexGrow: 1, overflow: "hidden" }}>
+    <Box sx={{ flexGrow: 1}}>
         <Hero />
         {/*<MarqueeSlide />*/}
         {/*<InvestorsMedia />*/}

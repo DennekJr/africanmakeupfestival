@@ -9,10 +9,14 @@ import { CalenderEvents } from "@/app/(home)/components/newHome/buildFromScratch
 import { AboutUs } from "app/(home)/components/newHome/buildFromScratchNewHome/AboutUs";
 import { VisitingSpeakers } from "@/app/(home)/components/newHome/buildFromScratchNewHome/VisitingSpeakers";
 import { SkinCareAdventure } from "@/app/(home)/components/newHome/buildFromScratchNewHome/SkinCareAdventure";
+import {
+  EmptySpaceWithImageAboveAchievementSection
+} from "@/app/(home)/components/newHome/buildFromScratchNewHome/EmptySpaceWithImageAboveAchievementSection";
+import { OurAchievements } from "@/app/(home)/components/newHome/buildFromScratchNewHome/OurAchievements";
 
 export const BuildFromScratchNewHome = () => {
   return (
-    <Box sx={{ flexGrow: 1, overflow: "hidden", padding: '5rem 0' }}>
+    <Box sx={{ flexGrow: 1, padding: '5rem 0' }}>
       <Hero />
       <WhoAreWe />
       <Experiences />
@@ -20,6 +24,8 @@ export const BuildFromScratchNewHome = () => {
       <AboutUs />
       <VisitingSpeakers />
       <SkinCareAdventure />
+      <EmptySpaceWithImageAboveAchievementSection />
+      <OurAchievements />
     </Box>
   );
 };

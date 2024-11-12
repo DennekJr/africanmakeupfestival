@@ -9,7 +9,7 @@ export default function WebWrapper({ children }: { children: ReactNode }) {
   return (
     <Box
       sx={{ display: "flex" }}
-      className={"w-screen min-h-dvh flex flex-col relative overflow-x-hidden"}
+      className={"w-screen min-h-dvh flex flex-col relative"}
     >
       <NavBar />
       <Box component="main" className={'pt-[65px] lg:pt-0'}>{children}</Box>

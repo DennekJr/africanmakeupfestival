@@ -1,17 +1,15 @@
-"use client"
+"use client";
 import { Box, Button } from "@mui/material";
 import { ArrowRightAltOutlined } from "@mui/icons-material";
 import React, { useMemo } from "react";
-import {
-  CALENDEREVENTCONSTANTS
-} from "@/app/(home)/components/newHome/buildFromScratchNewHome/CalenderEvents/calenderEventConstants";
+import { CALENDEREVENTCONSTANTS } from "@/app/(home)/components/newHome/buildFromScratchNewHome/CalenderEvents/calenderEventConstants";
 import { AgoraBox } from "@/app/(home)/components/newHome/utils";
 import { Event } from "@/app/(home)/components/newHome/buildFromScratchNewHome/CalenderEvents/Event";
 
 export const CalenderEvents = () => {
   const events = useMemo(() => Object.values(CALENDEREVENTCONSTANTS), []);
   return (
-    <section className={'px-[30px] lg:px-[70px] m-auto max-w-[1320px]'}>
+    <section className={"px-[30px] lg:px-[70px] m-auto max-w-[1320px]"}>
       <Box
         sx={{
           transition:
@@ -26,9 +24,7 @@ export const CalenderEvents = () => {
               }
             >
               <Box className={"h-[50px] w-full"} />
-              <AgoraBox
-                className={"w-full relative"}
-              >
+              <AgoraBox className={"w-full relative"}>
                 <Box
                   className={
                     "calenderTitleContainer flex mx-auto relative flex-wrap lg:flex-nowrap"
@@ -60,7 +56,9 @@ export const CalenderEvents = () => {
                       </Box>
                     </Box>
                   </Box>
-                  <Box className={"w-[65%] lg:w-[45%] relative flex min-h-[1%]"}>
+                  <Box
+                    className={"w-[65%] lg:w-[45%] relative flex min-h-[1%]"}
+                  >
                     <Box className={"flex py-0 w-full flex-wrap items-start"}>
                       <Box className={"h-[15px] lg:h-[46px] w-full"} />
                       <Box
@@ -87,7 +85,9 @@ export const CalenderEvents = () => {
                       >
                         <Box className={"align-top inline-block"}>
                           <Button
-                            className={"!text-[#FD4C19] !py-0 leading-[20px] !font-semibold mb-[10px]"}
+                            className={
+                              "!text-[#FD4C19] !py-0 leading-[20px] !font-semibold mb-[10px]"
+                            }
                             endIcon={<ArrowRightAltOutlined />}
                           >
                             View All Events
@@ -98,18 +98,27 @@ export const CalenderEvents = () => {
                   </Box>
                 </Box>
               </AgoraBox>
-              <Box className={'py-8 lg:py-10 w-full'} sx={{
-                animationName: "agora-fadeinup",
-                animationDuration: "750ms",
-                animationFillMode: "both",
-                visibility: "visible",
-              }}>
-                <Box className={'h-[1px] bg-[#FD4C19]'} sx={{transition: 'background .3s, border .3s, border-radius .3s, box-shadow .3s, transform .4s'}} />
+              <Box
+                className={"py-8 lg:py-10 w-full"}
+                sx={{
+                  animationName: "agora-fadeinup",
+                  animationDuration: "750ms",
+                  animationFillMode: "both",
+                  visibility: "visible",
+                }}
+              >
+                <Box
+                  className={"h-[1px] bg-[#FD4C19]"}
+                  sx={{
+                    transition:
+                      "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform .4s",
+                  }}
+                />
               </Box>
 
               {/*//Events*/}
               {events.map((event, index) => {
-                return <Event event={event} key={index} />
+                return <Event event={event} key={index} />;
               })}
             </Box>
           </Box>
