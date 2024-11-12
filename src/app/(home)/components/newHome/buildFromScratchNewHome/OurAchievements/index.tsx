@@ -65,7 +65,7 @@ export const OurAchievements = () => {
                       voluptatem accusantium doloremque laudantium, totam rem
                       aperiam. Sed ut perspiciatis unde omnis.
                     </p>
-                    <p>
+                    <p className={'mt-[1em]'}>
                       Sit voluptatem accusantium doloremque laudantium, totam
                       rem aperiam. Sed ut perspiciatis unde omnis.
                     </p>
