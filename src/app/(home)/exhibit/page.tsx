@@ -19,7 +19,7 @@ const Exhibit: () => Promise<React.JSX.Element> = async () => {
       <PreviousEvents />
       <Benefits />
       <ExhibitionBooth />
-      <Testimonials />
+      {/* <Testimonials /> */}
     </Box>
   );
 };

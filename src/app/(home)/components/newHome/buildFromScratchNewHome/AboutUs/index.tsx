@@ -98,7 +98,7 @@ export const AboutUs = () => {
                                 </span>
                               </h1>
                               <Box className={"mt-[1.7em]"}>
-                                <p className={"m-0 text-black"}>
+                                <p className={"m-0 text-lightSecondary"}>
                                   Dicta sunt explicabo. Nemo enim ipsam
                                   voluptatem quia voluptas sit aspernatur aut
                                   odit aut fugit.

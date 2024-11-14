@@ -39,7 +39,7 @@ export const Footer = () => {
     <Box>
       <footer
         className={
-          "border-t border-t-border-secondary w-full py-6 px-6 lg:px-0"
+          "bg-midGrey w-full py-6 px-6 lg:px-0"
         }
       >
         <Box className={"mx-auto max-w-[1320px] flex flex-col gap-14"}>
@@ -174,8 +174,8 @@ export const Footer = () => {
                 width="127"
                 height="18"
                 decoding="async"
-                style={{ color: "transparent" }}
-                src="/images/SPARK.svg"
+                style={{ color: "transparent", filter: 'brightness(0)' }}
+                src="/images/piggyvest.svg"
               />
             </Link>
           </Box>

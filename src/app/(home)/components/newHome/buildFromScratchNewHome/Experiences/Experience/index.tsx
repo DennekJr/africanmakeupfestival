@@ -21,13 +21,13 @@ export const Experience = ({experience}: {experience: {id: string, title: string
             <Box className={'bg-[#F8F0EE] py-[1.2rem] px-[1rem] w-full'}>
               <Box className={'flex justify-between items-end pb-[0.25rem]'}>
                 <Box className={'max-w-[75%]'}>
-                  <h5 className={'leading-[1.2em] m-0 text-[#FD4C19] font-extrabold'}>{experience.title}</h5>
+                  <h5 className={'leading-[1.2em] m-0 text-primary font-extrabold'}>{experience.title}</h5>
                 </Box>
-                <Box className={'inline-block text-[#FD4C19]'}>
+                <Box className={'inline-block text-primary'}>
                   <ArrowRight />
                 </Box>
               </Box>
-              <Box className={'subTitleText text-black h-0 opacity-0 max-w-[95%] text-[17px] font-light leading-[25px] overflow-hidden block'} sx={{transition: 'height 0.3s ease-out, margin-top 0.3s ease-out, opacity 0.3s ease-out'}}>
+              <Box className={'subTitleText text-lightSecondary h-0 opacity-0 max-w-[95%] text-[17px] font-light leading-[25px] overflow-hidden block'} sx={{transition: 'height 0.3s ease-out, margin-top 0.3s ease-out, opacity 0.3s ease-out'}}>
                 <p>{experience.subtitle}</p>
               </Box>
             </Box>

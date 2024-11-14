@@ -26,7 +26,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
           >
             {sponsor.title}
           </h4>
-          <Box className={"text-black mt-[0.9em] text-[15px] leading-[1.6em]"}>
+          <Box className={"text-lightSecondary mt-[0.9em] text-[15px] leading-[1.6em]"}>
             <span className={"block"}>{sponsor.content}</span>
           </Box>
           <a

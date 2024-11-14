@@ -62,7 +62,7 @@ export const CalenderEvents = () => {
                     <Box className={"flex py-0 w-full flex-wrap items-start"}>
                       <Box className={"h-[15px] lg:h-[46px] w-full"} />
                       <Box
-                        className={"w-full my-0 text-black"}
+                        className={"w-full my-0 text-lightSecondary"}
                         sx={{
                           transition:
                             "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform ,4s",

@@ -3,8 +3,8 @@ import { EventsGrid } from "@/app/(home)/exhibit/previousEvents/eventsGrid";
 
 export const PreviousEvents = () => {
   return (
-    <section className={"w-full py-24 lg:py-32"}>
-      <Box className={"max-w-[1320px] bg-[#ffffff] mx-auto grid gap-16 px-6"}>
+    <section className={"w-full py-24 lg:py-32 bg-lightGrey"}>
+      <Box className={"max-w-[1320px] mx-auto grid gap-16 px-6"}>
         <div>
           <pre
             id="undefined-0"
@@ -13,7 +13,7 @@ export const PreviousEvents = () => {
             <span className="relative max-w-full break-words">
               Here’s some of our Exhibitors from{" "}
             </span>
-            <span className="relative max-w-full break-words">
+            <span className="relative max-w-full break-words text-primary">
               previous events.
               <svg
                 width="317"

@@ -5,7 +5,7 @@ export const EXHIBITORSCONSTNATSMENU: Record<
   one: {
     id: "kpi",
     href: "",
-    src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
   two: {
     id: "pluhg",
@@ -15,7 +15,7 @@ export const EXHIBITORSCONSTNATSMENU: Record<
   three: {
     id: "enyate",
     href: "",
-    src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
   four: {
     id: "qoreplay",
@@ -25,7 +25,7 @@ export const EXHIBITORSCONSTNATSMENU: Record<
   five: {
     id: "termii",
     href: "",
-    src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
   six: {
     id: "travelTank",
@@ -35,7 +35,7 @@ export const EXHIBITORSCONSTNATSMENU: Record<
   seven: {
     id: "pocket",
     href: "",
-    src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
   eight: {
     id: "vegeel",

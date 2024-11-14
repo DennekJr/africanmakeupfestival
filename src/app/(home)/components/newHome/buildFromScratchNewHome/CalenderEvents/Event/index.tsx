@@ -59,8 +59,8 @@ export const Event = ({event}: {event: CalenderEventTypes}) => {
           <Box className={'w-auto inline-flex'}>
             <AgoraTransitionBox>
               <Box className={'flex flex-row text-start items-center'}>
-                <AccessTime className={'text-[#363322]'} />
-                <Box className={'flex-grow inline-flex text-[#363322] text-[15px] box-border'}>
+                <AccessTime className={'text-lightSecondary mr-2'} />
+                <Box className={'flex-grow inline-flex text-lightSecondary text-[15px] box-border'}>
                   <span>
                   {event.startsAt} - {event.endsAt}
                   </span>

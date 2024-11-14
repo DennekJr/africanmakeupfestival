@@ -123,7 +123,7 @@ export const ContactUs = () => {
                                   className="mb-[10px] block text-left box-border relative"
                                   data-name="acceptance"
                                 >
-                                  <span className="text-left block text-black">
+                                  <span className="text-left block text-lightSecondary">
                                     <span className="m-0 inline-block box-border">
                                       <label
                                         className={"flex items-center w-full"}

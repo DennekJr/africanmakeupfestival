@@ -51,19 +51,19 @@ export const ScheduleDropdown = () => {
             key={index}
             data-state={open?.isOpen}
             onClick={() => handleClick(schedule.id)}
-            className="space-y-2 bg-white text-black px-4 py-2"
+            className="space-y-2 text-black bg-lightGrey px-4 py-2"
           >
             <button
               type="button"
-              className="flex items-center gap-2 w-full text-left justify-between"
+              className="flex items-center gap-2 w-full text-left justify-between text-textColor"
             >
               <span>
                 <p>
-                  <span className="font-medium">{schedule.time}</span> <br />
+                  <span className="font-medium text-primary">{schedule.time}</span> <br />
                 </p>
-                <p className="font-bold text-xl">{schedule.title}</p>
+                <p className="font-bold text-xl text-lightSecondary">{schedule.title}</p>
               </span>
-              {open?.isOpen ? <ExpandLess /> : <ExpandMore />}
+              {open?.isOpen ? <ExpandLess className="text-lightSecondary" /> : <ExpandMore className="text-lightSecondary" />}
             </button>
             <div>
               {schedule.content !== undefined && (
@@ -75,7 +75,7 @@ export const ScheduleDropdown = () => {
                           id="undefined-0"
                           className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-normal text-base"
                         >
-                          <span className="relative max-w-full break-words">
+                          <span className="relative max-w-full break-words text-lightSecondary">
                             {schedule.content?.summary}
                           </span>
                         </pre>
@@ -100,10 +100,10 @@ export const ScheduleDropdown = () => {
                                     />
                                   </div>
                                   <div className="space-y-1">
-                                    <p className="text-lg font-medium">
+                                    <p className="text-lg font-medium text-primary">
                                       {participant.name}
                                     </p>
-                                    <div className="text-sm opacity-80">
+                                    <div className="text-sm opacity-80 text-lightSecondary">
                                       <p>{participant.company}</p>
                                       <p>{participant.position}</p>
                                     </div>

@@ -4,7 +4,7 @@ import { StageOneImage, StageThreeImage, StageTwoImage } from "./utils";
 export const STAGESMENU: Record<string, StagesTypes> = {
   stageOne: {
     id: "stage01",
-    background: "#F2F2F2",
+    background: "#EFEFEF",
     image: StageOneImage,
     textColor: '#000000',
     order: "01",

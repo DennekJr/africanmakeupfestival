@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <section
       className={
-        "relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-[#0A090B] text-white"
+        "relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-black text-white"
       }
     >
       <Box
@@ -19,10 +19,10 @@ export const Hero = () => {
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
             >
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-primary">
                 The brightest{" "}
               </span>
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-textColor">
                 startups
                 <svg
                   width="266"
@@ -45,8 +45,10 @@ export const Hero = () => {
                   </defs>
                 </svg>
               </span>
-              <span className="relative max-w-full break-words"> and </span>
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-primary">
+                and{" "}
+              </span>
+              <span className="relative max-w-full break-words text-textColor">
                 enterprises
                 <svg
                   width="315"
@@ -62,7 +64,7 @@ export const Hero = () => {
                   ></path>
                 </svg>
               </span>
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-primary">
                 {" "}
                 join us to exhibit every year.{" "}
               </span>
@@ -82,7 +84,7 @@ export const Hero = () => {
         </div>
         <div className="flex gap-4">
           <a
-            className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#F4F4F5] text-[#18181B] hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
+            className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-textColor hover:bg-primary/70 h-14 px-6 py-4 rounded-none w-full md:w-auto"
             href="https://airtable.com/appccZTnrTPxSkiUH/pagqA0t5kero5g0ZP/form"
           >
             <span>Become a Sponsor</span>

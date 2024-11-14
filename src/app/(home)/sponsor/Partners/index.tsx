@@ -12,7 +12,7 @@ export const Partners = () => {
   const sponsors = useMemo(() => Object.values(PARTNERS_MENU), []);
 
   return (
-    <section className={"w-full py-24 lg:py-32 bg-[#ffffff]"}>
+    <section className={"w-full py-24 lg:py-32 bg-lightGrey"}>
       <Box
         className={
           "[&>button]:justify-center mx-auto max-w-[1320px] grid gap-16 px-6"
@@ -26,7 +26,7 @@ export const Partners = () => {
             <span className="relative max-w-full break-words">
               Here’s some{" "}
             </span>
-            <span className="relative max-w-full break-words">
+            <span className="relative max-w-full break-words text-primary">
               partners
               <PartnerUnderScore />
             </span>
@@ -42,7 +42,7 @@ export const Partners = () => {
               <Box
                 key={index}
                 className={
-                  "!col-span-1 rounded-md aspect-square w-full bg-[#F2F2F2] !grid place-content-center p-5"
+                  "!col-span-1 rounded-md aspect-square w-full bg-midGrey !grid place-content-center p-5"
                 }
               >
                 <Image
@@ -60,7 +60,7 @@ export const Partners = () => {
         <Box className={"flex justify-center"}>
           <Button
             className={
-              "partnerButton whitespace-nowrap ring-offset-background disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] !text-[#FCFCFC] !font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-full !px-10 !py-8 !w-max"
+              "partnerButton whitespace-nowrap ring-offset-background disabled:pointer-events-none disabled:opacity-50 !bg-primary !text-textColor !font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-none !px-10 !py-8 !w-max"
             }
             endIcon={<FortyFiveDegreeArrow />}
           >

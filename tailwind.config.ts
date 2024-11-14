@@ -7,9 +7,14 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'logo-main': '#FD4C19',
+      'primary': '#FD4C19',
+      'secondary': '#0A090B',
+      'lightSecondary': '#5A5A5A',
+      'accent': '#ffffff',
+      'textColor': '#ffffff',
+      'lightGrey': '#F5F5F5',
+      'midGrey': '#E0E0E0',
       'black': '#000000',
-      'white': '#ffffff',
       background: "var(--background)",
       foreground: "var(--foreground)",
     },

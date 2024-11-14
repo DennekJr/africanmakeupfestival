@@ -23,7 +23,7 @@ export const WhoAreWe = () => {
               alt={"top right icon"}
             />
           </Box>
-          <Box className={"flex-wrap text-[#FD4C19]"}>
+          <Box className={"flex-wrap text-primary"}>
             <Typography>Who We Are</Typography>
             <Typography variant={"h1"} className={'break-words ' +
               'text-[40px] lg:text-[60px]'}>

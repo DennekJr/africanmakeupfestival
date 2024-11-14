@@ -4,8 +4,8 @@ import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 
 export const WhiteBGButton = styled(Button)({
-  background: "hsl(0 0% 100%)",
-  color: "hsl(240 10% 3.9%)",
+  background: "#ffffff",
+  color: "#000000",
   borderRadius: "1rem",
 });
 
@@ -22,7 +22,7 @@ export const WhiteTicketButton = ({ name }: { name: string }) => {
     <a
       href={'/ticket'}
       className={
-        "text-[#09090b] !rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#ffffff] text-secondary-foreground hover:bg-secondary/80 h-14 px-6 py-4 w-full md:w-auto"
+        "text-[#ffffff] !rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-primary border-lightSecondary text-text-Color hover:!bg-primary/70 h-14 px-6 py-4 w-full md:w-auto"
       }
     >
       <span>{name}</span>
@@ -79,7 +79,7 @@ export const WhiteBgArrowButton = ({
     <Box
       className={
         `${classNames} ` +
-        "!text-[#09090b] rounded-full inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 !bg-[#ffffff] text-xl w-full md:w-auto"
+        "!text-textColor rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-primary !bg-primary text-xl w-full md:w-auto hover:!bg-primary/60"
       }
     >
       <span>{name}</span>

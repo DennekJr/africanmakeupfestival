@@ -57,7 +57,7 @@ export const OurAchievements = () => {
                   >
                     Bringing Skin care learning to life
                   </h1>
-                  <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-black mb-0 text-[1rem]"}>
+                  <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-lightSecondary mb-0 text-[1rem]"}>
                     <p>
                       Sed ut perspiciatis unde omnis iste natus error sit
                       voluptatem accusantium doloremque laudantium, totam rem

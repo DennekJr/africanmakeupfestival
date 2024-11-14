@@ -14,7 +14,7 @@ export const Stages = () => {
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
             >
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-primary">
                 Three Stages,{" "}
               </span>
             </pre>
@@ -22,7 +22,7 @@ export const Stages = () => {
               id="undefined-1"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading !text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
             >
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-primary">
                 Same Global Influence.
               </span>
             </pre>
@@ -31,7 +31,7 @@ export const Stages = () => {
                 id="undefined-0"
                 className="font-sans w-full break-words whitespace-pre-wrap min-h-6 heading !text-xl font-normal"
               >
-                <span className="relative max-w-full break-words">
+                <span className="relative max-w-full break-words text-lightSecondary">
                   The Africa Skincare Festival 2024 is set to inspire and engage
                   with its unique format featuring three distinct stages, each
                   dedicated to showcasing innovation, knowledge, and
@@ -42,8 +42,8 @@ export const Stages = () => {
           </Box>
         </Box>
         <Box className={"grid lg:grid-cols-3 gap-8"}>
-          {stages.map(({id, background, image, order, orderColor, stageBodyTextColor, stageTitleColor, stageBody, stageName, textColor}, index,) => {
-            return <StageCard key={index} id={id} background={background} image={image} order={order} orderColor={orderColor} stageBodyTextColor={stageBodyTextColor} stageTitleColor={stageTitleColor}  stageBody={stageBody} stageName={stageName} textColor={textColor}/>
+          {stages.map(({id, background, image, order, orderColor, stageBodyTextColor, stageBody, stageName, textColor}, index,) => {
+            return <StageCard key={index} id={id} background={background} image={image} order={order} orderColor={orderColor} stageBodyTextColor={stageBodyTextColor}  stageBody={stageBody} stageName={stageName} textColor={textColor}/>
           })}
         </Box>
       </Box>

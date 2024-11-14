@@ -12,7 +12,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
-import { RightArrowButton, WhiteBGButton } from "../../utils";
+import { RightArrowButton, TransparentArrowButton, WhiteBGButton, WhiteTicketButton } from "../../utils";
 import { MenuDialog } from "../MenuDialog";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
@@ -65,7 +65,7 @@ export default function NavBar() {
   return (
     <Box
       className={
-        `${path == "/" ? "!bg-transparent " : "!bg-[#000000] "}` +
+        `${path == "/" ? "!bg-transparent " : "!bg-black "}` +
         "flex justify-center w-full p-4 text-white z-10 absolute top-0 left-0"
       }
     >
@@ -78,10 +78,10 @@ export default function NavBar() {
           <Link href={"/"}>
             <Image
               alt={"Makeup Festival logo"}
-              src={"/images/navlogo.svg"}
+              src={"/images/logos/ASF Logo_Full Colour.svg"}
               width={463}
               height={270}
-              style={{color: 'white', filter: 'invert(100%) sepia(100%) saturate(0%) hue-rotate(86deg) brightness(109%) contrast(100%)'}}
+              style={{color: 'white'}}
               className={'text-white h-auto w-[150px] max-w-[100%]'}
             />
           </Link>
@@ -180,33 +180,9 @@ export default function NavBar() {
                   href={route}
                 >
                   {id === "getTicket" ? (
-                    <WhiteBGButton
-                      className={`whitespace-nowrap !rounded-none`}
-                      variant="contained"
-                      endIcon={<ConfirmationNumberIcon />}
-                    >
-                      <ListItemButton className={"w-max !p-0"}>
-                        <ListItemText
-                          primary={name}
-                          primaryTypographyProps={{ fontWeight: "600" }}
-                          className={"itemText"}
-                        />
-                      </ListItemButton>
-                    </WhiteBGButton>
+                    <WhiteTicketButton name={name} />
                   ) : (
-                    <RightArrowButton
-                      className={`whitespace-nowrap !rounded-none`}
-                      variant="outlined"
-                      endIcon={<ArrowOutwardIcon />}
-                    >
-                      <ListItemButton className={"w-max !p-0 hover:!bg-transparent"}>
-                        <ListItemText
-                          primary={name}
-                          primaryTypographyProps={{ fontWeight: "600" }}
-                          className={"itemText"}
-                        />
-                      </ListItemButton>
-                    </RightArrowButton>
+                    <TransparentArrowButton name={name} />
                   )}
                 </Link>
               </ListItem>

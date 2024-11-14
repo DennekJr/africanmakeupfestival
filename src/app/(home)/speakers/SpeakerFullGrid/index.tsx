@@ -9,12 +9,13 @@ export const SpeakerFullGrid = () => {
   return (
     <section
       className={
-        "bg-[#0A090B] w-full lg:my-24 py-24 bg-[url(https://www.africastartupfestival.com/grid-section.svg)] bg-repeat-y bg-top text-white flex flex-col items-center [&>a]:max-w-[90%]"
+        "bg-black relative w-full py-24 bg-[url(https://www.africastartupfestival.com/grid-section.svg)] z-[9] bg-repeat-y bg-top text-white flex flex-col items-center [&>a]:max-w-[90%]"
       }
     >
+      <Box className="absolute inset-0 bg-[#FD4C19] opacity-30 mix-blend-overlay z-10"></Box>
       <Box className={"w-full lg:py-12"}>
         <Box className={"w-full max-w-[1320px] mx-auto space-y-10 p-6"}>
-          <Box className="flex flex-col justify-between gap-4">
+          <Box className="flex flex-col justify-between gap-4 text-[#FD4C19]">
             <pre
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
@@ -23,7 +24,7 @@ export const SpeakerFullGrid = () => {
               <span className="relative max-w-full break-words">peakers</span>
             </pre>
           </Box>
-          <Box className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 w-full">
+          <Box className="grid relative grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 w-full z-[15]">
             {speakers.map((speaker, index) => (
               <Box className="grid gap-5" key={index}>
                 <Image
@@ -38,11 +39,11 @@ export const SpeakerFullGrid = () => {
                 />
                 <div className="grid gap-1.5 text-left">
                   <div>
-                    <h3 className="text-xl lg:text-4xl leading-none font-medium">
+                    <h3 className="text-xl lg:text-4xl leading-none font-medium text-primary">
                       {speaker.name}
                     </h3>
                   </div>
-                  <div>
+                  <div className="text-textColor">
                     <p>{speaker.position}</p>
                     <p>{speaker.companyOfWork}</p>
                   </div>

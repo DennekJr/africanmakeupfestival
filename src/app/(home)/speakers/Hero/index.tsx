@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <section
       className={
-        "relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-gray-1300 text-white"
+        "relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-black"
       }
     >
       <Box
@@ -20,11 +20,11 @@ export const Hero = () => {
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
             >
-              <span className="relative max-w-full break-words text-[#FD4C19]">
+              <span className="relative max-w-full break-words text-primary">
                 The biggest names in the African skincare and investment
                 landscape join us as{" "}
               </span>
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-textColor">
                 speakers.{" "}
                 <svg
                   width="266"
@@ -52,7 +52,7 @@ export const Hero = () => {
         </Box>
         <Box className="flex gap-4">
           <a
-            className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#F4F4F5] text-[#18181B] hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
+            className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-primary text-textColor hover:!bg-primary/70 h-14 px-6 py-4 rounded-none w-full md:w-auto"
             href="/ticket"
           >
             <span>GET A TICKET</span>
@@ -70,7 +70,7 @@ export const Hero = () => {
           </a>
         </Box>
       </Box>
-      <Box className={"col-span-1 relative"}>
+      <Box className={"col-span-1 relative text-primary"}>
         <HeroWhiteScribble />
         <Image
           src={"/images/speakerPage.webp"}
@@ -80,9 +80,11 @@ export const Hero = () => {
           }
           width="2208"
           height="2028"
+          priority
           decoding="async"
           style={{ color: "transparent" }}
         />
+        <div className="absolute inset-0 bg-primary opacity-10 mix-blend-overlay z-12"></div>
       </Box>
     </section>
   );
