@@ -11,8 +11,8 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
           <Image
             loading="lazy"
             decoding="async"
-            style={{filter: 'invert(55%) sepia(100%) saturate(1000%) hue-rotate(-15deg)', transition: 'opacity 0.3s ease'}}
-            className={'sponsorImage text-[#FD4C19] fill-current opacity-20'}
+            style={{transition: 'opacity 0.3s ease'}}
+            className={'sponsorImage text-primary fill-current opacity-20'}
             src={sponsor.image}
             alt={sponsor.title}
             width="208"
@@ -22,7 +22,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
         <Box className={"mt-[1.3em]"}>
           <h4
             style={{ transition: "all 0.3s ease" }}
-            className={"text-[#FD4C19]"}
+            className={"text-primary"}
           >
             {sponsor.title}
           </h4>
@@ -37,7 +37,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
           >
             <span
               className={
-                "animateReadMore relative text-[#FD4C19] inline-block align-middle indent-[-110px] whitespace-nowrap"
+                "animateReadMore relative text-primary inline-block align-middle indent-[-110px] whitespace-nowrap"
               }
               style={{
                 transition:
@@ -46,7 +46,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
               }}
             >Read More</span>
             <span>
-              <ArrowRightAltOutlined className={'relative text-[#FD4C19] inline-block align-middle overflow-hidden w-[1.4em] h-[1.4em]'}/>
+              <ArrowRightAltOutlined className={'relative text-primary inline-block align-middle overflow-hidden w-[1.4em] h-[1.4em]'}/>
             </span>
           </a>
         </Box>

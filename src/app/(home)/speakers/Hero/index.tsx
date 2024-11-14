@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <section
       className={
-        "relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-black"
+        "relative grid lg:grid-cols-2 w-full lg:min-h-screen !bg-black"
       }
     >
       <Box
@@ -84,7 +84,6 @@ export const Hero = () => {
           decoding="async"
           style={{ color: "transparent" }}
         />
-        <div className="absolute inset-0 bg-primary opacity-10 mix-blend-overlay z-12"></div>
       </Box>
     </section>
   );

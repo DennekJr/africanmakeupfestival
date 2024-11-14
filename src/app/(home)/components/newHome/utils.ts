@@ -168,7 +168,7 @@ export const ContactUsCheckBox = styled("span")({
     left: 0,
     boxSizing: "border-box",
     borderRadius: "4px",
-    color: "#FD4C19",
+    color: "#C43C2A",
     cursor: "pointer",
     transition: "all 0.3s ease",
   },

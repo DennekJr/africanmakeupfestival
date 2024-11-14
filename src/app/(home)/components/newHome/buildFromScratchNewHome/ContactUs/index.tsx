@@ -30,7 +30,7 @@ export const ContactUs = () => {
               <Box className={"w-full md:w-1/2 flex mx-auto relative px-[15px] md:px-0"}>
                 <Box
                   className={
-                    "md:py-[10%] p-[8%] md:px-[9%] bg-[#F8F0EE] w-full flex flex-wrap content-startt"
+                    "md:py-[10%] p-[8%] md:px-[9%] bg-[#F8F0EE] w-full flex flex-wrap content-start"
                   }
                 >
                   <Box className={"mb-0 w-full"}>
@@ -38,7 +38,7 @@ export const ContactUs = () => {
                       <Box className={"relative"}>
                         <span
                           className={
-                            "text-[#FD4C19] mb-[1em] text-[14px] leading-[18px] font-semibold uppercase"
+                            "text-primary mb-[1em] text-[14px] leading-[18px] font-semibold uppercase"
                           }
                           style={{ letterSpacing: "1.8px" }}
                         >
@@ -46,7 +46,7 @@ export const ContactUs = () => {
                         </span>
                         <h2
                           className={
-                            "leading-[1.02em] ml-[-1px] text-[2.765em] text-[#FD4C19]"
+                            "leading-[1.02em] ml-[-1px] text-[2.765em] text-primary"
                           }
                         >
                           Have questions?
@@ -64,7 +64,7 @@ export const ContactUs = () => {
                             className={"absolute overflow-hidden"}
                             sx={{
                               clipPath: "inset(50%)",
-                              clip: "ect(1px, 1px, 1px, 1px)",
+                              clip: "rect(1px, 1px, 1px, 1px)",
                               wordWrap: "normal",
                             }}
                           >
@@ -111,7 +111,7 @@ export const ContactUs = () => {
                                 </div>
                                 <div className="w-1/2 pb-[20px] inline-block z-[20] pr-[30px]">
                                   <p
-                                    className={"m-0 box-border h-full"}
+                                    className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
                                     <ContactUsSelectField />
@@ -146,7 +146,7 @@ export const ContactUs = () => {
                                           }
                                           className={
                                             "relative text-[14px] pl-[1.8em] leading-[22px] " +
-                                            `${isClicked && 'before:!content-["⏺"]'}`
+                                            `${isClicked && 'before:content-["⏺"]'}`
                                           }
                                         >
                                           I agree that my data is{" "}
@@ -164,11 +164,11 @@ export const ContactUs = () => {
                                 </span>
                                 <br />
                                 <span
-                                  className="bg-[#FE9E11]"
+                                  className="bg-primary"
                                   style={{ padding: "18px 39px" }}
                                 >
                                   <input
-                                    className="bg-[#FE9E11] !text-white"
+                                    className="bg-primary !text-white"
                                     type="submit"
                                     value="Get in Touch"
                                   />

@@ -9,13 +9,13 @@ export const SkinCareWordsLoop = ({ wordCount }: { wordCount: number }) => {
           <Box className={"flex items-center justify-center"}>
             <span
               className={
-                "inline-block opacity-100 text-[#FD4C19] font-semibold text-[155px]"
+                "inline-block opacity-100 text-primary font-semibold text-[155px]"
               }
               style={{ letterSpacing: "-1px", lineHeight: "0.8em" }}
             >
               Skin
             </span>
-            <span className={"opacity-100 mx-[3rem] text-[#FD4C19]"}>
+            <span className={"opacity-100 mx-[3rem] text-primary"}>
               <StarRateSharp className={"animate-spin !text-[5.5rem]"} />
             </span>
           </Box>
@@ -26,12 +26,12 @@ export const SkinCareWordsLoop = ({ wordCount }: { wordCount: number }) => {
             }
           >
             <span
-              className={"opacity-100 text-[#FD4C19] font-semibold text-[155px]"}
+              className={"opacity-100 text-primary font-semibold text-[155px]"}
               style={{ letterSpacing: "-1px", lineHeight: "0.8em" }}
             >
               Care
             </span>
-            <span className={"opacity-100 mx-[3rem] text-[#FD4C19]"}>
+            <span className={"opacity-100 mx-[3rem] text-primary"}>
               <StarRateSharp className={"animate-spin !text-[5.5rem]"} />
             </span>
           </Box>
@@ -47,13 +47,13 @@ export const FestivalWordLoop = ({ wordCount }: { wordCount: number }) => {
         <Box key={index} className={"flex items-center justify-center"}>
           <span
             className={
-              "inline-block opacity-100 text-[#FD4C19] font-semibold text-[155px]"
+              "inline-block opacity-100 text-primary font-semibold text-[155px]"
             }
             style={{ letterSpacing: "-1px", lineHeight: "0.8em" }}
           >
             Festival
           </span>
-          <span className={"opacity-100 mx-[3rem] text-[#FD4C19]"}>
+          <span className={"opacity-100 mx-[3rem] text-primary"}>
             <StarRateSharp className={"animate-spin !text-[5.5rem]"} />
           </span>
         </Box>

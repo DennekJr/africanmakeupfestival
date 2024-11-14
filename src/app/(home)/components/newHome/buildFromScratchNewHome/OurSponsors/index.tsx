@@ -22,7 +22,7 @@ export const OurSponsors = () => {
                   <AgoraTransitionWithThreeDashSVG>
                     <AgoraBox>
                       <AgoraTransitionBox>
-                        <Box className={"relative text-[#FD4C19]"}>
+                        <Box className={"relative text-primary"}>
                           <Box
                             className={
                               "text-[14px] w-full leading-[18px] pb-[1rem] uppercase"

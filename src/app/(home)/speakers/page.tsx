@@ -9,7 +9,7 @@ const Speakers: () => Promise<React.JSX.Element> = async () => {
   return (
     <Box
       className={
-        "bg-midGrey flex flex-col items-center justify-between text-lightSecondary"
+        "bg-midGrey flex flex-col items-center justify-between"
       }
     >
       <Hero />

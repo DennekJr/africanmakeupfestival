@@ -39,7 +39,7 @@ export const Footer = () => {
     <Box>
       <footer
         className={
-          "bg-midGrey w-full py-6 px-6 lg:px-0"
+          "bg-lightGrey w-full py-6 px-6 lg:px-0"
         }
       >
         <Box className={"mx-auto max-w-[1320px] flex flex-col gap-14"}>

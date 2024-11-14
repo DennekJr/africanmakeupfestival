@@ -9,17 +9,17 @@ import { AccessTime, PlaceOutlined } from "@mui/icons-material";
 export const Event = ({event}: {event: CalenderEventTypes}) => {
   const TicketPurchaseOption = ({event}: {event: CalenderEventTypes}) => {
     if(event.ticketType === 'free' && event.ticketCount > 0){
-      return <Box className={'lg:w-[120px] lg:max-w-[120px]'}>
+      return <Box className={'lg:w-[100%] lg:max-w-[100%]'}>
         <AgoraTransitionBox><h5 className={'text-[#FE9E11] text-[24px] font-semibold'}>Free Event</h5></AgoraTransitionBox>
       </Box>
     }
     if(event.ticketCount > 0 && event.ticketType === 'purchase'){
-      return <HomeButton className={'border-[#FD4C19] bg-[#FD4C19] text-[#F8F0EE]'}>
+      return <HomeButton className={'border-primary bg-primary text-textColor'}>
         <span className={'inline-block align-middle whitespace-normal'}>Buy Tickets</span>
       </HomeButton>
     }
     return <Box className={'lg:w-[120px] lg:max-w-[120px]'}>
-      <AgoraTransitionBox><h5 className={'text-[#9B9B9B] text-[24px] font-semibold'}>Sold Out</h5></AgoraTransitionBox>
+      <AgoraTransitionBox><h5 className={'text-lightSecondary text-[24px] font-semibold'}>Sold Out</h5></AgoraTransitionBox>
     </Box>
   }
   return <AgoraBox className={'w-full'}>
@@ -27,11 +27,11 @@ export const Event = ({event}: {event: CalenderEventTypes}) => {
       <Box className={'w-full lg:w-[34%]'}>
         <Box className={'items-center content-center py-0 flex w-full flex-wrap relative'}>
           <AgoraTransitionBox className={'lg:w-[97px] lg:max-w-[97px] mt-[-4px] mb-2'}>
-            <h4 className={'text-[40px] md:text-[76px] tracking-[-0.03em] p-0 m-0 leading-[1] font-extrabold text-[#FD4C19]'}>{event.day}</h4>
+            <h4 className={'text-[40px] md:text-[76px] tracking-[-0.03em] p-0 m-0 leading-[1] font-extrabold text-primary'}>{event.day}</h4>
           </AgoraTransitionBox>
           <Box className={'lg:w-[140px] lg:max-w-[140px]'}>
             <AgoraTransitionBox>
-              <h5 className={'text-[#9B9B9B] leading-[1.2em] text-[14px] md:text-[24px] font-semibold'}>{event.month}, {event.year}</h5>
+              <h5 className={'text-lightSecondary leading-[1.2em] text-[14px] md:text-[24px] font-semibold'}>{event.month}, {event.year}</h5>
             </AgoraTransitionBox>
           </Box>
         </Box>
@@ -40,15 +40,15 @@ export const Event = ({event}: {event: CalenderEventTypes}) => {
         <Box className={'items-center content-center py-0 relative flex-wrap'}>
           <AgoraTransitionBox className={'w-full mb-0'}>
             <Box className={'relative'}>
-              <h3 className={'leading-[1.086em] m-0 text-[#FD4C19] text-[23px] md:text-[2.059em] font-extrabold'}>{event.title}</h3>
+              <h3 className={'leading-[1.086em] m-0 text-primary text-[23px] md:text-[2.059em] font-extrabold'}>{event.title}</h3>
             </Box>
           </AgoraTransitionBox>
           <Box className={'h-[5px] w-full'} />
           <Box className={'w-auto mb-0 max-w-full inline-flex'}>
             <AgoraTransitionBox className={'mr-6'}>
               <Box className={'flex flex-row text-start items-center'}>
-                <PlaceOutlined className={'text-[#FD4C19]'} />
-                <Box className={'flex-grow text-[#FD4C19] text-[15px] box-border'}>
+                <PlaceOutlined className={'text-primary'} />
+                <Box className={'flex-grow text-primary text-[15px] box-border'}>
                   <span>
                   {event.location}
                   </span>

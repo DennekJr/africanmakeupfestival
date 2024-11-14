@@ -12,7 +12,7 @@ export const OurAchievements = () => {
   return (
     <section className={"z-[2] relative box-border"}>
       <Box className={"mx-auto min-h-[30vw] relative md:flex-nowrap flex-wrap flex max-w-[1320px]"}>
-        <Box className={"flex md:block w-full md:w-[50%]"}>
+        <Box className={"flex relative md:block w-full md:w-[50%]"}>
           <Box
             className={
               "static !top-auto md:sticky md:top-0 px-[40px] md:px-[30px] flex w-full flex-wrap content-start"
@@ -47,13 +47,13 @@ export const OurAchievements = () => {
                 <Box className={"relative"}>
                   <span
                     className={
-                      "text-[#FD4C19] mb-[7.8px] md:mb-[0.75em] lg:mb-[1em] text-[14px] leading-[18px] uppercase font-semibold"
+                      "text-primary mb-[7.8px] md:mb-[0.75em] lg:mb-[1em] text-[14px] leading-[18px] uppercase font-semibold"
                     }
                   >
                     Our Achievements
                   </span>
                   <h1
-                    className={"text-[27px] md:text-[44px] lg:text-[3.353em] text-[#FD4C19] font-extrabold"}
+                    className={"text-[27px] md:text-[44px] lg:text-[3.353em] text-primary font-extrabold"}
                   >
                     Bringing Skin care learning to life
                   </h1>
@@ -80,9 +80,9 @@ export const OurAchievements = () => {
               <AgoraTransitionBox className={"mb-[-5px] ml-[-5px]"}>
                 <Box className={"text-left block mx-auto my-0"}>
                   <ArrowDownwardOutlined
-                    fill={"#FD4C19"}
+                    fill={"#C43C2A"}
                     sx={{ transition: "all .3s" }}
-                    className={"inline-block text-center text-[#FD4C19]"}
+                    className={"inline-block text-center text-primary"}
                   />
                 </Box>
               </AgoraTransitionBox>

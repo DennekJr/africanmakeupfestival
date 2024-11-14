@@ -17,6 +17,7 @@ export const ActiveWordsCarousel = () => {
         play
         direction={"right"}
         loop={0}
+        pauseOnHover={true}
         speed={250}
         className={
           "h-[10vw] opacity-100 w-full z-0 absolute justify-start items-start flex-row !rotate-[-11deg]"

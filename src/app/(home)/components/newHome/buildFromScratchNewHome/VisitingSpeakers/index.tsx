@@ -16,8 +16,8 @@ export const VisitingSpeakers = () => {
           <AgoraBox className={'w-full'}>
             <AgoraTransitionBox>
               <Box className={'relative'}>
-                <span className={'mb-[1em] text-[14px] uppercase font-semibold text-[#FD4C19] block text-center'}>Speakers</span>
-                <h1 className={'leading-[1em] m-0 items-center text-[#FD4C19] text-[27px] md:text-[44px] lg:text-[57px] text-center font-extrabold'}>Brands Visiting</h1>
+                <span className={'mb-[1em] text-[14px] uppercase font-semibold text-primary block text-center'}>Speakers</span>
+                <h1 className={'leading-[1em] m-0 items-center text-primary text-[32px] md:text-[48px] lg:text-[3.535em] font-bold text-center'}>Visiting Speakers</h1>
               </Box>
             </AgoraTransitionBox>
             <Box className={"relative w-full mb-0 h-[55px]"}>

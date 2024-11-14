@@ -20,7 +20,7 @@ export const Hero = () => {
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
             >
-              <span className="relative max-w-full break-words text-[#FD4C19]">
+              <span className="relative max-w-full break-words text-primary">
                 Piggyvest, Medplus Pharmacy and many
                 more have{" "}
               </span>
@@ -47,7 +47,7 @@ export const Hero = () => {
                   </defs>
                 </svg>
               </span>
-              <span className="relative max-w-full break-words text-[#Fd4c19]"> with us.</span>
+              <span className="relative max-w-full break-words text-primary"> with us.</span>
             </pre>
           </div>
         </Box>

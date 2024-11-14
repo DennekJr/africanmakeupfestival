@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { ArrowRight } from "@mui/icons-material";
+import { ArrowRightAltOutlined } from "@mui/icons-material";
 
 export const Experience = ({experience}: {experience: {id: string, title: string, subtitle: string, image: string}}) => {
   return (
@@ -16,7 +16,7 @@ export const Experience = ({experience}: {experience: {id: string, title: string
           visibility: 'visible'
         }}
       >
-        <Box className={'experience bg-[url(/images/mediaHero.webp)] flex bg-center bg-no-repeat bg-cover bg-[#2B2F3B] w-full max-w-full'}>
+        <Box className={'group experience bg-[url(/images/mediaHero.webp)] flex bg-center bg-no-repeat bg-cover bg-[#2B2F3B] w-full max-w-full'}>
           <Box className={'before:absolute before:z-[-1] before:top-0 before:bottom-0 before:left-0 before:right-0 before:bg-[#00000033] w-full p-[10px] flex justify-end flex-col'}>
             <Box className={'bg-[#F8F0EE] py-[1.2rem] px-[1rem] w-full'}>
               <Box className={'flex justify-between items-end pb-[0.25rem]'}>
@@ -24,7 +24,7 @@ export const Experience = ({experience}: {experience: {id: string, title: string
                   <h5 className={'leading-[1.2em] m-0 text-primary font-extrabold'}>{experience.title}</h5>
                 </Box>
                 <Box className={'inline-block text-primary'}>
-                  <ArrowRight />
+                  <ArrowRightAltOutlined className={'group-hover:rotate-[-25deg]'} sx={{transition: 'all 0.3s ease-out'}} />
                 </Box>
               </Box>
               <Box className={'subTitleText text-lightSecondary h-0 opacity-0 max-w-[95%] text-[17px] font-light leading-[25px] overflow-hidden block'} sx={{transition: 'height 0.3s ease-out, margin-top 0.3s ease-out, opacity 0.3s ease-out'}}>

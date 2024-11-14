@@ -8,7 +8,7 @@ export const SPONSORCONSTANTS:Record<string, SponsorType> = {
     title: 'Piggyvest',
     content: 'Adipiscing elit, sed do euismod tempor incidunt ut labore et dolore magna aliqua.',
     url: '/',
-    image: '/images/piggyvest.svg'
+    image: '/images/piggyvest.webp'
   },
 two: {
     id: 'medplus',

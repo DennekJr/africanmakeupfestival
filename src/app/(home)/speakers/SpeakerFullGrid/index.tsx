@@ -12,10 +12,9 @@ export const SpeakerFullGrid = () => {
         "bg-black relative w-full py-24 bg-[url(https://www.africastartupfestival.com/grid-section.svg)] z-[9] bg-repeat-y bg-top text-white flex flex-col items-center [&>a]:max-w-[90%]"
       }
     >
-      <Box className="absolute inset-0 bg-[#FD4C19] opacity-30 mix-blend-overlay z-10"></Box>
       <Box className={"w-full lg:py-12"}>
         <Box className={"w-full max-w-[1320px] mx-auto space-y-10 p-6"}>
-          <Box className="flex flex-col justify-between gap-4 text-[#FD4C19]">
+          <Box className="flex flex-col justify-between gap-4 text-primary">
             <pre
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"

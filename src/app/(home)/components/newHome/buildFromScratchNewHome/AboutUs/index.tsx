@@ -81,7 +81,7 @@ export const AboutUs = () => {
                             <Box className={"relative"}>
                               <span
                                 className={
-                                  "mb-[1em] leading-[18px] text-[14px] uppercase text-[#FD4C19] font-semibold"
+                                  "mb-[1em] leading-[18px] text-[14px] uppercase text-primary font-semibold"
                                 }
                                 style={{ letterSpacing: "1.8px" }}
                               >
@@ -89,7 +89,7 @@ export const AboutUs = () => {
                               </span>
                               <h1
                                 className={
-                                  "ml-[-1px] text-[27px] md:text-[44px] lg:text-[3em] font-extrabold text-[#FD4C19]"
+                                  "ml-[-1px] text-[27px] md:text-[44px] lg:text-[3em] font-extrabold text-primary"
                                 }
                                 style={{lineHeight: '1em', letterSpacing: 0}}
                               >
@@ -114,7 +114,7 @@ export const AboutUs = () => {
                         </Box>
                         <Box className={"w-full mb-0"}>
                           <AgoraTransitionBox className={"mb-0"}>
-                            <ul className={"pl-[30px] text-[#FD4C19]"}>
+                            <ul className={"pl-[30px] text-primary"}>
                               <li
                                 className={"mt-0 mb-[10px] text-[16px] relative flex items-center"}
                               >
@@ -148,7 +148,7 @@ export const AboutUs = () => {
                                 "inline-block align-top mb-[-10px] leading-0"
                               }
                             >
-                              <HomeButton style={{ letterSpacing: "1.5px", padding: '' }} className={'bg-[#FE9E11] text-white lg:!py-[18px] lg:!px-[40px] !py-[15px] !px-[36px]'}>
+                              <HomeButton style={{ letterSpacing: "1.5px", padding: '' }} className={'bg-primary text-white lg:!py-[18px] lg:!px-[40px] !py-[15px] !px-[36px]'}>
                                 About Us
                               </HomeButton>
                             </Box>

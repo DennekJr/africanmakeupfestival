@@ -38,7 +38,7 @@ export const Speakers = ({ speaker }: { speaker: SpeakerType }) => {
                       "opacity-0 speakerLink transition-all duration-300 top-[20px] relative m-[3px] inline-block align-top leading-[1] text-center"
                     }
                   >
-                    <AgoraTransitionNoTransformSpan className={'flex items-center justify-center text-black bg-white hover:bg-[#E58800] hover:text-white border-none text-[16px] w-[45px] h-[45px] leading-[45px] rounded-full bg-cover bg-top'}>
+                    <AgoraTransitionNoTransformSpan className={'flex items-center justify-center text-black bg-white hover:bg-primary hover:text-lightGrey border-none text-[16px] w-[45px] h-[45px] leading-[45px] rounded-full bg-cover bg-top'}>
                       <link.icon className={'before:mt-[-1px]'} />
                     </AgoraTransitionNoTransformSpan>
                   </a>
@@ -53,7 +53,7 @@ export const Speakers = ({ speaker }: { speaker: SpeakerType }) => {
           <Box className={"break-words box-border"}>
             <h4
               className={
-                "text-[22px] font-extrabold leading-[1.2em] text-[#FD4C19] inline"
+                "text-[22px] font-extrabold leading-[1.2em] text-primary"
               }
             >
               {speaker.name}

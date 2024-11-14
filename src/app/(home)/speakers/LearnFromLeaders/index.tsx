@@ -14,7 +14,7 @@ export const LearnFromLeaders = () => {
             "max-w-[738px] mr-auto flex flex-col justify-between gap-4 p-6 lg:p-0"
           }
         >
-          <Box className={"*:!tracking-[-1px] text-[#FD4C19]"}>
+          <Box className={"*:!tracking-[-1px] text-primary"}>
             <pre
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-5xl leading-[52.8px] lg:text-6xl lg:leading-[66px] xl:text-[90px] xl:leading-[90px] tracking-[-3px]"
@@ -22,7 +22,7 @@ export const LearnFromLeaders = () => {
               <span className="relative max-w-full break-words">
                 This Decembe
               </span>
-              <span className="relative max-w-full break-words text-[#FD4C19]">
+              <span className="relative max-w-full break-words text-primary">
                 r,
                 <MonthScribbleIcon />
               </span>

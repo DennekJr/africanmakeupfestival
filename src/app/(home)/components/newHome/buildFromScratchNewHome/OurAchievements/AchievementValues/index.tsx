@@ -18,7 +18,7 @@ export const AchievementValues = ({
   const { ref, inView } = useInView({ threshold: 0});
   return (
     <section className={"w-full relative"} ref={ref as React.LegacyRef<HTMLElement> | undefined}>
-      <Box className={"max-w-[1320px] flex mx-auto relative text-[#FD4C19]"}>
+      <Box className={"max-w-[1320px] flex mx-auto relative text-primary"}>
         <Box className={"w-1/2 relative flex"}>
           <Box className={"pr-[10px] lg:pr-[15px] flex w-full flex-wrap content-start"}>
             <Box className={"w-auto max-w-full"}>

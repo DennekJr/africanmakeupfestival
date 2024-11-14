@@ -41,14 +41,14 @@ export const CalenderEvents = () => {
                       >
                         <span
                           className={
-                            "mb-[0.9em] !text-[#FD4C19] text-[14px] leading-[18px] font-semibold uppercase opacity-[1]"
+                            "mb-[0.9em] !text-primary text-[14px] leading-[18px] font-semibold uppercase opacity-[1]"
                           }
                         >
                           Calender
                         </span>
                         <h1
                           className={
-                            "ml-[-1px] mt-0 leading-[1em] text-[27px] md:text-[44px] lg:text-[60px] text-[#FD4C19] font-extrabold"
+                            "ml-[-1px] mt-0 leading-[1em] text-[27px] md:text-[44px] lg:text-[60px] text-primary font-extrabold"
                           }
                         >
                           Next Events
@@ -86,7 +86,7 @@ export const CalenderEvents = () => {
                         <Box className={"align-top inline-block"}>
                           <Button
                             className={
-                              "!text-[#FD4C19] !p-0 leading-[20px] !font-semibold mb-[10px]"
+                              "!text-primary !p-0 leading-[20px] !font-semibold mb-[10px]"
                             }
                             endIcon={<ArrowRightAltOutlined />}
                           >
@@ -108,7 +108,7 @@ export const CalenderEvents = () => {
                 }}
               >
                 <Box
-                  className={"h-[1px] bg-[#FD4C19]"}
+                  className={"h-[1px] bg-primary"}
                   sx={{
                     transition:
                       "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform .4s",

@@ -109,7 +109,7 @@ export const Hero = () => {
                                             </Box>
                                           </Box>
                                           <Box className={'relative inline-block pointer-events-auto min-w-auto align-middle clear-none float-none max-w-inherit left-0 top-0 z-[7] visible'}>
-                                            <Box className={'z-[7] font-halyard-display inline-block h-auto w-auto text-[#fd4c19] no-underline whitespace-normal min-h-0 min-w-0 max-h-none max-w-none text-left leading-[90px] tracking-[-1px] font-medium text-[90px] transform-style-preserve-3d backdrop-blur-none filter-none transform-origin-[50%_50%] transform-[perspective(600px)] opacity-100 visible outline-none'}>
+                                            <Box className={'z-[7] font-halyard-display inline-block h-auto w-auto text-[#C43C2A] no-underline whitespace-normal min-h-0 min-w-0 max-h-none max-w-none text-left leading-[90px] tracking-[-1px] font-medium text-[90px] transform-style-preserve-3d backdrop-blur-none filter-none transform-origin-[50%_50%] transform-[perspective(600px)] opacity-100 visible outline-none'}>
                                               <Box className="rs-layer lg:!text-[45px] xl:!text-[90px]">
                                                 <Box className="xl:py-4 !font-semibold">
                                                   <Box className={"relative pl-3 inline-block"}>
@@ -151,9 +151,9 @@ export const Hero = () => {
                                               </Box>
                                             </Box>
                                             <Box className={'outline-none absolute block pointer-events-auto min-w-auto align-middle clear-none float-none max-w-inherit left-[220px] top-[102px] z-[7] visible perspective-[601px]'}>
-                                              <a className={'z-[7] font-[halyard-display] uppercase cursor-pointer h-auto w-auto text-[#fd4c19] no-underline whitespace-nowrap min-h-0 min-w-0 max-h-none max-w-none text-left leading-[25px] tracking-normal font-medium text-[17px] backdrop-blur-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible'}>
+                                              <a className={'z-[7] font-[halyard-display] uppercase cursor-pointer h-auto w-auto text-primary no-underline whitespace-nowrap min-h-0 min-w-0 max-h-none max-w-none text-left leading-[25px] tracking-normal font-medium text-[17px] backdrop-blur-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible'}>
                                                 Buy Tickets
-                                                <ArrowRightAltOutlined sx={{color: '#FD4C19', transition: '.3s ease'}} />
+                                                <ArrowRightAltOutlined className={'text-primary'} sx={{ transition: '.3s ease'}} />
                                               </a>
                                             </Box>
                                             <Box className={'relative block pointer-events-auto align-middle clear-none float-none max-w-[180px] min-w-[180px] left-0 top-0 z-[6] visible perspective-[601px]'}>
