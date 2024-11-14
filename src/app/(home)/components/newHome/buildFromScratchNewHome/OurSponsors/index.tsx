@@ -56,7 +56,7 @@ export const OurSponsors = () => {
                 <Box className={"text-left"}>
                   <Box className={"flex flex-wrap md:mr-[-30px] box-border"}>
                     {sponsors.map((sponsor, index) => {
-                      return <Sponsor sponsor={sponsor} />;
+                      return <Sponsor key={index} sponsor={sponsor} />;
                     })}
                   </Box>
                 </Box>
@@ -64,6 +64,11 @@ export const OurSponsors = () => {
             </Box>
           </Box>
         </Box>
+      </Box>
+      <Box className={"h-[120px] lg:h-[120px] w-full"}>
+        <AgoraTransitionBox>
+          <Box className={"h-[120px]"} />
+        </AgoraTransitionBox>
       </Box>
     </section>
   );

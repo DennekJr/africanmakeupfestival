@@ -22,7 +22,7 @@ export const WhiteTicketButton = ({ name }: { name: string }) => {
     <a
       href={'/ticket'}
       className={
-        "text-[#09090b] inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#ffffff] text-secondary-foreground hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
+        "text-[#09090b] !rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#ffffff] text-secondary-foreground hover:bg-secondary/80 h-14 px-6 py-4 w-full md:w-auto"
       }
     >
       <span>{name}</span>
@@ -48,7 +48,7 @@ export const WhiteTicketButton = ({ name }: { name: string }) => {
 export const TransparentArrowButton = ({ name }: { name: string }) => {
   return (
     <a
-      className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 bg-transparent text-gray-100 h-14 px-6 py-4 rounded-full w-full md:w-auto"
+      className="inline-flex !rounded-none items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 bg-transparent text-gray-100 h-14 px-6 py-4 w-full md:w-auto"
       data-sentry-component="Button_"
       href="/exhibit"
     >

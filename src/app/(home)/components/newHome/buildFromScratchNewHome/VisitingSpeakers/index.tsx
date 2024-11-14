@@ -29,7 +29,7 @@ export const VisitingSpeakers = () => {
             <Box className={'w-full mb-0'}>
               <AgoraTransitionBox className={'mb-[-30px]'}>
                 <Box className={'relative'}>
-                  <Box className={'flex flex-wrap md:mr-[-20px] lg:mr-[-30px]'}>
+                  <Box className={'flex flex-wrap lg:!mr-[-10px] 2xl:!mr-[-30px]'}>
                     {speakers.map((speaker, index) => {
                       return <Speakers speaker={speaker} key={index} />
                     })}

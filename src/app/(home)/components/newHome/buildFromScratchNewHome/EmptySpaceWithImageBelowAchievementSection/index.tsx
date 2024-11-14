@@ -18,7 +18,7 @@ export const EmptySpaceWithImageBelowAchievementSection = () => {
               "w-[10vw] max-w-10vw top-[3vw] left-[1vw] md:left-[9vw] absolute mb-0 z-[1] text-center translate-x-0 translate-y-0 rotate-0 scale-100"
             }
           >
-            <AgoraTransitionBox className={"text-center"}>
+            <AgoraTransitionBox className={"text-center animate-bounce"}>
               <Image
                 src={"/images/newHomeBuild/whoWeAreTopLeftImage.svg"}
                 alt={"imageAboveAchievementSection"}

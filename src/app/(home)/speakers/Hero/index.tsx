@@ -20,7 +20,7 @@ export const Hero = () => {
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
             >
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-[#FD4C19]">
                 The biggest names in the African skincare and investment
                 landscape join us as{" "}
               </span>

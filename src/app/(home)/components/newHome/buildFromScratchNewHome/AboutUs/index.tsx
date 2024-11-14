@@ -73,7 +73,7 @@ export const AboutUs = () => {
                     <Box className={"w-full"}>
                       <Box
                         className={
-                          "lg:w-[calc(1290px/2)] w-[calc(100vw-30px*2)] md:w-full mx-auto md:pr-[30px] md:pl-[40px] lg:pr-[3%] lg:pl-[16.3%] items-center flex-wrap content-start"
+                          "2xl:w-[calc(1290px/2)] lg:w-[calc(1000px/2)] mx-auto md:pr-[30px] md:pl-[40px] lg:pr-[3%] lg:pl-[16.3%] items-center flex-wrap content-start"
                         }
                       >
                         <Box className={"w-full mb-0"}>

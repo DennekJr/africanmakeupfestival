@@ -2,39 +2,18 @@ import { Box } from "@mui/material";
 import { styled, keyframes } from "@mui/system";
 
 // Keyframes for the move animation (translate)
-const move = keyframes`
-    //0% {
-    //    transform: rotate(-11deg); /* Start at the top-left corner */
-    //}
-    //100% {
-    //    transform: translateX(100%) translateY(calc(100% * tan(-11deg))) rotate(-11deg); /* Move diagonally at 11deg */
-        //transform: translate(100vw, calc(100vw * tan(-11deg))) rotate(-11deg); /* Move diagonally at 11deg */
-    //}
+const rotate = keyframes`
     0% {
-        transform: translate3d(-50vw, calc(-50vw * tan(-11deg)), 0) rotate(-11deg);
+        transform: rotate(0deg);
     }
     100% {
-        transform: translate3d(100vw, calc(100vw * tan(-11deg)), 0) rotate(-11deg);
-    }
-`;
-
-// Keyframes for the rotate animation
-const moveWithDelay = keyframes`
-    0% {
-        transform: translate(0, 0); /* Start at the top-left corner */
-    }
-    100% {
-        transform: translate(100vw, calc(100vw * tan(-11deg))); /* Move diagonally at 11deg */
-        animation-delay: 8s;
+        transform: rotate(-11deg);
     }
 `;
 
 // Styled component using move and rotate animations
-export const AnimatedSection = styled("section")`
-  animation: ${move} 7s infinite linear;
-`;
-export const AnimatedDelayDiv = styled(Box)`
-  animation: ${moveWithDelay} 4s infinite linear;
+export const AnimatedBox = styled(Box)`
+  animation: ${rotate} 4s infinite linear;
 `;
 export const AgoraBox = styled(Box)({
   animationName: "agora-fadeinup",
@@ -66,16 +45,17 @@ export const AgoraTransitionBox = styled(Box)({
   transition:
     "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform .4s",
 
-  '& .sponsorContainer:hover .animateReadMore': {
-    transition: 'visibility 0.4s ease, margin-right 0.3s ease-out, text-indent 0.4s ease-out, opacity 0.4s ease',
+  "& .sponsorContainer:hover .animateReadMore": {
+    transition:
+      "visibility 0.4s ease, margin-right 0.3s ease-out, text-indent 0.4s ease-out, opacity 0.4s ease",
     textIndent: 0,
     opacity: 1,
-    marginRight: '6px',
-    visibility: 'visible'
+    marginRight: "6px",
+    visibility: "visible",
   },
-  '& .sponsorContainer:hover .sponsorImage': {
+  "& .sponsorContainer:hover .sponsorImage": {
     opacity: 1,
-  }
+  },
 });
 
 export const AgoraTransitionNoTransformBox = styled(Box)({
@@ -90,6 +70,24 @@ export const AboutUsImageWithTransition = styled(Box)({
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   transition: "background .3s, border .3s, border-radius .3s, box-shadow .3s",
+});
+export const ContactUsBackgroundImageBox = styled("section")({
+  backgroundImage: "url(/images/speaker2.webp)",
+  backgroundPosition: "top center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  backgroundAttachment: "scroll",
+  transition:
+    "background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s",
+  "& input::-webkit-input-placeholder": {
+    color: "black",
+  },
+  "& input": {
+    color: "black",
+  },
+  "& input::after": {
+    borderBottom: "none !important",
+  },
 });
 export const SkinCareAdventuresImageWithTransition = styled("section")({
   backgroundImage: "url(/images/skinCareAdventure.webp)",
@@ -152,10 +150,26 @@ export const HomeButton = styled("a")({
   },
 });
 
-export const CheckmarkLi = styled("li")({
+export const ContactUsCheckBox = styled("span")({
   "&::before": {
+    content: '" "',
     fontFamily: "fontello",
-    fontSize: "11px",
-    left: -"30px",
+    fontSize: "7px",
+    letterSpacing: "-0.7px",
+    display: "block",
+    textAlign: "center",
+    border: "1px solid #FCD9CE",
+    width: "16px",
+    height: "16px",
+    lineHeight: "15px",
+    position: "absolute",
+    zIndex: 1,
+    top: "0.45em",
+    left: 0,
+    boxSizing: "border-box",
+    borderRadius: "4px",
+    color: "#FD4C19",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
   },
 });

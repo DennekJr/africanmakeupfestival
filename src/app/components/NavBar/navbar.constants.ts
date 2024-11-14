@@ -34,19 +34,6 @@ export const NAV_MENU: Record<string, NavBarItem> = {
     name: "2024 Program",
     disabled: false,
   },
-  media: {
-    id: "media",
-    route: "/media",
-    name: "Media",
-    disabled: false,
-  },
-  travel: {
-    id: "travel",
-    route: "/travel",
-    subRoute: ['Discounted Hotels'],
-    name: "Travel",
-    disabled: false,
-  },
 };
 
 export const NAV_BUTTONS: Record<string, NavBarItem> = {

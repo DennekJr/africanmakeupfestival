@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import { AgoraTransitionBox } from "@/app/(home)/components/newHome/utils";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
 
 export const AchievementValues = ({
   name1,
@@ -16,9 +15,9 @@ export const AchievementValues = ({
   value1: number;
   value2: number;
 }) => {
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0, ssr: false});
+  const { ref, inView } = useInView({ threshold: 0});
   return (
-    <section className={"w-full relative"} ref={ref}>
+    <section className={"w-full relative"} ref={ref as React.RefObject<HTMLElement | null>}>
       <Box className={"max-w-[1320px] flex mx-auto relative text-[#FD4C19]"}>
         <Box className={"w-1/2 relative flex"}>
           <Box className={"pr-[10px] lg:pr-[15px] flex w-full flex-wrap content-start"}>

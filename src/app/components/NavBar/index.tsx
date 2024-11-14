@@ -65,8 +65,8 @@ export default function NavBar() {
   return (
     <Box
       className={
-        `${path == "/" ? "lg:bg-transparent " : "!bg-[#000000] "}` +
-        "flex bg-[#000000] justify-center border-b border-border-secondary w-full p-4 text-white z-10 absolute top-0 left-0"
+        `${path == "/" ? "!bg-transparent " : "!bg-[#000000] "}` +
+        "flex justify-center w-full p-4 text-white z-10 absolute top-0 left-0"
       }
     >
       <Box
@@ -181,7 +181,7 @@ export default function NavBar() {
                 >
                   {id === "getTicket" ? (
                     <WhiteBGButton
-                      className={`!rounded-full whitespace-nowrap`}
+                      className={`whitespace-nowrap !rounded-none`}
                       variant="contained"
                       endIcon={<ConfirmationNumberIcon />}
                     >
@@ -195,7 +195,7 @@ export default function NavBar() {
                     </WhiteBGButton>
                   ) : (
                     <RightArrowButton
-                      className={`!rounded-full whitespace-nowrap`}
+                      className={`whitespace-nowrap !rounded-none`}
                       variant="outlined"
                       endIcon={<ArrowOutwardIcon />}
                     >

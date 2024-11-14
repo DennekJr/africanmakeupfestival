@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import "../Hero/hero.styles.css";
 import React from "react";
-import { Hero } from "@/app/(home)/components/newHome/buildFromScratchNewHome/Hero";
 import { WhoAreWe } from "@/app/(home)/components/newHome/buildFromScratchNewHome/WhoAreWe";
 import { Experiences } from "@/app/(home)/components/newHome/buildFromScratchNewHome/Experiences";
 import '../buildFromScratchNewHome/newHome.styles.css';
@@ -19,11 +18,11 @@ import {
 } from "@/app/(home)/components/newHome/buildFromScratchNewHome/EmptySpaceWithImageBelowAchievementSection";
 import { ActiveWordsCarousel } from "@/app/(home)/components/newHome/buildFromScratchNewHome/ActiveWordsCarousel";
 import { OurSponsors } from "@/app/(home)/components/newHome/buildFromScratchNewHome/OurSponsors";
+import { ContactUs } from "@/app/(home)/components/newHome/buildFromScratchNewHome/ContactUs";
 
 export const BuildFromScratchNewHome = () => {
   return (
-    <Box sx={{ flexGrow: 1, padding: '5rem 0' }}>
-      <Hero />
+    <Box sx={{ flexGrow: 1, paddingTop: '5rem' }}>
       <WhoAreWe />
       <Experiences />
       <CalenderEvents />
@@ -33,9 +32,10 @@ export const BuildFromScratchNewHome = () => {
       <EmptySpaceWithImageAboveAchievementSection />
       <OurAchievements />
       <EmptySpaceWithImageBelowAchievementSection />
-      {/*<ActiveWordsCarousel />*/}
+      <ActiveWordsCarousel />
       <EmptySpaceBelowCarousel />
       <OurSponsors />
+      <ContactUs />
     </Box>
   );
 };

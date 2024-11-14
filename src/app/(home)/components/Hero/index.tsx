@@ -7,7 +7,7 @@ import { VideoComponent } from "./VideoComponent";
 
 export const Hero = () => {
   return (
-    <section className={"relative w-full lg:min-h-screen"}>
+    <section className={"relative w-full h-[100vh]"}>
       <VideoComponent />
       <Box
         className={
