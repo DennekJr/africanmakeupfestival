@@ -68,7 +68,7 @@ export const AboutUs = () => {
                     <Box className={"h-[120px]"} />
                   </AgoraTransitionBox>
                 </Box>
-                <AgoraBox>
+                <AgoraBox className={"px-[15px] md:px-0]"}>
                   <Box className={"max-w-[1290px] flex mx-auto relative"}>
                     <Box className={"w-full"}>
                       <Box

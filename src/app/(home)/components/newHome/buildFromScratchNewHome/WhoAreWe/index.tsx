@@ -15,7 +15,8 @@ export const WhoAreWe = () => {
           />
         </Box>
         <Box className={'relative max-w-[60%] lg:!max-w-[50%] xl:max-w-[1130px] flex justify-center text-center'}>
-          <Box className={'absolute top-[-10%] right-[-10%]'}>
+          <Box
+            className={"absolute lg:w-[78px] lg:h-[76px] md:h-[45px] h-[30px] md:w-[45px] w-[30px] top-[-10%] right-[-10%]"}>
             <Image
               src={"/images/newHomeBuild/threeDash.svg"}
               height={78}
@@ -25,13 +26,14 @@ export const WhoAreWe = () => {
           </Box>
           <Box className={"flex-wrap text-primary"}>
             <Typography>Who We Are</Typography>
-            <Typography variant={"h1"} className={'break-words ' +
+            <h1 className={"break-words " +
               'text-[40px] lg:text-[60px]'}>
               Expert chefs, Interactive workshops, and a world of flavors await
               you at our <span className={'text-[#FE9E11]'}>food festival</span>
-            </Typography>
+            </h1>
           </Box>
-          <Box className={'absolute bottom-[-10%] left-[-10%] scale-y-[-1] scale-x-[-1]'}>
+          <Box
+            className={"absolute lg:w-[78px] lg:h-[76px] md:h-[45px] h-[30px] md:w-[45px] w-[30px] bottom-[-10%] left-[-10%] scale-y-[-1] scale-x-[-1]"}>
             <Image
               src={"/images/newHomeBuild/threeDash.svg"}
               height={78}

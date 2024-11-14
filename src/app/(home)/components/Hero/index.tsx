@@ -18,21 +18,21 @@ export const Hero = () => {
           <pre
             id="undefined-0"
             className={
-              "font-sans w-full break-words whitespace-pre-wrap min-h-6 text-center font-medium heading text-5xl leading-[52.8px] lg:text-6xl lg:leading-[66px] xl:text-[90px] xl:leading-[90px] tracking-[-3px]"
+              "font-sans w-full break-words whitespace-pre-wrap min-h-6 text-center font-medium heading text-5xl md:text-5xl leading-[52.8px] lg:text-6xl lg:leading-[66px] xl:text-[90px] xl:leading-[90px] tracking-[-3px]"
             }
           >
             <span className={"relative max-w-full break-words"}>
-              Africa’s Skincare{" "}
+              Africa <span className="text-primary">Skincare</span><br />{" "}
             </span>
             <span className={"relative max-w-full break-words"}>
-              Fest
+              Festi
               <svg
                 width="266"
                 height="25"
                 viewBox="0 0 266 25"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute -bottom-2.5 left-0 center rotate-6 max-w-full"
+                className="absolute lg:w-[266px] md:w-[166px] w-[100px] -bottom-2.5 left-0 center rotate-6 max-w-full"
               >
                 <g clipPath="url(#clip0_240_199)">
                   <path
