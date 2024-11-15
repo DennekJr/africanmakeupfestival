@@ -16,7 +16,7 @@ export const StageCard = ({id, stageBodyTextColor, order, background, image, sta
         {stageName}
       </p>
       <Typography className={`text-xl text-secondary`} sx={{color: stageBodyTextColor}}>
-        {stageBody}
+        <p>{stageBody}</p>
       </Typography>
     </div>
   </Box>

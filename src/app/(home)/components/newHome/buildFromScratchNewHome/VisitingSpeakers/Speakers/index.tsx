@@ -58,11 +58,11 @@ export const Speakers = ({ speaker }: { speaker: SpeakerType }) => {
             >
               {speaker.name}
             </h4>
-            <Box
+            <p
               className={"text-[16px] leading-[20px] text-[#363332] mt-[10px]"}
             >
               {speaker.position}
-            </Box>
+            </p>
           </Box>
         </Box>
       </AgoraBox>

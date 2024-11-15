@@ -76,7 +76,9 @@ export const ScheduleDropdown = () => {
                           className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-normal text-base"
                         >
                           <span className="relative max-w-full break-words text-lightSecondary">
+                            <p>
                             {schedule.content?.summary}
+                            </p>
                           </span>
                         </pre>
                         <Box

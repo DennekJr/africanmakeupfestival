@@ -44,7 +44,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
                   "visibility 0.4s ease, margin-right 0.4s ease-out, text-indent 0.5s ease-out, opacity 0.4s ease",
                 willChange: "visibility, margin-right, text-indent, opacity",
               }}
-            >Read More</span>
+            ><p>Read More</p></span>
             <span>
               <ArrowRightAltOutlined className={'relative text-primary inline-block align-middle overflow-hidden w-[1.4em] h-[1.4em]'}/>
             </span>

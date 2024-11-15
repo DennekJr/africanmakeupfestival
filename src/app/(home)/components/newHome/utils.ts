@@ -53,6 +53,9 @@ export const AgoraTransitionBox = styled(Box)({
     marginRight: "6px",
     visibility: "visible",
   },
+  "& .sponsorContainer:hover": {
+    cursor: "pointer"
+  },
   "& .sponsorContainer:hover .sponsorImage": {
     opacity: 1,
   },

@@ -29,7 +29,7 @@ export const Benefits = () => {
                 </Box>
                 <ol className="col-span-1 list-disc grid gap-4 text-[#504E56] pl-4 lg:pl-0">
                   {benefit.list.map((listItem, index) => (
-                    <li className="text-xl" key={index}>{listItem}</li>
+                    <li className="text-xl" key={index}><p>{listItem}</p></li>
                   ))}
                 </ol>
               </Box>

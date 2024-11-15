@@ -75,9 +75,9 @@ export const Hero = () => {
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 heading text-xl font-normal text-gray-500"
             >
-              <span className="relative max-w-full break-words">
-                See why the likes of Fenty, CeraVe, Tatcha, Neurogena,
-                Biossance, and Clinique join us as exhibitors.
+              <span className="relative max-w-full break-words text-textColor">
+                <p>See why the likes of Fenty, CeraVe, Tatcha, Neurogena,
+                Biossance, and Clinique join us as exhibitors.</p>
               </span>
             </pre>
           </div>

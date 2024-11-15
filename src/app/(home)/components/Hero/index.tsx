@@ -30,20 +30,21 @@ export const Hero = () => {
                   WebkitTextStroke: "1.5px #C43C2A",
                   color: "text-textColor"
                 }}
+                className={"!text-[25px] lg:text-5xl"}
               >
-                Africa
+                Africa<br />
               </span>{" "}
               <span className="text-primary">Skincare</span>
               <br />{" "}
-            </span>
-            <span
-              className={"relative max-w-full break-words"}
-              style={{
-                WebkitTextStroke: "1.5px #C43C2A",
-                color: "text-textColor"
-              }}
-            >
+              <span
+                className={"relative max-w-full break-words"}
+                style={{
+                  WebkitTextStroke: "1.5px #C43C2A",
+                  color: "text-textColor"
+                }}
+              >
               Festival
+            </span>
             </span>
             {/* <span
               className={"relative max-w-full break-words"}
@@ -64,7 +65,7 @@ export const Hero = () => {
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 text-center font-medium heading text-2xl"
           >
             <span className="relative max-w-full break-words">
-              Discover the Future of Skincare Innovations in Africa
+              Unleashing Africa&apos;s True Glow
             </span>
           </pre>
           <pre

@@ -52,7 +52,7 @@ export const ExhibitionBooth = () => {
                   <ol className="col-span-1 list-disc grid gap-4 text-[#C8C8CB] pl-4 lg:pl-0">
                     {booth.list.map((listItem, index) => (
                       <li className="text-xl" key={index}>
-                        {listItem}
+                        <p>{listItem}</p>
                       </li>
                     ))}
                   </ol>

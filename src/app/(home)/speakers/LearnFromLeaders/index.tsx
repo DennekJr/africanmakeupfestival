@@ -37,9 +37,11 @@ export const LearnFromLeaders = () => {
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 heading text-xl font-normal"
             >
               <span className="relative max-w-full break-words text-lightSecondary">
-                Our speaker lineup is continually growing, with new thought
+                <p>
+                  Our speaker lineup is continually growing, with new thought
                 leaders and industry experts on skincare being added every week to ensure
                 you receive the most current and comprehensive insights.
+                </p>
               </span>
             </pre>
           </Box>

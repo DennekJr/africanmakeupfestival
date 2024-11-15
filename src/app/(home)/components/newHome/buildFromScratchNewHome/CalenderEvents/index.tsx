@@ -67,9 +67,10 @@ export const CalenderEvents = () => {
                           transition:
                             "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform ,4s",
                         }}
-                      >
+                      ><p>
                         Sed ut perspiciatis unde omnis iste natus error sit
                         voluptatem accusantium doloremque laudantium.
+                      </p>
                       </Box>
                     </Box>
                   </Box>

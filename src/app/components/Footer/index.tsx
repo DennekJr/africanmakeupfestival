@@ -42,7 +42,7 @@ export const Footer = () => {
           "bg-lightGrey w-full py-6 px-6 lg:px-0"
         }
       >
-        <Box className={"mx-auto max-w-[1320px] flex flex-col gap-14"}>
+        <Box className={"mx-auto max-w-[1320px] flex flex-col gap-2"}>
           <Box className={"flex flex-col lg:flex-row gap-8 lg:py-8"}>
             <div>
               <Image
@@ -52,7 +52,7 @@ export const Footer = () => {
                 height="3365"
                 decoding="async"
                 className="md:w-[337px] w-[500px] h-full object-contain object-left"
-                style={{ color: "black", filter: 'drop-shadow(2px 4px 6px black)' }}
+                style={{ color: "black", filter: "drop-shadow(2px 4px 6px black)", transition: "all 0.3s ease" }}
                 src="/images/footerLogo.svg"
               />
             </div>

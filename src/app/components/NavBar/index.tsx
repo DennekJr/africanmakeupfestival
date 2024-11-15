@@ -148,7 +148,7 @@ export default function NavBar() {
                           primary={hoverRoute}
                           primaryTypographyProps={{ fontWeight: "600" }}
                           className={
-                            "capitalize itemText px-3 text-[#C8C8CB] hover:text-black hover:cursor-pointer"
+                            "capitalize itemText px-3 text-textColor hover:text-primary hover:cursor-pointer"
                           }
                         />
                       </Link>
