@@ -19,8 +19,8 @@ module.exports = {
       foreground: "var(--foreground)",
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      montserrat: ["Montserrat", "sans-serif"],
+      geist: ["Geist", "sans-serif"]
     },
     maxWidth: {
       '8xl': '96rem',

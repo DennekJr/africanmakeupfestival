@@ -8,6 +8,31 @@
   --color: hsl(240 10% 3.9%);
 }
 
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+textarea,
+select,
+option,
+nav,
+section,
+header,
+footer,
+aside {
+  font-family: font-montserrat, sans-serif;
+}
+
+p, a, button {
+  font-family: font-geist, sans-serif !important;
+}
+
 input,
 select {
   -webkit-background-clip: text !important;
