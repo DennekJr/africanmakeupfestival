@@ -133,12 +133,11 @@ export const ContactUs = () => {
                                           name="acceptance"
                                           value="1"
                                           aria-invalid="false"
-                                          className="absolute m-0 p-0 inline-block align-baseline"
+                                          className="custom-checkbox absolute m-0 p-0 inline-block align-baseline"
                                           style={{
                                             transition:
                                               "color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease",
                                             clip: "rect(1px, 1px, 1px, 1px)",
-                                            beforeContent: "⏺"
                                           }}
                                         />
                                         <ContactUsCheckBox

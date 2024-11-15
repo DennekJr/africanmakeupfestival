@@ -59,6 +59,13 @@ export const AgoraTransitionBox = styled(Box)({
   "& .sponsorContainer:hover .sponsorImage": {
     opacity: 1,
   },
+  "& .custom-checkbox::before": {
+    content: "⏺",
+    display: "inlineBlock",
+    color: "black", /* Add additional styles if needed */
+    position: "absolute",
+    left: "-20px" /* Adjust position if needed */
+  }
 });
 
 export const AgoraTransitionNoTransformBox = styled(Box)({
