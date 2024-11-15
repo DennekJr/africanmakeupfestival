@@ -4,7 +4,7 @@ import { MarqueeStarIcon } from "../../../utils";
 export const MarqueeSlide = () => {
   return (
     <Marquee
-      className={"marquee-container w-full flex py-8 text-white bg-lightGrey text-primary"}
+      className={"marquee-container z-[100] w-full flex py-8 text-white bg-lightGrey text-primary"}
       play
       direction={"left"}
       loop={0}

@@ -53,7 +53,7 @@ export const Footer = () => {
                 decoding="async"
                 className="md:w-[337px] w-[500px] h-full object-contain object-left"
                 style={{ color: "black", filter: "drop-shadow(2px 4px 6px black)", transition: "all 0.3s ease" }}
-                src="/images/footerLogo.svg"
+                src="/images/footerLogoColor.svg"
               />
             </div>
             <Box
