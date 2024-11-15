@@ -12,7 +12,7 @@ export const ExhibitorGrid = () => {
           <Box
             key={index}
             className={
-              "p-6 bg-midGrey rounded-sm aspect-[1/0.4] flex items-center justify-center"
+              "p-6 bg-midGrey rounded-none aspect-[1/0.4] flex items-center justify-center group"
             }
           >
             <Image
@@ -21,7 +21,7 @@ export const ExhibitorGrid = () => {
               width={270}
               height={73}
               style={{color: "transparent"}}
-              className={"object-contain object-center select-none h-16"}
+              className={"object-contain object-center select-none h-16 brightness-50 group-hover:brightness-100"}
             />
           </Box>
         );

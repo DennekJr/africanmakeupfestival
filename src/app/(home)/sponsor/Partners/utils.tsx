@@ -6,7 +6,7 @@ export const PartnerUnderScore = () => {
       viewBox="0 0 266 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="absolute -bottom-2.5 left-0 center rotate-6 max-w-full"
+      className="absolute -bottom-2.5 left-0 center rotate-6 max-w-full lg:w-[266px] md:-w-[166px] w-[100px]"
     >
       <g clipPath="url(#clip0_240_199)">
         <path

@@ -50,7 +50,7 @@ export const ContactUsSelectField = () => {
         <CssSelectField
           className="w-full h-full outline-none"
           aria-invalid="false"
-          name="location"
+          // name="Select Location"
           variant={"standard"}
         >
           <option value="Select Location">

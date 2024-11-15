@@ -126,7 +126,7 @@ export const ContactUs = () => {
                                   <span className="text-left block text-lightSecondary">
                                     <span className="m-0 inline-block box-border">
                                       <label
-                                        className={"flex items-center w-full"}
+                                        className={"flex items-center w-full hover:cursor-pointer"}
                                       >
                                         <input
                                           type="checkbox"
@@ -138,15 +138,18 @@ export const ContactUs = () => {
                                             transition:
                                               "color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease",
                                             clip: "rect(1px, 1px, 1px, 1px)",
+                                            beforeContent: "\"⏺\""
                                           }}
                                         />
                                         <ContactUsCheckBox
-                                          onClick={() =>
-                                            setIsClicked(!isClicked)
+                                          onClick={() => {
+                                            console.log("clicked");
+                                            setIsClicked(!isClicked);
+                                          }
                                           }
                                           className={
                                             "relative text-[14px] pl-[1.8em] leading-[22px] " +
-                                            `${isClicked && 'before:content-["⏺"]'}`
+                                            `${isClicked && "before:!content-[\"⏺\"]"}`
                                           }
                                         >
                                           I agree that my data is{" "}
@@ -154,9 +157,8 @@ export const ContactUs = () => {
                                             className={"border-b-[#363332]"}
                                             href="/"
                                           >
-                                            collected
+                                            collected.
                                           </a>
-                                          .
                                         </ContactUsCheckBox>
                                       </label>
                                     </span>

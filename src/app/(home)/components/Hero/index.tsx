@@ -27,7 +27,6 @@ export const Hero = () => {
             >
               <span
                 style={{
-                  WebkitTextStroke: "1.5px #C43C2A",
                   color: "text-textColor"
                 }}
                 className={"!text-[25px] lg:text-5xl"}
@@ -39,7 +38,6 @@ export const Hero = () => {
               <span
                 className={"relative max-w-full break-words"}
                 style={{
-                  WebkitTextStroke: "1.5px #C43C2A",
                   color: "text-textColor"
                 }}
               >

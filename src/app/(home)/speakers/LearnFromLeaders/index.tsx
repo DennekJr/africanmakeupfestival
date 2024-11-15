@@ -11,7 +11,7 @@ export const LearnFromLeaders = () => {
       <Box className={"w-full max-w-[1320px] mx-auto flex gap-10"}>
         <Box
           className={
-            "max-w-[738px] mr-auto flex flex-col justify-between gap-4 p-6 lg:p-0"
+            "max-w-[850px] mr-auto flex flex-col justify-between gap-4 p-6 lg:p-0"
           }
         >
           <Box className={"*:!tracking-[-1px] text-primary"}>
@@ -25,9 +25,10 @@ export const LearnFromLeaders = () => {
               <span className="relative max-w-full break-words text-primary">
                 r,
                 <MonthScribbleIcon />
+                <br />
               </span>
               <span className="relative max-w-full break-words">
-                learn from the experts in the game.
+                learn from the<br />experts in the game.
               </span>
             </pre>
           </Box>

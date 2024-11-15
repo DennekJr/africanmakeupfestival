@@ -26,7 +26,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
           >
             {sponsor.title}
           </h4>
-          <Box className={"text-lightSecondary mt-[0.9em] text-[15px] leading-[1.6em]"}>
+          <Box className={"text-lightSecondary mt-[0.4em] mb-[0.3em] text-[15px] leading-[1.6em]"}>
             <span className={"block"}>{sponsor.content}</span>
           </Box>
           <a
@@ -37,14 +37,14 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
           >
             <span
               className={
-                "animateReadMore relative text-primary inline-block align-middle indent-[-110px] whitespace-nowrap"
+                "animateReadMore relative text-primary inline-block align-middle indent-[-110px] whitespace-nowrap text-[14px]"
               }
               style={{
                 transition:
                   "visibility 0.4s ease, margin-right 0.4s ease-out, text-indent 0.5s ease-out, opacity 0.4s ease",
                 willChange: "visibility, margin-right, text-indent, opacity",
               }}
-            ><p>Read More</p></span>
+            ><h4>Read More</h4></span>
             <span>
               <ArrowRightAltOutlined className={'relative text-primary inline-block align-middle overflow-hidden w-[1.4em] h-[1.4em]'}/>
             </span>

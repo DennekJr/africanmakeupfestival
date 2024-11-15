@@ -63,7 +63,8 @@ export const ScheduleDropdown = () => {
                 </p>
                 <p className="font-bold text-xl text-lightSecondary">{schedule.title}</p>
               </span>
-              {open?.isOpen ? <ExpandLess className="text-lightSecondary" /> : <ExpandMore className="text-lightSecondary" />}
+              {schedule.content !== undefined && (open?.isOpen ? <ExpandLess className="text-lightSecondary" /> :
+                <ExpandMore className="text-lightSecondary" />)}
             </button>
             <div>
               {schedule.content !== undefined && (

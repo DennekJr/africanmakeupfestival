@@ -44,7 +44,7 @@ export const Footer = () => {
       >
         <Box className={"mx-auto max-w-[1320px] flex flex-col gap-2"}>
           <Box className={"flex flex-col lg:flex-row gap-8 lg:py-8"}>
-            <div>
+            <Link href={"/"} className={"hover:cursor-pointer"}>
               <Image
                 alt="ASF Logo Full"
                 loading="lazy"
@@ -52,10 +52,10 @@ export const Footer = () => {
                 height="3365"
                 decoding="async"
                 className="md:w-[337px] w-[500px] h-full object-contain object-left"
-                style={{ color: "black", filter: "drop-shadow(2px 4px 6px black)", transition: "all 0.3s ease" }}
+                style={{ color: "black", transition: "all 0.3s ease" }}
                 src="/images/footerLogoColor.svg"
               />
-            </div>
+            </Link>
             <Box
               className={
                 "flex justify-center md:justify-between w-full lg:w-[70%]"
@@ -86,13 +86,13 @@ export const Footer = () => {
                           className="nav-link flex justify-between text-[#0A090B]"
                           onClick={() => handleSetCollapsed(link.name)}
                         >
-                          <Typography
+                          <h5
                             className={
-                              "pb-2 lg:pb-4 hover:cursor-pointer !text-[1.25rem]"
+                              "pb-2 lg:pb-4 hover:cursor-pointer font-extrabold hover:text-primary !text-[1.25rem]"
                             }
                           >
                             {link.name}
-                          </Typography>
+                          </h5>
                           {footerHeader?.isOpen ? (
                             <KeyboardArrowUp className={'lg:!hidden'} />
                           ) : (
@@ -112,20 +112,20 @@ export const Footer = () => {
                                 href={subLink.route}
                                 className="nav-link"
                               >
-                                <Typography
+                                <p
                                   className={
-                                    "!text-[1.25rem] text-[#0A090B] pb-1 md:pb-2 text-xl !font-bold hover:cursor-pointer"
+                                    "!text-[1.25rem] hover:text-primary text-[#0A090B] pb-1 md:pb-2 text-xl hover:cursor-pointer"
                                   }
                                   key={subLink.id}
                                 >
                                   {subLink.name}
-                                </Typography>
+                                </p>
                               </Link>
                             );
                           })}
                         </Collapse>
                         <Box
-                          className={"lg:grid gap-3 text-xl font-medium hidden"}
+                          className={"lg:grid gap-3 text-xl hidden"}
                         >
                           {link.subLinks?.map((subLink, index) => {
                             return (
@@ -134,14 +134,14 @@ export const Footer = () => {
                                 href={subLink.route}
                                 className="nav-link"
                               >
-                                <Typography
+                                <p
                                   className={
-                                    "!text-[1.25rem] text-[#0A090B] pb-1 md:pb-2 text-xl !font-bold hover:cursor-pointer"
+                                    "!text-[1.25rem] hover:text-primary text-[#0A090B] pb-1 md:pb-2 text-xl hover:cursor-pointer"
                                   }
                                   key={subLink.id}
                                 >
                                   {subLink.name}
-                                </Typography>
+                                </p>
                               </Link>
                             );
                           })}

@@ -8,24 +8,24 @@ export const Stages = () => {
   return (
     <section className={"w-full py-20 lg:py-32"}>
       <Box className={"mx-auto max-w-[1320px] grid gap-8 lg:gap-16 px-6"}>
-        <Box className="grid lg:grid-cols-2">
+        <Box className="grid lg:grid-cols-[1.5]">
           <Box className="space-y-3">
             <pre
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
             >
               <span className="relative max-w-full break-words text-primary">
-                Three Stages,{" "}
+                Three Stages.{" "}Same Global Influence
               </span>
             </pre>
-            <pre
-              id="undefined-1"
-              className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading !text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"
-            >
-              <span className="relative max-w-full break-words text-primary">
-                Same Global Influence.
-              </span>
-            </pre>
+            {/*<pre*/}
+            {/*  id="undefined-1"*/}
+            {/*  className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading !text-[32px] leading-[35.2px] lg:text-6xl lg:leading-[66px] tracking-[-1px]"*/}
+            {/*>*/}
+            {/*  <span className="relative max-w-full break-words text-primary">*/}
+            {/*    Same Global Influence.*/}
+            {/*  </span>*/}
+            {/*</pre>*/}
             <Box className="text-[#2C2A32]">
               <pre
                 id="undefined-0"
@@ -44,8 +44,22 @@ export const Stages = () => {
           </Box>
         </Box>
         <Box className={"grid lg:grid-cols-3 gap-8"}>
-          {stages.map(({id, background, image, order, orderColor, stageBodyTextColor, stageBody, stageName, textColor}, index,) => {
-            return <StageCard key={index} id={id} background={background} image={image} order={order} orderColor={orderColor} stageBodyTextColor={stageBodyTextColor}  stageBody={stageBody} stageName={stageName} textColor={textColor}/>
+          {stages.map(({
+                         id,
+                         background,
+                         image,
+                         order,
+                         orderColor,
+                         stageBodyTextColor,
+                         stageBody,
+                         stageName,
+                         stageTitleColor,
+                         textColor
+                       }, index) => {
+            return <StageCard key={index} id={id} background={background} image={image} order={order}
+                              orderColor={orderColor} stageBodyTextColor={stageBodyTextColor}
+                              stageTitleColor={stageTitleColor} stageBody={stageBody} stageName={stageName}
+                              textColor={textColor} />;
           })}
         </Box>
       </Box>

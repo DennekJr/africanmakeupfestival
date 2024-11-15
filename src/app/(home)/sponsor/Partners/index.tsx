@@ -21,7 +21,7 @@ export const Partners = () => {
         <Box>
           <pre
             id="undefined-0"
-            className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
+            className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] md:text-[45px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
           >
             <span className="relative max-w-full break-words">
               Here’s some{" "}
@@ -50,7 +50,7 @@ export const Partners = () => {
                   height={208}
                   src={sponsor.src}
                   alt={sponsor.name}
-                  style={{ color: "transparent" }}
+                  style={{ color: "primary" }}
                   className={"w-full h-auto object-contain"}
                 />
               </Box>
