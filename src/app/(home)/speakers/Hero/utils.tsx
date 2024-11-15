@@ -1,5 +1,5 @@
 "use client";
-import { keyframes } from "@mui/system";
+// import { keyframes } from "@mui/system";
 
 export const HeroWhiteScribble = () => {
   return (
