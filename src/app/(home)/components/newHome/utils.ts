@@ -60,7 +60,7 @@ export const AgoraTransitionBox = styled(Box)({
     opacity: 1,
   },
   "& .custom-checkbox::before": {
-    content: "⏺",
+    content: "\"⏺\"",
     display: "inlineBlock",
     color: "black", /* Add additional styles if needed */
     position: "absolute",
