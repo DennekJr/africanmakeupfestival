@@ -5,7 +5,6 @@ import { Typography } from "@mui/material";
 export const StageCard = ({
                             id,
                             stageBodyTextColor,
-                            orderColor,
                             stageTitleColor,
                             order,
                             background,

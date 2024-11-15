@@ -171,18 +171,18 @@ export default function NavBar() {
                 disablePadding
                 sx={{ display: "block" }}
               >
-                <Link
-                  onClick={() => redirectToHome(route)}
-                  key={id}
-                  className="nav-link"
-                  href={route}
-                >
                   {id === "getTicket" ? (
                     <WhiteTicketButton name={name} />
                   ) : (
+                    <Link
+                      onClick={() => redirectToHome(route)}
+                      key={id}
+                      className="nav-link"
+                      href={route}
+                    >
                     <TransparentArrowButton name={name} />
+                    </Link>
                   )}
-                </Link>
               </ListItem>
             ))}
           </List>

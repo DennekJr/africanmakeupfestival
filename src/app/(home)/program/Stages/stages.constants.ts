@@ -1,6 +1,5 @@
 import { StagesTypes } from "./stages.types";
 import { StageOneImage, StageThreeImage, StageTwoImage } from "./utils";
-import { theme } from "tailwindcss/defaultConfig";
 
 
 export const STAGESMENU: Record<string, StagesTypes> = {
