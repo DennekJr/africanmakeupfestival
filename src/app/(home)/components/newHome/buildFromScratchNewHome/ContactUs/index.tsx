@@ -138,7 +138,7 @@ export const ContactUs = () => {
                                             transition:
                                               "color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease",
                                             clip: "rect(1px, 1px, 1px, 1px)",
-                                            beforeContent: "\"⏺\""
+                                            beforeContent: "⏺"
                                           }}
                                         />
                                         <ContactUsCheckBox
