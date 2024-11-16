@@ -81,20 +81,20 @@ export const ContactUs = () => {
                                 style={{ letterSpacing: "-10px" }}
                               >
                                 <div className="w-1/2 pb-[20px] inline-block z-[20] pr-[30px]">
-                                  <p
+                                  <Box
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
                                     <ContactUsField field={"First Name"} />
-                                  </p>
+                                  </Box>
                                 </div>
                                 <div className="w-1/2 pb-[20px] inline-block z-[20] pr-[30px]">
-                                  <p
+                                  <Box
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
                                     <ContactUsField field={"Last Name"} />
-                                  </p>
+                                  </Box>
                                 </div>
                               </div>
                               <div
@@ -102,20 +102,20 @@ export const ContactUs = () => {
                                 style={{ letterSpacing: "-10px" }}
                               >
                                 <div className="w-1/2 pb-[20px] inline-block z-[20] pr-[30px]">
-                                  <p
+                                  <Box
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
                                     <ContactUsField field={"Email"} />
-                                  </p>
+                                  </Box>
                                 </div>
                                 <div className="w-1/2 pb-[20px] inline-block z-[20] pr-[30px]">
-                                  <p
+                                  <Box
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
                                     <ContactUsSelectField />
-                                  </p>
+                                  </Box>
                                 </div>
                               </div>
                               <p>
