@@ -7,7 +7,7 @@ import { BuildFromScratchNewHome } from "@/app/(home)/components/newHome/buildFr
 
 const Home: NextPage = () => {
   return (
-    <Box sx={{ flexGrow: 1 }} className="!bg-lightGrey">
+    <Box sx={{ flexGrow: 1 }} className="!bg-lightGrey mt-[-65px]">
       <Hero />
       <MarqueeSlide />
       <BuildFromScratchNewHome />
