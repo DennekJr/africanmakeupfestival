@@ -20,7 +20,7 @@ export const ActiveWordsCarousel = () => {
         pauseOnHover={true}
         speed={250}
         className={
-          "h-[10vw] opacity-100 w-full z-0 absolute justify-start items-start flex-row !rotate-[-11deg]"
+          "h-[10vw] md:h-[12vw] opacity-100 w-full z-0 absolute justify-start items-start flex-row !rotate-[-11deg]"
         }
       >
         <SkinCareWordsLoop wordCount={5} />
@@ -31,7 +31,7 @@ export const ActiveWordsCarousel = () => {
         loop={0}
         speed={400}
         className={
-          "h-[10.5vw] opacity-100 w-full z-0 absolute justify-start items-start flex-row !rotate-[-11deg]"
+          "h-[10vw] md:h-[12vw] opacity-100 w-full z-0 absolute justify-start items-start flex-row !rotate-[-11deg]"
         }
       >
         <FestivalWordLoop wordCount={6} />

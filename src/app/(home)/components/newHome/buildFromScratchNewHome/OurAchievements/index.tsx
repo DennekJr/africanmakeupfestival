@@ -23,8 +23,8 @@ export const OurAchievements = () => {
               <AgoraTransitionBox>
                 <Image
                   src={"/images/achievement.webp"}
-                  // loading={"lazy"}
-                  // decoding={'async'}
+                  loading={"lazy"}
+                  decoding={"async"}
                   height={723}
                   width={630}
                   alt={"our achievement hero"}
