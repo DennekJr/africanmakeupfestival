@@ -76,7 +76,7 @@ export default function NavBar() {
           <Link href={"/"}>
             <Image
               alt={"Makeup Festival logo"}
-              src={"/images/logos/ASF Logo_Full Colour.svg"}
+              src={"/images/logos/ASF_Logo_Full_Colour.svg"}
               width={463}
               height={270}
               style={{color: 'white'}}
