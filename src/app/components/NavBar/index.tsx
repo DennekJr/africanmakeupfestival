@@ -64,7 +64,7 @@ export default function NavBar() {
     <Box
       className={
         `${path == "/" ? "!bg-transparent " : "!bg-black "}` +
-        "flex justify-center w-full p-4 text-white z-10 absolute top-0 left-0"
+        "flex bg-black justify-center w-full p-4 text-white z-10 absolute top-0 left-0"
       }
     >
       <Box
