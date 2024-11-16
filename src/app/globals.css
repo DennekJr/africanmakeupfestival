@@ -8,6 +8,31 @@
   --color: hsl(240 10% 3.9%);
 }
 
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+textarea,
+select,
+option,
+nav,
+section,
+header,
+footer,
+aside {
+  font-family: font-montserrat, sans-serif;
+}
+
+p, a, button {
+  font-family: font-geist, sans-serif !important;
+}
+
 input,
 select {
   -webkit-background-clip: text !important;
@@ -31,4 +56,48 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@keyframes heroDashAnimation {
+  from {
+    transform: translateX(-100%) translateY(0);
+  }
+  to {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes filledButtonHover {
+  from {
+    color: theme('colors.textColor');
+    background-color: theme('colors.primary');
+
+  }
+  to {
+    box-shadow: inset 8.79928em 0 0 0.01px theme('colors.textColor');
+    color: theme('colors.primary');
+    background-color: theme('colors.textColor');
+  }
+}
+
+@keyframes filledButtonLeave {
+  from {
+    box-shadow: inset -8.79928em 0 0 0.01px theme('colors.textColor');
+    color: theme('colors.primary');
+    background-color: theme('colors.textColor');
+  }
+  to {
+    box-shadow: inset 0 0 0 0.01px theme('colors.primary');
+    color: #fff;
+    background-color: theme('colors.primary');
+  }
+}
+
+/* Animation Classes */
+.animation-hover:hover {
+  animation: filledButtonHover 0.2s forwards;
+}
+
+.animation-hover:mouseleave {
+  animation: filledButtonLeave 0.2s backwards;
 }

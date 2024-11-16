@@ -5,8 +5,6 @@ import { MarqueeSlide } from "../components/Marquee";
 import { PreviousEvents } from "./previousEvents";
 import { Benefits } from "./Benefits";
 import { ExhibitionBooth } from "./ExhibitionBooth";
-import { Testimonials } from "./Testimonials";
-
 const Exhibit: () => Promise<React.JSX.Element> = async () => {
   return (
     <Box
@@ -19,7 +17,7 @@ const Exhibit: () => Promise<React.JSX.Element> = async () => {
       <PreviousEvents />
       <Benefits />
       <ExhibitionBooth />
-      <Testimonials />
+      {/* <Testimonials /> */}
     </Box>
   );
 };

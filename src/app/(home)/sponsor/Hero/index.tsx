@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <section
       className={
-        "relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-[#0A090B] text-white"
+        "relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-black"
       }
     >
       <Box
@@ -19,15 +19,12 @@ export const Hero = () => {
             <pre
               id="undefined-0"
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
-              data-sentry-element="Comp"
-              data-sentry-component="Children"
-              data-sentry-source-file="render.tsx"
             >
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-primary">
                 Piggyvest, Medplus Pharmacy and many
                 more have{" "}
               </span>
-              <span className="relative max-w-full break-words">
+              <span className="relative max-w-full break-words text-textColor">
                 partnered{" "}
                 <svg
                   width="266"
@@ -35,7 +32,7 @@ export const Hero = () => {
                   viewBox="0 0 266 25"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute -bottom-2.5 left-0 center rotate-6 max-w-full"
+                  className="absolute -bottom-2.5 left-0 center rotate-6 max-w-full lg:w-[266px] md:-w-[166px] w-[100px]"
                 >
                   <g clipPath="url(#clip0_240_199)">
                     <path
@@ -50,7 +47,7 @@ export const Hero = () => {
                   </defs>
                 </svg>
               </span>
-              <span className="relative max-w-full break-words"> with us.</span>
+              <span className="relative max-w-full break-words text-primary"> with us.</span>
             </pre>
           </div>
         </Box>
@@ -66,7 +63,7 @@ export const Hero = () => {
         </Box>
         <Box className="flex gap-4">
           <a
-            className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#F4F4F5] text-[#18181B] hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
+            className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-primary text-textColor hover:bg-secondary/80 h-14 px-6 py-4 rounded-none w-full md:w-auto"
             href="/ticket"
           >
             <span className={"capitalize"}>Become A Partner</span>

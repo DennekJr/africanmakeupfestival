@@ -9,7 +9,7 @@ export const ArrowDownImage = () => {
       height="157"
       decoding="async"
       data-nimg="1"
-      className="absolute -top-3 lg:top-0 -right-8 lg:left-1/2 lg:-translate-x-1/2 h-[121.68px] w-[183.81px] lg:w-auto lg:h-auto"
+      className="absolute -top-6 lg:-top-20 text-primary right-0 lg:-right-8 lg:left-1/2 lg:-translate-x-1/2 h-[121.68px] w-[183.81px] lg:w-auto lg:h-auto"
       style={{color: 'transparent'}}
       src="/images/arrow-round-down.svg"
     />

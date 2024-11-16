@@ -10,9 +10,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { NAV_BUTTONS, NAV_MENU } from "./navbar.constants";
 import Link from "next/link";
 import Image from "next/image";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
-import { RightArrowButton, WhiteBGButton } from "../../utils";
+import { TransparentArrowButton, WhiteTicketButton } from "../../utils";
 import { MenuDialog } from "../MenuDialog";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
@@ -65,8 +63,8 @@ export default function NavBar() {
   return (
     <Box
       className={
-        `${path == "/" ? "lg:bg-transparent " : "!bg-[#000000] "}` +
-        "flex bg-[#000000] justify-center border-b border-border-secondary w-full p-4 text-white z-10 absolute top-0 left-0"
+        `${path == "/" ? "!bg-transparent " : "!bg-black "}` +
+        "flex justify-center w-full p-4 text-white z-10 absolute top-0 left-0"
       }
     >
       <Box
@@ -78,10 +76,10 @@ export default function NavBar() {
           <Link href={"/"}>
             <Image
               alt={"Makeup Festival logo"}
-              src={"/images/navlogo.svg"}
+              src={"/images/logos/ASF Logo_Full Colour.svg"}
               width={463}
               height={270}
-              style={{color: 'white', filter: 'invert(100%) sepia(100%) saturate(0%) hue-rotate(86deg) brightness(109%) contrast(100%)'}}
+              style={{color: 'white'}}
               className={'text-white h-auto w-[150px] max-w-[100%]'}
             />
           </Link>
@@ -150,7 +148,7 @@ export default function NavBar() {
                           primary={hoverRoute}
                           primaryTypographyProps={{ fontWeight: "600" }}
                           className={
-                            "capitalize itemText px-3 text-[#C8C8CB] hover:text-black hover:cursor-pointer"
+                            "capitalize itemText px-3 text-textColor hover:text-primary hover:cursor-pointer"
                           }
                         />
                       </Link>
@@ -173,42 +171,18 @@ export default function NavBar() {
                 disablePadding
                 sx={{ display: "block" }}
               >
-                <Link
-                  onClick={() => redirectToHome(route)}
-                  key={id}
-                  className="nav-link"
-                  href={route}
-                >
                   {id === "getTicket" ? (
-                    <WhiteBGButton
-                      className={`!rounded-full whitespace-nowrap`}
-                      variant="contained"
-                      endIcon={<ConfirmationNumberIcon />}
-                    >
-                      <ListItemButton className={"w-max !p-0"}>
-                        <ListItemText
-                          primary={name}
-                          primaryTypographyProps={{ fontWeight: "600" }}
-                          className={"itemText"}
-                        />
-                      </ListItemButton>
-                    </WhiteBGButton>
+                    <WhiteTicketButton name={name} />
                   ) : (
-                    <RightArrowButton
-                      className={`!rounded-full whitespace-nowrap`}
-                      variant="outlined"
-                      endIcon={<ArrowOutwardIcon />}
+                    <Link
+                      onClick={() => redirectToHome(route)}
+                      key={id}
+                      className="nav-link"
+                      href={route}
                     >
-                      <ListItemButton className={"w-max !p-0 hover:!bg-transparent"}>
-                        <ListItemText
-                          primary={name}
-                          primaryTypographyProps={{ fontWeight: "600" }}
-                          className={"itemText"}
-                        />
-                      </ListItemButton>
-                    </RightArrowButton>
+                    <TransparentArrowButton name={name} />
+                    </Link>
                   )}
-                </Link>
               </ListItem>
             ))}
           </List>

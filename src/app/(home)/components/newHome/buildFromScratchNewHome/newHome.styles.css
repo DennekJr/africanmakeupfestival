@@ -1,0 +1,24 @@
+@keyframes agora-fadeinup {
+    0% {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.experience:before {
+    content: ' ';
+    width: 0;
+    height: 0;
+    padding-top: 117%;
+    display: inline-block;
+}
+
+.experience:hover .subTitleText {
+    margin-top: 5px;
+    opacity: 1;
+    height: 25px;
+}

@@ -3,11 +3,13 @@ import { NEXT_METADATA_BASE } from "./config";
 const METADATA_CONFIG = {
   metadataBase: new URL(NEXT_METADATA_BASE),
   title: { template: "%s | Africa Skincare Festival", default: "Africa Skincare Festival" },
-  description: "African Skincare Festival ",
+  description: "African Skincare Festival",
   applicationName: "AfricaSkincareFestival",
   keywords: [
     "Event Hosting",
-    "Event Management",
+    "African Skincare Festival",
+    "Skincare Festival",
+    "Festival",
     "Event Tickets",
     "Event Planning",
     "Makeup Services",

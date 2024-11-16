@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import { styled } from "@mui/system";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 
 export const WhiteBGButton = styled(Button)({
-  background: "hsl(0 0% 100%)",
-  color: "hsl(240 10% 3.9%)",
+  background: "#ffffff",
+  color: "#000000",
   borderRadius: "1rem",
 });
 
@@ -17,20 +17,20 @@ export const RightArrowButton = styled(Button)({
   borderColor: "hsl(0 0% 100%)",
 });
 
+
 export const WhiteTicketButton = ({ name }: { name: string }) => {
   return (
+    // <Box className="relative flex bg-primary text-textColor">
     <a
-      href={'/ticket'}
-      className={
-        "text-[#09090b] inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#ffffff] text-secondary-foreground hover:bg-secondary/80 h-14 px-6 py-4 rounded-full w-full md:w-auto"
-      }
+      href={"/ticket"}
+      className="relative bg-primary text-textColor overflow-hidden !rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-lightSecondary text-text-Color h-14 px-6 py-4 w-full md:w-auto"
     >
       <span>{name}</span>
       <svg
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="size-6"
+        className="size-6 z-10"
       >
         <path
           d="M14 11C14 10.7348 14.1054 10.4804 14.2929 10.2929C14.4804 10.1054 14.7348 10 15 10C15.2652 10 15.5196 10.1054 15.7071 10.2929C15.8946 10.4804 16 10.7348 16 11V13C16 13.2652 15.8946 13.5196 15.7071 13.7071C15.5196 13.8946 15.2652 14 15 14C14.7348 14 14.4804 13.8946 14.2929 13.7071C14.1054 13.5196 14 13.2652 14 13V11Z"
@@ -43,12 +43,15 @@ export const WhiteTicketButton = ({ name }: { name: string }) => {
         ></path>
       </svg>
     </a>
-  );
+    // </Box>
+  )
+    ;
 };
+
 export const TransparentArrowButton = ({ name }: { name: string }) => {
   return (
     <a
-      className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 bg-transparent text-gray-100 h-14 px-6 py-4 rounded-full w-full md:w-auto"
+      className="inline-flex !rounded-none items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 bg-transparent text-gray-100 h-14 px-6 py-4 w-full md:w-auto"
       data-sentry-component="Button_"
       href="/exhibit"
     >
@@ -79,7 +82,7 @@ export const WhiteBgArrowButton = ({
     <Box
       className={
         `${classNames} ` +
-        "!text-[#09090b] rounded-full inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 !bg-[#ffffff] text-xl w-full md:w-auto"
+        "!text-textColor rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-primary !bg-primary text-xl w-full md:w-auto hover:!bg-primary/60"
       }
     >
       <span>{name}</span>

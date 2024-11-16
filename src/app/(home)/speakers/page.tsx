@@ -3,15 +3,17 @@ import * as React from "react";
 import { Hero } from "./Hero";
 import { LearnFromLeaders } from "./LearnFromLeaders";
 import { SpeakerFullGrid } from "./SpeakerFullGrid";
+import { MarqueeSlide } from "../components/Marquee";
 
 const Speakers: () => Promise<React.JSX.Element> = async () => {
   return (
     <Box
       className={
-        "bg-[#000000] flex flex-col items-center justify-between text-black"
+        "bg-midGrey flex flex-col items-center justify-between"
       }
     >
       <Hero />
+      <MarqueeSlide />
       <LearnFromLeaders />
       <SpeakerFullGrid />
     </Box>

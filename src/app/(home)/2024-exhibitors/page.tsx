@@ -17,7 +17,7 @@ const Exhibitors: () => Promise<React.JSX.Element> = async () => {
           id="undefined-0"
           className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
         >
-          <span className="relative max-w-full break-words text-black">
+          <span className="relative max-w-full break-words text-primary">
             2024 Exhibitors
             <ExhibitorsUnderscore />
           </span>

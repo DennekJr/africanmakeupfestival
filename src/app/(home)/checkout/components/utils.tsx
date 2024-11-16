@@ -8,6 +8,7 @@ import {
 } from "@/app/lib/features/checkout/checkoutSlice";
 
 export const CssTextField = styled(TextField)({
+  // color: "#000000",
   "& label": {
     color: "#1E1C21",
   },

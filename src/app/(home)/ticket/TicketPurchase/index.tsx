@@ -89,15 +89,15 @@ export const TicketPurchase = () => {
         return (
           <Box
             key={index}
-            className="border-b border-[#F2F2F2] p-5 lg:p-8 space-y-6"
+            className="border-b border-lightSecondary p-5 lg:p-8 space-y-6"
           >
             <Box className="space-y-2 lg:space-y-4">
               <Box className="flex flex-col-reverse lg:grid grid-cols-5 gap-2">
                 <Box className="col-span-4 space-y-1">
-                  <p className="text-2xl lg:text-3xl xl:text-6xl font-medium">
+                  <p className="text-2xl lg:text-3xl xl:text-6xl font-medium text-black">
                     {ticket.title}
                   </p>
-                  <p className="text-sm lg:text-base">{ticket.subTitle}</p>
+                  <p className="text-sm lg:text-base text-lightSecondary">{ticket.subTitle}</p>
                 </Box>
                 <TicketTag ticket={ticket} />
               </Box>
@@ -105,7 +105,7 @@ export const TicketPurchase = () => {
                 <button
                   type="button"
                   onClick={() => handleClick(ticket.id)}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 text-primary"
                 >
                   <span>See more</span>
                   {open?.isOpen ? <ExpandLess /> : <ExpandMore />}
@@ -115,7 +115,7 @@ export const TicketPurchase = () => {
                   style={{ position: "relative" }}
                 >
                   <Collapse in={open?.isOpen} timeout="auto" unmountOnExit>
-                    <Box className={"flex flex-col pt-2"}>
+                    <Box className={"flex flex-col pt-2 text-lightSecondary"}>
                       {ticket.benefits.map((benefit, index) => {
                         return <li key={index}>{benefit}</li>;
                       })}
@@ -126,13 +126,13 @@ export const TicketPurchase = () => {
             </Box>
             <Box className="space-y-4">
               <div className="flex gap-4 lg:gap-6">
-                <p className="text-2xl lg:text-3xl xl:text-5xl font-medium">
+                <p className="text-2xl lg:text-3xl xl:text-5xl text-black font-medium">
                   {ticket.price}
                 </p>
               </div>
               <div className="flex items-center gap-5">
                 <Minus handleClick={() => handleChange("minus", ticket.id)} />
-                <p className="text-2xl lg:text-3xl xl:text-5xl font-medium">
+                <p className="text-2xl lg:text-3xl xl:text-5xl font-medium text-black">
                   {ticketNumber?.value ?? 0}
                 </p>
                 <Plus handleClick={() => handleChange("plus", ticket.id)} />
@@ -145,7 +145,7 @@ export const TicketPurchase = () => {
         {" "}
         <button
           onClick={handleProceedToCheckout}
-          className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#0A090B] text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 py-4 rounded-full mx-auto min-w-[80%]"
+          className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 py-4 rounded-full mx-auto min-w-[80%]"
         >
           <span>PROCEED TO CHECK OUT</span>
           <FortyFiveDegreeArrow />

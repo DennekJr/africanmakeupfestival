@@ -1,7 +1,7 @@
 export const EVENTSGRIDCONSTANTSMENU:Record<string, { id: string, src: string }> = {
   kora: {
     id: 'kora',
-    src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
   tryPex: {
     id: 'tryPex',
@@ -9,7 +9,7 @@ export const EVENTSGRIDCONSTANTSMENU:Record<string, { id: string, src: string }>
   },
   yellowCard: {
     id: 'kora',
-    src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
   travelTank: {
     id: 'kora',
@@ -17,7 +17,7 @@ export const EVENTSGRIDCONSTANTSMENU:Record<string, { id: string, src: string }>
   },
   proDevs: {
     id: 'kora',
-    src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
   flick: {
     id: 'kora',
@@ -25,7 +25,7 @@ export const EVENTSGRIDCONSTANTSMENU:Record<string, { id: string, src: string }>
   },
 glovo: {
     id: 'kora',
-  src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
 cafeOne: {
     id: 'kora',
@@ -33,7 +33,7 @@ cafeOne: {
   },
 remita: {
     id: 'kora',
-  src: "/images/piggyvest.svg",
+    src: "/images/piggyvest.webp",
   },
 edenLife: {
     id: 'kora',

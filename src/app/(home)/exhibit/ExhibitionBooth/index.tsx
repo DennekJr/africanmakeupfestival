@@ -15,13 +15,14 @@ export const ExhibitionBooth = () => {
   return (
     <Box
       className={
-        "w-full py-12 px-6 xl:py-24 2xl:py-32 bg-[#0A090B] text-[#FCFCFC] relative bg-[url(https://www.africastartupfestival.com/grid-section.svg)] bg-repeat-y bg-top"
+        "w-full py-12 px-6 xl:py-24 2xl:py-32 bg-black text-[#FCFCFC] relative bg-[url(https://www.africastartupfestival.com/grid-section.svg)] bg-repeat-y bg-top"
       }
     >
+      {/* <Box className="absolute inset-0 bg-primary opacity-30 mix-blend-overlay z-12"></Box> */}
       <ArrowDownImage />
       <Box className={"max-w-[1320px] mx-auto grid gap-14"}>
         <Box>
-          <h3 className="text-[23px] leading-[27.6px] tracking-[-1px] lg:text-5xl lg:leading-[52.8px] font-medium">
+          <h3 className="text-[23px] text-primary leading-[27.6px] tracking-[-1px] lg:text-5xl lg:leading-[52.8px] font-medium">
             Choose an exhibition booth <br />
             that works for you
           </h3>
@@ -51,7 +52,7 @@ export const ExhibitionBooth = () => {
                   <ol className="col-span-1 list-disc grid gap-4 text-[#C8C8CB] pl-4 lg:pl-0">
                     {booth.list.map((listItem, index) => (
                       <li className="text-xl" key={index}>
-                        {listItem}
+                        <p>{listItem}</p>
                       </li>
                     ))}
                   </ol>
