@@ -23,7 +23,7 @@ export const WhiteTicketButton = ({ name }: { name: string }) => {
     // <Box className="relative flex bg-primary text-textColor">
     <a
       href={"/ticket"}
-      className="relative bg-primary text-textColor overflow-hidden !rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-lightSecondary text-text-Color h-14 px-6 py-4 w-full md:w-auto"
+      className="relative hover:bg-primary/70 bg-primary hover:border-textColor text-textColor overflow-hidden !rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-text-Color h-14 px-6 py-4 w-full md:w-auto"
     >
       <span>{name}</span>
       <svg
@@ -51,7 +51,7 @@ export const WhiteTicketButton = ({ name }: { name: string }) => {
 export const TransparentArrowButton = ({ name }: { name: string }) => {
   return (
     <a
-      className="inline-flex !rounded-none items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-100 bg-transparent text-gray-100 h-14 px-6 py-4 w-full md:w-auto"
+      className="inline-flex border border-textColor hover:bg-primary/10 hover:border-primary  text-textColor !rounded-none items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-14 px-6 py-4 w-full md:w-auto"
       data-sentry-component="Button_"
       href="/exhibit"
     >
