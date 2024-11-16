@@ -9,14 +9,14 @@ export const SkinCareWordsLoop = ({ wordCount }: { wordCount: number }) => {
           <Box className={"flex items-center justify-center"}>
             <span
               className={
-                "inline-block opacity-100 text-primary font-semibold text-[155px]"
+                "inline-block opacity-100 text-primary font-semibold !text-[30px] md:!text-[85px] lg:!text-[155px]"
               }
               style={{ letterSpacing: "-1px", lineHeight: "0.8em" }}
             >
               Skin
             </span>
             <span className={"opacity-100 mx-[3rem] text-primary"}>
-              <StarRateSharp className={"animate-spin !text-[5.5rem]"} />
+              <StarRateSharp className={"animate-spin !text-[30px] md:!text-[85px] lg:!text-[5.5rem]"} />
             </span>
           </Box>
 
@@ -26,13 +26,13 @@ export const SkinCareWordsLoop = ({ wordCount }: { wordCount: number }) => {
             }
           >
             <span
-              className={"opacity-100 text-primary font-semibold text-[155px]"}
+              className={"opacity-100 text-primary font-semibold !text-[30px] md:!text-[85px] lg:!text-[155px]"}
               style={{ letterSpacing: "-1px", lineHeight: "0.8em" }}
             >
               Care
             </span>
             <span className={"opacity-100 mx-[3rem] text-primary"}>
-              <StarRateSharp className={"animate-spin !text-[5.5rem]"} />
+              <StarRateSharp className={"animate-spin !text-[30px] md:!text-[85px] lg:!text-[5.5rem]"} />
             </span>
           </Box>
         </Box>
@@ -47,14 +47,14 @@ export const FestivalWordLoop = ({ wordCount }: { wordCount: number }) => {
         <Box key={index} className={"flex items-center justify-center"}>
           <span
             className={
-              "inline-block opacity-100 text-primary font-semibold text-[155px]"
+              "inline-block opacity-100 text-primary font-semibold !text-[30px] md:!text-[85px] lg:!text-[155px]"
             }
             style={{ letterSpacing: "-1px", lineHeight: "0.8em" }}
           >
             Festival
           </span>
           <span className={"opacity-100 mx-[3rem] text-primary"}>
-            <StarRateSharp className={"animate-spin !text-[5.5rem]"} />
+            <StarRateSharp className={"animate-spin !text-[30px] md:!text-[85px] lg:!text-[5.5rem]"} />
           </span>
         </Box>
       ))}
