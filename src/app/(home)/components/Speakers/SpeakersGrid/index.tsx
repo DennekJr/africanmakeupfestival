@@ -3,6 +3,7 @@ import { TransparentArrowButton } from "../../../../utils";
 import { useMemo } from "react";
 import { SPEAKERPHOTOGRID_MENU } from "./speakerGrid.constants";
 import Image from "next/image";
+import Link from "next/link";
 
 export const SpeakersGrid = () => {
   const speakers = useMemo(() => Object.values(SPEAKERPHOTOGRID_MENU), []);
@@ -61,9 +62,9 @@ export const SpeakersGrid = () => {
             </Box>
           ))}
         </Box>
-        <Box className={""}>
-          <TransparentArrowButton name={"See more speakers"} />
-        </Box>
+        <Link href={"/speakers"}>
+          <TransparentArrowButton name={"See more speakers"} to={"/speakers"} />
+        </Link>
       </Box>
     </Box>
   );

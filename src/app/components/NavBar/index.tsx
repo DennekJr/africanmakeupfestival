@@ -175,14 +175,7 @@ export default function NavBar() {
                   {id === "getTicket" ? (
                     <WhiteTicketButton name={name} />
                   ) : (
-                    <Link
-                      onClick={() => redirectToHome(route)}
-                      key={id}
-                      className="nav-link"
-                      href={route}
-                    >
-                    <TransparentArrowButton name={name} />
-                    </Link>
+                    <TransparentArrowButton name={name} to={route} />
                   )}
               </ListItem>
             ))}

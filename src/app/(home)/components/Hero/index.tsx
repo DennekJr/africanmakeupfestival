@@ -77,7 +77,7 @@ export const Hero = () => {
           }
         >
           <WhiteTicketButton name={"GET A TICKET"} />
-          <TransparentArrowButton name={"BOOK A STAND"} />
+          <TransparentArrowButton name={"BOOK A STAND"} to={"/exhibit"} />
         </Box>
       </Box>
     </section>
