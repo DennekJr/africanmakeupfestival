@@ -50,7 +50,7 @@ export const WhiteTicketButton = ({ name }: { name: string }) => {
 
 export const TransparentArrowButton = ({ name }: { name: string }) => {
   return (
-    <a
+    <Box
       className="inline-flex border border-textColor hover:bg-primary/10 hover:border-primary  text-textColor !rounded-none items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-14 px-6 py-4 w-full md:w-auto"
       data-sentry-component="Button_"
       href="/exhibit"
@@ -67,7 +67,7 @@ export const TransparentArrowButton = ({ name }: { name: string }) => {
           fill="currentColor"
         ></path>
       </svg>
-    </a>
+    </Box>
   );
 };
 

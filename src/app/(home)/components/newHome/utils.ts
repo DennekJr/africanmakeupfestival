@@ -82,7 +82,7 @@ export const AboutUsImageWithTransition = styled(Box)({
   transition: "background .3s, border .3s, border-radius .3s, box-shadow .3s",
 });
 export const ContactUsBackgroundImageBox = styled("section")({
-  backgroundImage: "url(/images/speaker2.webp)",
+  backgroundImage: "url(/images/landingPage.webp)",
   backgroundPosition: "top center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
