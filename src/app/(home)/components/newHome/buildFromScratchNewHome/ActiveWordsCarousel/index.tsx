@@ -10,7 +10,7 @@ export const ActiveWordsCarousel = () => {
   return (
     <Box
       className={
-        "flex w-[100vw] flex-col whitespace-nowrap"
+        "flex w-[110vw] ml-[-7vw] flex-col whitespace-nowrap"
       }
     >
       <Marquee
@@ -20,7 +20,7 @@ export const ActiveWordsCarousel = () => {
         pauseOnHover={true}
         speed={250}
         className={
-          "h-[10vw] md:h-[12vw] opacity-100 w-full z-0 absolute justify-start items-start flex-row !rotate-[-11deg]"
+          "h-[10vw] md:h-[12vw] opacity-100 w-full overflow-hidden z-0 absolute justify-start items-start flex-row !rotate-[-11deg]"
         }
       >
         <SkinCareWordsLoop wordCount={5} />

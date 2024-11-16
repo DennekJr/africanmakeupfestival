@@ -52,6 +52,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.MuiPaper-root {
+  position: absolute !important;
+  margin: 0 !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

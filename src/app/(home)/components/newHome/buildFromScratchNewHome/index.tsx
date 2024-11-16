@@ -22,7 +22,7 @@ import { ContactUs } from "@/app/(home)/components/newHome/buildFromScratchNewHo
 
 export const BuildFromScratchNewHome = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, overflowX: "hidden" }}>
       <WhoAreWe />
       <Experiences />
       <CalenderEvents />

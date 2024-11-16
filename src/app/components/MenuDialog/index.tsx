@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     right: 0,
     margin: 0,
     minWidth: "100vw",
-    background: "hsl(270 10% 4%)",
+    background: "#0A090B"
   },
 });
 const Transition = React.forwardRef(function Transition(
@@ -95,6 +95,7 @@ export const MenuDialog = () => {
         classes={{
           paper: classes.dialog,
         }}
+        sx={{ position: "absolute !important", margin: "0 !important" }}
         fullWidth
         onClose={handleClose}
         TransitionComponent={Transition}
