@@ -73,7 +73,7 @@ export const Hero = () => {
       </Box>
       <Box className={"col-span-1 relative"}>
         <Image
-          src={"/images/sponsorHero.webp"}
+          src={"/images/heroImageChoices/choice0.webp"}
           alt={"2024 speaker"}
           className={
             "object-cover object-center h-full w-full min-h-[545px] max-h-[545px] lg:max-h-full"

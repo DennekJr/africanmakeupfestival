@@ -1,13 +1,18 @@
 // "use client";
 import Box from "@mui/material/Box";
 import React from "react";
-import { TransparentArrowButton, WhiteTicketButton } from "../../../utils";
-import { VideoComponent } from "./VideoComponent";
+import { HeroButtons } from "@/app/(home)/components/Hero/HeroButtons";
 
 export const Hero = () => {
   return (
-    <section className={"relative w-full h-[100vh]"}>
-      <VideoComponent />
+    <section style={{
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      backgroundAttachment: "scroll",
+      transition:
+        "background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s"
+    }} className={"relative bg-[url(/images/heroImageChoices/choice2.webp)] w-full h-[100vh]"}>
       <Box
         className={
           "absolute top-0 right-0 bottom-0 left-0 z-[2] bg-overlay w-full h-full flex flex-col items-center justify-center text-gray-100 gap-8 p-4"
@@ -44,15 +49,6 @@ export const Hero = () => {
               Festival
             </span>
             </span>
-            {/* <span
-              className={"relative max-w-full break-words"}
-              style={{
-                WebkitTextStroke: "1.5px #C43C2A",
-                color: "text-textColor",
-              }}
-            >
-              val
-            </span> */}
           </pre>
           <pre
             id="undefined-1"
@@ -71,14 +67,7 @@ export const Hero = () => {
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-normal text-base"
           ></pre>
         </Box>
-        <Box
-          className={
-            "flex flex-col lg:flex-row gap-4 w-full items-center justify-center"
-          }
-        >
-          <WhiteTicketButton name={"GET A TICKET"} />
-          <TransparentArrowButton name={"BOOK A STAND"} to={"/exhibit"} />
-        </Box>
+        <HeroButtons />
       </Box>
     </section>
   );

@@ -16,7 +16,8 @@ export const Experience = ({experience}: {experience: {id: string, title: string
           visibility: 'visible'
         }}
       >
-        <Box className={'group experience bg-[url(/images/mediaHero.webp)] flex bg-center bg-no-repeat bg-cover bg-[#2B2F3B] w-full max-w-full'}>
+        <Box className={`group experience flex bg-center bg-no-repeat bg-cover bg-[#2B2F3B] w-full max-w-full`}
+             style={{ backgroundImage: `url(${experience.image})` }}>
           <Box className={'before:absolute before:z-[-1] before:top-0 before:bottom-0 before:left-0 before:right-0 before:bg-[#00000033] w-full p-[10px] flex justify-end flex-col'}>
             <Box className={'bg-[#F8F0EE] py-[1.2rem] px-[1rem] w-full'}>
               <Box className={'flex justify-between items-end pb-[0.25rem]'}>
