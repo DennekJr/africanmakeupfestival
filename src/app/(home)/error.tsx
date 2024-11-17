@@ -13,7 +13,7 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const { pageExist } = useRouter();
+  const {} = useRouter();
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
