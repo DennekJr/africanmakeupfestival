@@ -1,12 +1,8 @@
 "use client"; // Error boundaries must be Client Components
-import { ErrorStatus } from "@/app/ErrorPage/constants";
 import { useEffect } from "react";
 import ErrorPage from "@/app/ErrorPage";
 
-export default function Error({
-                                error,
-                                reset
-                              }: {
+export default function Error({error}: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
