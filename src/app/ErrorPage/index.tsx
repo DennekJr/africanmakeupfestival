@@ -8,7 +8,7 @@ import { ErrorStatus } from './constants';
 
 // TODO: Change prop to accept key and not require import in components
 
-const ErrorPage: FC<{ status?: string }> = ({ status = ErrorStatus.NOT_FOUND }) => {
+const ErrorPage: FC<{ status?: ErrorStatus }> = ({ status = ErrorStatus.NOT_FOUND }) => {
   const navigate = useNavigate();
   const error = useRouteError();
 
