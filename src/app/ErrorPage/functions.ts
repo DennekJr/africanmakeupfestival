@@ -1,7 +1,7 @@
 import { accessDenied, bugFixing, pageNotFound } from './assets/svg';
 import { ErrorStatus, ErrorMessage } from './constants';
 
-export const getErrorDetails = (status: ErrorStatus): { appIcon: JSX.Element; message: ErrorMessage } | JSX.Element => {
+export const getErrorDetails = (status: ErrorStatus): { appIcon: JSX.Element; message: ErrorMessage } => {
   const getValues = (icon: JSX.Element, message: ErrorMessage): { appIcon: JSX.Element; message: ErrorMessage } => ({
     appIcon: icon,
     message,
@@ -14,6 +14,6 @@ export const getErrorDetails = (status: ErrorStatus): { appIcon: JSX.Element; me
     case ErrorStatus.ERROR:
       return getValues(bugFixing, ErrorMessage.ERROR);
     default:
-      return pageNotFound;
+      return { appIcon: pageNotFound, message: ErrorMessage.NOT_FOUND };
   }
 };
