@@ -1,8 +1,8 @@
 import { accessDenied, bugFixing, pageNotFound } from './assets/svg';
 import { ErrorStatus, ErrorMessage } from './constants';
 
-export const getErrorDetails = (status: ErrorStatus): JSX.Element | object | any => {
-  const getValues = (icon: JSX.Element, message: ErrorMessage): JSX.Element | object | any => ({
+export const getErrorDetails = (status: ErrorStatus): { appIcon: JSX.Element; message: ErrorMessage } | JSX.Element => {
+  const getValues = (icon: JSX.Element, message: ErrorMessage): { appIcon: JSX.Element; message: ErrorMessage } => ({
     appIcon: icon,
     message,
   });
