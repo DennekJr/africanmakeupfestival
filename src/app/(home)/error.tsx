@@ -11,5 +11,5 @@ export default function Error({error}: {
     console.error(error);
   }, [error]);
 
-  return <ErrorPage status={error.message} />;
+  return <ErrorPage status={ErrorStatus.ERROR} />;
 }
