@@ -26,7 +26,7 @@ export default function Custom404() {
     navigate("/", { replace: true });
   };
   const extraButtons = [
-    <Button type="primary" onClick={onClick} key="home">
+    <Button variant="outlined" onClick={onClick} key="home">
       Home
     </Button>
   ];
