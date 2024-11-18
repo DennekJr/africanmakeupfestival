@@ -19,7 +19,6 @@ export async function POST(request) {
     // Check if the request to Paystack was successful
     if (paystackResponse.status === 200) {
       const transactionData = paystackResponse.data.data;
-
       return new Response(JSON.stringify({ message: 'Transaction initialized successfully', transactionData, ticketData }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
