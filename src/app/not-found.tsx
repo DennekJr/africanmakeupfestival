@@ -1,16 +1,11 @@
 // app/not-found.tsx
 "use client";
-import { useRouter } from "next/navigation";
-import { Button, Box, Paper, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import WebWrapper from "@/app/components/Wrapper";
 import Image from "next/image";
 import React from "react";
-import { notFound } from "@/app/ErrorPage/assets/svg";
-import { ErrorMessage, ErrorStatus } from "@/app/error";
-import styles from "@/app/ErrorPage/ErrorPage.module.css";
 
 export default function NotFound() {
-  const router = useRouter();
   return (
     <WebWrapper>
       <Box
