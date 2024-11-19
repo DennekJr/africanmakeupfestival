@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import axios from "axios";
 
 export async function GET(request) {
@@ -8,7 +7,15 @@ export async function GET(request) {
     const reference = searchParams.get("reference");
 
     if (!reference) {
-      return NextResponse.json({ error: "Missing reference" }, { status: 400 });
+      return new Response(
+        JSON.stringify({
+          message: "Error verifying payment"
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" }
+        }
+      );
     }
     // Initialize Paystack transaction
     const paystackResponse = await axios.get(
