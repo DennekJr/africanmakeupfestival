@@ -6,7 +6,7 @@ export async function VideoComponent( ) {
     <Suspense fallback={<Skeleton variant="rectangular" width={'100%'} height={622} />}>
       <video
         poster={
-          "/images/heroImageChoices/choice4.webp"
+          "/images/heroImageChoices/choice2.webp"
         }
         preload={"none"}
         className={
@@ -19,7 +19,7 @@ export async function VideoComponent( ) {
         playsInline
         disablePictureInPicture
       >
-        <source src={"/images/heroImageChoices/choice4.webp"} type={"image/webp"} />
+        <source src={"/images/heroImageChoices/choice2.webp"} type={"image/webp"} />
         Your browser does not support the video tag.
       </video>
     </Suspense>

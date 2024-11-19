@@ -5,7 +5,7 @@ export async function GET(request) {
     // Parse the request body
     const { searchParams } = new URL(request.url);
     const reference = searchParams.get("reference");
-
+    console.log(reference);
     if (!reference) {
       return new Response(
         JSON.stringify({
@@ -22,8 +22,7 @@ export async function GET(request) {
       `https://api.paystack.co/transaction/verify/${reference}`,
       {
         headers: {
-          Authorization:
-            "BEARER sk_test_dd5fd7374ff20defefc392b44c2a436ff369710c"
+          Authorization: process.env.PAYSTACK_SECRET_KEY
         }
       }
     );

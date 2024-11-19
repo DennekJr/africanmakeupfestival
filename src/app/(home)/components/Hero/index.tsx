@@ -2,17 +2,24 @@
 import Box from "@mui/material/Box";
 import React from "react";
 import { HeroButtons } from "@/app/(home)/components/Hero/HeroButtons";
+import { VideoComponent } from "@/app/(home)/components/Hero/VideoComponent";
 
 export const Hero = () => {
   return (
-    <section style={{
-      backgroundPosition: "center center",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      backgroundAttachment: "scroll",
-      transition:
-        "background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s"
-    }} className={"relative bg-[url(/images/heroImageChoices/choice2.webp)] w-full h-[100vh]"}>
+    <section
+      style={{
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundAttachment: "scroll",
+        transition:
+          "background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s"
+      }}
+      className={
+        "relative w-full h-[100vh]"
+      }
+    >
+      <VideoComponent />
       <Box
         className={
           "absolute top-0 right-0 bottom-0 left-0 z-[2] bg-overlay w-full h-full flex flex-col items-center justify-center text-gray-100 gap-8 p-4"
@@ -30,15 +37,21 @@ export const Hero = () => {
                 "relative stroke-primary text-transparent max-w-full break-words leading-none flex flex-col"
               }
             >
-              <span className={"!text-[25px] lg:text-5xl text-textColor leading-[0.8]"}>
+              <span
+                className={
+                  "!text-[25px] lg:text-5xl text-textColor leading-[0.8]"
+                }
+              >
                 Africa
               </span>
               <span className="text-primary leading-[0.8]">Skincare</span>
               <span
-                className={"relative max-w-full break-words text-textColor leading-[0.8]"}
+                className={
+                  "relative max-w-full break-words text-textColor leading-[0.8]"
+                }
               >
-              Festival
-            </span>
+                Festival
+              </span>
             </span>
           </pre>
           <pre
