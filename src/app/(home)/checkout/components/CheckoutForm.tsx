@@ -142,7 +142,7 @@ const CheckoutForm = () => {
           ticketData: ticketData
         };
       }).then(async ({ transactionData, ticketData }) => {
-        const { data } = await verifyPaystackPayment(
+        return await verifyPaystackPayment(
           transactionData.reference
         ).then(async () => {
           // console.log(data);
@@ -157,12 +157,7 @@ const CheckoutForm = () => {
           await PostTransaction(transactionToPost);
           await sendEmail(payStackCheckout.email, payStackCheckout.total, "NGN");
         })
-        const transactionStatus = data.transactionData.status;
-        return {
-          transactionData: transactionData,
-          ticketData: ticketData,
-          transactionStatus: transactionStatus
-        }
+        // return res
       }).catch((error) => {
         console.error("Paystack transaction error: ", error);
       });
