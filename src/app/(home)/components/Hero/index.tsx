@@ -27,24 +27,15 @@ export const Hero = () => {
           >
             <span
               className={
-                "relative stroke-primary text-transparent max-w-full break-words"
+                "relative stroke-primary text-transparent max-w-full break-words leading-none flex flex-col"
               }
             >
+              <span className={"!text-[25px] lg:text-5xl text-textColor leading-[0.8]"}>
+                Africa
+              </span>
+              <span className="text-primary leading-[0.8]">Skincare</span>
               <span
-                style={{
-                  color: "text-textColor"
-                }}
-                className={"!text-[25px] lg:text-5xl"}
-              >
-                Africa<br />
-              </span>{" "}
-              <span className="text-primary">Skincare</span>
-              <br />{" "}
-              <span
-                className={"relative max-w-full break-words"}
-                style={{
-                  color: "text-textColor"
-                }}
+                className={"relative max-w-full break-words text-textColor leading-[0.8]"}
               >
               Festival
             </span>
