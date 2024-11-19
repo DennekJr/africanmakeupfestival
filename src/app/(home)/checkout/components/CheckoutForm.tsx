@@ -12,7 +12,8 @@ import {
   initiatePaystackTransaction,
   PostPaystackTicketPurchases,
   PostStripeTicketPurchases,
-  PostTransaction, sendEmail
+  PostTransaction,
+  sendEmail
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -20,7 +21,6 @@ import PaystackPop from "@paystack/inline-js";
 import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
-import { verifyPaystackPayment } from "@/app/(home)/utils";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -141,22 +141,20 @@ const CheckoutForm = () => {
           transactionData: transactionData,
           ticketData: ticketData
         };
-      }).then(async ({ transactionData, ticketData }) => {
-        await verifyPaystackPayment(
-          transactionData.reference
-        ).then(async () => {
-          await PostPaystackTicketPurchases({ ticketData, transactionData });
-          const transactionToPost = {
-            Paystack_Id: transactionData.reference,
-            Stripe_Id: "",
-            Currency: "ngn",
-            Email: payStackCheckout.email,
-            UnitNumber: payStackCheckout.total
-          };
-          await PostTransaction(transactionToPost);
-          await sendEmail(payStackCheckout.email, payStackCheckout.total, "NGN");
-        });
-      }).catch((error) => {
+      })
+      .then(async ({ ticketData, transactionData }) => {
+        await PostPaystackTicketPurchases({ ticketData, transactionData });
+        const transactionToPost = {
+          Paystack_Id: transactionData.reference,
+          Stripe_Id: "",
+          Currency: "ngn",
+          Email: payStackCheckout.email,
+          UnitNumber: payStackCheckout.total
+        };
+        await PostTransaction(transactionToPost);
+        await sendEmail(payStackCheckout.email, payStackCheckout.total, "NGN");
+      })
+      .catch((error) => {
         console.error("Paystack transaction error: ", error);
       });
   };
