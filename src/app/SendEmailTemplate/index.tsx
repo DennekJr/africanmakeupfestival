@@ -63,7 +63,7 @@ export const SendEmailTemplate = ({
 </head>
 <body>
 <div>
-<img src="https://africaskincarefestival.com/images/Email_Logo.png" style="height: 350px; width: 400px" alt="asf logo" />
+<img src="https://africaskincarefestival.com/images/Email_Logo.png" style="height: auto; width: 100%" alt="asf logo" />
 <h3>SEE YOU THERE!</h3>
 <h3>Thank you for your <span style="color: #C43C2A">#ASF</span> purchase!</h3>
 <h4>Hi ${name},</h4>  
