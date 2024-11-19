@@ -144,8 +144,8 @@ const CheckoutForm = () => {
       }).then(async ({ transactionData, ticketData }) => {
         const { data } = await verifyPaystackPayment(
           transactionData.reference
-        ).then(async ({ data }) => {
-          console.log(data);
+        ).then(async () => {
+          // console.log(data);
           await PostPaystackTicketPurchases({ ticketData, transactionData });
           const transactionToPost = {
             Paystack_Id: transactionData.reference,
