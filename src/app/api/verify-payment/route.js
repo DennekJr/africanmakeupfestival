@@ -42,7 +42,7 @@ export async function GET(request) {
     }
 
     return new Response(
-      JSON.stringify({ message: "Reference not found", transactionData }),
+      JSON.stringify({ message: "Reference not found" }),
       {
         status: 400,
         headers: { "Content-Type": "application/json" }
@@ -51,7 +51,7 @@ export async function GET(request) {
   } catch (error) {
     console.error("Error in verification:", error);
     return new Response(
-      JSON.stringify({ message: "Paystack verification failed", transactionData }),
+      JSON.stringify({ message: "Paystack verification failed", error }),
       {
         status: 500,
         headers: { "Content-Type": "application/json" }

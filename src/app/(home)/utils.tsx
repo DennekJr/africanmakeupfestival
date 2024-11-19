@@ -12,5 +12,6 @@ export const verifyPaystackPayment = async (reference) => {
     }
   } catch (error) {
     console.error("Error in verification:", error);
+    return { error: "Verification failed" }; // Explicit response
   }
 };
