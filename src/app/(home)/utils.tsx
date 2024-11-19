@@ -8,6 +8,7 @@ export const verifyPaystackPayment = async (reference) => {
       return response.data;
     } else {
       console.error("Verification failed:", response.data.error);
+      return response.data.error;
     }
   } catch (error) {
     console.error("Error in verification:", error);

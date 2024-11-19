@@ -2,7 +2,7 @@
 import * as React from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Box } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
@@ -47,7 +47,6 @@ const CheckoutForm = () => {
       router.push("/ticket");
     }
   }, []);
-  const [data, setData] = useState({});
 
   const popup = new PaystackPop();
 
@@ -143,10 +142,9 @@ const CheckoutForm = () => {
           ticketData: ticketData
         };
       }).then(async ({ transactionData, ticketData }) => {
-        const data = await verifyPaystackPayment(
+        await verifyPaystackPayment(
           transactionData.reference
         ).then(async () => {
-          // console.log(data);
           await PostPaystackTicketPurchases({ ticketData, transactionData });
           const transactionToPost = {
             Paystack_Id: transactionData.reference,
@@ -157,12 +155,10 @@ const CheckoutForm = () => {
           };
           await PostTransaction(transactionToPost);
           await sendEmail(payStackCheckout.email, payStackCheckout.total, "NGN");
-        })
-        setData(data);
+        });
       }).catch((error) => {
         console.error("Paystack transaction error: ", error);
       });
-    console.log(data);
   };
 
   return (
