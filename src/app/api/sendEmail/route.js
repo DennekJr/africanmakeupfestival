@@ -19,16 +19,13 @@ const transporter = nodemailer.createTransport({
 // Function to send email
 export async function POST(request) {
   try {
-    const { email, amount, currency } = await request.json();
+    const { email, template } = await request.json();
 
     const mailOptions = {
       from: process.env.ZOHO_EMAIL_USER,
       to: email,
       subject: `Here's your ASF Purchase`,
-      html: `<h3>Payment Successful</h3>
-               <p>Customer Email: ${email}</p>
-               <p>Amount: ${amount} ${currency}</p>
-               <p>Thank you for your purchase!</p>`
+      html: template,
     };
 
     // Send the email using Nodemailer

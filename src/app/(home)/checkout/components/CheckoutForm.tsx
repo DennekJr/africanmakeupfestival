@@ -21,6 +21,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
 import { verifyPaystackPayment } from "@/app/(home)/utils";
+import { SendEmailTemplate } from "@/app/SendEmailTemplate";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -154,7 +155,11 @@ const CheckoutForm = () => {
             UnitNumber: payStackCheckout.total
           };
           await PostTransaction(transactionToPost);
-          await sendEmail(payStackCheckout.email, payStackCheckout.total, "NGN");
+          let name = ''
+          Object.values(ticketData.buyerForm).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
+          console.log("Buyer name", name);
+            const template = SendEmailTemplate({ name: name, total: total, tickets: tickets, reference: transactionData.reference})
+          await sendEmail(payStackCheckout.email,template);
         });
       }).catch((error) => {
         console.error("Paystack transaction error: ", error);

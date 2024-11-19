@@ -99,7 +99,7 @@ export const initiatePaystackTransaction = async ({payStackCheckout, ticketData}
   }
 };
 
-export const sendEmail = async (email, amount, currency) => {
+export const sendEmail = async (email, template) => {
   try {
     const response = await fetch("/api/sendEmail", {
       method: "POST",
@@ -108,8 +108,7 @@ export const sendEmail = async (email, amount, currency) => {
       },
       body: JSON.stringify({
         email: email,
-        amount: amount,
-        currency: currency
+        template: template
       })
     });
     const data = await response.json();
