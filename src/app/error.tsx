@@ -13,13 +13,14 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
   }, [error]);
 
   return (
-    <Box sx={{ textAlign: "center", padding: "50px" }}>
-      <Typography variant="h3">Something went wrong</Typography>
-      <Typography variant="body1">{error.message}</Typography>
+    <Box sx={{ textAlign: "center", padding: "50px" }} className="!text-red-500">
+      <h3 style={{ color: "red" }}>Something went wrong</h3>
+      <p style={{ color: "red" }}>{error.message}</p>
       <Button
-        variant="contained"
+        variant="outlined"
         sx={{ marginTop: "20px" }}
         onClick={() => reset()}
+        // className="!bg-red-500 hover:!bg-red-700 !text-white font-bold py-2 px-4 rounded"
       >
         Try Again
       </Button>
