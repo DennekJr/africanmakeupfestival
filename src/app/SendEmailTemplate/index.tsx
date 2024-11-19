@@ -1,5 +1,4 @@
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
-import CloudinaryImage from "@/app/lib/cloudinary";
 
 export const SendEmailTemplate = ({
   name,
@@ -21,8 +20,9 @@ export const SendEmailTemplate = ({
         <td colspan="2" style="border: 1px solid #ddd; padding: 8px;">${ticket.value}</td>
         <td colspan="2" style="border: 1px solid #ddd; padding: 8px; text-align: right">NGN ${value}</td>
       </tr>`;
-    });
+    }).join("");
   };
+  console.log(TicketRows());
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +63,7 @@ export const SendEmailTemplate = ({
 </head>
 <body>
 <div>
+<img src="https://africaskincarefestival.com/images/Email_Logo.png" style="height: 350px; width: 400px" alt="asf logo" />
 <h3>SEE YOU THERE!</h3>
 <h3>Thank you for your <span style="color: #C43C2A">#ASF</span> purchase!</h3>
 <h4>Hi ${name},</h4>  
