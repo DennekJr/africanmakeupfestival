@@ -41,6 +41,7 @@ export const PostStripeTicketPurchases = async (ticketData) => {
     console.error("Request failed:", error);
   }
 };
+
 export const PostTransaction = async (ticketData) => {
   try {
     const response = await fetch("/api/transactions", {
@@ -95,5 +96,29 @@ export const initiatePaystackTransaction = async ({payStackCheckout, ticketData}
     }
   } catch (error) {
     console.error("Error:", error);
+  }
+};
+
+export const sendEmail = async (email, amount, currency) => {
+  try {
+    const response = await fetch("/api/sendEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        amount: amount,
+        currency: currency
+      })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      console.log("Email sent successfully to Zoho Mail", data);
+    } else {
+      console.error("Error sending email:", data);
+    }
+  } catch (error) {
+    console.error("Error sending email:", error);
   }
 };

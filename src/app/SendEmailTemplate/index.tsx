@@ -7,7 +7,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: "contact@africaskincarefestival.com", // Your Zoho email
     pass: ".jvIkum4" // Use an app-specific password from Zoho
-  }
+  },
 });
 
 // Function to send email
@@ -19,7 +19,7 @@ export async function sendEmailToZoho(customerEmail, amount, currency) {
     html: `<h3>Payment Successful</h3>
                <p>Customer Email: ${customerEmail}</p>
                <p>Amount: ${amount} ${currency}</p>
-               <p>Thank you for your purchase!</p>`
+               <p>Thank you for your purchase!</p>`,
   };
 
   try {

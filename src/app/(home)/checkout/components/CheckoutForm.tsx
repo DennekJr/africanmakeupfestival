@@ -2,7 +2,7 @@
 import * as React from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Box } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,7 @@ import {
   initiatePaystackTransaction,
   PostPaystackTicketPurchases,
   PostStripeTicketPurchases,
-  PostTransaction,
+  PostTransaction, sendEmail
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -20,6 +20,8 @@ import PaystackPop from "@paystack/inline-js";
 import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
+import { verifyPaystackPayment } from "@/app/(home)/utils";
+import { sendEmailToZoho } from "@/app/SendEmailTemplate";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -41,6 +43,7 @@ const CheckoutForm = () => {
     billingInfo,
     formValues,
   } = useAppSelector((state) => state.checkout);
+  const [data, setData] = useState({});
   useEffect(() => {
     if (total === 0) {
       router.push("/ticket");
@@ -105,19 +108,17 @@ const CheckoutForm = () => {
     const stripe = await stripePromise;
     if (stripe === null) return;
     if ("redirectToCheckout" in stripe) {
-      await PostStripeTicketPurchases({ itemData, session }).then(
-        async () => {
-          const transactionToPost = {
-            Paystack_Id: "",
-            Stripe_Id: sessionId,
-            Currency: session.currency,
-            Email: payStackCheckout.email,
-            UnitNumber: payStackCheckout.total,
-          };
-          console.log("Transaction to post", transactionToPost);
-          await PostTransaction(transactionToPost);
-        },
-      );
+      await PostStripeTicketPurchases({ itemData, session }).then(async () => {
+        const transactionToPost = {
+          Paystack_Id: "",
+          Stripe_Id: sessionId,
+          Currency: session.currency,
+          Email: payStackCheckout.email,
+          UnitNumber: payStackCheckout.total
+        };
+        console.log("Transaction to post", transactionToPost);
+        await PostTransaction(transactionToPost);
+      });
       const { error } = await stripe.redirectToCheckout({ sessionId });
       if (error) console.warn("Stripe BoothCheckout error:", error.message);
     }
@@ -133,25 +134,36 @@ const CheckoutForm = () => {
         otherTicketForms: formValues,
       },
     };
-    initiatePaystackTransaction(ticketPurchaseData)
+
+    await initiatePaystackTransaction(ticketPurchaseData)
       .then(async ({ ticketData, transactionData }) => {
         const accessCode = transactionData.access_code;
         popup.resumeTransaction(accessCode);
-        await PostPaystackTicketPurchases({ ticketData, transactionData });
         return {
-          paystackData: payStackCheckout,
           transactionData: transactionData,
+          ticketData: ticketData
         };
-      })
-      .then(async ({ paystackData, transactionData }) => {
+      }).then(async ({ transactionData, ticketData }) => {
+        const { data } = await verifyPaystackPayment(
+          transactionData.reference
+        );
+        const transactionStatus = data.transactionData.status;
+        return {
+          transactionData: transactionData,
+          ticketData: ticketData,
+          transactionStatus: transactionStatus
+        }
+      }).then(async ({ transactionData, ticketData }) => {
+        await PostPaystackTicketPurchases({ ticketData, transactionData });
         const transactionToPost = {
           Paystack_Id: transactionData.reference,
           Stripe_Id: "",
           Currency: "ngn",
-          Email: paystackData.email,
-          UnitNumber: paystackData.total,
+          Email: payStackCheckout.email,
+          UnitNumber: payStackCheckout.total
         };
         await PostTransaction(transactionToPost);
+        await sendEmail(payStackCheckout.email, payStackCheckout.total, "NGN");
       })
       .catch((error) => {
         console.error("Paystack transaction error: ", error);
