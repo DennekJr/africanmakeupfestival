@@ -3,7 +3,7 @@
 
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
