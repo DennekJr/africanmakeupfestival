@@ -8,7 +8,7 @@ import PaymentCallback from "@/app/(home)/checkout/components/ExternalApiCalls/P
 
 const Home: NextPage = () => {
   // const checkCallback = () => {
-  // PaymentCallback();
+  PaymentCallback();
   // }
   return (
     <Box sx={{ flexGrow: 1 }} className="!bg-lightGrey">

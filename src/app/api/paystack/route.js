@@ -9,7 +9,7 @@ export async function POST(request) {
     const paystackResponse = await axios.post('https://api.paystack.co/transaction/initialize', {
       email: email,
       amount: amount,
-      callback_url: "https://africanmakeupfestival-staging.up.railway.app/"
+      callback_url: process.env.BASE_URL
     }, {
       headers: {
         'Authorization': process.env.PAYSTACK_SECRET_KEY, // Replace with your Paystack secret key
