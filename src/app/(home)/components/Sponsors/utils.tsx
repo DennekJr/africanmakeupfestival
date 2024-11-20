@@ -25,10 +25,10 @@ export const SponsorIcons = () => {
                     <Image
                       alt={group.name}
                       loading="lazy"
-                      width="270"
-                      height="73"
+                      width={270}
+                      height={73}
                       decoding="async"
-                      className="object-contain object-center select-none h-16"
+                      className="object-contain object-center select-none w-auto h-16"
                       src={group.src}
                       style={{ color: "transparent", filter: 'brightness(0)', boxShadow: '0 0 0px rgba(0, 0, 0, 1)' }}
                     />

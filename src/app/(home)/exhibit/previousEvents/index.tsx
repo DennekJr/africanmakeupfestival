@@ -11,10 +11,10 @@ export const PreviousEvents = () => {
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] md:text-[44px] leading-[50.6px] lg:text-5xl lg:leading-[52.8px]"
           >
             <span className="relative max-w-full break-words">
-              Here’s some of our Exhibitors from{" "}
+              Here’s some of our{" "}
             </span>
             <span className="relative max-w-full whitespace-nowrap text-primary">
-              previous events.
+              Exhibitors.
               <svg
                 width="317"
                 height="34"

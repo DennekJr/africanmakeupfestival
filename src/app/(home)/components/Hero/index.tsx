@@ -1,12 +1,24 @@
 // "use client";
 import Box from "@mui/material/Box";
 import React from "react";
-import { TransparentArrowButton, WhiteTicketButton } from "../../../utils";
-import { VideoComponent } from "./VideoComponent";
+import { HeroButtons } from "@/app/(home)/components/Hero/HeroButtons";
+import { VideoComponent } from "@/app/(home)/components/Hero/VideoComponent";
 
 export const Hero = () => {
   return (
-    <section className={"relative w-full h-[100vh]"}>
+    <section
+      style={{
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundAttachment: "scroll",
+        transition:
+          "background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s"
+      }}
+      className={
+        "relative w-full h-[100vh]"
+      }
+    >
       <VideoComponent />
       <Box
         className={
@@ -22,37 +34,25 @@ export const Hero = () => {
           >
             <span
               className={
-                "relative stroke-primary text-transparent max-w-full break-words"
+                "relative stroke-primary text-transparent max-w-full break-words leading-none flex flex-col"
               }
             >
               <span
-                style={{
-                  color: "text-textColor"
-                }}
-                className={"!text-[25px] lg:text-5xl"}
+                className={
+                  "!text-[25px] lg:text-5xl text-textColor leading-[0.8]"
+                }
               >
-                Africa<br />
-              </span>{" "}
-              <span className="text-primary">Skincare</span>
-              <br />{" "}
+                Africa
+              </span>
+              <span className="text-primary leading-[0.8]">Skincare</span>
               <span
-                className={"relative max-w-full break-words"}
-                style={{
-                  color: "text-textColor"
-                }}
+                className={
+                  "relative max-w-full break-words text-textColor leading-[0.8]"
+                }
               >
-              Festival
+                Festival
+              </span>
             </span>
-            </span>
-            {/* <span
-              className={"relative max-w-full break-words"}
-              style={{
-                WebkitTextStroke: "1.5px #C43C2A",
-                color: "text-textColor",
-              }}
-            >
-              val
-            </span> */}
           </pre>
           <pre
             id="undefined-1"
@@ -71,14 +71,7 @@ export const Hero = () => {
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-normal text-base"
           ></pre>
         </Box>
-        <Box
-          className={
-            "flex flex-col lg:flex-row gap-4 w-full items-center justify-center"
-          }
-        >
-          <WhiteTicketButton name={"GET A TICKET"} />
-          <TransparentArrowButton name={"BOOK A STAND"} to={"/exhibit"} />
-        </Box>
+        <HeroButtons />
       </Box>
     </section>
   );

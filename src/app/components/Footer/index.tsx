@@ -171,11 +171,11 @@ export const Footer = () => {
               <Image
                 alt="Spark Monogram"
                 loading="lazy"
-                width="127"
-                height="18"
+                width={127}
+                height={18}
                 decoding="async"
-                style={{ color: "transparent", filter: 'brightness(0)' }}
-                src="/images/piggyvest.svg"
+                style={{ color: "transparent" }}
+                src="/images/piggyvest.webp"
               />
             </Link>
           </Box>

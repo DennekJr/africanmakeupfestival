@@ -139,12 +139,12 @@ export default function NavBar() {
                   <Box
                     onMouseLeave={handleMouseLeave}
                     className={
-                      "absolute w-max bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
+                      "absolute w-max !bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
                       `${isOpen.find((route) => route.name === name)?.isOpen ? " flex flex-col" : " invisible"}`
                     }
                   >
                     {subRoute?.map((hoverRoute, index) => (
-                      <Link key={index} href={hoverRoute}>
+                      <Link key={index} href={hoverRoute} className={"bg-black"}>
                         <ListItemText
                           primary={hoverRoute}
                           primaryTypographyProps={{ fontWeight: "600" }}
