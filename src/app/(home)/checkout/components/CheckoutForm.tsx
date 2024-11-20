@@ -11,7 +11,7 @@ import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice"
 import {
   initiatePaystackTransaction,
   PostStripeTicketPurchases,
-  PostTransaction, sendEmail
+  PostTransaction
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -19,7 +19,6 @@ import PaystackPop from "@paystack/inline-js";
 import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
-import { SendEmailTemplate } from "@/app/SendEmailTemplate";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -133,7 +132,7 @@ const CheckoutForm = () => {
     };
 
     initiatePaystackTransaction(ticketPurchaseData)
-      .then(({ ticketData, transactionData }) => {
+      .then(({ transactionData }) => {
         const accessCode = transactionData.access_code;
         popup.resumeTransaction(accessCode);
         //   return {
@@ -153,11 +152,11 @@ const CheckoutForm = () => {
         //       UnitNumber: payStackCheckout.total
         //     };
         //     PostTransaction(transactionToPost);
-          let name = ''
-          Object.values(ticketData.buyerForm).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
+        //   let name = ''
+        //   Object.values(ticketData.buyerForm).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
         //     console.log("Buyer name", name);
-            const template = SendEmailTemplate({ name: name, total: total, tickets: tickets, reference: transactionData.reference})
-        sendEmail(payStackCheckout.email, template);
+        //     const template = SendEmailTemplate({ name: name, total: total, tickets: tickets, reference: transactionData.reference})
+        // sendEmail(payStackCheckout.email, template);
         //   });
       }).catch((error) => {
         console.error("Paystack transaction error: ", error);
