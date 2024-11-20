@@ -10,9 +10,8 @@ import { useAppSelector } from "../../../lib/hooks";
 import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
 import {
   initiatePaystackTransaction,
-  PostPaystackTicketPurchases,
   PostStripeTicketPurchases,
-  PostTransaction,
+  PostTransaction
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -105,19 +104,17 @@ const CheckoutForm = () => {
     const stripe = await stripePromise;
     if (stripe === null) return;
     if ("redirectToCheckout" in stripe) {
-      await PostStripeTicketPurchases({ itemData, session }).then(
-        async () => {
-          const transactionToPost = {
-            Paystack_Id: "",
-            Stripe_Id: sessionId,
-            Currency: session.currency,
-            Email: payStackCheckout.email,
-            UnitNumber: payStackCheckout.total,
-          };
-          console.log("Transaction to post", transactionToPost);
-          await PostTransaction(transactionToPost);
-        },
-      );
+      await PostStripeTicketPurchases({ itemData, session }).then(async () => {
+        const transactionToPost = {
+          Paystack_Id: "",
+          Stripe_Id: sessionId,
+          Currency: session.currency,
+          Email: payStackCheckout.email,
+          UnitNumber: payStackCheckout.total
+        };
+        console.log("Transaction to post", transactionToPost);
+        await PostTransaction(transactionToPost);
+      });
       const { error } = await stripe.redirectToCheckout({ sessionId });
       if (error) console.warn("Stripe BoothCheckout error:", error.message);
     }
@@ -133,27 +130,35 @@ const CheckoutForm = () => {
         otherTicketForms: formValues,
       },
     };
+
     initiatePaystackTransaction(ticketPurchaseData)
-      .then(async ({ ticketData, transactionData }) => {
+      .then(({ transactionData }) => {
         const accessCode = transactionData.access_code;
         popup.resumeTransaction(accessCode);
-        await PostPaystackTicketPurchases({ ticketData, transactionData });
-        return {
-          paystackData: payStackCheckout,
-          transactionData: transactionData,
-        };
-      })
-      .then(async ({ paystackData, transactionData }) => {
-        const transactionToPost = {
-          Paystack_Id: transactionData.reference,
-          Stripe_Id: "",
-          Currency: "ngn",
-          Email: paystackData.email,
-          UnitNumber: paystackData.total,
-        };
-        await PostTransaction(transactionToPost);
-      })
-      .catch((error) => {
+        //   return {
+        //     transactionData: transactionData,
+        //     ticketData: ticketData
+        //   };
+        // }).then(({ transactionData, ticketData }) => {
+        //   verifyPaystackPayment(
+        //     transactionData.reference
+        //   ).then(() => {
+        //     PostPaystackTicketPurchases({ ticketData, transactionData });
+        //     const transactionToPost = {
+        //       Paystack_Id: transactionData.reference,
+        //       Stripe_Id: "",
+        //       Currency: "ngn",
+        //       Email: payStackCheckout.email,
+        //       UnitNumber: payStackCheckout.total
+        //     };
+        //     PostTransaction(transactionToPost);
+        //   let name = ''
+        //   Object.values(ticketData.buyerForm).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
+        //     console.log("Buyer name", name);
+        //     const template = SendEmailTemplate({ name: name, total: total, tickets: tickets, reference: transactionData.reference})
+        // sendEmail(payStackCheckout.email, template);
+        //   });
+      }).catch((error) => {
         console.error("Paystack transaction error: ", error);
       });
   };
@@ -227,19 +232,22 @@ const CheckoutForm = () => {
             <button
               onClick={handlePaystackPayment}
               type={"submit"}
-              className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+              disabled={true}
+              className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                CONTINUE TO LOCAL PAYMENT
+                {/*CONTINUE TO LOCAL PAYMENT*/}
+                LOCAL PAYMENT - Coming Soon
               </span>
             </button>
             <button
               onClick={handleStripePayment}
               type={"submit"}
-              className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+              disabled={true}
+              className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                CONTINUE TO INTERNATIONAL PAYMENT
+                INTERNATIONAL PAYMENT - Coming soon
               </span>
             </button>
           </Box>

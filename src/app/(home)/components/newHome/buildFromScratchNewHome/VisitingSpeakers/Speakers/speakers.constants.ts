@@ -8,7 +8,7 @@ export const SPEAKERSCONSTANTS:Record<string, SpeakerType> = {
     id: 'fenty',
     name: 'Bruce Taylor',
     position: 'Manager',
-    image: '/images/mediaHero.webp',
+    image: "/images/visitingSpeakers/speakerZero.webp",
     socialMedia: [
       {id: 'FacebookOutlined', url: '/', icon: FacebookOutlined, delay: 100},
       {id: 'instagram', url: '/', icon: Instagram, delay: 150},
@@ -20,7 +20,7 @@ two: {
     id: 'fenty',
     name: 'Bruce Taylor',
     position: 'Manager',
-    image: '/images/mediaHero.webp',
+  image: "/images/visitingSpeakers/speakerOne.webp",
     socialMedia: [
       {id: 'FacebookOutlined', url: '/', icon: FacebookOutlined, delay: 100},
       {id: 'instagram', url: '/', icon: Instagram, delay: 150},
@@ -32,7 +32,7 @@ three: {
     id: 'corsx',
     name: 'Bruce Taylor',
     position: 'Manager',
-    image: '/images/mediaHero.webp',
+  image: "/images/visitingSpeakers/speakerZero.webp",
     socialMedia: [
       {id: 'FacebookOutlined', url: '/', icon: FacebookOutlined, delay: 100},
       {id: 'instagram', url: '/', icon: Instagram, delay: 150},

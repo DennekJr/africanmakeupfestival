@@ -8,9 +8,10 @@ import {
 import { useState } from "react";
 import {
   ContactUsField,
-  ContactUsSelectField,
-  HiddenFormInputs,
+  ContactUsTextArea,
+  HiddenFormInputs
 } from "@/app/(home)/components/newHome/buildFromScratchNewHome/ContactUs/utils";
+import { PrimaryButton } from "@/app/utils";
 
 export const ContactUs = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -114,7 +115,7 @@ export const ContactUs = () => {
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
-                                    <ContactUsSelectField />
+                                    <ContactUsTextArea field={"Message"} />
                                   </Box>
                                 </div>
                               </div>
@@ -142,13 +143,12 @@ export const ContactUs = () => {
                                         />
                                         <ContactUsCheckBox
                                           onClick={() => {
-                                            console.log("clicked");
                                             setIsClicked(!isClicked);
                                           }
                                           }
                                           className={
                                             "relative text-[14px] pl-[1.8em] leading-[22px] " +
-                                            `${isClicked && "before:!content-[\"⏺\"]"}`
+                                            `${!isClicked && "before:!content-['']"}`
                                           }
                                         >
                                           I agree that my data is{" "}
@@ -165,14 +165,13 @@ export const ContactUs = () => {
                                 </span>
                                 <br />
                                 <span
-                                  className="bg-primary"
-                                  style={{ padding: "18px 39px" }}
                                 >
-                                  <input
-                                    className="bg-primary !text-white"
-                                    type="submit"
-                                    value="Get in Touch"
-                                  />
+                                  <PrimaryButton name={"Get in Touch"} />
+                                  {/*<input*/}
+                                  {/*  className="bg-primary !text-white"*/}
+                                  {/*  type="submit"*/}
+                                  {/*  value="Get in Touch"*/}
+                                  {/*/>*/}
                                 </span>
                                 <span className="mx-[15px] inline-block p-0 align-middle w-[16px] h-[16px]">
                                   <svg

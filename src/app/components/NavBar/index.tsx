@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Box from "@mui/material/Box";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
@@ -12,17 +12,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { TransparentArrowButton, WhiteTicketButton } from "../../utils";
 import { MenuDialog } from "../MenuDialog";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 export default function NavBar() {
-  const initialState = [
-    { name: "Exhibitors", isOpen: false },
-    { name: "Travel", isOpen: false },
-  ];
   const router = useRouter();
   const path = usePathname();
-  const [isOpen, setIsOpen] = useState(initialState);
   const navBarItems = useMemo(() => Object.values(NAV_MENU), []);
   const navBarButtons = useMemo(() => Object.values(NAV_BUTTONS), []);
   const getPath = (route: string) => {
@@ -33,31 +26,6 @@ export default function NavBar() {
     if (path !== "/") {
       router.push("/" + route);
     }
-  };
-
-  const handleMouseEnter = (name: string) => {
-    const newState = isOpen.map((item) => {
-      if (item.name !== name) {
-        return item;
-      } else {
-        return {
-          ...item,
-          isOpen: true,
-        };
-      }
-    });
-    setIsOpen(newState);
-  };
-  const handleMouseLeave = () => {
-    setIsOpen(initialState);
-  };
-
-  const exhibitorIcon = (route: string) => {
-    const open = isOpen.find((item) => item.name === route)?.isOpen;
-    if (!open) {
-      return <ExpandMoreIcon />;
-    }
-    return <ExpandLessIcon />;
   };
 
   return (
@@ -102,15 +70,9 @@ export default function NavBar() {
             component={"nav"}
             className={"flex flex-1 items-center justify-between"}
           >
-            {navBarItems.map(({ name, id, route, subRoute }, index) => {
+            {navBarItems.map(({ name, id, route }, index) => {
               return (
                 <ListItem
-                  onMouseEnter={() => {
-                    if (name !== "Exhibitors" && name !== "Travel") {
-                      handleMouseLeave();
-                    }
-                  }}
-                  onMouseLeave={handleMouseLeave}
                   key={index}
                   className={"relative hover:cursor-pointer"}
                   disablePadding
@@ -125,36 +87,14 @@ export default function NavBar() {
                     <ListItemButton
                       className={"w-max !px-[9px] !py-0 hover:!bg-transparent"}
                       aria-haspopup="true"
-                      onMouseEnter={() => handleMouseEnter(name)}
                     >
                       <ListItemText
                         primary={name}
                         primaryTypographyProps={{ fontWeight: "400" }}
                         className={'itemText ' + getPath(path?.toLowerCase() as string) ? '' : 'text-[#ADACAF]'}
                       />
-                      {name === "Exhibitors" && exhibitorIcon(name)}
-                      {name === "Travel" && exhibitorIcon(name)}
                     </ListItemButton>
                   </Link>
-                  <Box
-                    onMouseLeave={handleMouseLeave}
-                    className={
-                      "absolute w-max bg-white py-3 m-[-1px] left-0 top-full justify-center rounded-xl" +
-                      `${isOpen.find((route) => route.name === name)?.isOpen ? " flex flex-col" : " invisible"}`
-                    }
-                  >
-                    {subRoute?.map((hoverRoute, index) => (
-                      <Link key={index} href={hoverRoute}>
-                        <ListItemText
-                          primary={hoverRoute}
-                          primaryTypographyProps={{ fontWeight: "600" }}
-                          className={
-                            "capitalize itemText px-3 text-textColor hover:text-primary hover:cursor-pointer"
-                          }
-                        />
-                      </Link>
-                    ))}
-                  </Box>
                 </ListItem>
               );
             })}
