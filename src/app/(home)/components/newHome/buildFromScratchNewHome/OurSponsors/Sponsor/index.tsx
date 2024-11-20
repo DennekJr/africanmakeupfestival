@@ -15,7 +15,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
             className={'sponsorImage text-primary fill-current opacity-20'}
             src={sponsor.image}
             alt={sponsor.title}
-            width="208"
+            width={208}
             height={208}
           />
         </Box>

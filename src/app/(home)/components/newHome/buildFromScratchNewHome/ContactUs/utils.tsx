@@ -51,11 +51,6 @@ export const ContactUsTextArea = ({ field }: { field: string }) => {
               "color 0.3s ease, background-color 0.3s ease, border-color 0.3s easecolor 0.3s ease, background-color 0.3s ease, border-color 0.3s ease",
             color: "#000"
           }}
-          slotProps={{
-            input: {
-              disableUnderline: true
-            }
-          }}
           placeholder={field}
           name={field}
         />
