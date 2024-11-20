@@ -197,7 +197,7 @@ export const MenuDialog = () => {
         </List>
         <List
           component={"nav"}
-          className={"flex justify-end flex-1 !m-4 gap-4 !py-0"}
+          className={"flex lg:flex-row flex-col justify-end flex-1 !m-4 gap-4 !py-0"}
         >
           {navBarButtons.map(({ name, id, route }, index) => (
             <ListItem
