@@ -10,7 +10,6 @@ import { useAppSelector } from "../../../lib/hooks";
 import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
 import {
   initiatePaystackTransaction,
-  PostPaystackTicketPurchases,
   PostStripeTicketPurchases,
   PostTransaction, sendEmail
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
@@ -20,7 +19,6 @@ import PaystackPop from "@paystack/inline-js";
 import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
-import { verifyPaystackPayment } from "@/app/(home)/utils";
 import { SendEmailTemplate } from "@/app/SendEmailTemplate";
 
 const billingFormValues = {
@@ -134,33 +132,33 @@ const CheckoutForm = () => {
       },
     };
 
-    await initiatePaystackTransaction(ticketPurchaseData)
-      .then(async ({ ticketData, transactionData }) => {
+    initiatePaystackTransaction(ticketPurchaseData)
+      .then(({ ticketData, transactionData }) => {
         const accessCode = transactionData.access_code;
         popup.resumeTransaction(accessCode);
-        return {
-          transactionData: transactionData,
-          ticketData: ticketData
-        };
-      }).then(async ({ transactionData, ticketData }) => {
-        await verifyPaystackPayment(
-          transactionData.reference
-        ).then(async () => {
-          await PostPaystackTicketPurchases({ ticketData, transactionData });
-          const transactionToPost = {
-            Paystack_Id: transactionData.reference,
-            Stripe_Id: "",
-            Currency: "ngn",
-            Email: payStackCheckout.email,
-            UnitNumber: payStackCheckout.total
-          };
-          await PostTransaction(transactionToPost);
+        //   return {
+        //     transactionData: transactionData,
+        //     ticketData: ticketData
+        //   };
+        // }).then(({ transactionData, ticketData }) => {
+        //   verifyPaystackPayment(
+        //     transactionData.reference
+        //   ).then(() => {
+        //     PostPaystackTicketPurchases({ ticketData, transactionData });
+        //     const transactionToPost = {
+        //       Paystack_Id: transactionData.reference,
+        //       Stripe_Id: "",
+        //       Currency: "ngn",
+        //       Email: payStackCheckout.email,
+        //       UnitNumber: payStackCheckout.total
+        //     };
+        //     PostTransaction(transactionToPost);
           let name = ''
           Object.values(ticketData.buyerForm).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
-          console.log("Buyer name", name);
+        //     console.log("Buyer name", name);
             const template = SendEmailTemplate({ name: name, total: total, tickets: tickets, reference: transactionData.reference})
-          await sendEmail(payStackCheckout.email,template);
-        });
+        sendEmail(payStackCheckout.email, template);
+        //   });
       }).catch((error) => {
         console.error("Paystack transaction error: ", error);
       });
@@ -235,7 +233,8 @@ const CheckoutForm = () => {
             <button
               onClick={handlePaystackPayment}
               type={"submit"}
-              className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+              disabled={true}
+              className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
                 CONTINUE TO LOCAL PAYMENT
@@ -244,7 +243,8 @@ const CheckoutForm = () => {
             <button
               onClick={handleStripePayment}
               type={"submit"}
-              className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+              disabled={true}
+              className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
                 CONTINUE TO INTERNATIONAL PAYMENT

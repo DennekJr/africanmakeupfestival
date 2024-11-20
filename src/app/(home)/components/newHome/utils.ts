@@ -162,7 +162,7 @@ export const HomeButton = styled("a")({
 
 export const ContactUsCheckBox = styled("span")({
   "&::before": {
-    content: '" "',
+    content: "\"✔\"",
     fontFamily: "fontello",
     fontSize: "7px",
     letterSpacing: "-0.7px",

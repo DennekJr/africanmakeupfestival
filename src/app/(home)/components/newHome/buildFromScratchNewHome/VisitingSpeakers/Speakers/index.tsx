@@ -38,8 +38,9 @@ export const Speakers = ({ speaker }: { speaker: SpeakerType }) => {
                       "opacity-0 speakerLink transition-all duration-300 top-[20px] relative m-[3px] inline-block align-top leading-[1] text-center"
                     }
                   >
-                    <AgoraTransitionNoTransformSpan className={'flex items-center justify-center text-black bg-white hover:bg-primary hover:text-lightGrey border-none text-[16px] w-[45px] h-[45px] leading-[45px] rounded-full bg-cover bg-top'}>
-                      <link.icon className={'before:mt-[-1px]'} />
+                    <AgoraTransitionNoTransformSpan
+                      className={"group flex items-center justify-center hover:bg-textColor border-none text-[16px] w-[45px] h-[45px] leading-[45px] rounded-full bg-cover bg-top"}>
+                      <link.icon className={"before:mt-[-1px] text-textColor group-hover:text-primary"} />
                     </AgoraTransitionNoTransformSpan>
                   </a>
                 );

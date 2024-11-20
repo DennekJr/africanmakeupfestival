@@ -81,7 +81,7 @@ export const HiddenFormDropdown = ({
   };
 
   return (
-    <Box className="space-y-6 px-6 lg:px-0">
+    <Box className="space-y-6 px-6 xl:px-0">
       <div className="space-y-2">
         <button
           onClick={handleDisplaySelectMenu}

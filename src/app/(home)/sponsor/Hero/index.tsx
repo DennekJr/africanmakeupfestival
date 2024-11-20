@@ -63,7 +63,7 @@ export const Hero = () => {
         </Box>
         <Box className="flex gap-4">
           <a
-            className="inline-flex  items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-primary text-textColor hover:!bg-primary/70 h-14 px-6 py-4 rounded-none w-full md:w-auto"
+            className="inline-flex primary-bg-animation-hover primary-bg-animation-leave  items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-primary text-textColor hover:!bg-primary/70 h-14 px-6 py-4 rounded-none w-full md:w-auto"
             href="/ticket"
           >
             <span className={"capitalize"}>Become A Partner</span>

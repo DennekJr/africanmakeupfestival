@@ -23,21 +23,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "somachi",
-          src: "/images/speaker1.webp",
+          src: "/images/visitingSpeakers/speakerOne.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "CEO",
         },
         {
           id: "ore",
-          src: "/images/speaker2.webp",
+          src: "/images/visitingSpeakers/speakerThree.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Africa Correspondent",
         },
         {
           id: "alyune",
-          src: "/images/spaeker3.webp",
+          src: "/images/visitingSpeakers/speakerZero.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Senior Investment Associate",
@@ -74,21 +74,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/speaker3.webp",
+          src: "/images/visitingSpeakers/speakerOne.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/speaker2.webp",
+          src: "/images/visitingSpeakers/speakerOne.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/speaker1.webp",
+          src: "/images/visitingSpeakers/speakerZero.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Head of Investment",
@@ -105,7 +105,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "Anendlessocean",
-          src: "/images/speaker1.webp",
+          src: "/images/visitingSpeakers/speakerOne.webp",
           name: "Anendlessocean",
           position: "Musical Artiste",
         },
@@ -124,21 +124,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/speaker1.webp",
+          src: "/images/visitingSpeakers/speakerZero.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/speaker3.webp",
+          src: "/images/visitingSpeakers/speakerOne.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/speaker2.webp",
+          src: "/images/visitingSpeakers/speakerThree.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Head of Investment",
@@ -158,21 +158,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/speaker1.webp",
+          src: "/images/visitingSpeakers/speakerZero.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/speaker2.webp",
+          src: "/images/visitingSpeakers/speakerOne.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/speaker3.webp",
+          src: "/images/visitingSpeakers/speakerThree.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Head of Investment",
@@ -192,21 +192,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/speaker1.webp",
+          src: "/images/visitingSpeakers/speakerZero.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/speaker3.webp",
+          src: "/images/visitingSpeakers/speakerThree.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/speaker2.webp",
+          src: "/images/visitingSpeakers/speakerOne.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Head of Investment",
@@ -226,21 +226,21 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
       participants: [
         {
           id: "oyin",
-          src: "/images/speaker1.webp",
+          src: "/images/visitingSpeakers/speakerZero.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Managing Director",
         },
         {
           id: "bernard",
-          src: "/images/speaker2.webp",
+          src: "/images/visitingSpeakers/speakerThree.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Investment Manager",
         },
         {
           id: "uwem",
-          src: "/images/speaker3.webp",
+          src: "/images/visitingSpeakers/speakerZero.webp",
           name: "Lorem Ipsum",
           company: "Lorem",
           position: "Head of Investment",
