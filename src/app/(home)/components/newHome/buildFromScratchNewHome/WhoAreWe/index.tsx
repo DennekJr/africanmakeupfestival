@@ -27,7 +27,7 @@ export const WhoAreWe = () => {
           <Box className={"flex-wrap text-primary"}>
             <Typography>Who We Are</Typography>
             <h1 className={"break-words " +
-              'text-[40px] lg:text-[60px]'}>
+              'text-[27px] md:text-[44px] lg:text-[60px]'}>
               Expert chefs, Interactive workshops, and a world of flavors await
               you at our <span className={'text-[#FE9E11]'}>food festival</span>
             </h1>
