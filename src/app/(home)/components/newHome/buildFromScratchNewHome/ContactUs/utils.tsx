@@ -40,7 +40,6 @@ export const ContactUsTextArea = ({ field }: { field: string }) => {
     <span className="relative inline-grid w-full">
         <CssTextArea
           required
-          variant={"standard"}
           className="mb-[0] py-[10px] border-transparent outline-none !text-black placeholder:text-lightSecondary/80"
           style={{
             backgroundColor: "transparent",
