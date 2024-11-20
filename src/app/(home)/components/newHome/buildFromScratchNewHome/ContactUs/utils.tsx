@@ -1,5 +1,4 @@
-import { CssSelectField, CssTextArea, CssTextField } from "@/app/(home)/checkout/components/utils";
-import { useState } from "react";
+import { CssTextArea, CssTextField } from "@/app/(home)/checkout/components/utils";
 
 export const ContactUsField = ({ field }: { field: string }) => {
   return (
@@ -63,53 +62,6 @@ export const ContactUsTextArea = ({ field }: { field: string }) => {
     </span>
   );
 };
-
-export const ContactUsSelectField = () => {
-  const [value, setValue] = useState("Select Location");
-  return <span className="homeContactUsSelectField relative h-full inline-block w-full">
-    <span className="w-full h-full inline-block relative">
-      <div
-        className="h-full border-[#E1DCDA] text-primary bg-transparent text-[16px] leading-[1.5em]"
-        style={{
-          boxShadow:
-            "0 15px 15px -14px rgba(0, 0, 0, 0.01)",
-          letterSpacing: 0,
-          transition: "all 0.3s ease",
-        }}
-      >
-        <CssSelectField
-          className="w-full h-full outline-none"
-          aria-invalid="false"
-          value={value}
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-          name="Select Location"
-          variant={"standard"}
-        >
-          <option value="Select Location">
-            Select Location
-          </option>
-          <option onClick={() => setValue("Select Location 1")} value="Select Location 1">
-            Select Location 2
-          </option>
-          <option value="Select Location 3">
-            Select Location 3
-          </option>
-          <option value="Select Location 4">
-            Select Location 4
-          </option>
-        </CssSelectField>
-      </div>
-      <span
-        className="block h-[1px] w-full mt-[-1px] z-10 relative bg-[#FCD9CE]"
-        style={{
-          transition: "all 0.4s ease",
-        }}
-      ></span>{" "}
-    </span>
-  </span>
-}
 
 export const HiddenFormInputs = () => {
   return (
