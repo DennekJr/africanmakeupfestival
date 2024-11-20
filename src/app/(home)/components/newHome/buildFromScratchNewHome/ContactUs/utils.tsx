@@ -39,7 +39,6 @@ export const ContactUsTextArea = ({ field }: { field: string }) => {
   return (
     <span className="relative inline-grid w-full">
         <CssTextArea
-          size="medium"
           required
           variant={"standard"}
           className="mb-[0] py-[10px] border-transparent outline-none !text-black placeholder:text-lightSecondary/80"
