@@ -63,14 +63,13 @@ export const PostTransaction = async (ticketData) => {
   }
 };
 
-
 type ticketPurchaseDataType = {
-  payStackCheckout: {email: string, total: number},
+  payStackCheckout: { email: string; total: number };
   ticketData: {
-    buyerForm: { [ticket: string]: { name: string; value: string }[] },
-    otherTicketForms: { id: string; data: TicketBilingInfo }
-  }
-  tickets: { ticketName: string; value: number }[]
+    buyerForm: { [ticket: string]: { name: string; value: string }[] };
+    otherTicketForms: { id: string; data: TicketBilingInfo };
+  };
+  tickets: { ticketName: string; value: number }[];
 };
 
 export const initiatePaystackTransaction = async ({
@@ -114,7 +113,7 @@ export const sendEmail = async (email, template) => {
       body: JSON.stringify({
         email: email,
         template: template
-      })
+      }),
     });
     const data = await response.json();
     if (response.ok) {
@@ -133,7 +132,7 @@ export const VerifyPaystackTransaction = async (reference) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
-      }
+      },
     });
 
     const data = await response.json();
