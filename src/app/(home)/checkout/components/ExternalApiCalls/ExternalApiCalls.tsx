@@ -70,6 +70,7 @@ type ticketPurchaseDataType = {
     buyerForm: { [ticket: string]: { name: string; value: string }[] },
     otherTicketForms: { id: string; data: TicketBilingInfo }
   }
+  tickets: { ticketName: string; value: number }[]
 };
 
 export const initiatePaystackTransaction = async ({

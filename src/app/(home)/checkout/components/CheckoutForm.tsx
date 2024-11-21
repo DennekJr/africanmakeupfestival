@@ -128,7 +128,6 @@ const CheckoutForm = () => {
       },
       tickets: tickets
     };
-    console.log("ticketPurchaseData", ticketPurchaseData);
     const req = await initiatePaystackTransaction(ticketPurchaseData);
     const authUrl = req.paystackData.data.authorization_url;
     router.push(authUrl);
