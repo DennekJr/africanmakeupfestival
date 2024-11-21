@@ -72,7 +72,11 @@ type ticketPurchaseDataType = {
   }
 };
 
-export const initiatePaystackTransaction = async ({payStackCheckout, ticketData}: ticketPurchaseDataType) => {
+export const initiatePaystackTransaction = async ({
+                                                    payStackCheckout,
+                                                    ticketData,
+                                                    tickets
+                                                  }: ticketPurchaseDataType) => {
   try {
     const response = await fetch("/api/paystack", {
       method: "POST",
@@ -82,7 +86,7 @@ export const initiatePaystackTransaction = async ({payStackCheckout, ticketData}
       body: JSON.stringify({
         email: payStackCheckout.email, // Replace with actual customer email
         amount: payStackCheckout.total, // Amount in kobo (Paystack uses kobo for amounts)
-        ticketData: ticketData
+        ticketData: { payStackCheckout, ticketData, tickets }
       }),
     });
 
@@ -119,5 +123,27 @@ export const sendEmail = async (email, template) => {
     }
   } catch (error) {
     console.error("Error sending email:", error);
+  }
+};
+
+export const VerifyPaystackTransaction = async (reference) => {
+  try {
+    const response = await fetch(`/api/verify-payment?reference=${reference}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+      // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+    } else {
+      console.error("Error initializing transaction:", data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
   }
 };

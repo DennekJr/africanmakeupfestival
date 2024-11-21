@@ -5,7 +5,7 @@ export async function GET(request) {
     // Parse the request body
     const { searchParams } = new URL(request.url);
     const reference = searchParams.get("reference");
-    console.log(reference);
+    console.log("reference", reference);
     if (!reference) {
       return new Response(
         JSON.stringify({

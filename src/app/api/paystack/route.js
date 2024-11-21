@@ -9,7 +9,7 @@ export async function POST(request) {
     const paystackResponse = await axios.post('https://api.paystack.co/transaction/initialize', {
       email: email,
       amount: amount,
-      callback_url: "https://africanmakeupfestival-staging.up.railway.app/",
+      callback_url: "http://localhost:3000/success",
       metadata: ticketData
     }, {
       headers: {
@@ -20,8 +20,14 @@ export async function POST(request) {
 
     // Check if the request to Paystack was successful
     if (paystackResponse.status === 200) {
+      const paystackData = paystackResponse.data;
       const transactionData = paystackResponse.data.data;
-      return new Response(JSON.stringify({ message: 'Transaction initialized successfully', transactionData, ticketData }), {
+      return new Response(JSON.stringify({
+        message: "Transaction initialized successfully",
+        paystackData,
+        transactionData,
+        ticketData
+      }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
       });

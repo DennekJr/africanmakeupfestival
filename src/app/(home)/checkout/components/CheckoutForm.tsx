@@ -15,7 +15,6 @@ import {
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
-import PaystackPop from "@paystack/inline-js";
 import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
@@ -44,9 +43,7 @@ const CheckoutForm = () => {
     if (total === 0) {
       router.push("/ticket");
     }
-  }, []);
-
-  const popup = new PaystackPop();
+  }, [router, total]);
 
   const formik = useFormik({
     initialValues: billingFormValues,
@@ -129,38 +126,12 @@ const CheckoutForm = () => {
         buyerForm: billingInfo,
         otherTicketForms: formValues,
       },
+      tickets: tickets
     };
-
-    initiatePaystackTransaction(ticketPurchaseData)
-      .then(({ transactionData }) => {
-        const accessCode = transactionData.access_code;
-        popup.resumeTransaction(accessCode);
-        //   return {
-        //     transactionData: transactionData,
-        //     ticketData: ticketData
-        //   };
-        // }).then(({ transactionData, ticketData }) => {
-        //   verifyPaystackPayment(
-        //     transactionData.reference
-        //   ).then(() => {
-        //     PostPaystackTicketPurchases({ ticketData, transactionData });
-        //     const transactionToPost = {
-        //       Paystack_Id: transactionData.reference,
-        //       Stripe_Id: "",
-        //       Currency: "ngn",
-        //       Email: payStackCheckout.email,
-        //       UnitNumber: payStackCheckout.total
-        //     };
-        //     PostTransaction(transactionToPost);
-        //   let name = ''
-        //   Object.values(ticketData.buyerForm).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
-        //     console.log("Buyer name", name);
-        //     const template = SendEmailTemplate({ name: name, total: total, tickets: tickets, reference: transactionData.reference})
-        // sendEmail(payStackCheckout.email, template);
-        //   });
-      }).catch((error) => {
-        console.error("Paystack transaction error: ", error);
-      });
+    console.log("ticketPurchaseData", ticketPurchaseData);
+    const req = await initiatePaystackTransaction(ticketPurchaseData);
+    const authUrl = req.paystackData.data.authorization_url;
+    router.push(authUrl);
   };
 
   return (
