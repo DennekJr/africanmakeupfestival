@@ -9,13 +9,13 @@ export const PurchaseDetailTable = ({ metaData }: {
 }) => {
   const mainBuyer = Object.values(metaData.buyerForm)[0][0];
   const mainBuyerTicket = Object.keys(metaData.buyerForm)[0].toUpperCase();
-  const otherTicketForms = Object.values(metaData.otherTicketForms);
-  const mappedDataArray = otherTicketForms.map(data => ({
-    ticketName: data.Ticket,
+  const otherTicketForms = Object.values(metaData.otherTicketForms as { id: string; data: TicketBilingInfo }[]);
+  const mappedDataArray = (otherTicketForms).map(ticket => ({
+    ticketName: ticket.data.Ticket,
     ticketData: [
-      { name: "First Name", data: data.form_firstName },
-      { name: "Last Name", data: data.form_lastName },
-      { name: "Email", data: data.form_email }
+      { name: "First Name", data: ticket.data.form_firstName },
+      { name: "Last Name", data: ticket.data.form_lastName },
+      { name: "Email", data: ticket.data.form_email }
     ]
   }));
   console.log("mainBuyer", otherTicketForms, metaData.buyerForm, mainBuyerTicket);
