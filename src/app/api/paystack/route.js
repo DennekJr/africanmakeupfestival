@@ -9,7 +9,7 @@ export async function POST(request) {
     const paystackResponse = await axios.post('https://api.paystack.co/transaction/initialize', {
       email: email,
       amount: amount,
-      callback_url: "http://localhost:3000/success",
+      callback_url: process.env.BASE_URL + "success",
       metadata: ticketData
     }, {
       headers: {

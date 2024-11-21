@@ -43,6 +43,7 @@ export const SuccessOrErrorVerification = () => {
       };
       await PostTransaction(transactionToPost);
       let name = "";
+      if (ticketData.buyerForm === undefined) return;
       Object.values(ticketData.buyerForm as initialCheckoutStateType["billingInfo"]).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
       const template = SendEmailTemplate({
         name: name,
@@ -87,7 +88,7 @@ export const SuccessOrErrorVerification = () => {
         <Box className={"text-left w-full"}>
           <h3 className={"text-black text-lg mb-2"}>Purchase Details</h3>
           <Box className={"border border-midGrey rounded-lg"}>
-            <PurchaseDetailTable metaData={metaData?.ticketData} currency={currency}
+            <PurchaseDetailTable metaData={metaData?.ticketData!} currency={currency}
                                  total={metaData?.payStackCheckout.total} />
           </Box>
           <Box>
