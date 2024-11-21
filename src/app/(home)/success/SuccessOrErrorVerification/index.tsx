@@ -16,12 +16,14 @@ import { SendEmailTemplate } from "@/app/SendEmailTemplate";
 
 export const SuccessOrErrorVerification = () => {
   const [isSuccess, setIsSuccess] = React.useState(false);
+  const [currency, setCurrency] = React.useState("");
   const [metaData, setMetaData] = React.useState();
   const searchParams = useSearchParams();
   const reference = searchParams?.get("reference");
   const checkStatus = async () => {
     const result = await VerifyPaystackTransaction(reference);
     if (result.transactionData.status === "success") {
+      setCurrency(result.transactionData.currency);
       setMetaData(result.transactionData.metadata);
       setIsSuccess(true);
       const dataToStore = result.transactionData.metadata;
@@ -34,7 +36,7 @@ export const SuccessOrErrorVerification = () => {
       const transactionToPost = {
         Paystack_Id: transactionData.reference,
         Stripe_Id: "",
-        Currency: "ngn",
+        Currency: result.transactionData.currency,
         Email: dataToStore.payStackCheckout.email,
         UnitNumber: dataToStore.payStackCheckout.total
       };
@@ -84,7 +86,8 @@ export const SuccessOrErrorVerification = () => {
         <Box className={"text-left w-full"}>
           <h3 className={"text-black text-lg mb-2"}>Purchase Details</h3>
           <Box className={"border border-midGrey rounded-lg"}>
-            <PurchaseDetailTable metaData={metaData.ticketData} />
+            <PurchaseDetailTable metaData={metaData.ticketData} currency={currency}
+                                 total={metaData.payStackCheckout.total} />
           </Box>
           <Box>
             <Button onClick={handlePrint} className={"w-full !p-4 !bg-primary !text-textColor !mt-8"}>Print
