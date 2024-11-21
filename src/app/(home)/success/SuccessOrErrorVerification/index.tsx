@@ -24,6 +24,7 @@ export const SuccessOrErrorVerification = () => {
   const reference = searchParams?.get("reference");
   const checkStatus = async () => {
     const result = await VerifyPaystackTransaction(reference);
+    console.log("reference", result);
     if (result.transactionData.status === "success") {
       setCurrency(result.transactionData.currency);
       setMetaData(result.transactionData.metadata);
@@ -97,6 +98,10 @@ export const SuccessOrErrorVerification = () => {
             <Button onClick={handlePrint} className={"w-full !p-4 !bg-primary !text-textColor !mt-8"}>Print
               Invoice</Button>
           </Box>
+        </Box>
+        <Box className={"flex w-full justify-between text-lightSecondary py-4 font-semibold"}>
+          <Box>contact@africaskincarefestival.com</Box>
+          <Box>+234 907 158 2383</Box>
         </Box>
       </Box>
     </AgoraBox>
