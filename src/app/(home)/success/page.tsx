@@ -5,9 +5,11 @@ import { Suspense } from "react";
 
 const Success: () => Promise<React.JSX.Element> = async () => {
   return (
-    <Suspense fallback={<Box>Loading....</Box>} className={"w-full"}>
-      <SuccessOrErrorVerification />
-    </Suspense>
+    <Box className={"w-full"}>
+      <Suspense fallback={<Box>Loading....</Box>}>
+        <SuccessOrErrorVerification />
+      </Suspense>
+    </Box>
   );
 };
 
