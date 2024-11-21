@@ -13,6 +13,7 @@ import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { PurchaseDetailTable } from "@/app/(home)/success/SuccessOrErrorVerification/PurchaseDetailTable";
 import { AgoraBox } from "@/app/(home)/components/newHome/utils";
 import { SendEmailTemplate } from "@/app/SendEmailTemplate";
+import { initialCheckoutStateType } from "@/app/lib/features/checkout/checkoutSlice";
 
 export const SuccessOrErrorVerification = () => {
   const [isSuccess, setIsSuccess] = React.useState(false);
@@ -42,7 +43,7 @@ export const SuccessOrErrorVerification = () => {
       };
       await PostTransaction(transactionToPost);
       let name = "";
-      Object.values(ticketData.buyerForm).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
+      Object.values(ticketData.buyerForm as initialCheckoutStateType["billingInfo"]).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
       const template = SendEmailTemplate({
         name: name,
         total: dataToStore.payStackCheckout.total,
