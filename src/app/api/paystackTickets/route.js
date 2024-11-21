@@ -2,8 +2,8 @@ import clientPromise from '../../lib/mongo/mongodb';
 export async function GET() {
   try {
     const client = await clientPromise;
-    const db = client.db('AfricaMakeupFestival'); // Replace with your database name
-    const tickets = await db.collection('Ticket-Purchases').find({}).toArray();
+    const db = client.db("africaskincarefestival"); // Replace with your database name
+    const tickets = await db.collection("ticket-purchases").find({}).toArray();
 
     return new Response(JSON.stringify(tickets), {
       status: 200,

@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
 export const WhoAreWe = () => {
+  // const wakeMongo = useMongo();
   return (
     <section className={'mx-[auto] my-24'}>
       <Box className={"relative flex items-center justify-center flex-col m-6"}>
