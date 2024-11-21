@@ -18,7 +18,8 @@ import { initialCheckoutStateType } from "@/app/lib/features/checkout/checkoutSl
 export const SuccessOrErrorVerification = () => {
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [currency, setCurrency] = React.useState("");
-  const [metaData, setMetaData] = React.useState();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [metaData, setMetaData] = React.useState<any>();
   const searchParams = useSearchParams();
   const reference = searchParams?.get("reference");
   const checkStatus = async () => {
