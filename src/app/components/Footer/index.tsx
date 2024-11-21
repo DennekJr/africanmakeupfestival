@@ -53,7 +53,7 @@ export const Footer = () => {
                 decoding="async"
                 className="md:w-[337px] w-[500px] h-full object-contain object-left"
                 style={{ color: "black", transition: "all 0.3s ease" }}
-                src="/images/logos/footerLogoColor.svg"
+                src="/images/footer.svg"
               />
             </Link>
             <Box
@@ -175,7 +175,7 @@ export const Footer = () => {
                 height={18}
                 decoding="async"
                 style={{ color: "transparent" }}
-                src="/images/piggyvest.webp"
+                src="/images/piggyvest.webpq"
               />
             </Link>
           </Box>
