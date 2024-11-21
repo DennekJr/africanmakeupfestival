@@ -87,8 +87,8 @@ export const SuccessOrErrorVerification = () => {
         <Box className={"text-left w-full"}>
           <h3 className={"text-black text-lg mb-2"}>Purchase Details</h3>
           <Box className={"border border-midGrey rounded-lg"}>
-            <PurchaseDetailTable metaData={metaData.ticketData} currency={currency}
-                                 total={metaData.payStackCheckout.total} />
+            <PurchaseDetailTable metaData={metaData?.ticketData} currency={currency}
+                                 total={metaData?.payStackCheckout.total} />
           </Box>
           <Box>
             <Button onClick={handlePrint} className={"w-full !p-4 !bg-primary !text-textColor !mt-8"}>Print
