@@ -1,5 +1,7 @@
 import axios from "axios";
 
+export const dynamic = "force-dynamic"; // Ensures this route is always treated dynamically
+
 export async function GET(request) {
   try {
     // Parse the request body
