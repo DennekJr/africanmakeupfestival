@@ -88,6 +88,7 @@ export const SuccessOrErrorVerification = () => {
         <Box className={"text-left w-full"}>
           <h3 className={"text-black text-lg mb-2"}>Purchase Details</h3>
           <Box className={"border border-midGrey rounded-lg"}>
+            // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
             <PurchaseDetailTable metaData={metaData?.ticketData!} currency={currency}
                                  total={metaData?.payStackCheckout.total} />
           </Box>
