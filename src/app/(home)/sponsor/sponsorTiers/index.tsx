@@ -52,15 +52,14 @@ export const SponsorshipTier = () => {
                       </li>
                     ))}
                   </ol>
-                  <Box className={"hover:cursor-pointer"}>
+                  <a href={"mailto:contact@africaskincarefestival.com"} className={"hover:cursor-pointer"}>
                     <WhiteBgArrowButton
-                      href={"mailto:contact@africaskincarefestival.com"}
                       name={"Contact Us"}
                       classNames={
                         "gap-3 h-14 px-6 py-4 rounded-full w-full md:w-auto !text-black"
                       }
                     />
-                  </Box>
+                  </a>
                 </Box>
               </Box>
             );
