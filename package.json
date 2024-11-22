@@ -30,7 +30,7 @@
     "formik": "^2.4.6",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
-    "mongodb": "^6.9.0",
+    "mongodb": "^6.10.0",
     "mongoose": "^8.7.3",
     "next": "^14.2.10",
     "nextjs-toploader": "^3.7.15",

@@ -34,6 +34,7 @@ export const PurchaseDetailTable = ({ metaData, total, currency }: {
     ]
     }
   });
+  console.log("mappedDataArray", otherTicketForms);
   return (
     <Box className={"w-full"}>
       <Box className={"flex text-lightSecondary justify-between p-4 border-b border-midGrey font-semibold"}>
@@ -47,9 +48,10 @@ export const PurchaseDetailTable = ({ metaData, total, currency }: {
             <Box>{ticketData.name === "Phone Number" && <span className={"mr-1"}>+</span>}{ticketData.value}</Box>
           </Box>;
       })}
-      <Box className={"flex text-lightSecondary justify-between p-4 border-b border-midGrey font-semibold"}>
+      {otherTicketForms.length > 2 &&
+        <Box className={"flex text-lightSecondary justify-between p-4 border-b border-midGrey font-semibold"}>
         <Box>Additional Tickets</Box>
-      </Box>
+        </Box>}
       {mappedDataArray.map((ticket, index) => {
         return <Box key={index}>
           {ticket?.ticketName &&

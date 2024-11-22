@@ -3,6 +3,7 @@ export async function GET() {
   try {
     const client = await clientPromise;
     const db = client.db("africaskincarefestival"); // Replace with your database name
+    console.log("Database", db);
     const tickets = await db.collection("ticket-purchases").find({}).toArray();
 
     return new Response(JSON.stringify(tickets), {
@@ -20,7 +21,9 @@ export async function GET() {
 export async function POST(request) {
   try {
     const client = await clientPromise;
-    const db = client.db('AfricaMakeupFestival'); // Replace with your database name
+    console.log("client", clientPromise);
+    const db = client.db("africaskincarefestival"); // Replace with your database name
+    console.log("Database", db);
     // Get the data from the request body
     const {ticketData, session} = await request.json();
     Object.values(ticketData.buyerForm).map(async (detail) => {
@@ -45,7 +48,7 @@ export async function POST(request) {
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
       };
-      await db.collection('Ticket-Purchases').insertOne(BuyerTicketPurchase);
+      await db.collection("ticket-purchases").insertOne(BuyerTicketPurchase);
     });
     // Array to add other ticket forms
     return new Response(JSON.stringify('Data successfully added to Ticket-Purchases'), {
