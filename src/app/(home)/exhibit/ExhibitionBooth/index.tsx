@@ -15,7 +15,7 @@ export const ExhibitionBooth = () => {
   return (
     <Box
       className={
-        "w-full py-12 px-6 xl:py-24 2xl:py-32 bg-black text-[#FCFCFC] relative bg-[url(https://www.africastartupfestival.com/grid-section.svg)] bg-repeat-y bg-top"
+        "w-full py-12 px-6 xl:py-24 2xl:py-32 bg-black text-textColor relative bg-[url(https://www.africastartupfestival.com/grid-section.svg)] bg-repeat-y bg-top"
       }
     >
       {/* <Box className="absolute inset-0 bg-primary opacity-30 mix-blend-overlay z-12"></Box> */}

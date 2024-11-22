@@ -3,8 +3,6 @@ import { PartnerUnderScore } from "./utils";
 import Image from "next/image";
 import { useMemo } from "react";
 import { PARTNERS_MENU } from "./partners.constants";
-import { FortyFiveDegreeArrow } from "../Hero/utils";
-import { Button } from "@mui/material";
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 
@@ -32,17 +30,17 @@ export const Partners = () => {
             </span>
             <span className="relative max-w-full break-words">
               {" "}
-              from our events
+              from our event
             </span>
           </pre>
         </Box>
-        <Box className={"grid grid-cols-2 lg:grid-cols-5 !lg:gap-8 !gap-4"}>
+        <Box className={"grid grid-cols-2 lg:grid-cols-6 !lg:gap-8 !gap-4"}>
           {sponsors.map((sponsor, index) => {
             return (
               <Box
                 key={index}
                 className={
-                  "!col-span-1 rounded-md aspect-square w-full bg-midGrey !grid place-content-center p-5"
+                  "group !col-span-1 rounded-md aspect-square w-full bg-midGrey !grid place-content-center p-5"
                 }
               >
                 <Image
@@ -51,23 +49,23 @@ export const Partners = () => {
                   src={sponsor.src}
                   alt={sponsor.name}
                   style={{ color: "primary" }}
-                  className={"w-full h-auto object-contain"}
+                  className={"w-[w-120px] lg:w-[150px] h-auto object-contain brightness-50 group-hover:brightness-100"}
                 />
               </Box>
             );
           })}
         </Box>
         <Box className={"flex justify-center"}>
-          <Button
+          <a
             className={
-              "partnerButton whitespace-nowrap ring-offset-background disabled:pointer-events-none disabled:opacity-50 !bg-primary !text-textColor !font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-none !px-10 !py-8 !w-max"
+              "partnerButton block whitespace-nowrap ring-offset-background disabled:pointer-events-none !bg-primary !text-textColor !font-medium [&>svg]:!size-[44.25px] [&>svg]:!stroke-2 !rounded-none !px-10 !py-8 !w-max"
             }
-            endIcon={<FortyFiveDegreeArrow />}
+            href="mailto:contact@africaskincarefestival.com"
           >
             <Typography className={"capitalize !text-xl lg:!text-[2.8rem]"}>
               Become a partner
             </Typography>
-          </Button>
+          </a>
         </Box>
       </Box>
     </section>

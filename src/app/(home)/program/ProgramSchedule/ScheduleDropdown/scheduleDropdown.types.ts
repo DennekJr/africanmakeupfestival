@@ -8,7 +8,7 @@ export type ScheduleDropdownTypes = {
 
 type ScheduleContent = {
   summary?: string;
-  participants: participants[];
+  participants?: participants[];
 }
 
 type participants = {

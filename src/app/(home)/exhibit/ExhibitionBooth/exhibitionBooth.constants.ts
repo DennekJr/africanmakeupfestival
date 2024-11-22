@@ -5,40 +5,25 @@ export const EXHIBITIONBOOTHCONSTANTMENU: Record<
   ExhibitionBoothTypes
 > = {
   one: {
-    id: "ventures",
-    title: "Ventures",
+    id: "Standard",
+    title: "Standard",
     price: 'NGN 600,000',
-    location: 'Standard exhibition location (2*2 booth)',
+    location: "Standard exhibition location (2m x 3m booth)",
     list: [
-      "Standard exhibition location (2*2 booth)",
-      "⁠Marketing benefits and acknowledgment as an official exhibitor",
-      "Standard exhibition location (2*2 booth)",
+      "Standard exhibition location (2m x 3m booth)",
+      "Complimentary Branding",
+      "Table & Chair"
     ],
   },
   two: {
-    id: "oasis",
-    title: "Oasis",
-    price: 'NGN 850,000',
-    location: 'Standard exhibition location (3*3 booth)',
+    id: "premium",
+    title: "Premium",
+    price: "NGN 1,200,000",
+    location: "Premium exhibition location (2m x 6m booth)",
     list: [
-      "Standard exhibition location (2*2 booth)",
-      "⁠Marketing benefits and acknowledgment as an official exhibitor",
-      "Standard exhibition location (2*2 booth)",
-    ],
-  },
-  three: {
-    id: "nextgen",
-    title: "NextGen",
-    price: 'NGN 1,200,000',
-    location: 'Standard exhibition location (2*2 booth)',
-    list: [
-      "Standard exhibition location (2*2 booth)",
-      "⁠Marketing benefits and acknowledgment as an official exhibitor",
-      "Standard exhibition location (2*2 booth)",
-      "Standard exhibition location (2*2 booth)",
-      "Standard exhibition location (2*2 booth)",
-      "Standard exhibition location (2*2 booth)",
-      "Standard exhibition location (2*2 booth)",
+      "Premium exhibition location (2m x 6m booth)",
+      "Complimentary Branding",
+      "Table & Chair"
     ],
   },
 };

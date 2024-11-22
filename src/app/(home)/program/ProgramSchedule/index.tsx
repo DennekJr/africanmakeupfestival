@@ -32,7 +32,7 @@ export const ProgramSchedule = () => {
                     className="bg-lightSecondary text-textColor inline-flex items-center justify-center whitespace-nowrap rounded-none px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                     tabIndex={-1}
                   >
-                    16th
+                    21th
                   </button>
                 </Box>
               </Box>

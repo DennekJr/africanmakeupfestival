@@ -144,16 +144,16 @@ export const RegisterBoothForm = () => {
                   <MenuItem
                     key={`90${index}-${field.id}1`}
                     className={"capitalize  hover:!bg-gray-100"}
-                    value={"OASIS (3x3) NGN 850,000"}
+                    value={"STANDARD (2mx3m) NGN 600,000"}
                   >
-                    {"OASIS (3x3) NGN 850,000"}
+                    {"STANDARD (2mx3m) NGN 600,000"}
                   </MenuItem>
                   <MenuItem
                     key={`98${index}-${field.id}2`}
                     className={"capitalize  hover:!bg-gray-100"}
-                    value={"NEXT GEN (3x3) NGN 1,200,000"}
+                    value={"PREMIUM (2mx6m) NGN 1,200,000"}
                   >
-                    {"NEXT GEN (3x3) NGN 1,200,000"}
+                    {"PREMIUM (2mx6m) NGN 1,200,000"}
                   </MenuItem>
                 </CssSelectField>
               </FormControl>

@@ -5,19 +5,17 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import ListItemText from "@mui/material/ListItemText";
-import Box from "@mui/material/Box";
-import Image from "next/image";
 import { SCHEDULEDROPDOWNMENU } from "../ScheduleDropdown/scheduleDropdown.constants";
 
 export const ScheduleDropdown = () => {
   const initialState = [
-    { slide: "one", isOpen: false },
-    { slide: "two", isOpen: false },
-    { slide: "three", isOpen: false },
-    { slide: "four", isOpen: false },
-    { slide: "five", isOpen: false },
-    { slide: "six", isOpen: false },
-    { slide: "seven", isOpen: false },
+    { slide: "networking", isOpen: false },
+    { slide: "panelDiscussions", isOpen: false },
+    { slide: "GuestSpeakers", isOpen: false },
+    { slide: "Exhibition", isOpen: false },
+    { slide: "liveDemonstrations", isOpen: false },
+    { slide: "networkingSession", isOpen: false },
+    { slide: "Entertainment&Refreshments", isOpen: false },
     { slide: "eight", isOpen: false },
     { slide: "nine", isOpen: false },
     { slide: "ten", isOpen: false },
@@ -82,40 +80,40 @@ export const ScheduleDropdown = () => {
                             </p>
                           </span>
                         </pre>
-                        <Box
-                          className={"flex flex-wrap gap-5"}
-                          sx={{ marginTop: "calc(1.5rem * calc(1))" }}
-                        >
-                          {schedule.content.participants.map(
-                            (participant, index) => {
-                              return (
-                                <div className="flex gap-2" key={index}>
-                                  <div className="overflow-clip rounded-md">
-                                    <Image
-                                      alt={participant.name}
-                                      loading="lazy"
-                                      width="60"
-                                      height="60"
-                                      decoding="async"
-                                      className="size-24 object-cover"
-                                      src={participant.src}
-                                      style={{ color: "transparent" }}
-                                    />
-                                  </div>
-                                  <div className="space-y-1">
-                                    <p className="text-lg font-medium text-primary">
-                                      {participant.name}
-                                    </p>
-                                    <div className="text-sm opacity-80 text-lightSecondary">
-                                      <p>{participant.company}</p>
-                                      <p>{participant.position}</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            },
-                          )}
-                        </Box>
+                        {/*<Box*/}
+                        {/*  className={"flex flex-wrap gap-5"}*/}
+                        {/*  sx={{ marginTop: "calc(1.5rem * calc(1))" }}*/}
+                        {/*>*/}
+                        {/*  {schedule.content.participants?.map(*/}
+                        {/*    (participant, index) => {*/}
+                        {/*      return (*/}
+                        {/*        <div className="flex gap-2" key={index}>*/}
+                        {/*          <div className="overflow-clip rounded-md">*/}
+                        {/*            <Image*/}
+                        {/*              alt={participant.name}*/}
+                        {/*              loading="lazy"*/}
+                        {/*              width="60"*/}
+                        {/*              height="60"*/}
+                        {/*              decoding="async"*/}
+                        {/*              className="size-24 object-cover"*/}
+                        {/*              src={participant.src}*/}
+                        {/*              style={{ color: "transparent" }}*/}
+                        {/*            />*/}
+                        {/*          </div>*/}
+                        {/*          <div className="space-y-1">*/}
+                        {/*            <p className="text-lg font-medium text-primary">*/}
+                        {/*              {participant.name}*/}
+                        {/*            </p>*/}
+                        {/*            <div className="text-sm opacity-80 text-lightSecondary">*/}
+                        {/*              <p>{participant.company}</p>*/}
+                        {/*              <p>{participant.position}</p>*/}
+                        {/*            </div>*/}
+                        {/*          </div>*/}
+                        {/*        </div>*/}
+                        {/*      );*/}
+                        {/*    },*/}
+                        {/*  )}*/}
+                        {/*</Box>*/}
                       </ListItemText>
                     </ListItemButton>
                   </List>

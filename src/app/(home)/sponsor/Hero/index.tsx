@@ -1,13 +1,10 @@
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import { FortyFiveDegreeArrow } from "./utils";
 
 export const Hero = () => {
   return (
     <section
-      className={
-        "relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-black"
-      }
+      className={"relative grid lg:grid-cols-2 w-full lg:min-h-screen bg-black"}
     >
       <Box
         className={
@@ -21,8 +18,7 @@ export const Hero = () => {
               className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
             >
               <span className="relative max-w-full break-words text-primary">
-                Piggyvest, Medplus Pharmacy and many
-                more have{" "}
+                Piggyvest, Beyond Medplus and many more have{" "}
               </span>
               <span className="relative max-w-full break-words text-textColor">
                 partnered{" "}
@@ -47,28 +43,27 @@ export const Hero = () => {
                   </defs>
                 </svg>
               </span>
-              <span className="relative max-w-full break-words text-primary"> with us.</span>
+              <span className="relative max-w-full break-words text-primary">
+                {" "}
+                with us.
+              </span>
             </pre>
           </div>
         </Box>
         <Box>
           <pre
             id="undefined-0"
-            className="font-sans w-full break-words whitespace-pre-wrap min-h-6 heading text-xl font-normal text-[#E6E6E6]"
+            className="font-sans w-full break-words whitespace-pre-wrap min-h-6 heading text-xl font-normal"
           >
-            <span className="relative max-w-full break-words">
-              See why they choose to partner?.
+            <span className="relative max-w-full break-words block max-w-[80%] text-lightGrey">
+              The Africa Skincare Festival is the premier platform dedicated to
+              showcasing Africa’s unique contributions to the global skincare
+              industry. By sponsoring this event, you become a valued partner
+              and pioneer in our mission to elevate African skincare brands,
+              promote sustainable practices, and engage with a passionate,
+              diverse audience
             </span>
           </pre>
-        </Box>
-        <Box className="flex gap-4">
-          <a
-            className="inline-flex primary-bg-animation-hover primary-bg-animation-leave  items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-primary text-textColor hover:!bg-primary/70 h-14 px-6 py-4 rounded-none w-full md:w-auto"
-            href="/ticket"
-          >
-            <span className={"capitalize"}>Become A Partner</span>
-            <FortyFiveDegreeArrow />
-          </a>
         </Box>
       </Box>
       <Box className={"col-span-1 relative"}>
