@@ -26,8 +26,8 @@ export async function POST(request) {
     console.log("Database", db);
     // Get the data from the request body
     const {ticketData, session} = await request.json();
-    Object.values(ticketData.buyerForm).map(async (detail) => {
-      const TicketName = Object.keys(ticketData.buyerForm)[0];
+    Object.values(session.metadata.ticketData.buyerForm).map(async (detail) => {
+      const TicketName = Object.keys(session.metadata.ticketData.buyerForm)[0];
       const buyerTicketPurchaseDetails = {
         form_firstName: detail[0][0].value,
         form_lastName: detail[0][1].value,
@@ -44,7 +44,7 @@ export async function POST(request) {
       const BuyerTicketPurchase = {
         Paystack_Id: session.reference,
         Stripe_Id: '',
-        Access_Code: session.access_code,
+        // Access_Code: session.access_code,
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
       };

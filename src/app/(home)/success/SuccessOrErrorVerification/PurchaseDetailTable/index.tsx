@@ -19,7 +19,6 @@ export const PurchaseDetailTable = ({ metaData, total, currency }: {
   const getTicketValue = (ticketName) => {
     return ticketName === "investor" ? InvestorTicket : ticketName === "explorer" ? ExplorerTicket : ticketName === "founder" ? FounderTicket : DelegateTicket;
   };
-  console.log("metaData", metaData.buyerForm);
   const mainBuyer = Object.keys(metaData.buyerForm).includes("form_booth") ? (metaData.buyerForm as ExhibitionBoothBillingInfo) : Object.values(metaData.buyerForm as {
     [ticket: string]: { name: string; value: string }[]
   }[])[0];
@@ -41,7 +40,6 @@ export const PurchaseDetailTable = ({ metaData, total, currency }: {
     ]
     }
   });
-  console.log("mappedDataArray", mainBuyer, metaData);
   return (
     <Box className={"w-full"}>
       <Box className={"flex text-lightSecondary justify-between p-4 border-b border-midGrey font-semibold"}>
