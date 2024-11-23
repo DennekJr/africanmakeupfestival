@@ -23,7 +23,6 @@ export async function POST(request) {
     const client = await clientPromise;
     console.log("client", clientPromise);
     const db = client.db("africaskincarefestival"); // Replace with your database name
-    console.log("Database", db);
     // Get the data from the request body
     const {ticketData, session} = await request.json();
     Object.values(session.metadata.ticketData.buyerForm).map(async (detail) => {
