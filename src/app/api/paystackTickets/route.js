@@ -25,8 +25,9 @@ export async function POST(request) {
     const db = client.db("africaskincarefestival"); // Replace with your database name
     // Get the data from the request body
     const { ticketData, transactionData } = await request.json();
-    Object.values(transactionData.metadata.ticketData.buyerForm).map(async (detail) => {
-      const TicketName = Object.keys(transactionData.metadata.ticketData.buyerForm)[0];
+    const buyerForm = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.boothData.buyerForm : transactionData.metadata.ticketData.buyerForm;
+    Object.values(buyerForm).map(async (detail) => {
+      const TicketName = Object.keys(buyerForm)[0];
       const buyerTicketPurchaseDetails = {
         form_firstName: detail[0][0].value,
         form_lastName: detail[0][1].value,
