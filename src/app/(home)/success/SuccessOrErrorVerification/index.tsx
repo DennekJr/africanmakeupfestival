@@ -61,7 +61,10 @@ export const SuccessOrErrorVerification = () => {
         tickets: dataToStore.tickets,
         reference: transactionData.reference
       });
-      await sendEmail(dataToStore.payStackCheckout.email, template);
+      const email = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.buyerForm.form_email : Object.values(transactionData.metadata.buyerForm as {
+        [ticket: string]: { name: string; value: string }[]
+      }[])[0]["Email"];
+      await sendEmail(email, template);
     }
   };
   const handlePrint = () => {
