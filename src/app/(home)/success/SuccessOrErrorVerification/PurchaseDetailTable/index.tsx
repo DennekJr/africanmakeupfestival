@@ -22,6 +22,7 @@ export const PurchaseDetailTable = ({ metaData, total, currency }: {
   const mainBuyer = Object.keys(metaData.buyerForm).includes("form_booth") ? (metaData.buyerForm as ExhibitionBoothBillingInfo) : Object.values(metaData.buyerForm as {
     [ticket: string]: { name: string; value: string }[]
   }[])[0];
+  console.log("main buyer in demo", mainBuyer);
   const mainBuyerTicket = Object.keys(metaData.buyerForm)[0].toUpperCase();
   const otherTicketForms = metaData.otherTicketForms === undefined ? [] : Object.values(metaData.otherTicketForms as {
     id: string;
