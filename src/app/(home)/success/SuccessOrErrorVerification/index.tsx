@@ -20,21 +20,22 @@ import { initialCheckoutStateType } from "@/app/lib/features/checkout/checkoutSl
 export const SuccessOrErrorVerification = () => {
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [currency, setCurrency] = React.useState("");
+  const [total, setTotal] = React.useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [metaData, setMetaData] = React.useState<any>();
   const searchParams = useSearchParams();
   const reference = searchParams?.get("reference");
   const checkStatus = async () => {
     const result = await VerifyPaystackTransaction(reference);
-    console.log("reference", result);
     if (result.transactionData.status === "success") {
       setCurrency(result.transactionData.currency);
+      setTotal(result.transactionData.amount);
       setMetaData(result.transactionData.metadata);
       setIsSuccess(true);
       const dataToStore = result.transactionData.metadata;
       const ticketData = {
         buyerForm: dataToStore.buyerForm,
-        otherTicketForms: dataToStore.otherTicketForms
+        otherTicketForms: dataToStore.otherTicketForms !== undefined ? dataToStore.otherTicketForms : []
       };
       const transactionData = result.transactionData;
       await PostPaystackTicketPurchases({ ticketData, transactionData });
@@ -124,9 +125,9 @@ export const SuccessOrErrorVerification = () => {
           <Box className={"border border-midGrey rounded-lg"}>
             {/*// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain*/}
             <PurchaseDetailTable
-              metaData={metaData?.ticketData}
+              metaData={metaData?.purchaseType === "ticket" ? metaData?.ticketData : metaData.boothData}
               currency={currency}
-              total={metaData?.payStackCheckout.total}
+              total={total}
             />
           </Box>
           <Box>

@@ -174,7 +174,7 @@ const CheckoutForm = () => {
               <CheckoutClientForm />
             </Box>
           </Box>
-          <Box className="hidden lg:block lg:col-start-8 lg:col-span-4 space-y-8">
+          <Box className="block lg:col-start-8 lg:col-span-4 space-y-8">
             <Box className="space-y-6">
               <p className="text-[#0A090B] text-4xl xl:text-5xl 2xl:text-6xl !font-medium">
                 Summary
@@ -201,6 +201,7 @@ const CheckoutForm = () => {
                 <p className="font-medium">NGN {total}</p>
               </div>
             </Box>
+
             <button
               onClick={handlePaystackPayment}
               type={"submit"}

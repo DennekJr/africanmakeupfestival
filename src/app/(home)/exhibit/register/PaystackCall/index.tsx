@@ -3,6 +3,7 @@ import { ExhibitionBoothBillingInfo } from "@/app/lib/features/exhibition/exhibi
 
 export const HandlePaystackTransaction = async ({payStackCheckout, boothData}: {boothData: {buyerForm: ExhibitionBoothBillingInfo}, payStackCheckout: {total: number, email: string}}) => {
   try {
+    const purchaseType = "booth";
     const response = await fetch("/api/paystack", {
       method: "POST",
       headers: {
@@ -11,7 +12,7 @@ export const HandlePaystackTransaction = async ({payStackCheckout, boothData}: {
       body: JSON.stringify({
         email: payStackCheckout.email, // Replace with actual customer email
         amount: payStackCheckout.total, // Amount in kobo (Paystack uses kobo for amounts)
-        ticketData: boothData
+        ticketData: { boothData, purchaseType }
       }),
     });
     const data = await response.json();
