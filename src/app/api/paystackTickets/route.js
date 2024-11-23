@@ -24,9 +24,9 @@ export async function POST(request) {
     console.log("client", clientPromise);
     const db = client.db("africaskincarefestival"); // Replace with your database name
     // Get the data from the request body
-    const {ticketData, session} = await request.json();
-    Object.values(session.metadata.ticketData.buyerForm).map(async (detail) => {
-      const TicketName = Object.keys(session.metadata.ticketData.buyerForm)[0];
+    const { ticketData, transactionData } = await request.json();
+    Object.values(transactionData.metadata.ticketData.buyerForm).map(async (detail) => {
+      const TicketName = Object.keys(transactionData.metadata.ticketData.buyerForm)[0];
       const buyerTicketPurchaseDetails = {
         form_firstName: detail[0][0].value,
         form_lastName: detail[0][1].value,
@@ -41,7 +41,7 @@ export async function POST(request) {
         form_country: detail[0][3].value
       }
       const BuyerTicketPurchase = {
-        Paystack_Id: session.reference,
+        Paystack_Id: transactionData.reference,
         Stripe_Id: '',
         // Access_Code: ticketData,
         Created_At: new Date(),
