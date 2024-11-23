@@ -39,11 +39,14 @@ export const SuccessOrErrorVerification = () => {
       };
       const transactionData = result.transactionData;
       await PostPaystackTicketPurchases({ ticketData, transactionData });
+      const email = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.buyerForm.form_email : Object.values(transactionData.metadata.buyerForm as {
+        [ticket: string]: { name: string; value: string }[]
+      }[])[0]["Email"];
       const transactionToPost = {
         Paystack_Id: transactionData.reference,
         Stripe_Id: "",
         Currency: result.transactionData.currency,
-        Email: dataToStore.payStackCheckout.email,
+        Email: email,
         UnitNumber: dataToStore.payStackCheckout.total
       };
       await PostTransaction(transactionToPost);
@@ -61,9 +64,6 @@ export const SuccessOrErrorVerification = () => {
         tickets: dataToStore.tickets,
         reference: transactionData.reference
       });
-      const email = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.buyerForm.form_email : Object.values(transactionData.metadata.buyerForm as {
-        [ticket: string]: { name: string; value: string }[]
-      }[])[0]["Email"];
       await sendEmail(email, template);
     }
   };
