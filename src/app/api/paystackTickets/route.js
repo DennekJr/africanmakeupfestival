@@ -44,14 +44,14 @@ export async function POST(request) {
       const BuyerTicketPurchase = {
         Paystack_Id: session.reference,
         Stripe_Id: '',
-        // Access_Code: session.access_code,
+        // Access_Code: ticketData,
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
       };
       await db.collection("ticket-purchases").insertOne(BuyerTicketPurchase);
     });
     // Array to add other ticket forms
-    return new Response(JSON.stringify('Data successfully added to Ticket-Purchases'), {
+    return new Response(JSON.stringify("Data successfully added to Ticket-Purchases", ticketData), {
       status: 201,
       headers: { 'Content-Type': 'application/json' },
     });
