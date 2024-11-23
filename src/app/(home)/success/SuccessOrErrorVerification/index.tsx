@@ -39,7 +39,7 @@ export const SuccessOrErrorVerification = () => {
       };
       const transactionData = result.transactionData;
       await PostPaystackTicketPurchases({ ticketData, transactionData });
-      const email = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.buyerForm.form_email : Object.values(transactionData.metadata.buyerForm as {
+      const email = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.boothData.buyerForm.form_email : Object.values(transactionData.metadata.buyerForm as {
         [ticket: string]: { name: string; value: string }[]
       }[])[0]["Email"];
       const transactionToPost = {
