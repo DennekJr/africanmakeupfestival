@@ -47,7 +47,6 @@ export const SuccessOrErrorVerification = () => {
         Object.values(transactionData.metadata.ticketData.buyerForm as {
           [ticket: string]: { name: string; value: string }[]
         }[]).map(async (detail) => {
-          console.log("detail", detail[0]);
           email = detail[0][4].value;
         });
       }
