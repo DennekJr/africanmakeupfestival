@@ -39,9 +39,10 @@ export const SuccessOrErrorVerification = () => {
       };
       const transactionData = result.transactionData;
       await PostPaystackTicketPurchases({ ticketData, transactionData });
-      const email = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.boothData.buyerForm.form_email : Object.values(transactionData.metadata.buyerForm as {
+      console.log(transactionData);
+      const email = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.boothData.buyerForm.form_email : Object.values(transactionData.metadata.ticketData.buyerForm as {
         [ticket: string]: { name: string; value: string }[]
-      }[])[0]["Email"];
+      }[])[0][4];
       const transactionToPost = {
         Paystack_Id: transactionData.reference,
         Stripe_Id: "",
