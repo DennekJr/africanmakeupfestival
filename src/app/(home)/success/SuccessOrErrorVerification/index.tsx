@@ -34,8 +34,7 @@ export const SuccessOrErrorVerification = () => {
       setIsSuccess(true);
       const dataToStore = result.transactionData.metadata;
       const transactionData = result.transactionData;
-      await PostPaystackTicketPurchases({ dataToStore });
-      console.log(transactionData);
+      await PostPaystackTicketPurchases({ transactionData });
       const isBoothPurchase = transactionData.metadata.purchaseType === "booth";
       const email = isBoothPurchase ? transactionData.metadata.boothData.buyerForm.form_email : Object.values(transactionData.metadata.ticketData.buyerForm as {
         [ticket: string]: { name: string; value: string }[]
@@ -65,6 +64,9 @@ export const SuccessOrErrorVerification = () => {
         tickets: dataToStore.tickets,
         reference: transactionData.reference
       });
+      console.log("email", email, transactionData.metadata.boothData.buyerForm.form_email, Object.values(transactionData.metadata.ticketData.buyerForm as {
+        [ticket: string]: { name: string; value: string }[]
+      }[])[0][4]);
       await sendEmail(email, template);
     }
   };
