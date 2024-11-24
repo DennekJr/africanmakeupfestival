@@ -51,7 +51,7 @@ export async function POST(request) {
       await db.collection("ticket-purchases").insertOne(BuyerTicketPurchase);
     });
     // Array to add other ticket forms
-    return new Response(JSON.stringify("Data successfully added to Ticket-Purchases", ticketData), {
+    return new Response(JSON.stringify("Data successfully added to Ticket-Purchases"), {
       status: 201,
       headers: { 'Content-Type': 'application/json' },
     });

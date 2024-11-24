@@ -64,7 +64,7 @@ export const SuccessOrErrorVerification = () => {
         tickets: dataToStore.tickets,
         reference: transactionData.reference
       });
-      console.log("email", email, transactionData.metadata.boothData.buyerForm.form_email, Object.values(transactionData.metadata.ticketData.buyerForm as {
+      console.log("email", email, Object.values(transactionData.metadata.ticketData.buyerForm as {
         [ticket: string]: { name: string; value: string }[]
       }[])[0][4]);
       await sendEmail(email, template);

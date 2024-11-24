@@ -22,7 +22,6 @@ export const SendEmailTemplate = ({
       </tr>`;
     }).join("");
   };
-  console.log(TicketRows());
   return `
   <!DOCTYPE html>
 <html lang="en">
