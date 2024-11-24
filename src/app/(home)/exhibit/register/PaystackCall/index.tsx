@@ -11,7 +11,7 @@ export const HandlePaystackTransaction = async ({payStackCheckout, boothData}: {
       },
       body: JSON.stringify({
         email: payStackCheckout.email, // Replace with actual customer email
-        amount: payStackCheckout.total, // Amount in kobo (Paystack uses kobo for amounts)
+        amount: payStackCheckout.total * 100, // Amount in kobo (Paystack uses kobo for amounts)
         ticketData: { boothData, purchaseType }
       }),
     });

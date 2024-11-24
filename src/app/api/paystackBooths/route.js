@@ -24,7 +24,7 @@ export async function POST(request) {
       Stripe_Id: "",
       // Access_Code: transactionData.access_code,
       Created_At: new Date(),
-      TicketDetails: buyerBoothPurchaseDetails,
+      BoothDetails: buyerBoothPurchaseDetails
     };
     await db.collection("booth-purchases").insertOne(BuyerTicketPurchase);
     // Array to add other ticket forms

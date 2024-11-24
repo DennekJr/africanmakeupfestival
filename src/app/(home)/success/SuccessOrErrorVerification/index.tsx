@@ -17,6 +17,7 @@ import { AgoraBox } from "@/app/(home)/components/newHome/utils";
 import { SendEmailTemplate } from "@/app/SendEmailTemplate";
 import { initialCheckoutStateType } from "@/app/lib/features/checkout/checkoutSlice";
 import { HandlePaystackBoothPurhase } from "@/app/(home)/exhibit/register/PaystackCall";
+import { formatCurrency } from "@/app/(home)/checkout/components/utils";
 
 export const SuccessOrErrorVerification = () => {
   const [isSuccess, setIsSuccess] = React.useState(false);
@@ -40,14 +41,11 @@ export const SuccessOrErrorVerification = () => {
         await PostPaystackTicketPurchases({ transactionData });
       } else {
         await HandlePaystackBoothPurhase({ transactionData });
-        // return {
-        //   paystackData: boothData,
-        //   transactionData: transactionData,
-        // };
-        // await PostBoothPurchases({ transactionData });
       }
       let email = "";
+      let total = "";
       if (isBoothPurchase) {
+        total = formatCurrency(Number(transactionData.amount));
         email = transactionData.metadata.boothData.buyerForm.form_email;
       } else {
         Object.values(transactionData.metadata.ticketData.buyerForm as {
@@ -55,13 +53,14 @@ export const SuccessOrErrorVerification = () => {
         }[]).map(async (detail) => {
           email = detail[0][4].value;
         });
+        total = formatCurrency(dataToStore.payStackCheckout.total);
       }
       const transactionToPost = {
         Paystack_Id: transactionData.reference,
         Stripe_Id: "",
         Currency: result.transactionData.currency,
         Email: email,
-        UnitNumber: dataToStore.payStackCheckout.total
+        UnitNumber: total
       };
       await PostTransaction(transactionToPost);
       let name = "";

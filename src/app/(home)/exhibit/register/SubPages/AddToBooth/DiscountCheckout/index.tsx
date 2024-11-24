@@ -65,28 +65,6 @@ const DiscountCheckout = () => {
       const authUrl = req.paystackData.data.authorization_url;
       router.push(authUrl);
     }
-    // .then(async ({ ticketData: boothData, transactionData }) => {
-    // const accessCode = transactionData.access_code;
-    // popup.resumeTransaction(accessCode);
-    // await HandlePaystackBoothPurhase({ boothData, transactionData });
-    // return {
-    //   paystackData: boothData,
-    //   transactionData: transactionData,
-    // };
-    // })
-    // .then(async ({ transactionData }) => {
-    //   const transactionToPost = {
-    //     Paystack_Id: transactionData.reference,
-    //     Stripe_Id: "",
-    //     Currency: "ngn",
-    //     Email: formData.form_email,
-    //     UnitNumber: total + addOnTotal,
-    //   };
-    //   await PostTransaction(transactionToPost);
-    // })
-    // .catch((error) => {
-    //   console.error("Paystack transaction error: ", error);
-    // });
   };
   const handlePayment = async () => {
     if (subPage === "addToBooth") {
