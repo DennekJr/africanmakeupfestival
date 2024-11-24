@@ -16,6 +16,7 @@ import { PurchaseDetailTable } from "@/app/(home)/success/SuccessOrErrorVerifica
 import { AgoraBox } from "@/app/(home)/components/newHome/utils";
 import { SendEmailTemplate } from "@/app/SendEmailTemplate";
 import { initialCheckoutStateType } from "@/app/lib/features/checkout/checkoutSlice";
+import { HandlePaystackBoothPurhase } from "@/app/(home)/exhibit/register/PaystackCall";
 
 export const SuccessOrErrorVerification = () => {
   const [isSuccess, setIsSuccess] = React.useState(false);
@@ -38,6 +39,11 @@ export const SuccessOrErrorVerification = () => {
       if (!isBoothPurchase) {
         await PostPaystackTicketPurchases({ transactionData });
       } else {
+        await HandlePaystackBoothPurhase({ transactionData });
+        // return {
+        //   paystackData: boothData,
+        //   transactionData: transactionData,
+        // };
         // await PostBoothPurchases({ transactionData });
       }
       let email = "";
