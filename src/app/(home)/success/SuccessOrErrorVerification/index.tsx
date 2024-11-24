@@ -40,9 +40,14 @@ export const SuccessOrErrorVerification = () => {
       } else {
         // await PostBoothPurchases({ transactionData });
       }
-      const email = isBoothPurchase ? transactionData.metadata.boothData.buyerForm.form_email : Object.values(transactionData.metadata.ticketData.buyerForm as {
-        [ticket: string]: { name: string; value: string }[]
-      }[])[0][4];
+      let email = "";
+      if (isBoothPurchase) {
+        email = transactionData.metadata.boothData.buyerForm.form_email;
+      } else {
+        Object.values(transactionData.metadata.ticketData.buyerForm).map(async (detail) => {
+          email = detail[0][4].value;
+        });
+      }
       const transactionToPost = {
         Paystack_Id: transactionData.reference,
         Stripe_Id: "",
