@@ -34,8 +34,12 @@ export const SuccessOrErrorVerification = () => {
       setIsSuccess(true);
       const dataToStore = result.transactionData.metadata;
       const transactionData = result.transactionData;
-      await PostPaystackTicketPurchases({ transactionData });
       const isBoothPurchase = transactionData.metadata.purchaseType === "booth";
+      if (!isBoothPurchase) {
+        await PostPaystackTicketPurchases({ transactionData });
+      } else {
+        // await PostBoothPurchases({ transactionData });
+      }
       const email = isBoothPurchase ? transactionData.metadata.boothData.buyerForm.form_email : Object.values(transactionData.metadata.ticketData.buyerForm as {
         [ticket: string]: { name: string; value: string }[]
       }[])[0][4];
@@ -66,7 +70,7 @@ export const SuccessOrErrorVerification = () => {
       });
       console.log("email", email, Object.values(transactionData.metadata.ticketData.buyerForm as {
         [ticket: string]: { name: string; value: string }[]
-      }[]));
+      }[])[0]);
       await sendEmail(email, template);
     }
   };
