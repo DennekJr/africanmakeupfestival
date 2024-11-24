@@ -44,7 +44,10 @@ export const SuccessOrErrorVerification = () => {
       if (isBoothPurchase) {
         email = transactionData.metadata.boothData.buyerForm.form_email;
       } else {
-        Object.values(transactionData.metadata.ticketData.buyerForm).map(async (detail) => {
+        Object.values(transactionData.metadata.ticketData.buyerForm as {
+          [ticket: string]: { name: string; value: string }[]
+        }[]).map(async (detail) => {
+          console.log("detail", detail[0]);
           email = detail[0][4].value;
         });
       }
