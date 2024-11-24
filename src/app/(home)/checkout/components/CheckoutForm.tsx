@@ -230,7 +230,7 @@ const CheckoutForm = () => {
           displayTicketDropdown={true}
         />
         <HiddenFormDropdown
-          title={"Assign other paystackTickets to different e-mail addresses?"}
+          title={"Assign other tickets to different e-mail addresses?"}
           subTitle={
             "Tickets will only be assigned to the email address(es) you provide"
           }
