@@ -33,14 +33,11 @@ export const SuccessOrErrorVerification = () => {
       setMetaData(result.transactionData.metadata);
       setIsSuccess(true);
       const dataToStore = result.transactionData.metadata;
-      const ticketData = {
-        buyerForm: dataToStore.buyerForm,
-        otherTicketForms: dataToStore.otherTicketForms !== undefined ? dataToStore.otherTicketForms : []
-      };
       const transactionData = result.transactionData;
-      await PostPaystackTicketPurchases({ ticketData, transactionData });
+      await PostPaystackTicketPurchases({ dataToStore });
       console.log(transactionData);
-      const email = transactionData.metadata.purchaseType === "booth" ? transactionData.metadata.boothData.buyerForm.form_email : Object.values(transactionData.metadata.ticketData.buyerForm as {
+      const isBoothPurchase = transactionData.metadata.purchaseType === "booth";
+      const email = isBoothPurchase ? transactionData.metadata.boothData.buyerForm.form_email : Object.values(transactionData.metadata.ticketData.buyerForm as {
         [ticket: string]: { name: string; value: string }[]
       }[])[0][4];
       const transactionToPost = {
@@ -52,13 +49,16 @@ export const SuccessOrErrorVerification = () => {
       };
       await PostTransaction(transactionToPost);
       let name = "";
-      if (ticketData.buyerForm === undefined) return;
-      Object.values(
-        ticketData.buyerForm as initialCheckoutStateType["billingInfo"]
-      ).map(
-        async (detail) =>
-          (name = `${detail[0][0].value} ${detail[0][1].value}`)
-      );
+      if (transactionData.metadata.purchaseType === "booth") {
+        name = transactionData.metadata.boothData.buyerForm.form_contactName;
+      } else {
+        Object.values(
+          transactionData.metadata.ticketData.buyerForm as initialCheckoutStateType["billingInfo"]
+        ).map(
+          async (detail) =>
+            (name = `${detail[0][0].value} ${detail[0][1].value}`)
+        );
+      }
       const template = SendEmailTemplate({
         name: name,
         total: dataToStore.payStackCheckout.total,
