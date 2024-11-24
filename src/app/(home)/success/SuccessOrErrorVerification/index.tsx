@@ -70,7 +70,7 @@ export const SuccessOrErrorVerification = () => {
       });
       console.log("email", email, Object.values(transactionData.metadata.ticketData.buyerForm as {
         [ticket: string]: { name: string; value: string }[]
-      }[])[0]);
+      }[])[0][4]);
       await sendEmail(email, template);
     }
   };
