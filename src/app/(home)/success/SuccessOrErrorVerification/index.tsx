@@ -4,7 +4,8 @@ import {
   PostPaystackTicketPurchases,
   PostTransaction,
   sendEmail,
-  VerifyPaystackTransaction, VerifyStripeTransaction
+  VerifyPaystackTransaction,
+  VerifyStripeTransaction
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import Box from "@mui/material/Box";
 import { Button, CircularProgress } from "@mui/material";
@@ -30,10 +31,16 @@ export const SuccessOrErrorVerification = () => {
   const reference = searchParams?.get("reference");
   const paymentType = searchParams?.get("payment");
   const sessionId = searchParams?.get("sessionId");
-  if (!reference || !sessionId) return notFound();
-  let checkStatus;
-  if (paymentType !== "stripe") {
-    checkStatus = async () => {
+  useEffect(() => {
+    if (hasRun.current) return; // Prevent double invocation
+    hasRun.current = true;
+    if (reference || sessionId) {
+      checkStatus();
+      // console.log("sessionId", sessionId, reference);
+    }
+  }, [sessionId, reference]);
+  const checkStatus = async () => {
+    if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
       if (result.transactionData.status === "success") {
         setCurrency(result.transactionData.currency);
@@ -42,7 +49,8 @@ export const SuccessOrErrorVerification = () => {
         setIsSuccess(true);
         const dataToStore = result.transactionData.metadata;
         const transactionData = result.transactionData;
-        const isBoothPurchase = transactionData.metadata.purchaseType === "booth";
+        const isBoothPurchase =
+          transactionData.metadata.purchaseType === "booth";
         if (!isBoothPurchase) {
           await PostPaystackTicketPurchases({ transactionData });
         } else {
@@ -54,9 +62,11 @@ export const SuccessOrErrorVerification = () => {
           total = formatCurrency(Number(transactionData.amount));
           email = transactionData.metadata.boothData.buyerForm.form_email;
         } else {
-          Object.values(transactionData.metadata.ticketData.buyerForm as {
-            [ticket: string]: { name: string; value: string }[]
-          }[]).map(async (detail) => {
+          Object.values(
+            transactionData.metadata.ticketData.buyerForm as {
+              [ticket: string]: { name: string; value: string }[];
+            }[]
+          ).map(async (detail) => {
             email = detail[0][4].value;
           });
           total = formatCurrency(dataToStore.payStackCheckout.total);
@@ -74,10 +84,11 @@ export const SuccessOrErrorVerification = () => {
           name = transactionData.metadata.boothData.buyerForm.form_contactName;
         } else {
           Object.values(
-            transactionData.metadata.ticketData.buyerForm as initialCheckoutStateType["billingInfo"]
+            transactionData.metadata.ticketData
+              .buyerForm as initialCheckoutStateType["billingInfo"]
           ).map(
             async (detail) =>
-              (name = `${detail[0][0].value} ${detail[0][1].value}`)
+              (name = `${detail[0][0].value} ${detail[0][1].value}`),
           );
         }
         const template = SendEmailTemplate({
@@ -88,26 +99,16 @@ export const SuccessOrErrorVerification = () => {
         });
         await sendEmail(email, template);
       }
-    };
-  } else {
-    checkStatus = async () => {
+    } else {
       await VerifyStripeTransaction(sessionId);
-    };
-  }
+    }
+  };
 
   const handlePrint = () => {
     if (typeof window !== "undefined") {
       window.print();
     }
   };
-  useEffect(() => {
-    if (hasRun.current) return; // Prevent double invocation
-    hasRun.current = true;
-    if (reference || sessionId) {
-      checkStatus();
-      // console.log("sessionId", sessionId, reference);
-    }
-  }, []);
 
   if (!isSuccess) {
     return (
@@ -159,7 +160,11 @@ export const SuccessOrErrorVerification = () => {
           <Box className={"border border-midGrey rounded-lg"}>
             {/*// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain*/}
             <PurchaseDetailTable
-              metaData={metaData?.purchaseType === "ticket" ? metaData?.ticketData : metaData.boothData}
+              metaData={
+                metaData?.purchaseType === "ticket"
+                  ? metaData?.ticketData
+                  : metaData.boothData
+              }
               currency={currency}
               total={total}
             />
