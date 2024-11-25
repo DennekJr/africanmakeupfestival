@@ -15,6 +15,15 @@ import { PrimaryButton } from "@/app/utils";
 
 export const ContactUs = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleMailto = () => {
+    window.location.href =
+      "mailto:contact@africaskincarefestival.com?subject=Hello&body=How are you?";
+  };
   return (
     <ContactUsBackgroundImageBox className={"py-[20px]"}>
       <Box
@@ -28,7 +37,11 @@ export const ContactUs = () => {
               <Box className={"w-full md:w-1/2"}>
                 <Box className={"flex flex-wrap relative content-start"}></Box>
               </Box>
-              <Box className={"w-full md:w-1/2 flex mx-auto relative px-[15px] md:px-0"}>
+              <Box
+                className={
+                  "w-full md:w-1/2 flex mx-auto relative px-[15px] md:px-0"
+                }
+              >
                 <Box
                   className={
                     "md:py-[10%] p-[8%] md:px-[9%] bg-[#F8F0EE] w-full flex flex-wrap content-start"
@@ -86,7 +99,7 @@ export const ContactUs = () => {
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
-                                    <ContactUsField field={"First Name"} />
+                                    <ContactUsField value={firstName} setValue={setFirstName} field={"First Name"} />
                                   </Box>
                                 </div>
                                 <div className="w-1/2 pb-[20px] inline-block z-[20] pr-[30px]">
@@ -94,7 +107,7 @@ export const ContactUs = () => {
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
-                                    <ContactUsField field={"Last Name"} />
+                                    <ContactUsField value={lastName} setValue={setLastName} field={"Last Name"} />
                                   </Box>
                                 </div>
                               </div>
@@ -107,7 +120,7 @@ export const ContactUs = () => {
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
-                                    <ContactUsField field={"Email"} />
+                                    <ContactUsField value={email} setValue={setEmail} field={"Email"} />
                                   </Box>
                                 </div>
                                 <div className="w-1/2 pb-[20px] inline-block z-[20] pr-[30px]">
@@ -115,7 +128,7 @@ export const ContactUs = () => {
                                     className={"m-0 box-border"}
                                     style={{ letterSpacing: 0 }}
                                   >
-                                    <ContactUsTextArea field={"Message"} />
+                                    <ContactUsTextArea field={"Message"} value={message} setValue={setMessage} />
                                   </Box>
                                 </div>
                               </div>
@@ -127,7 +140,9 @@ export const ContactUs = () => {
                                   <span className="text-left block text-lightSecondary">
                                     <span className="m-0 inline-block box-border">
                                       <label
-                                        className={"flex items-center w-full hover:cursor-pointer"}
+                                        className={
+                                          "flex items-center w-full hover:cursor-pointer"
+                                        }
                                       >
                                         <input
                                           type="checkbox"
@@ -144,8 +159,7 @@ export const ContactUs = () => {
                                         <ContactUsCheckBox
                                           onClick={() => {
                                             setIsClicked(!isClicked);
-                                          }
-                                          }
+                                          }}
                                           className={
                                             "relative text-[14px] pl-[1.8em] leading-[22px] " +
                                             `${!isClicked && "before:!content-['']"}`
@@ -164,9 +178,10 @@ export const ContactUs = () => {
                                   </span>
                                 </span>
                                 <br />
-                                <span
-                                >
-                                  <PrimaryButton name={"Get in Touch"} />
+                                <span onClick={handleMailto}>
+                                  <PrimaryButton
+                                    name={"Get in Touch"}
+                                  />
                                   {/*<input*/}
                                   {/*  className="bg-primary !text-white"*/}
                                   {/*  type="submit"*/}

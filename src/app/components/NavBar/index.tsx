@@ -113,7 +113,7 @@ export default function NavBar() {
                 sx={{ display: "block" }}
               >
                   {id === "getTicket" ? (
-                    <WhiteTicketButton name={name} />
+                    <WhiteTicketButton name={name} href={"/ticket"} />
                   ) : (
                     <TransparentArrowButton name={name} to={route} />
                   )}

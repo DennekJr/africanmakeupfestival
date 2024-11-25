@@ -9,7 +9,8 @@ export async function POST(request) {
     const paystackResponse = await axios.post('https://api.paystack.co/transaction/initialize', {
       email: email,
       amount: amount,
-      callback_url: process.env.BASE_URL
+      callback_url: process.env.BASE_URL + "success",
+      metadata: ticketData
     }, {
       headers: {
         'Authorization': process.env.PAYSTACK_SECRET_KEY, // Replace with your Paystack secret key
@@ -19,8 +20,14 @@ export async function POST(request) {
 
     // Check if the request to Paystack was successful
     if (paystackResponse.status === 200) {
+      const paystackData = paystackResponse.data;
       const transactionData = paystackResponse.data.data;
-      return new Response(JSON.stringify({ message: 'Transaction initialized successfully', transactionData, ticketData }), {
+      return new Response(JSON.stringify({
+        message: "Transaction initialized successfully",
+        paystackData,
+        transactionData,
+        ticketData
+      }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
       });

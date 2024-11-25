@@ -22,6 +22,7 @@ export const TicketPurchase = () => {
   ];
 
   const [isOpen, setIsOpen] = useState(initialState);
+  const [error, setError] = useState("");
   const values = useAppSelector((state) => state.checkout.tickets);
   const router = useRouter();
   const tickets = useMemo(() => Object.values(TICKETPURCHASEMENU), []);
@@ -41,6 +42,7 @@ export const TicketPurchase = () => {
     setIsOpen(newState);
   };
   const handleChange = (math: string, id: string) => {
+    setError("");
     const newState = values.map((ticketValue) => {
       if (ticketValue.ticketName !== id) {
         return ticketValue;
@@ -69,7 +71,12 @@ export const TicketPurchase = () => {
   };
 
   const handleProceedToCheckout = () => {
-    router.push('/checkout');
+    const hasAddedTicket = values.some(ticket => ticket.value > 0);
+    if (hasAddedTicket) {
+      router.push("/checkout");
+    } else {
+      setError("Please select ticket(s) to proceed to checkout");
+    }
   }
   return (
     <>
@@ -105,7 +112,7 @@ export const TicketPurchase = () => {
                 <button
                   type="button"
                   onClick={() => handleClick(ticket.id)}
-                  className="flex items-center gap-2 text-primary"
+                  className="flex items-center gap-2 text-midPrimary"
                 >
                   <span>See more</span>
                   {open?.isOpen ? <ExpandLess /> : <ExpandMore />}
@@ -141,8 +148,8 @@ export const TicketPurchase = () => {
           </Box>
         );
       })}
-      <Box className="py-10 lg:py-12 flex justify-center">
-        {" "}
+      <Box className="py-10 lg:py-12 flex flex-col justify-center">
+        <p className="text-center text-warning text-lg font-medium">{error}</p>
         <button
           onClick={handleProceedToCheckout}
           className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 py-4 rounded-full mx-auto min-w-[80%]"

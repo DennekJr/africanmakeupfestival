@@ -6,15 +6,22 @@ export const SPONSORCONSTANTS:Record<string, SponsorType> = {
   one: {
     id: 'piggyvest',
     title: 'Piggyvest',
-    content: 'Adipiscing elit, sed do euismod tempor incidunt ut labore et dolore magna aliqua.',
-    url: '/',
+    content: "Empowering growth, we celebrate innovation and self-care at the Skincare Festival.",
+    url: "/sponsor",
     image: '/images/piggyvest.webp'
   },
 two: {
     id: 'medplus',
-    title: 'MedPlus',
-    content: 'Adipiscing elit, sed do euismod tempor incidunt ut labore et dolore magna aliqua.',
-    url: '/',
-    image: '/images/medPlus.webp'
+  title: "Rejuvenee",
+  content: "Rejuvenee proudly champions wellness and innovation, supporting events that inspire and empower",
+  url: "/sponsor",
+  image: "/images/sponsor/Rejuvenee-new-logo.webp"
+},
+  three: {
+    id: "pocket",
+    title: "Pocket",
+    content: "Pocket is excited to support creativity and innovation, empowering connections that inspire growth.",
+    url: "/sponsor",
+    image: "/images/sponsor/pocket.svg"
   }
 }

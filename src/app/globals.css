@@ -8,29 +8,32 @@
   --color: hsl(240 10% 3.9%);
 }
 
-div,
-span,
 h1,
+span,
+header,
+footer,
 h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  font-family: font-montserrat, sans-serif;
+}
+
+p,
+a,
+button,
+textarea,
 button,
 input,
-textarea,
 select,
 option,
 nav,
 section,
-header,
-footer,
+div,
 aside {
-  font-family: font-montserrat, sans-serif;
-}
-
-p, a, button {
   font-family: font-geist, sans-serif !important;
+  font-weight: 300;
 }
 
 input,
@@ -44,7 +47,6 @@ input:-webkit-autofill {
 input:is(:-webkit-autofill, :autofill) {
   background: none;
 }
-
 
 body {
   color: var(--foreground);
@@ -74,52 +76,52 @@ body {
 
 @keyframes whiteBgFilledButtonHover {
   from {
-    color: theme('colors.primary');
-    background-color: theme('colors.lightGrey');
+    color: theme("colors.primary");
+    background-color: theme("colors.lightGrey");
     /*box-shadow: inset 0 0 0 0.01px theme('colors.primary');*/
   }
   to {
-    box-shadow: inset 14.5em 0 0 0.01px theme('colors.primary');
-    color: theme('colors.textColor');
+    box-shadow: inset 14.5em 0 0 0.01px theme("colors.primary");
+    color: theme("colors.textColor");
     /*background-color: theme('colors.primary');*/
   }
 }
 
 @keyframes primaryBgFilledButtonHover {
   from {
-    color: theme('colors.textColor');
-    background-color: theme('colors.primary');
+    color: theme("colors.textColor");
+    background-color: theme("colors.primary");
     /*box-shadow: inset 0 0 0 0.01px theme('colors.primary');*/
   }
   to {
-    box-shadow: inset 14.5em 0 0 0.01px theme('colors.textColor');
-    color: theme('colors.primary');
+    box-shadow: inset 14.5em 0 0 0.01px theme("colors.textColor");
+    color: theme("colors.primary");
     /*background-color: theme('colors.primary');*/
   }
 }
 
 @keyframes whiteBgFilledButtonLeave {
   from {
-    box-shadow: inset -14em 0 0 0.01px theme('colors.primary');
-    color: theme('colors.textColor');
+    box-shadow: inset -14em 0 0 0.01px theme("colors.primary");
+    color: theme("colors.textColor");
     /*background-color: theme('colors.textColor');*/
   }
   to {
-    box-shadow: inset 0 0 0 0.01px theme('colors.lightGrey');
-    color: theme('colors.primary');
+    box-shadow: inset 0 0 0 0.01px theme("colors.lightGrey");
+    color: theme("colors.primary");
     /*background-color: theme('colors.primary');*/
   }
 }
 
 @keyframes primaryBgFilledButtonLeave {
   from {
-    box-shadow: inset -14em 0 0 0.01px theme('colors.textColor');
-    color: theme('colors.primary');
+    box-shadow: inset -14em 0 0 0.01px theme("colors.textColor");
+    color: theme("colors.primary");
     /*background-color: theme('colors.textColor');*/
   }
   to {
-    box-shadow: inset 0 0 0 0.01px theme('colors.primary');
-    color: theme('colors.textColor');
+    box-shadow: inset 0 0 0 0.01px theme("colors.primary");
+    color: theme("colors.textColor");
     /*background-color: theme('colors.primary');*/
   }
 }

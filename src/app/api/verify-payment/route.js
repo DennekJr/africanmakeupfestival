@@ -1,11 +1,13 @@
 import axios from "axios";
 
+export const dynamic = "force-dynamic"; // Ensures this route is always treated dynamically
+
 export async function GET(request) {
   try {
     // Parse the request body
     const { searchParams } = new URL(request.url);
     const reference = searchParams.get("reference");
-    console.log(reference);
+    console.log("reference", reference);
     if (!reference) {
       return new Response(
         JSON.stringify({

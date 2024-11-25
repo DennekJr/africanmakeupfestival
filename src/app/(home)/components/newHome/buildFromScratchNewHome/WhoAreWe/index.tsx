@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
 export const WhoAreWe = () => {
+  // const wakeMongo = useMongo();
   return (
     <section className={'mx-[auto] my-24'}>
       <Box className={"relative flex items-center justify-center flex-col m-6"}>
@@ -27,9 +28,9 @@ export const WhoAreWe = () => {
           <Box className={"flex-wrap text-primary"}>
             <Typography>Who We Are</Typography>
             <h1 className={"break-words " +
-              'text-[27px] md:text-[44px] lg:text-[60px]'}>
-              Expert chefs, Interactive workshops, and a world of flavors await
-              you at our <span className={'text-[#FE9E11]'}>food festival</span>
+              "text-[27px] md:text-[44px] lg:text-[60px]"}>
+              Expert aestheticians, hands-on skincare workshops, and a world of beauty tips await you at our <span
+              className={"text-[#FE9E11]"}>skincare festival</span>
             </h1>
           </Box>
           <Box

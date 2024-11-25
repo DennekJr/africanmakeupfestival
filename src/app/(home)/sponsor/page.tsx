@@ -3,6 +3,7 @@ import * as React from "react";
 import { Hero } from "./Hero";
 import { MarqueeSlide } from "../components/Marquee";
 import { Partners } from "./Partners";
+import { SponsorshipTier } from "@/app/(home)/sponsor/sponsorTiers";
 
 const Sponsor: () => Promise<React.JSX.Element> = async () => {
   return (
@@ -14,6 +15,7 @@ const Sponsor: () => Promise<React.JSX.Element> = async () => {
       <Hero />
       <MarqueeSlide />
       <Partners />
+      <SponsorshipTier />
     </Box>
   );
 };

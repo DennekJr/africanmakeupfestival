@@ -93,9 +93,9 @@ export const BoothCheckout = () => {
                     </label>
                   </div>
                   <div
-                    className="space-y-2 flex rounded-2xl px-6 py-12 border border-[#2C2A32]"
+                    className="space-y-2 flex rounded-2xl px-6 py-12 border border-[#2C2A32] opacity-50"
                     style={{ position: "relative" }}
-                    onClick={() => dispatch(setPaymentMethod("stripe"))}
+                    // onClick={() => dispatch(setPaymentMethod("stripe"))}
                   >
                     <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[#FCFCFC] text-base leading-[22.4px] font-normal flex flex-col space-y-2.5 flex-1">
                       <div className="flex justify-between flex-1">

@@ -10,16 +10,16 @@ export const MarqueeSlide = () => {
       loop={0}
     >
       <span className="px-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Herel Play, Ikoyi, Lagos, Nigeria. See you there!
       </span>
       <MarqueeStarIcon />
-      <span className="px-12">Sat, 20th December, 2024</span>
+      <span className="px-12">Sat, 21th December, 2024</span>
       <MarqueeStarIcon />
       <span className="px-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Herel Play, Ikoyi, Lagos, Nigeria. See you there!
       </span>
       <MarqueeStarIcon />
-      <span className="px-12">Sat, 20th December, 2024</span>
+      <span className="px-12">Sun, 22th December, 2024</span>
       <MarqueeStarIcon />
     </Marquee>
   );

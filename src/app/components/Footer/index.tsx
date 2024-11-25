@@ -53,7 +53,7 @@ export const Footer = () => {
                 decoding="async"
                 className="md:w-[337px] w-[500px] h-full object-contain object-left"
                 style={{ color: "black", transition: "all 0.3s ease" }}
-                src="/images/logos/footerLogoColor.svg"
+                src="/images/footer.svg"
               />
             </Link>
             <Box
@@ -167,7 +167,7 @@ export const Footer = () => {
                 </Typography>
               </a>
             </Box>
-            <Link href="https://sparkafrica.co/">
+            <Link href="https://www.piggyvest.com/">
               <Image
                 alt="Spark Monogram"
                 loading="lazy"

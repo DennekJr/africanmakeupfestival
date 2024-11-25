@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useMemo, useState } from "react";
 import { REGISTERFORMMENU } from "../../../(home)/exhibit/register/register.constants";
-import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
+import { useAppDispatch } from "../../../lib/hooks";
 import {
   ExhibitionBoothBillingInfo,
   ExhibitionFormSchema,
@@ -23,8 +23,7 @@ import { CountryPhoneInput } from "../../../components/Inputs/PhoneInput";
 import { CountryDropdown } from "../../../components/Inputs/CountryDropdown";
 import { useFormik } from "formik";
 import { PaynowAndPrivacyPolicy } from "@/app/(home)/exhibit/register/PaynowAndPrivacyPolicy";
-import { Label, postBooth } from "@/app/(home)/exhibit/register/utils";
-import { useRouter } from "next/navigation";
+import { Label } from "@/app/(home)/exhibit/register/utils";
 
 export const initialFormData = {
   form_booth: "",
@@ -44,18 +43,12 @@ export const RegisterBoothForm = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [booth, setBooth] = useState("");
   const dispatch = useAppDispatch();
-  const { formValues, total } = useAppSelector((state) => state.exhibition);
-  const navigate = useRouter();
-  const dataPlusCost = {
-    buyerDetails: formValues,
-    boothCost: total,
-  };
 
   const formik = useFormik({
     initialValues: initialFormData,
     validationSchema: ExhibitionFormSchema,
     onSubmit: async () => {
-      postBooth(dataPlusCost).then(() => navigate.push('/'));
+      // postBooth(dataPlusCost).then(() => navigate.push('/'));
     },
   });
 
@@ -70,6 +63,7 @@ export const RegisterBoothForm = () => {
   };
   const handleSelectChange = (e: SelectChangeEvent<unknown>) => {
     const value = e.target.value as string;
+    console.log("value", value);
     const newFormData: ExhibitionBoothBillingInfo = {
       ...formData,
       ["form_booth"]: value,
@@ -77,6 +71,7 @@ export const RegisterBoothForm = () => {
     setBooth(value);
     const priceWithComma = value.split(" ").pop();
     const price = Number(priceWithComma?.replace(/,/g, ""));
+    console.log("price", price);
     setFormData(newFormData);
     dispatch(setTotal(price));
     dispatch(setFormValues({ booth: value, data: newFormData }));
@@ -144,16 +139,16 @@ export const RegisterBoothForm = () => {
                   <MenuItem
                     key={`90${index}-${field.id}1`}
                     className={"capitalize  hover:!bg-gray-100"}
-                    value={"OASIS (3x3) NGN 850,000"}
+                    value={"STANDARD (2mx3m) NGN 600,000"}
                   >
-                    {"OASIS (3x3) NGN 850,000"}
+                    {"STANDARD (2mx3m) NGN 600,000"}
                   </MenuItem>
                   <MenuItem
                     key={`98${index}-${field.id}2`}
                     className={"capitalize  hover:!bg-gray-100"}
-                    value={"NEXT GEN (3x3) NGN 1,200,000"}
+                    value={"PREMIUM (2mx6m) NGN 1,200,000"}
                   >
-                    {"NEXT GEN (3x3) NGN 1,200,000"}
+                    {"PREMIUM (2mx6m) NGN 1,200,000"}
                   </MenuItem>
                 </CssSelectField>
               </FormControl>

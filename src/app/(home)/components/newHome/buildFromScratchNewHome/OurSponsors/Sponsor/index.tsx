@@ -7,7 +7,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
   return (
     <Box className={"sponsorContainer w-full md:w-1/2 lg:w-[33.33%] inline-block align-top relative pb-[20px] md:pb-0 md:pr-[30px]"}>
       <Box className={"relative text-left"}>
-        <Box className={"m-0 box-border min-h-[60px]"}>
+        <Box className={"mb-10 box-border h-[60px] min-h-[60px]"}>
           <Image
             loading="lazy"
             decoding="async"
@@ -30,7 +30,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
             <span className={"block"}>{sponsor.content}</span>
           </Box>
           <a
-            href="/"
+            href={sponsor.url}
             className={
               "1.7em relative inline-block text-[16px] leading-[21px] z-10 overflow-hidden"
             }
@@ -44,7 +44,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
                   "visibility 0.4s ease, margin-right 0.4s ease-out, text-indent 0.5s ease-out, opacity 0.4s ease",
                 willChange: "visibility, margin-right, text-indent, opacity",
               }}
-            ><h4>Read More</h4></span>
+            ><h4>View More</h4></span>
             <span>
               <ArrowRightAltOutlined className={'relative text-primary inline-block align-middle overflow-hidden w-[1.4em] h-[1.4em]'}/>
             </span>

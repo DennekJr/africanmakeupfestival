@@ -53,7 +53,7 @@ export const AddToBooth = () => {
         }
       >
         <Box className={"relative w-full grid gap-12"}>
-          <div className="w-full grid max-w-[1320px] mx-auto gap-6 lg:gap-12 px-6 lg:px-0">
+          <div className="w-full grid max-w-[1320px] mx-auto gap-6 lg:gap-12 px-6 xl:px-6">
             <div className="col-span-1 grid grid-cols-2">
               <div>
                 <h3 className="text-[23px] text-black lg:text-5xl tracking-tighter font-medium lg:leading-[52.8px]">
@@ -84,7 +84,7 @@ export const AddToBooth = () => {
         </Box>
         <Box
           className={
-            "w-full max-w-[1320px] mx-auto grid gap-10 lg:gap-14 px-6 lg:px-0"
+            "w-full max-w-[1320px] mx-auto grid gap-10 lg:gap-14 px-6 xl:px-0"
           }
         >
           <h3 className="text-4xl lg:text-6xl lg:leading-[66px] tracking-[-1px] font-medium text-[#2C2A32]">
