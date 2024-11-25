@@ -22,7 +22,7 @@ export const ContactUs = () => {
 
   const handleMailto = () => {
     window.location.href =
-      "mailto:contact@africaskincarefestival.com?subject=Hello&body=How are you?";
+      `mailto:contact@africaskincarefestival.com?subject=Get%20In%20Touch&body=This%20is%20${firstName}%20${lastName},%0A${message}`;
   };
   return (
     <ContactUsBackgroundImageBox className={"py-[20px]"}>
