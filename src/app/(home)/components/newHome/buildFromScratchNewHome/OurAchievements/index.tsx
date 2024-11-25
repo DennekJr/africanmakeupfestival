@@ -57,7 +57,7 @@ export const OurAchievements = () => {
                   >
                     Bringing Skin care learning to life
                   </h1>
-                  <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-lightSecondary mb-0 text-[1rem]"}>
+                  <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-[1rem] lg:text-[1.3rem] text-lightSecondary mb-0 text-[1rem]"}>
                     <p>
                       To change the narrative in the
 skincare industry in Africa by
@@ -87,7 +87,7 @@ industry.
                 </Box>
               </AgoraTransitionBox>
             </Box>
-            <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-lightSecondary mb-0 text-[1rem]"}>
+            <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-[1rem] lg:text-[1.3rem] text-lightSecondary mb-0 text-[1rem]"}>
                     <p className={"mt-[1em]"}>
                       To become the premier
 platform celebrating and
