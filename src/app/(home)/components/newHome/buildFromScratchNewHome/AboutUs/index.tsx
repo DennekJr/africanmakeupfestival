@@ -138,7 +138,7 @@ export const AboutUs = () => {
                           >
                             Our Objectives
                           </span>
-                          <AgoraTransitionBox className={"mb-0"}>
+                          <AgoraTransitionBox className={"mb-0 mt-4"}>
                             <ul className={"pl-[30px] text-primary"}>
                               {ourObjectives.map((objective, index) => {
                                 return <li

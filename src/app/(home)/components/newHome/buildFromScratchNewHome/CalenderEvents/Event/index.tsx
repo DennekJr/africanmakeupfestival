@@ -15,7 +15,7 @@ export const Event = ({event}: {event: CalenderEventTypes}) => {
     }
     if(event.ticketCount > 0 && event.ticketType === 'purchase'){
       return <HomeButton href={"/ticket"} className={"border-primary bg-primary text-textColor"}>
-        <span className={'inline-block align-middle whitespace-normal'}>Buy Tickets</span>
+        <span className={"inline-block w-max align-middle whitespace-normal"}>Buy Tickets</span>
       </HomeButton>
     }
     return <Box className={'lg:w-[120px] lg:max-w-[120px]'}>

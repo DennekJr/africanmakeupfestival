@@ -167,7 +167,7 @@ export const Footer = () => {
                 </Typography>
               </a>
             </Box>
-            <Link href="https://sparkafrica.co/">
+            <Link href="https://www.piggyvest.com/">
               <Image
                 alt="Spark Monogram"
                 loading="lazy"
@@ -175,7 +175,7 @@ export const Footer = () => {
                 height={18}
                 decoding="async"
                 style={{ color: "transparent" }}
-                src="/images/piggyvest.webpq"
+                src="/images/piggyvest.webp"
               />
             </Link>
           </Box>

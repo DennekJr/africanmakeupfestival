@@ -9,9 +9,7 @@ import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
 import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
 import {
-  initiatePaystackTransaction,
-  PostStripeTicketPurchases,
-  PostTransaction
+  initiatePaystackTransaction
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -88,6 +86,8 @@ const CheckoutForm = () => {
         buyerForm: billingInfo,
         otherTicketForms: formValues,
       },
+      total: total,
+      purchaseType: "ticket"
     };
     const response = await fetch("/api/stripe", {
       method: "POST",
@@ -97,23 +97,13 @@ const CheckoutForm = () => {
       }),
     });
     const { session, itemData } = await response.json();
+    console.log("session", session, itemData);
     const sessionId = session.id;
     const stripe = await stripePromise;
     if (stripe === null) return;
     if ("redirectToCheckout" in stripe) {
-      await PostStripeTicketPurchases({ itemData, session }).then(async () => {
-        const transactionToPost = {
-          Paystack_Id: "",
-          Stripe_Id: sessionId,
-          Currency: session.currency,
-          Email: payStackCheckout.email,
-          UnitNumber: payStackCheckout.total
-        };
-        console.log("Transaction to post", transactionToPost);
-        await PostTransaction(transactionToPost);
-      });
       const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) console.warn("Stripe BoothCheckout error:", error.message);
+      if (error) console.warn("Stripe Booth payment error:", error.message);
     }
     if (Object.keys(formErrors).length === 0) {
     }
@@ -214,6 +204,7 @@ const CheckoutForm = () => {
             <button
               onClick={handleStripePayment}
               type={"submit"}
+              disabled={true}
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">

@@ -4,12 +4,12 @@ import {
   PostPaystackTicketPurchases,
   PostTransaction,
   sendEmail,
-  VerifyPaystackTransaction
+  VerifyPaystackTransaction, VerifyStripeTransaction
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import Box from "@mui/material/Box";
 import { Button, CircularProgress } from "@mui/material";
-import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { notFound, useSearchParams } from "next/navigation";
+import { useEffect, useRef } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { PurchaseDetailTable } from "@/app/(home)/success/SuccessOrErrorVerification/PurchaseDetailTable";
@@ -20,6 +20,7 @@ import { HandlePaystackBoothPurhase } from "@/app/(home)/exhibit/register/Paysta
 import { formatCurrency } from "@/app/(home)/checkout/components/utils";
 
 export const SuccessOrErrorVerification = () => {
+  const hasRun = useRef(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [currency, setCurrency] = React.useState("");
   const [total, setTotal] = React.useState(0);
@@ -27,75 +28,86 @@ export const SuccessOrErrorVerification = () => {
   const [metaData, setMetaData] = React.useState<any>();
   const searchParams = useSearchParams();
   const reference = searchParams?.get("reference");
-  const checkStatus = async () => {
-    const result = await VerifyPaystackTransaction(reference);
-    if (result.transactionData.status === "success") {
-      setCurrency(result.transactionData.currency);
-      setTotal(result.transactionData.amount);
-      setMetaData(result.transactionData.metadata);
-      setIsSuccess(true);
-      const dataToStore = result.transactionData.metadata;
-      const transactionData = result.transactionData;
-      const isBoothPurchase = transactionData.metadata.purchaseType === "booth";
-      if (!isBoothPurchase) {
-        await PostPaystackTicketPurchases({ transactionData });
-      } else {
-        await HandlePaystackBoothPurhase({ transactionData });
-      }
-      let email = "";
-      let total = "";
-      if (isBoothPurchase) {
-        total = formatCurrency(Number(transactionData.amount));
-        email = transactionData.metadata.boothData.buyerForm.form_email;
-      } else {
-        Object.values(transactionData.metadata.ticketData.buyerForm as {
-          [ticket: string]: { name: string; value: string }[]
-        }[]).map(async (detail) => {
-          email = detail[0][4].value;
+  const paymentType = searchParams?.get("payment");
+  const sessionId = searchParams?.get("sessionId");
+  if (!reference || !sessionId) return notFound();
+  let checkStatus;
+  if (paymentType !== "stripe") {
+    checkStatus = async () => {
+      const result = await VerifyPaystackTransaction(reference);
+      if (result.transactionData.status === "success") {
+        setCurrency(result.transactionData.currency);
+        setTotal(result.transactionData.amount);
+        setMetaData(result.transactionData.metadata);
+        setIsSuccess(true);
+        const dataToStore = result.transactionData.metadata;
+        const transactionData = result.transactionData;
+        const isBoothPurchase = transactionData.metadata.purchaseType === "booth";
+        if (!isBoothPurchase) {
+          await PostPaystackTicketPurchases({ transactionData });
+        } else {
+          await HandlePaystackBoothPurhase({ transactionData });
+        }
+        let email = "";
+        let total = "";
+        if (isBoothPurchase) {
+          total = formatCurrency(Number(transactionData.amount));
+          email = transactionData.metadata.boothData.buyerForm.form_email;
+        } else {
+          Object.values(transactionData.metadata.ticketData.buyerForm as {
+            [ticket: string]: { name: string; value: string }[]
+          }[]).map(async (detail) => {
+            email = detail[0][4].value;
+          });
+          total = formatCurrency(dataToStore.payStackCheckout.total);
+        }
+        const transactionToPost = {
+          Paystack_Id: transactionData.reference,
+          Stripe_Id: "",
+          Currency: result.transactionData.currency,
+          Email: email,
+          UnitNumber: total
+        };
+        await PostTransaction(transactionToPost);
+        let name = "";
+        if (transactionData.metadata.purchaseType === "booth") {
+          name = transactionData.metadata.boothData.buyerForm.form_contactName;
+        } else {
+          Object.values(
+            transactionData.metadata.ticketData.buyerForm as initialCheckoutStateType["billingInfo"]
+          ).map(
+            async (detail) =>
+              (name = `${detail[0][0].value} ${detail[0][1].value}`)
+          );
+        }
+        const template = SendEmailTemplate({
+          name: name,
+          total: dataToStore.payStackCheckout.total,
+          tickets: dataToStore.tickets,
+          reference: transactionData.reference
         });
-        total = formatCurrency(dataToStore.payStackCheckout.total);
+        await sendEmail(email, template);
       }
-      const transactionToPost = {
-        Paystack_Id: transactionData.reference,
-        Stripe_Id: "",
-        Currency: result.transactionData.currency,
-        Email: email,
-        UnitNumber: total
-      };
-      await PostTransaction(transactionToPost);
-      let name = "";
-      if (transactionData.metadata.purchaseType === "booth") {
-        name = transactionData.metadata.boothData.buyerForm.form_contactName;
-      } else {
-        Object.values(
-          transactionData.metadata.ticketData.buyerForm as initialCheckoutStateType["billingInfo"]
-        ).map(
-          async (detail) =>
-            (name = `${detail[0][0].value} ${detail[0][1].value}`)
-        );
-      }
-      const template = SendEmailTemplate({
-        name: name,
-        total: dataToStore.payStackCheckout.total,
-        tickets: dataToStore.tickets,
-        reference: transactionData.reference
-      });
-      console.log("email", email, Object.values(transactionData.metadata.ticketData.buyerForm as {
-        [ticket: string]: { name: string; value: string }[]
-      }[])[0][4]);
-      await sendEmail(email, template);
-    }
-  };
+    };
+  } else {
+    checkStatus = async () => {
+      await VerifyStripeTransaction(sessionId);
+    };
+  }
+
   const handlePrint = () => {
     if (typeof window !== "undefined") {
       window.print();
     }
   };
   useEffect(() => {
-    if (reference) {
+    if (hasRun.current) return; // Prevent double invocation
+    hasRun.current = true;
+    if (reference || sessionId) {
       checkStatus();
+      // console.log("sessionId", sessionId, reference);
     }
-  }, [reference]);
+  }, []);
 
   if (!isSuccess) {
     return (

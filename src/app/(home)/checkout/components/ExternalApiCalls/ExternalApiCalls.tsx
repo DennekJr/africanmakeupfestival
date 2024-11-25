@@ -1,4 +1,6 @@
 import { TicketBilingInfo } from "@/app/lib/features/checkout/checkoutSlice";
+import { loadStripe } from "@stripe/stripe-js";
+import process from "process";
 
 export const PostPaystackTicketPurchases = async (ticketData) => {
   try {
@@ -144,6 +146,19 @@ export const VerifyPaystackTransaction = async (reference) => {
     } else {
       console.error("Error initializing transaction:", data);
     }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const VerifyStripeTransaction = async (stripeId) => {
+  try {
+    const stripePromise = loadStripe(
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
+    );
+    const stripe = await stripePromise;
+    const session = await stripe?.retrieveOrder(stripeId);
+    console.log("session", session);
   } catch (error) {
     console.error("Error:", error);
   }

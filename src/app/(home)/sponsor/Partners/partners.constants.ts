@@ -28,7 +28,7 @@ export const PARTNERS_MENU: Record<string, PartnersIcons> = {
   herel: {
     id: "herel",
     name: "herel",
-    src: "/images/sponsor/herel.webp",
+    src: "/images/sponsor/herel.svg",
     disabled: false,
   },
   splice: {

@@ -9,7 +9,7 @@ export const HeroButtons = () => {
       "flex flex-col lg:flex-row gap-4 w-full items-center justify-center"
     }
   >
-    <WhiteTicketButton name={"GET A TICKET"} />
+    <WhiteTicketButton href={"/ticket"} name={"GET A TICKET"} />
     <TransparentArrowButton name={"BOOK A STAND"} to={"/exhibit"} />
   </Box>;
 };
