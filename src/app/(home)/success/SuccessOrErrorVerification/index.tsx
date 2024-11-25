@@ -110,6 +110,7 @@ export const SuccessOrErrorVerification = () => {
     }
   };
 
+  if (!sessionId || !reference) return notFound();
   if (!isSuccess) {
     return (
       <Box
