@@ -2,13 +2,13 @@ export const ExperiencesConstants: Record<
   string,
   { id: string; title: string; subtitle: string; image: string }
 > = {
-  one: {
-    id: "firstExp",
-    title: "Panel Discussions",
-    subtitle:
-      "Interactive sessions led by industry experts discussing trends, challenges, and opportunities in the skincare industry.",
-    image: "/images/heroImageChoices/choice5.webp"
-  },
+  // one: {
+  //   id: "firstExp",
+  //   title: "Panel Discussions",
+  //   subtitle:
+  //     "Interactive sessions led by industry experts discussing trends, challenges, and opportunities in the skincare industry.",
+  //   image: "/images/heroImageChoices/choice5.webp"
+  // },
   two: {
     id: "secondHighlight",
     title: "Vendor Exhibition",
@@ -41,37 +41,37 @@ export const ExperiencesConstants: Record<
       "attendees",
     image: "/images/heroImageChoices/choice4.webp"
   },
-  five: {
-    id: "fifthHighlight",
-    title: "Guest Speaker Series",
-    subtitle:
-      "A lineup of esteemed\n" +
-      "brand founders,\n" +
-      "dermatologists and\n" +
-      "beauty influencers\n" +
-      "sharing their insights\n" +
-      "and journeys in the\n" +
-      "skincare industry",
-    image: "/images/heroImageChoices/choice4.webp"
-  },
-  six: {
-    id: "sixthHighlight",
-    title: "Networking Opportunities",
-    subtitle:
-      "Facilitating connections\n" +
-      "between industry\n" +
-      "professionals, local\n" +
-      "brands, and attendees",
-    image: "/images/heroImageChoices/choice4.webp"
-  },
-  seven: {
-    id: "seventhHighlight",
-    title: "Entertainment",
-    subtitle: "Music and dance to\n" +
-      "provide a vibrant and\n" +
-      "festive atmosphere.",
-    image: "/images/heroImageChoices/choice4.webp"
-  },
+  // five: {
+  //   id: "fifthHighlight",
+  //   title: "Guest Speaker Series",
+  //   subtitle:
+  //     "A lineup of esteemed\n" +
+  //     "brand founders,\n" +
+  //     "dermatologists and\n" +
+  //     "beauty influencers\n" +
+  //     "sharing their insights\n" +
+  //     "and journeys in the\n" +
+  //     "skincare industry",
+  //   image: "/images/heroImageChoices/choice4.webp"
+  // },
+  // six: {
+  //   id: "sixthHighlight",
+  //   title: "Networking Opportunities",
+  //   subtitle:
+  //     "Facilitating connections\n" +
+  //     "between industry\n" +
+  //     "professionals, local\n" +
+  //     "brands, and attendees",
+  //   image: "/images/heroImageChoices/choice4.webp"
+  // },
+  // seven: {
+  //   id: "seventhHighlight",
+  //   title: "Entertainment",
+  //   subtitle: "Music and dance to\n" +
+  //     "provide a vibrant and\n" +
+  //     "festive atmosphere.",
+  //   image: "/images/heroImageChoices/choice4.webp"
+  // },
   eight: {
     id: "eighthHighlight",
     title: "Exclusive Merchandise and Giveaways",
@@ -79,6 +79,6 @@ export const ExperiencesConstants: Record<
       "product samples,\n" +
       "coupons, and\n" +
       "festival-branded items.",
-    image: "/images/heroImageChoices/choice4.webp"
+    image: "/images/heroImageChoices/choice5.webp"
   }
 };

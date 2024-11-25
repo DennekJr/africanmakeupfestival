@@ -118,7 +118,7 @@ const DiscountCheckout = () => {
             disabled={true}
             onClick={handlePayment}
           >
-            <span className="text-center w-full h-full">CHECKOUT NOW</span>
+            <span className="text-center w-full h-full">CHECKOUT NOW - coming soon</span>
           </button>
           <button
             onClick={handleCancel}

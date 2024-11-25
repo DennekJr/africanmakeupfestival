@@ -6,7 +6,7 @@ import {
 } from "@/app/(home)/components/newHome/utils";
 import Image from "next/image";
 import { ArrowDownwardOutlined } from "@mui/icons-material";
-import { AchievementValues } from "@/app/(home)/components/newHome/buildFromScratchNewHome/OurAchievements/AchievementValues";
+// import { AchievementValues } from "@/app/(home)/components/newHome/buildFromScratchNewHome/OurAchievements/AchievementValues";
 
 export const OurAchievements = () => {
   return (
@@ -50,22 +50,22 @@ export const OurAchievements = () => {
                       "text-primary mb-[7.8px] md:mb-[0.75em] lg:mb-[1em] text-[14px] leading-[18px] uppercase font-semibold"
                     }
                   >
-                    Our Achievements
+                    Our Mission & Vision
                   </span>
                   <h1
                     className={"text-[27px] md:text-[44px] lg:text-[3.353em] text-primary font-extrabold"}
                   >
                     Bringing Skin care learning to life
                   </h1>
-                  <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-lightSecondary mb-0 text-[1rem]"}>
+                  <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-[1rem] lg:text-[1.3rem] text-lightSecondary mb-0 text-[1rem]"}>
                     <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam. Sed ut perspiciatis unde omnis.
-                    </p>
-                    <p className={"mt-[1em]"}>
-                      Sit voluptatem accusantium doloremque laudantium, totam
-                      rem aperiam. Sed ut perspiciatis unde omnis.
+                      To change the narrative in the
+skincare industry in Africa by
+promoting skincare awareness,
+healthy practices, inclusivity in
+beauty standards and
+collaboration in the skincare
+industry.
                     </p>
                   </Box>
                 </Box>
@@ -87,28 +87,38 @@ export const OurAchievements = () => {
                 </Box>
               </AgoraTransitionBox>
             </Box>
+            <Box className={"mt-[0.65em] md:mt-[1em] lg:mt-[1.7em] text-[1rem] lg:text-[1.3rem] text-lightSecondary mb-0 text-[1rem]"}>
+                    <p className={"mt-[1em]"}>
+                      To become the premier
+platform celebrating and
+advancing Africa’s role in
+the global skincare industry,
+promoting innovation,
+diversity, and excellence.
+                    </p>
+                  </Box>
             <Box className={"h-[30px] md:-h-[50px] lg:h-[5.2vw] w-full"}>
               <AgoraTransitionBox>
                 <Box className={"h-[120px]"} />
               </AgoraTransitionBox>
             </Box>
-            <AchievementValues
+{/*             <AchievementValues
               name1={"Locations"}
               name2={"Programs"}
               value1={10}
               value2={100}
-            />
+            /> */}
             <Box className={"h-[45px] w-full"}>
               <AgoraTransitionBox>
                 <Box className={"h-[120px]"} />
               </AgoraTransitionBox>
             </Box>
-            <AchievementValues
+{/*             <AchievementValues
               name1={"Brands"}
               name2={"Menus"}
               value1={15}
               value2={30}
-            />
+            /> */}
           </Box>
         </Box>
       </Box>
