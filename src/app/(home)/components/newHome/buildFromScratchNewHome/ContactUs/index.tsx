@@ -180,7 +180,6 @@ export const ContactUs = () => {
                                 <br />
                                 <span onClick={handleMailto}>
                                   <PrimaryButton
-                                    href="mailto:contact@africaskincarefestival.com"
                                     name={"Get in Touch"}
                                   />
                                   {/*<input*/}
