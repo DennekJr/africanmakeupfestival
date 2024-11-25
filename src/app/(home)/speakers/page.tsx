@@ -15,7 +15,7 @@ const Speakers: () => Promise<React.JSX.Element> = async () => {
       <Hero />
       <MarqueeSlide />
       <LearnFromLeaders />
-      <SpeakerFullGrid />
+{/*       <SpeakerFullGrid /> */}
     </Box>
   );
 };
