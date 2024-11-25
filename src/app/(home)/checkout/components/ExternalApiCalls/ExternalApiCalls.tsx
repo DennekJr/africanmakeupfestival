@@ -128,6 +128,28 @@ export const sendEmail = async (email, template) => {
     console.error("Error sending email:", error);
   }
 };
+export const sendContactUsEmail = async (email, template) => {
+  try {
+    const response = await fetch("/api/contactUs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        template: template
+      })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      console.log("Email sent successfully to Zoho Mail", data);
+    } else {
+      console.error("Error sending email:", data);
+    }
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+};
 
 export const VerifyPaystackTransaction = async (reference) => {
   try {

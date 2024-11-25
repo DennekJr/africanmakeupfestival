@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import React from "react";
 import { HeroButtons } from "@/app/(home)/components/Hero/HeroButtons";
 import { VideoComponent } from "@/app/(home)/components/Hero/VideoComponent";
+import { HollowFestival } from "@/app/(home)/components/Hero/utils";
 
 export const Hero = () => {
   return (
@@ -39,19 +40,13 @@ export const Hero = () => {
             >
               <span
                 className={
-                  "!text-[25px] lg:text-5xl text-textColor leading-[0.8]"
+                  "!text-[25px] lg:text-5xl text-textColor leading-[0.8] tracking-[1rem]"
                 }
               >
                 Africa
               </span>
               <span className="text-primary leading-[0.8]">Skincare</span>
-              <span
-                className={
-                  "relative max-w-full break-words text-textColor leading-[0.8]"
-                }
-              >
-                Festival
-              </span>
+              <HollowFestival />
             </span>
           </pre>
           <pre

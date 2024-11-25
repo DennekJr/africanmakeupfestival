@@ -3,7 +3,7 @@ import { Grid } from "@mui/system";
 import { FOOTER_MENULINKS } from "./footer.constants";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Collapse, Divider, Typography } from "@mui/material";
+import { Collapse, Divider } from "@mui/material";
 import Image from "next/image";
 import {
   KeyboardArrowDown,
@@ -159,26 +159,26 @@ export const Footer = () => {
               className={"shrink-0 h-[1px] w-full !bg-[#C8C8CB]"}
             />
           </Box>
-          <Box className={"flex items-center justify-between pb-6"}>
-            <Box className="flex gap-2 items-center">
-              <a href="/en/privacy-policy">
-                <Typography className={"text-[#0A090B]"}>
-                  Privacy Policy
-                </Typography>
-              </a>
-            </Box>
-            <Link href="https://www.piggyvest.com/">
-              <Image
-                alt="Spark Monogram"
-                loading="lazy"
-                width={127}
-                height={18}
-                decoding="async"
-                style={{ color: "transparent" }}
-                src="/images/piggyvest.webp"
-              />
-            </Link>
-          </Box>
+          {/*<Box className={"flex items-center justify-between pb-6"}>*/}
+          {/*  /!*<Box className="flex gap-2 items-center">*!/*/}
+          {/*  /!*  <a href="/en/privacy-policy">*!/*/}
+          {/*  /!*    <Typography className={"text-[#0A090B]"}>*!/*/}
+          {/*  /!*      Privacy Policy*!/*/}
+          {/*  /!*    </Typography>*!/*/}
+          {/*  /!*  </a>*!/*/}
+          {/*  /!*</Box>*!/*/}
+          {/*  <Link href="https://www.piggyvest.com/">*/}
+          {/*    <Image*/}
+          {/*      alt="Spark Monogram"*/}
+          {/*      loading="lazy"*/}
+          {/*      width={127}*/}
+          {/*      height={18}*/}
+          {/*      decoding="async"*/}
+          {/*      style={{ color: "transparent" }}*/}
+          {/*      src="/images/logos/ASF Logo_Inversed Black.svg"*/}
+          {/*    />*/}
+          {/*  </Link>*/}
+          {/*</Box>*/}
         </Box>
       </footer>
     </Box>

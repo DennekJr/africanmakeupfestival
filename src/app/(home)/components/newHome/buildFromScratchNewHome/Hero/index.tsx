@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Box } from "@mui/material";
 import { ThreeDashSVG } from "@/app/(home)/components/newHome/buildFromScratchNewHome/utils";
 import React from "react";
@@ -68,7 +68,11 @@ export const Hero = () => {
                                       }
                                     ></Box>
                                   </Box>
-                                  <Box className={"top-[200px] z-[6] w-full absolute"}>
+                                  <Box
+                                    className={
+                                      "top-[200px] z-[6] w-full absolute"
+                                    }
+                                  >
                                     <Box
                                       className={
                                         "absolute w-full left-0 text-[0px] pointer-events-none"
@@ -108,27 +112,62 @@ export const Hero = () => {
                                               <ThreeDashSVG />
                                             </Box>
                                           </Box>
-                                          <Box className={'relative inline-block pointer-events-auto min-w-auto align-middle clear-none float-none max-w-inherit left-0 top-0 z-[7] visible'}>
-                                            <Box className={'z-[7] font-halyard-display inline-block h-auto w-auto text-[#C43C2A] no-underline whitespace-normal min-h-0 min-w-0 max-h-none max-w-none text-left leading-[90px] tracking-[-1px] font-medium text-[90px] transform-style-preserve-3d backdrop-blur-none filter-none transform-origin-[50%_50%] transform-[perspective(600px)] opacity-100 visible outline-none'}>
+                                          <Box
+                                            className={
+                                              "relative inline-block pointer-events-auto min-w-auto align-middle clear-none float-none max-w-inherit left-0 top-0 z-[7] visible"
+                                            }
+                                          >
+                                            <Box
+                                              className={
+                                                "z-[7] font-halyard-display inline-block h-auto w-auto text-[#C43C2A] no-underline whitespace-normal min-h-0 min-w-0 max-h-none max-w-none text-left leading-[90px] tracking-[-1px] font-medium text-[90px] transform-style-preserve-3d backdrop-blur-none filter-none transform-origin-[50%_50%] transform-[perspective(600px)] opacity-100 visible outline-none"
+                                              }
+                                            >
                                               <Box className="rs-layer lg:!text-[45px] xl:!text-[90px]">
                                                 <Box className="xl:py-4 !font-semibold">
-                                                  <Box className={"relative pl-3 inline-block"}>
-                                                    <Box className={"heroTexts"}>Discover</Box>
+                                                  <Box
+                                                    className={
+                                                      "relative pl-3 inline-block"
+                                                    }
+                                                  >
+                                                    <Box
+                                                      className={"heroTexts"}
+                                                    >
+                                                      Discover
+                                                    </Box>
                                                   </Box>
                                                 </Box>
-                                                <Box className={"py-4 !font-semibold"}>
-                                                  <Box className={"relative pl-3 inline-block"}>
-                                                    <Box className={"heroTexts"}>
+                                                <Box
+                                                  className={
+                                                    "py-4 !font-semibold"
+                                                  }
+                                                >
+                                                  <Box
+                                                    className={
+                                                      "relative pl-3 inline-block"
+                                                    }
+                                                  >
+                                                    <Box
+                                                      className={"heroTexts"}
+                                                    >
                                                       Culinary Secrets
                                                     </Box>
                                                   </Box>
                                                 </Box>
-                                                <Box className={" xl:py-4 !font-semibold"}>
-                                                  <Box className={"relative pl-3 inline-block"}>
-                                                    <Box className={"heroTexts"}>
+                                                <Box
+                                                  className={
+                                                    " xl:py-4 !font-semibold"
+                                                  }
+                                                >
+                                                  <Box
+                                                    className={
+                                                      "relative pl-3 inline-block"
+                                                    }
+                                                  >
+                                                    <Box
+                                                      className={"heroTexts"}
+                                                    >
                                                       at out festival.
                                                     </Box>
-
                                                   </Box>
                                                 </Box>
                                               </Box>
@@ -140,26 +179,91 @@ export const Hero = () => {
                                       </Box>
                                     </Box>
                                   </Box>
-                                  <Box className={'z-[5] absolute w-full left-0 bottom-0'}>
-                                    <Box className={'relative pointer-events-auto pl-[140px] pr-[70px] left-0 top-0 w-full z-[6] visible perspective-[601px]'}>
-                                      <Box className={'z-[6] h-auto w-auto text-white min-h-0 min-w-0 max-h-none max-w-none ml-0 pb-0 mr-0 backdrop-blur-none filter-none transform-origin-[50%_50%] transform-none opacity-100 visible'}>
-                                        <Box className={'align-middle relative pointer-events-auto left-0 top-0 w-full z-[6] visible perspective-[601px]'}>
-                                          <Box className={'relative block whitespace-normal z-[6] w-auto h-auto text-white no-underline min-h-0 min-w-0 max-h-none max-w-none text-left leading-[20px] backdrop-blur-none filter-none transform-origin-[50%_50%] transform-none opacity-100 visible'}>
-                                            <Box className={'absolute block pointer-events-auto align-middle clear-none float-none max-w-[311px] min-w-[311px] left-[220px] top-[36px] z-[8] visible perspective-[601px]'}>
-                                              <Box className={'z-[8] font-sans h-auto text-[#363332] no-underline whitespace-normal w-[311px] min-h-0 min-w-0 max-h-none max-w-none text-left leading-[26px] tracking-normal font-normal text-[17px] backdrop-blur-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible'}>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                  <Box
+                                    className={
+                                      "z-[5] absolute w-full left-0 bottom-0"
+                                    }
+                                  >
+                                    <Box
+                                      className={
+                                        "relative pointer-events-auto pl-[140px] pr-[70px] left-0 top-0 w-full z-[6] visible perspective-[601px]"
+                                      }
+                                    >
+                                      <Box
+                                        className={
+                                          "z-[6] h-auto w-auto text-white min-h-0 min-w-0 max-h-none max-w-none ml-0 pb-0 mr-0 backdrop-blur-none filter-none transform-origin-[50%_50%] transform-none opacity-100 visible"
+                                        }
+                                      >
+                                        <Box
+                                          className={
+                                            "align-middle relative pointer-events-auto left-0 top-0 w-full z-[6] visible perspective-[601px]"
+                                          }
+                                        >
+                                          <Box
+                                            className={
+                                              "relative block whitespace-normal z-[6] w-auto h-auto text-white no-underline min-h-0 min-w-0 max-h-none max-w-none text-left leading-[20px] backdrop-blur-none filter-none transform-origin-[50%_50%] transform-none opacity-100 visible"
+                                            }
+                                          >
+                                            <Box
+                                              className={
+                                                "absolute block pointer-events-auto align-middle clear-none float-none max-w-[311px] min-w-[311px] left-[220px] top-[36px] z-[8] visible perspective-[601px]"
+                                              }
+                                            >
+                                              <Box
+                                                className={
+                                                  "z-[8] font-sans h-auto text-[#363332] no-underline whitespace-normal w-[311px] min-h-0 min-w-0 max-h-none max-w-none text-left leading-[26px] tracking-normal font-normal text-[17px] backdrop-blur-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible"
+                                                }
+                                              >
+                                                Sed ut perspiciatis unde omnis
+                                                iste natus error sit voluptatem
+                                                accusantium
                                               </Box>
                                             </Box>
-                                            <Box className={'outline-none absolute block pointer-events-auto min-w-auto align-middle clear-none float-none max-w-inherit left-[220px] top-[102px] z-[7] visible perspective-[601px]'}>
-                                              <a className={'z-[7] font-[halyard-display] uppercase cursor-pointer h-auto w-auto text-primary no-underline whitespace-nowrap min-h-0 min-w-0 max-h-none max-w-none text-left leading-[25px] tracking-normal font-medium text-[17px] backdrop-blur-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible'}>
+                                            <Box
+                                              className={
+                                                "outline-none absolute block pointer-events-auto min-w-auto align-middle clear-none float-none max-w-inherit left-[220px] top-[102px] z-[7] visible perspective-[601px]"
+                                              }
+                                            >
+                                              <a
+                                                className={
+                                                  "z-[7] font-[halyard-display] uppercase cursor-pointer h-auto w-auto text-primary no-underline whitespace-nowrap min-h-0 min-w-0 max-h-none max-w-none text-left leading-[25px] tracking-normal font-medium text-[17px] backdrop-blur-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible"
+                                                }
+                                              >
                                                 Buy Tickets
-                                                <ArrowRightAltOutlined className={'text-primary'} sx={{ transition: '.3s ease'}} />
+                                                <ArrowRightAltOutlined
+                                                  className={"text-primary"}
+                                                  sx={{
+                                                    transition: ".3s ease"
+                                                  }}
+                                                />
                                               </a>
                                             </Box>
-                                            <Box className={'relative block pointer-events-auto align-middle clear-none float-none max-w-[180px] min-w-[180px] left-0 top-0 z-[6] visible perspective-[601px]'}>
-                                              <Box className={'relative block w-full transform-origin-[50%_50%] transform-none overflow-hidden'}>
-                                                <Box className={'z-[6] text-white w-[180px] h-[160px] min-h-0 min-w-0 max-h-none max-w-none backdrop-filter-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible'}>
-                                                  <Image src={'/images/achievement.webp'} className={'w-full relative'} width={180} height={160} alt={'buyTickets'} />
+                                            <Box
+                                              className={
+                                                "relative block pointer-events-auto align-middle clear-none float-none max-w-[180px] min-w-[180px] left-0 top-0 z-[6] visible perspective-[601px]"
+                                              }
+                                            >
+                                              <Box
+                                                className={
+                                                  "relative block w-full transform-origin-[50%_50%] transform-none overflow-hidden"
+                                                }
+                                              >
+                                                <Box
+                                                  className={
+                                                    "z-[6] text-white w-[180px] h-[160px] min-h-0 min-w-0 max-h-none max-w-none backdrop-filter-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible"
+                                                  }
+                                                >
+                                                  <Image
+                                                    src={
+                                                      "/images/achievement.webp"
+                                                    }
+                                                    className={
+                                                      "w-full relative"
+                                                    }
+                                                    width={180}
+                                                    height={160}
+                                                    alt={"buyTickets"}
+                                                  />
                                                 </Box>
                                               </Box>
                                             </Box>
@@ -168,14 +272,28 @@ export const Hero = () => {
                                       </Box>
                                     </Box>
                                   </Box>
-                                  <Box className={'absolute block pointer-events-auto left-[1124px] top-[-20px] z-[8] visible perspective-[601px]'}>
-                                    <Box className={'absolute block transform-origin-[50%_50%] transform-none overflow-hidden'}>
-                                      <Box className={'outline-none z-[8] text-white w-[875px] h-[920px] min-h-0 min-w-0 max-h-none max-w-none ml-[-20px] backdrop-filter-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible'}>
+                                  <Box
+                                    className={
+                                      "absolute block pointer-events-auto left-[1124px] top-[-20px] z-[8] visible perspective-[601px]"
+                                    }
+                                  >
+                                    <Box
+                                      className={
+                                        "absolute block transform-origin-[50%_50%] transform-none overflow-hidden"
+                                      }
+                                    >
+                                      <Box
+                                        className={
+                                          "outline-none z-[8] text-white w-[875px] h-[920px] min-h-0 min-w-0 max-h-none max-w-none ml-[-20px] backdrop-filter-none filter-none transform-origin-[50%_50%] opacity-100 transform-none visible"
+                                        }
+                                      >
                                         <Image
                                           src={"/images/homeHeroImahe3.webp"}
                                           width={875}
                                           height={920}
-                                          className={"h-full w-auto object-cover min-w-96:!mr-40"}
+                                          className={
+                                            "h-full w-auto object-cover min-w-96:!mr-40"
+                                          }
                                           alt={"HeroImage"}
                                         />
                                       </Box>

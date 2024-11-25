@@ -1,36 +1,35 @@
 import { NavBarItem } from "./navbar.types";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export const NAV_MENU: Record<string, NavBarItem> = {
   home: {
     id: "home",
     route: "/",
-    name: "Home",
+    name: "Event",
     disabled: false,
   },
-  speakers2024: {
-    id: "2024speakers",
-    route: "/speakers",
-    name: "2024 speakers",
-    disabled: false,
-  },
-  exhibitors: {
-    id: "exhibitors",
-    route: "/exhibit",
-    name: "Exhibitors",
-    icon: ExpandMoreIcon,
-    disabled: false,
-  },
+  // speakers2024: {
+  //   id: "2024speakers",
+  //   route: "/speakers",
+  //   name: "2024 speakers",
+  //   disabled: false,
+  // },
+  // exhibitors: {
+  //   id: "exhibitors",
+  //   route: "/exhibit",
+  //   name: "Exhibitors",
+  //   icon: ExpandMoreIcon,
+  //   disabled: false,
+  // },
   sponsor: {
     id: "sponsor",
     route: "/sponsor",
-    name: "Sponsor",
+    name: "Sponsors",
     disabled: false,
   },
   program2024: {
     id: "2024-program",
     route: "/program",
-    name: "2024 Program",
+    name: "Program",
     disabled: false,
   },
 };
