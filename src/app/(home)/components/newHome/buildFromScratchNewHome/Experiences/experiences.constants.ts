@@ -79,6 +79,6 @@ export const ExperiencesConstants: Record<
       "product samples,\n" +
       "coupons, and\n" +
       "festival-branded items.",
-    image: "/images/heroImageChoices/choice4.webp"
+    image: "/images/heroImageChoices/choice5.webp"
   }
 };
