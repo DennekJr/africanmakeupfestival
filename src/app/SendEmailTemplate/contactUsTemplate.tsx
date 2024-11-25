@@ -30,9 +30,11 @@ export const ContactUsTemplate = ({
 <body>
 <div>
 <img src="https://africaskincarefestival.com/images/Email_Logo.png" style="height: auto; width: 100%" alt="asf logo" />
-<h3>Thank you for your <span style="color: #C43C2A">#ASF</span> purchase!</h3>
 <h4>Message from ${name},</h4>
 <p>${content}</p>
+<p style="height: 20vh"></p>
+<p>Sincerely,</p>
+<p>The ASF Team</p>
 </div>
 </body>
 </html>
