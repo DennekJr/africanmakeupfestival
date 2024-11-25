@@ -10,8 +10,8 @@ export const CALENDEREVENTCONSTANTS: Record<string, CalenderEventTypes> = {
     year: "2024",
     title: "African Skincare Festival",
     location: "Herel Play, Ikoyi, Lagos",
-    startsAt: "12:00pm",
-    endsAt: "8:00pm",
+    startsAt: "10:00 am",
+    endsAt: "6:00 pm",
     ticketCount: 100,
     ticketType: "purchase"
   },
@@ -22,8 +22,8 @@ export const CALENDEREVENTCONSTANTS: Record<string, CalenderEventTypes> = {
     year: "2024",
     title: "African Skincare Festival",
     location: "Herel Play, Ikoyi, Lagos",
-    startsAt: "12:00pm",
-    endsAt: "8:00pm",
+    startsAt: "10:00 am",
+    endsAt: "6:00 pm",
     ticketCount: 100,
     ticketType: "purchase"
   },

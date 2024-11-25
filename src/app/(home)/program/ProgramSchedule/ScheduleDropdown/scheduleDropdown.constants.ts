@@ -3,7 +3,7 @@ import { ScheduleDropdownTypes } from "./scheduleDropdown.types";
 export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
   one: {
     id: "networking",
-    time: "08:00 am",
+    time: "10:00 am",
     title: "Keynote Address",
     content: {
       summary:
@@ -12,7 +12,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
   },
   two: {
     id: "panelDiscussions",
-    time: "10:00 am",
+    time: "11:00 am",
     title: "Panel Discussions",
     content: {
       summary:
@@ -21,7 +21,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
   },
   three: {
     id: "GuestSpeakers",
-    time: "11:00 am",
+    time: "12:00 pm",
     title: "Guest Speakers",
     content: {
       summary:
@@ -30,7 +30,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
   },
   four: {
     id: "Exhibition",
-    time: "11:30 am",
+    time: "01:30 pm",
     title: "Exhibition",
     content: {
       summary:
@@ -39,7 +39,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
   },
   five: {
     id: "liveDemonstrations",
-    time: "12:00 am",
+    time: "03:00 pm",
     title: "Live Demonstrations",
     content: {
       summary:
@@ -48,7 +48,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
   },
   six: {
     id: "networkingSession",
-    time: "01:30 pm",
+    time: "04:30 pm",
     title: "Networking Session",
     content: {
       summary:
@@ -57,7 +57,7 @@ export const SCHEDULEDROPDOWNMENU: Record<string, ScheduleDropdownTypes> = {
   },
   seven: {
     id: "Entertainment&Refreshments",
-    time: "02:00 pm",
+    time: "05:00 pm",
     title: "Entertainment & Refreshments",
     content: {
       summary: "Enjoy music, games, food and drinks."
