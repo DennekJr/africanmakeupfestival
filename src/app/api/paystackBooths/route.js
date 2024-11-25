@@ -3,10 +3,10 @@ import clientPromise from "../../lib/mongo/mongodb";
 export async function POST(request) {
   try {
     const client = await clientPromise;
-    const db = client.db("AfricaMakeupFestival"); // Replace with your database name
+    const db = client.db("africaskincarefestival"); // Replace with your database name
     // Get the data from the request body
-    const { boothData, transactionData } = await request.json();
-    const formDetail = Object.values(boothData.buyerForm);
+    const { transactionData } = await request.json();
+    const formDetail = Object.values(transactionData.metadata.boothData.buyerForm);
     const buyerBoothPurchaseDetails = {
       form_booth: formDetail[0],
       form_companyName: formDetail[1],
@@ -24,9 +24,9 @@ export async function POST(request) {
       Stripe_Id: "",
       // Access_Code: transactionData.access_code,
       Created_At: new Date(),
-      TicketDetails: buyerBoothPurchaseDetails,
+      BoothDetails: buyerBoothPurchaseDetails
     };
-    await db.collection("Booth-Purchases").insertOne(BuyerTicketPurchase);
+    await db.collection("booth-purchases").insertOne(BuyerTicketPurchase);
     // Array to add other ticket forms
     return new Response(
       JSON.stringify("Data successfully added to Booth-Purchases"),

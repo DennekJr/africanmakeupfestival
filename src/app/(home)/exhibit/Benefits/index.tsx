@@ -13,7 +13,7 @@ export const Benefits = () => {
             className="font-sans w-full break-words whitespace-pre-wrap min-h-6 font-medium heading text-[23px] text-primary leading-[27.6px] lg:text-5xl lg:leading-[52.8px]"
           >
             <span className="relative max-w-full break-words">
-              Exhibition Benefits
+              Vendor Benefits
             </span>
           </pre>
         </Box>

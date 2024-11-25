@@ -81,7 +81,7 @@ export const initialFormValue = {
   quantity: 1,
 };
 
-type initialStateType = {
+export type initialCheckoutStateType = {
   tickets: { ticketName: string; value: number }[];
   leftOverTickets: { ticketName: string; value: number }[];
   myTicket: { ticketName: string; value: number };
@@ -102,7 +102,7 @@ type initialStateType = {
   payStackCheckout: {email: string, total: number};
 };
 
-const initialState: initialStateType = {
+const initialState: initialCheckoutStateType = {
   tickets: [
     { ticketName: "explorer", value: 0 },
     { ticketName: "founder", value: 0 },

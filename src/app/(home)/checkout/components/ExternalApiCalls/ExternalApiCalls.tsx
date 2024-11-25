@@ -1,4 +1,6 @@
 import { TicketBilingInfo } from "@/app/lib/features/checkout/checkoutSlice";
+import { loadStripe } from "@stripe/stripe-js";
+import process from "process";
 
 export const PostPaystackTicketPurchases = async (ticketData) => {
   try {
@@ -63,17 +65,22 @@ export const PostTransaction = async (ticketData) => {
   }
 };
 
-
 type ticketPurchaseDataType = {
-  payStackCheckout: {email: string, total: number},
+  payStackCheckout: { email: string; total: number };
   ticketData: {
-    buyerForm: { [ticket: string]: { name: string; value: string }[] },
-    otherTicketForms: { id: string; data: TicketBilingInfo }
-  }
+    buyerForm: { [ticket: string]: { name: string; value: string }[] };
+    otherTicketForms: { id: string; data: TicketBilingInfo };
+  };
+  tickets: { ticketName: string; value: number }[];
 };
 
-export const initiatePaystackTransaction = async ({payStackCheckout, ticketData}: ticketPurchaseDataType) => {
+export const initiatePaystackTransaction = async ({
+                                                    payStackCheckout,
+                                                    ticketData,
+                                                    tickets
+                                                  }: ticketPurchaseDataType) => {
   try {
+    const purchaseType = "ticket";
     const response = await fetch("/api/paystack", {
       method: "POST",
       headers: {
@@ -82,7 +89,7 @@ export const initiatePaystackTransaction = async ({payStackCheckout, ticketData}
       body: JSON.stringify({
         email: payStackCheckout.email, // Replace with actual customer email
         amount: payStackCheckout.total, // Amount in kobo (Paystack uses kobo for amounts)
-        ticketData: ticketData
+        ticketData: { payStackCheckout, ticketData, tickets, purchaseType }
       }),
     });
 
@@ -109,7 +116,7 @@ export const sendEmail = async (email, template) => {
       body: JSON.stringify({
         email: email,
         template: template
-      })
+      }),
     });
     const data = await response.json();
     if (response.ok) {
@@ -119,5 +126,40 @@ export const sendEmail = async (email, template) => {
     }
   } catch (error) {
     console.error("Error sending email:", error);
+  }
+};
+
+export const VerifyPaystackTransaction = async (reference) => {
+  try {
+    const response = await fetch(`/api/verify-payment?reference=${reference}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+      // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+    } else {
+      console.error("Error initializing transaction:", data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const VerifyStripeTransaction = async (stripeId) => {
+  try {
+    const stripePromise = loadStripe(
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
+    );
+    const stripe = await stripePromise;
+    const session = await stripe?.retrieveOrder(stripeId);
+    console.log("session", session);
+  } catch (error) {
+    console.error("Error:", error);
   }
 };

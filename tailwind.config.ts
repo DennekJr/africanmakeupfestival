@@ -8,6 +8,8 @@ module.exports = {
   theme: {
     colors: {
       'primary': '#C43C2A',
+      "midPrimary": "#CF6152",
+      "pink": "#FFCFC9",
       'secondary': '#0A090B',
       'lightSecondary': '#5A5A5A',
       'accent': '#ffffff',
@@ -15,6 +17,7 @@ module.exports = {
       'lightGrey': '#F5F5F5',
       'midGrey': '#E0E0E0',
       'black': '#000000',
+      "warning": "#DC143C",
       background: "var(--background)",
       foreground: "var(--foreground)",
     },

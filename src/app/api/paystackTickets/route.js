@@ -2,8 +2,9 @@ import clientPromise from '../../lib/mongo/mongodb';
 export async function GET() {
   try {
     const client = await clientPromise;
-    const db = client.db('AfricaMakeupFestival'); // Replace with your database name
-    const tickets = await db.collection('Ticket-Purchases').find({}).toArray();
+    const db = client.db("africaskincarefestival"); // Replace with your database name
+    console.log("Database", db);
+    const tickets = await db.collection("ticket-purchases").find({}).toArray();
 
     return new Response(JSON.stringify(tickets), {
       status: 200,
@@ -20,11 +21,13 @@ export async function GET() {
 export async function POST(request) {
   try {
     const client = await clientPromise;
-    const db = client.db('AfricaMakeupFestival'); // Replace with your database name
+    console.log("client", clientPromise);
+    const db = client.db("africaskincarefestival"); // Replace with your database name
     // Get the data from the request body
-    const {ticketData, session} = await request.json();
-    Object.values(ticketData.buyerForm).map(async (detail) => {
-      const TicketName = Object.keys(ticketData.buyerForm)[0];
+    const { transactionData } = await request.json();
+    const buyerForm = transactionData.metadata.ticketData.buyerForm;
+    Object.values(buyerForm).map(async (detail) => {
+      const TicketName = Object.keys(buyerForm)[0];
       const buyerTicketPurchaseDetails = {
         form_firstName: detail[0][0].value,
         form_lastName: detail[0][1].value,
@@ -39,16 +42,16 @@ export async function POST(request) {
         form_country: detail[0][3].value
       }
       const BuyerTicketPurchase = {
-        Paystack_Id: session.reference,
+        Paystack_Id: transactionData.reference,
         Stripe_Id: '',
-        Access_Code: session.access_code,
+        // Access_Code: ticketData,
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
       };
-      await db.collection('Ticket-Purchases').insertOne(BuyerTicketPurchase);
+      await db.collection("ticket-purchases").insertOne(BuyerTicketPurchase);
     });
     // Array to add other ticket forms
-    return new Response(JSON.stringify('Data successfully added to Ticket-Purchases'), {
+    return new Response(JSON.stringify("Data successfully added to Ticket-Purchases"), {
       status: 201,
       headers: { 'Content-Type': 'application/json' },
     });

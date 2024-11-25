@@ -1,6 +1,5 @@
 "use client";
 import { Box, Button } from "@mui/material";
-import { ArrowRightAltOutlined } from "@mui/icons-material";
 import React, { useMemo } from "react";
 import { CALENDEREVENTCONSTANTS } from "@/app/(home)/components/newHome/buildFromScratchNewHome/CalenderEvents/calenderEventConstants";
 import { AgoraBox } from "@/app/(home)/components/newHome/utils";
@@ -57,7 +56,9 @@ export const CalenderEvents = () => {
                     </Box>
                   </Box>
                   <Box
-                    className={"w-full md:w-[65%] lg:w-[45%] relative flex min-h-[1%]"}
+                    className={
+                      "w-full md:w-[65%] lg:w-[45%] relative flex min-h-[1%]"
+                    }
                   >
                     <Box className={"flex py-0 w-full flex-wrap items-start"}>
                       <Box className={"h-[15px] lg:h-[46px] w-full"} />
@@ -67,14 +68,21 @@ export const CalenderEvents = () => {
                           transition:
                             "background .3s, border .3s, border-radius .3s, box-shadow .3s, transform ,4s",
                         }}
-                      ><p>
-                        Sed ut perspiciatis unde omnis iste natus error sit
-                        voluptatem accusantium doloremque laudantium.
-                      </p>
+                      >
+                        <p>
+                          Join us at our upcoming skincare workshops and
+                          wellness events!. Don&apos;t miss
+                          out on exclusive product launches and live
+                          demonstrations.
+                        </p>
                       </Box>
                     </Box>
                   </Box>
-                  <Box className={"w-full md:w-[35%] lg:w-[21%] text-left md:text-right"}>
+                  <Box
+                    className={
+                      "w-full md:w-[35%] lg:w-[21%] text-left md:text-right"
+                    }
+                  >
                     <Box className={"w-full p-0"}>
                       <Box className={"h-[15px] lg:h-[49px]"} />
                       <Box
@@ -89,9 +97,8 @@ export const CalenderEvents = () => {
                             className={
                               "!text-primary !p-0 leading-[20px] !font-semibold mb-[10px]"
                             }
-                            endIcon={<ArrowRightAltOutlined />}
                           >
-                            View All Events
+                            All Events
                           </Button>
                         </Box>
                       </Box>

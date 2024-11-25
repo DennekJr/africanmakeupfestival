@@ -40,7 +40,7 @@ export const Speakers = ({ speaker }: { speaker: SpeakerType }) => {
                   >
                     <AgoraTransitionNoTransformSpan
                       className={"group flex items-center justify-center hover:bg-textColor border-none text-[16px] w-[45px] h-[45px] leading-[45px] rounded-full bg-cover bg-top"}>
-                      <link.icon className={"before:mt-[-1px] text-textColor group-hover:text-primary"} />
+                      <link.icon className={"before:mt-[-1px] text-textColor group-hover:text-primary text-[32px]"} />
                     </AgoraTransitionNoTransformSpan>
                   </a>
                 );

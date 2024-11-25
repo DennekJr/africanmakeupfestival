@@ -5,16 +5,14 @@ import { formatCurrency } from "@/app/(home)/checkout/components/utils";
 import { setSubPage } from "@/app/lib/features/register/registerSlice";
 import { useAppDispatch, useAppSelector } from "@/app/lib/hooks";
 import { ExhibitionBoothBillingInfo } from "@/app/lib/features/exhibition/exhibitionSlice";
-import { PostTransaction } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { StripeCall } from "@/app/(home)/exhibit/register/StripeCall";
 import {
-  HandlePaystackBoothPurhase,
   HandlePaystackTransaction,
 } from "@/app/(home)/exhibit/register/PaystackCall";
-import PaystackPop from "@paystack/inline-js";
+import { useRouter } from "next/navigation";
 
 const DiscountCheckout = () => {
-  const popup = new PaystackPop();
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { formValues, total } = useAppSelector((state) => state.exhibition);
   const { paymentMethod, addOnTotal, subPage } = useAppSelector(
@@ -62,29 +60,11 @@ const DiscountCheckout = () => {
         buyerForm: formData,
       },
     };
-    HandlePaystackTransaction(BoothPurchaseData)
-      .then(async ({ ticketData: boothData, transactionData }) => {
-        const accessCode = transactionData.access_code;
-        popup.resumeTransaction(accessCode);
-        await HandlePaystackBoothPurhase({ boothData, transactionData });
-        return {
-          paystackData: boothData,
-          transactionData: transactionData,
-        };
-      })
-      .then(async ({ transactionData }) => {
-        const transactionToPost = {
-          Paystack_Id: transactionData.reference,
-          Stripe_Id: "",
-          Currency: "ngn",
-          Email: formData.form_email,
-          UnitNumber: total + addOnTotal,
-        };
-        await PostTransaction(transactionToPost);
-      })
-      .catch((error) => {
-        console.error("Paystack transaction error: ", error);
-      });
+    const req = await HandlePaystackTransaction(BoothPurchaseData);
+    if (req) {
+      const authUrl = req.paystackData.data.authorization_url;
+      router.push(authUrl);
+    }
   };
   const handlePayment = async () => {
     if (subPage === "addToBooth") {
@@ -138,7 +118,7 @@ const DiscountCheckout = () => {
             disabled={true}
             onClick={handlePayment}
           >
-            <span className="text-center w-full h-full">CHECKOUT NOW</span>
+            <span className="text-center w-full h-full">CHECKOUT NOW - coming soon</span>
           </button>
           <button
             onClick={handleCancel}

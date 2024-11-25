@@ -9,13 +9,10 @@ import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
 import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
 import {
-  initiatePaystackTransaction,
-  PostStripeTicketPurchases,
-  PostTransaction
+  initiatePaystackTransaction
 } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
-import PaystackPop from "@paystack/inline-js";
 import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
@@ -44,9 +41,7 @@ const CheckoutForm = () => {
     if (total === 0) {
       router.push("/ticket");
     }
-  }, []);
-
-  const popup = new PaystackPop();
+  }, [router, total]);
 
   const formik = useFormik({
     initialValues: billingFormValues,
@@ -91,6 +86,8 @@ const CheckoutForm = () => {
         buyerForm: billingInfo,
         otherTicketForms: formValues,
       },
+      total: total,
+      purchaseType: "ticket"
     };
     const response = await fetch("/api/stripe", {
       method: "POST",
@@ -100,23 +97,13 @@ const CheckoutForm = () => {
       }),
     });
     const { session, itemData } = await response.json();
+    console.log("session", session, itemData);
     const sessionId = session.id;
     const stripe = await stripePromise;
     if (stripe === null) return;
     if ("redirectToCheckout" in stripe) {
-      await PostStripeTicketPurchases({ itemData, session }).then(async () => {
-        const transactionToPost = {
-          Paystack_Id: "",
-          Stripe_Id: sessionId,
-          Currency: session.currency,
-          Email: payStackCheckout.email,
-          UnitNumber: payStackCheckout.total
-        };
-        console.log("Transaction to post", transactionToPost);
-        await PostTransaction(transactionToPost);
-      });
       const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) console.warn("Stripe BoothCheckout error:", error.message);
+      if (error) console.warn("Stripe Booth payment error:", error.message);
     }
     if (Object.keys(formErrors).length === 0) {
     }
@@ -129,38 +116,13 @@ const CheckoutForm = () => {
         buyerForm: billingInfo,
         otherTicketForms: formValues,
       },
+      tickets: tickets
     };
-
-    initiatePaystackTransaction(ticketPurchaseData)
-      .then(({ transactionData }) => {
-        const accessCode = transactionData.access_code;
-        popup.resumeTransaction(accessCode);
-        //   return {
-        //     transactionData: transactionData,
-        //     ticketData: ticketData
-        //   };
-        // }).then(({ transactionData, ticketData }) => {
-        //   verifyPaystackPayment(
-        //     transactionData.reference
-        //   ).then(() => {
-        //     PostPaystackTicketPurchases({ ticketData, transactionData });
-        //     const transactionToPost = {
-        //       Paystack_Id: transactionData.reference,
-        //       Stripe_Id: "",
-        //       Currency: "ngn",
-        //       Email: payStackCheckout.email,
-        //       UnitNumber: payStackCheckout.total
-        //     };
-        //     PostTransaction(transactionToPost);
-        //   let name = ''
-        //   Object.values(ticketData.buyerForm).map(async (detail) => name = `${detail[0][0].value} ${detail[0][1].value}`);
-        //     console.log("Buyer name", name);
-        //     const template = SendEmailTemplate({ name: name, total: total, tickets: tickets, reference: transactionData.reference})
-        // sendEmail(payStackCheckout.email, template);
-        //   });
-      }).catch((error) => {
-        console.error("Paystack transaction error: ", error);
-      });
+    const req = await initiatePaystackTransaction(ticketPurchaseData);
+    if (req) {
+      const authUrl = req.paystackData.data.authorization_url;
+      router.push(authUrl);
+    }
   };
 
   return (
@@ -202,7 +164,7 @@ const CheckoutForm = () => {
               <CheckoutClientForm />
             </Box>
           </Box>
-          <Box className="hidden lg:block lg:col-start-8 lg:col-span-4 space-y-8">
+          <Box className="block lg:col-start-8 lg:col-span-4 space-y-8">
             <Box className="space-y-6">
               <p className="text-[#0A090B] text-4xl xl:text-5xl 2xl:text-6xl !font-medium">
                 Summary
@@ -229,6 +191,7 @@ const CheckoutForm = () => {
                 <p className="font-medium">NGN {total}</p>
               </div>
             </Box>
+
             <button
               onClick={handlePaystackPayment}
               type={"submit"}
@@ -236,8 +199,7 @@ const CheckoutForm = () => {
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                {/*CONTINUE TO LOCAL PAYMENT*/}
-                LOCAL PAYMENT - Coming Soon
+                CONTINUE TO LOCAL PAYMENT - coming soon
               </span>
             </button>
             <button
@@ -247,7 +209,7 @@ const CheckoutForm = () => {
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                INTERNATIONAL PAYMENT - Coming soon
+                CONTINUE TO INTERNATIONAL PAYMENT - coming soon
               </span>
             </button>
           </Box>
@@ -260,7 +222,7 @@ const CheckoutForm = () => {
           displayTicketDropdown={true}
         />
         <HiddenFormDropdown
-          title={"Assign other paystackTickets to different e-mail addresses?"}
+          title={"Assign other tickets to different e-mail addresses?"}
           subTitle={
             "Tickets will only be assigned to the email address(es) you provide"
           }

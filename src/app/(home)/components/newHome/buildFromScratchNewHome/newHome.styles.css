@@ -20,5 +20,6 @@
 .experience:hover .subTitleText {
     margin-top: 5px;
     opacity: 1;
-    height: 25px;
+    height: max-content;
+    /*transition: height .5s ease-in-out;*/
 }
