@@ -14,6 +14,7 @@ import {
 import { PrimaryButton } from "@/app/utils";
 import { ContactUsTemplate } from "@/app/SendEmailTemplate/contactUsTemplate";
 import { sendContactUsEmail } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
+import { useRouter } from "next/navigation";
 
 export const ContactUs = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -21,6 +22,16 @@ export const ContactUs = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const router = useRouter();
+
+  const resetContactUs = () => {
+    setIsClicked(false);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setMessage("");
+    router.push("/");
+  };
 
   const handleMailto = async () => {
     const template = ContactUsTemplate({
@@ -28,6 +39,7 @@ export const ContactUs = () => {
       content: message
     });
     await sendContactUsEmail(email, template);
+    resetContactUs();
   };
   return (
     <ContactUsBackgroundImageBox className={"py-[20px]"}>
