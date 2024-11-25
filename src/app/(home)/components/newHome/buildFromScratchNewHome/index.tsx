@@ -6,7 +6,7 @@ import { Experiences } from "@/app/(home)/components/newHome/buildFromScratchNew
 import '../buildFromScratchNewHome/newHome.styles.css';
 import { CalenderEvents } from "@/app/(home)/components/newHome/buildFromScratchNewHome/CalenderEvents";
 import { AboutUs } from "app/(home)/components/newHome/buildFromScratchNewHome/AboutUs";
-import { VisitingSpeakers } from "@/app/(home)/components/newHome/buildFromScratchNewHome/VisitingSpeakers";
+// import { VisitingSpeakers } from "@/app/(home)/components/newHome/buildFromScratchNewHome/VisitingSpeakers";
 import { SkinCareAdventure } from "@/app/(home)/components/newHome/buildFromScratchNewHome/SkinCareAdventure";
 import {
   EmptySpaceWithImageAboveAchievementSection
@@ -27,7 +27,7 @@ export const BuildFromScratchNewHome = () => {
       <Experiences />
       <CalenderEvents />
       <AboutUs />
-      <VisitingSpeakers />
+{/*       <VisitingSpeakers /> */}
       <SkinCareAdventure />
       <EmptySpaceWithImageAboveAchievementSection />
       <OurAchievements />
