@@ -8,14 +8,15 @@ import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFo
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
 import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
-import {
-  initiatePaystackTransaction
-} from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
+import { initiatePaystackTransaction } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
 import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
-import { getTicketCost } from "@/app/(home)/checkout/components/utils";
+import {
+  formatCurrency,
+  getTicketCost,
+} from "@/app/(home)/checkout/components/utils";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -87,7 +88,7 @@ const CheckoutForm = () => {
         otherTicketForms: formValues,
       },
       total: total,
-      purchaseType: "ticket"
+      purchaseType: "ticket",
     };
     const response = await fetch("/api/stripe", {
       method: "POST",
@@ -116,7 +117,7 @@ const CheckoutForm = () => {
         buyerForm: billingInfo,
         otherTicketForms: formValues,
       },
-      tickets: tickets
+      tickets: tickets,
     };
     const req = await initiatePaystackTransaction(ticketPurchaseData);
     if (req) {
@@ -188,7 +189,7 @@ const CheckoutForm = () => {
               </div>
               <div className="text-[#0A090B] flex justify-between text-lg">
                 <p>Total</p>
-                <p className="font-medium">NGN {total}</p>
+                <p className="font-medium">NGN {formatCurrency(total)}</p>
               </div>
             </Box>
 
