@@ -1,8 +1,6 @@
 import {
-  DelegateTicket,
-  ExplorerTicket,
-  FounderTicket,
-  InvestorTicket,
+  VIPTicket,
+  RegularTicket,
   TicketBilingInfo
 } from "@/app/lib/features/checkout/checkoutSlice";
 import Box from "@mui/material/Box";
@@ -24,13 +22,9 @@ export const PurchaseDetailTable = ({
   currency: string;
 }) => {
   const getTicketValue = (ticketName) => {
-    return ticketName === "investor"
-      ? InvestorTicket
-      : ticketName === "explorer"
-        ? ExplorerTicket
-        : ticketName === "founder"
-          ? FounderTicket
-          : DelegateTicket;
+    return ticketName === "regular"
+      ? RegularTicket
+      : VIPTicket;
   };
   const mainBuyer = Object.keys(metaData.buyerForm).includes("form_booth")
     ? (metaData.buyerForm as ExhibitionBoothBillingInfo)
