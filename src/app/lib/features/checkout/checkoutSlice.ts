@@ -104,17 +104,13 @@ export type initialCheckoutStateType = {
 
 const initialState: initialCheckoutStateType = {
   tickets: [
-    { ticketName: "explorer", value: 0 },
-    { ticketName: "founder", value: 0 },
-    { ticketName: "investor", value: 0 },
-    { ticketName: "delegate", value: 0 },
+    { ticketName: "regular", value: 0 },
+    { ticketName: "vip", value: 0 }
   ],
   myTicket: { ticketName: "", value: 0 },
   leftOverTickets: [
-    { ticketName: "explorer", value: 0 },
-    { ticketName: "founder", value: 0 },
-    { ticketName: "investor", value: 0 },
-    { ticketName: "delegate", value: 0 },
+    { ticketName: "regular", value: 0 },
+    { ticketName: "vip", value: 0 }
   ],
   leftOverTicketFormValues: [],
   formValues: { id: "", data: initialFormValue },
