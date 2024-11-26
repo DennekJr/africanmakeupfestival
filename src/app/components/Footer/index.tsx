@@ -43,7 +43,7 @@ export const Footer = () => {
         }
       >
         <Box className={"mx-auto max-w-[1320px] flex flex-col gap-2"}>
-          <Box className={"flex flex-col lg:flex-row gap-8 lg:py-8"}>
+          <Box className={"flex flex-col lg:flex-row justify-between gap-8 lg:py-8"}>
             <Link href={"/"} className={"hover:cursor-pointer"}>
               <Image
                 alt="ASF Logo Full"
@@ -58,13 +58,13 @@ export const Footer = () => {
             </Link>
             <Box
               className={
-                "flex justify-center md:justify-between w-full lg:w-[70%]"
+                "flex justify-center md:justify-between w-full lg:w-[60%]"
               }
             >
               <Grid
                 container
                 className={
-                  "!md:gap-4 mb-6 md:mb-0 flex-1 !grid sm:grid-cols-2 lg:grid-cols-4 !gap-6"
+                  "!md:gap-4 mb-6 md:mb-0 flex-1 !grid sm:grid-cols-2 lg:grid-cols-3 !gap-6"
                 }
               >
                 {links.map((link, index) => {
