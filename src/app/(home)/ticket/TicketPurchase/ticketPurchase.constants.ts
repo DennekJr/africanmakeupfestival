@@ -30,10 +30,6 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
       "Access to available ecosystem mixers (If any)",
     ],
     price: "NGN " + formatCurrency(FounderTicket),
-    ticketTag: {
-      tagIcon: "/images/emoji-grid/fire.webp",
-      tagType: "Most Popular",
-    },
   },
   investor: {
     id: "investor",
@@ -53,10 +49,6 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
       "Access to ecosystem mixers",
     ],
     price: "NGN " + formatCurrency(InvestorTicket),
-    ticketTag: {
-      tagIcon: "/images/timer.webp",
-      tagType: "Most Popular",
-    },
   },
 delegate: {
     id: "delegate",
