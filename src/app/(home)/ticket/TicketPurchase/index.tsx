@@ -15,10 +15,8 @@ import { getTicketCost } from "@/app/(home)/checkout/components/utils";
 
 export const TicketPurchase = () => {
   const initialState = [
-    { ticketName: "explorer", isOpen: false },
-    { ticketName: "founder", isOpen: false },
-    { ticketName: "investor", isOpen: false },
-    { ticketName: "delegate", isOpen: false },
+    { ticketName: "regular", isOpen: false },
+    { ticketName: "vip", isOpen: false }
   ];
 
   const [isOpen, setIsOpen] = useState(initialState);

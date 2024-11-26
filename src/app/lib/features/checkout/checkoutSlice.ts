@@ -146,10 +146,8 @@ const initialState: initialCheckoutStateType = {
   payStackCheckout: {email: '', total: 0},
 };
 
-export const ExplorerTicket = 14999;
-export const FounderTicket = 59999;
-export const InvestorTicket = 125000;
-export const DelegateTicket = 187500;
+export const RegularTicket = 10000;
+export const VIPTicket = 50000;
 
 export const checkoutSlice = createSlice({
   name: "checkout",
