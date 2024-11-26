@@ -104,17 +104,13 @@ export type initialCheckoutStateType = {
 
 const initialState: initialCheckoutStateType = {
   tickets: [
-    { ticketName: "explorer", value: 0 },
-    { ticketName: "founder", value: 0 },
-    { ticketName: "investor", value: 0 },
-    { ticketName: "delegate", value: 0 },
+    { ticketName: "regular", value: 0 },
+    { ticketName: "vip", value: 0 }
   ],
   myTicket: { ticketName: "", value: 0 },
   leftOverTickets: [
-    { ticketName: "explorer", value: 0 },
-    { ticketName: "founder", value: 0 },
-    { ticketName: "investor", value: 0 },
-    { ticketName: "delegate", value: 0 },
+    { ticketName: "regular", value: 0 },
+    { ticketName: "vip", value: 0 }
   ],
   leftOverTicketFormValues: [],
   formValues: { id: "", data: initialFormValue },
@@ -146,10 +142,8 @@ const initialState: initialCheckoutStateType = {
   payStackCheckout: {email: '', total: 0},
 };
 
-export const ExplorerTicket = 14999;
-export const FounderTicket = 59999;
-export const InvestorTicket = 125000;
-export const DelegateTicket = 187500;
+export const RegularTicket = 10000;
+export const VIPTicket = 50000;
 
 export const checkoutSlice = createSlice({
   name: "checkout",

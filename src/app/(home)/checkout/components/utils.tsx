@@ -1,10 +1,8 @@
 import { styled } from "@mui/system";
 import { Select, TextareaAutosize, TextField } from "@mui/material";
 import {
-  DelegateTicket,
-  ExplorerTicket,
-  FounderTicket,
-  InvestorTicket
+  VIPTicket,
+  RegularTicket
 } from "@/app/lib/features/checkout/checkoutSlice";
 
 export const CssTextField = styled(TextField)({
@@ -26,8 +24,8 @@ export const CssTextField = styled(TextField)({
     color: "#000000",
   },
   "& .mui-rg9sn3-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill": {
-    "-webkit-box-shadow": "0 0 0 100px white inset",
-    "-webkit-text-fill-color": "black",
+    WebkitBoxShadow: "0 0 0 100px white inset",
+    WebkitTextFillColor: "black"
   },
 });
 
@@ -75,15 +73,11 @@ export const CssSelectField = styled(Select)({
 });
 
 export const getTicketCost = (ticket) => {
-  return ticket.ticketName === "investor"
-    ? InvestorTicket * ticket.value
-    : ticket.ticketName === "founder"
-      ? FounderTicket * ticket.value
-      : ticket.ticketName === "explorer"
-        ? ExplorerTicket * ticket.value
-        : DelegateTicket * ticket.value;
-}
+  return ticket.ticketName === "regular"
+    ? RegularTicket * ticket.value
+    : VIPTicket * ticket.value;
+};
 
 export const formatCurrency = (x: number) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+};
