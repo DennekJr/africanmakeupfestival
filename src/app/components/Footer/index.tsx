@@ -88,7 +88,7 @@ export const Footer = () => {
                         >
                           <h5
                             className={
-                              "pb-2 lg:pb-4 hover:cursor-pointer font-extrabold hover:text-primary !text-[1.25rem]"
+                              "pb-2 lg:pb-4 hover:cursor-default font-extrabold !text-[1.25rem]"
                             }
                           >
                             {link.name}
