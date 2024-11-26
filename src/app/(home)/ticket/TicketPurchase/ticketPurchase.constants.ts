@@ -18,7 +18,7 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
   vip: {
     id: "vip",
     title: "VIP",
-    subTitle: "Perfect for startup founders and co-founders",
+    subTitle: "Unlock Premium Perks and Privileges.",
     benefits: [
       "Access to the exhibitors",
       "Priority access to all sessions",
