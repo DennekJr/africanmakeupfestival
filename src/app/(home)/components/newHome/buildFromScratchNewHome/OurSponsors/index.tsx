@@ -36,7 +36,7 @@ export const OurSponsors = () => {
                               "ml-[-1px] leading-[1em] text-[27px] md:text-[32px] lg:text-[3.353em] font-semibold"
                             }
                           >
-                            Sponsors of our festival
+                            Sponsors of the festival
                           </h1>
                         </Box>
                       </AgoraTransitionBox>

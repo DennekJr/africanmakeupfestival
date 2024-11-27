@@ -12,7 +12,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
             loading="lazy"
             decoding="async"
             style={{transition: 'opacity 0.3s ease'}}
-            className={'sponsorImage text-primary fill-current opacity-20'}
+            className={"sponsorImage max-h-[208px] text-primary fill-current opacity-20 " + `${sponsor.id === "splice" ? "bg-[#0D2D25] " : ""}` + `${sponsor.id === "rejuva" ? "h-[108px] " : ""}` + `${sponsor.id === "anneRoberts" ? "!h-[90px]" : ""}`}
             src={sponsor.image}
             alt={sponsor.title}
             width={208}
