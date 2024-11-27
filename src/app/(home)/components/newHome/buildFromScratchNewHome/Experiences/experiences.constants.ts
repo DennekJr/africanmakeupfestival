@@ -66,7 +66,7 @@ export const ExperiencesConstants: Record<
   // },
   seven: {
     id: "seventhHighlight",
-    title: "Food and Entertainment",
+    title: "Food & Entertainment",
     subtitle: "Delicious food, music, and dance to " +
       "provide a vibrant and festive atmosphere.",
     image: "/images/highlights/entertainment.webp"
