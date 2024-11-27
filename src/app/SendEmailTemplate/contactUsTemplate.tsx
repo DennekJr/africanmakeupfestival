@@ -1,9 +1,11 @@
 export const ContactUsTemplate = ({
                                     name,
-                                    content
+                                    content,
+                                    email
                                   }: {
   name: string;
   content: string;
+  email: string;
 }) => {
   return `
   <!DOCTYPE html>
@@ -31,6 +33,7 @@ export const ContactUsTemplate = ({
 <div>
 <img src="https://africaskincarefestival.com/images/Email_Logo.png" style="height: auto; width: 100%" alt="asf logo" />
 <h4>Message from ${name},</h4>
+<h5>Respond to: ${email}</h5>
 <p>${content}</p>
 <p style="height: 20vh"></p>
 <p>Sincerely,</p>
