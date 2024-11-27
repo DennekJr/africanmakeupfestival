@@ -12,9 +12,10 @@ import React from "react";
 import { AccessTime, PlaceOutlined } from "@mui/icons-material";
 import { useAppSelector, useAppDispatch } from "@/app/lib/hooks";
 import {
-  setTickets
+  setTickets, setBillingTotal
 } from "@/app/lib/features/checkout/checkoutSlice";
 import { useRouter } from "next/navigation";
+import { getTicketCost } from "@/app/(home)/checkout/components/utils";
 
 export const Event = ({ event }: { event: CalenderEventTypes }) => {
   const router = useRouter();
@@ -49,6 +50,14 @@ export const Event = ({ event }: { event: CalenderEventTypes }) => {
             };
           }
         });
+        const newTotal = Object.values(newState).reduce((acc, ticket) => {
+          if (ticket.value < 1) return acc;
+
+          const value = getTicketCost(ticket);
+
+          return acc + value;
+        }, 0);
+        dispatch(setBillingTotal(newTotal));
         dispatch(setTickets(newState));
         router.push("/ticket");
       };

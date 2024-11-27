@@ -21,7 +21,8 @@ export const TicketPurchase = () => {
 
   const [isOpen, setIsOpen] = useState(initialState);
   const [error, setError] = useState("");
-  const values = useAppSelector((state) => state.checkout.tickets);
+  const ticketNumbers = useAppSelector((state) => state.checkout.tickets);
+  const values = useMemo(() => ticketNumbers, [ticketNumbers]);
   const router = useRouter();
   const tickets = useMemo(() => Object.values(TICKETPURCHASEMENU), []);
   const dispatch = useAppDispatch()
