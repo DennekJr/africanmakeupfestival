@@ -33,7 +33,7 @@ export const ExperiencesConstants: Record<
   // },
   four: {
     id: "fourthHighlight",
-    title: "Free Skincare consultations",
+    title: "Skincare consultations",
     subtitle:
       "Expert aestheticians and\n" +
       "dermatologists providing\n" +

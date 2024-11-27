@@ -46,7 +46,7 @@ export const OurSponsors = () => {
                 <Box className={"w-[10%] lg:w-[72%]"}></Box>
               </Box>
             </section>
-            <Box className={"h-[52px] w-full"}>
+            <Box className={"h-[16px] md:h-[32px] lg:h-[64px] w-full"}>
               <AgoraTransitionBox>
                 <Box className={"h-[120px]"} />
               </AgoraTransitionBox>

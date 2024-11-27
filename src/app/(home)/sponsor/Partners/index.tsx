@@ -34,7 +34,11 @@ export const Partners = () => {
             </span>
           </pre>
         </Box>
-        <Box className={"grid align-middle justify-center items-center grid-cols-2 lg:grid-cols-4 !lg:gap-8 !gap-4"}>
+        <Box
+          className={
+            "grid align-middle justify-center items-center grid-cols-2 lg:grid-cols-4 !lg:gap-8 !gap-4"
+          }
+        >
           {sponsors.map((sponsor, index) => {
             return (
               <Box
@@ -49,7 +53,10 @@ export const Partners = () => {
                   src={sponsor.src}
                   alt={sponsor.name}
                   style={{ color: "primary" }}
-                  className={"w-[w-120px] lg:w-[150px] h-auto object-contain brightness-50 group-hover:brightness-100"}
+                  className={
+                    "w-[w-120px] lg:w-[150px] h-auto object-contain brightness-50 group-hover:brightness-100 " +
+                    `${sponsor.name === "ar" ? "!h-[52px] !w-[52px] md:!h-[52px] md:!w-[52px] lg:!h-[52px] lg:!w-[52px]" : ""}`
+                  }
                 />
               </Box>
             );
