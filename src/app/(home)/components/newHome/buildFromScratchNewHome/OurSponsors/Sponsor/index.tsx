@@ -1,22 +1,28 @@
+"use client";
 import { Box } from "@mui/material";
 import Image from "next/image";
 import { SponsorType } from "@/app/(home)/components/newHome/buildFromScratchNewHome/OurSponsors/Sponsor/sponsors.types";
 import { ArrowRightAltOutlined } from "@mui/icons-material";
 
 export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
+  const handleNavigate = () => {
+    if (typeof window === "undefined") return;
+    window.open(sponsor.url, "_blank");
+  };
   return (
-    <Box className={"sponsorContainer w-full md:w-1/2 lg:w-[33.33%] inline-block align-top relative pb-[20px] md:pb-0 md:pr-[30px]"}>
+    <Box onClick={handleNavigate}
+         className={"sponsorContainer w-full md:w-1/2 lg:w-[33.33%] inline-block align-top relative mb-[16px] md:mb-[32px] lg:mb-[64px] pb-[20px] md:pb-0 md:pr-[30px]"}>
       <Box className={"relative text-left"}>
-        <Box className={"mb-10 box-border h-[60px] min-h-[60px]"}>
+        <Box className={"mb-8 box-border h-[60px] min-h-[60px]"}>
           <Image
             loading="lazy"
             decoding="async"
             style={{transition: 'opacity 0.3s ease'}}
-            className={"sponsorImage max-h-[208px] text-primary fill-current opacity-20 " + `${sponsor.id === "splice" ? "bg-[#0D2D25] " : ""}` + `${sponsor.id === "rejuva" ? "h-[108px] " : ""}` + `${sponsor.id === "anneRoberts" ? "!h-[90px]" : ""}`}
+            className={"sponsorImage h-[52px] w-auto text-primary fill-current opacity-20 "}
             src={sponsor.image}
             alt={sponsor.title}
             width={208}
-            height={208}
+            height={52}
           />
         </Box>
         <Box className={"mt-[1.3em]"}>
@@ -29,8 +35,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
           <Box className={"text-lightSecondary mt-[0.4em] mb-[0.3em] text-[15px] leading-[1.6em]"}>
             <span className={"block"}>{sponsor.content}</span>
           </Box>
-          <a
-            href={sponsor.url}
+          <Box
             className={
               "1.7em relative inline-block text-[16px] leading-[21px] z-10 overflow-hidden"
             }
@@ -48,7 +53,7 @@ export const Sponsor = ({ sponsor }: { sponsor: SponsorType }) => {
             <span>
               <ArrowRightAltOutlined className={'relative text-primary inline-block align-middle overflow-hidden w-[1.4em] h-[1.4em]'}/>
             </span>
-          </a>
+          </Box>
         </Box>
       </Box>
     </Box>
