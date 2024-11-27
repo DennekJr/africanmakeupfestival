@@ -88,7 +88,7 @@ const CheckoutForm = () => {
         otherTicketForms: formValues,
       },
       total: total,
-      purchaseType: "ticket"
+      purchaseType: "ticket",
     };
     const response = await fetch("/api/stripe", {
       method: "POST",
@@ -117,7 +117,7 @@ const CheckoutForm = () => {
         buyerForm: billingInfo,
         otherTicketForms: formValues,
       },
-      tickets: tickets
+      tickets: tickets,
     };
     const req = await initiatePaystackTransaction(ticketPurchaseData);
     if (req) {
