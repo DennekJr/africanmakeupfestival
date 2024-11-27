@@ -36,6 +36,7 @@ export const ContactUs = () => {
   const handleMailto = async () => {
     const template = ContactUsTemplate({
       name: `${firstName} ${lastName}`,
+      email: email,
       content: message
     });
     await sendContactUsEmail(email, template);

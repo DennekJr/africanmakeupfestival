@@ -70,7 +70,7 @@ export const CalenderEvents = () => {
                         }}
                       >
                         <p>
-                          Join us at our upcoming skincare workshops and
+                          Join us at the upcoming skincare workshops and
                           wellness events!. Don&apos;t miss
                           out on exclusive product launches and live
                           demonstrations.

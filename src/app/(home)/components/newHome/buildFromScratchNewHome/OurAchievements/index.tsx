@@ -50,7 +50,7 @@ export const OurAchievements = () => {
                       "text-primary mb-[7.8px] md:mb-[0.75em] lg:mb-[1em] text-[14px] leading-[18px] uppercase font-semibold"
                     }
                   >
-                    Our Mission & Vision
+                    The Mission & Vision
                   </span>
                   <h1
                     className={"text-[27px] md:text-[44px] lg:text-[3.353em] text-primary font-extrabold"}

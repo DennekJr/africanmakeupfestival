@@ -6,8 +6,8 @@ const METADATA_CONFIG = {
   description: "African Skincare Festival",
   applicationName: "AfricaSkincareFestival",
   socialMedia: {
-    instagram: 'https://www.instagram.com/africaskincarefestival?igsh=MXAzcmxjaDd6NnAwNQ==',
-    tiktok: 'https://www.tiktok.com/@africaskincarefestival?_t=8rgnTxK4KDW&_r=1',
+    instagram: "https://www.instagram.com/africaskincarefestival?igsh=MXAzcmxjaDd6NnAwNQ==",
+    tiktok: "https://www.tiktok.com/@africaskincarefestival?_t=8rgnTxK4KDW&_r=1"
   },
   keywords: [
     "Event Hosting",

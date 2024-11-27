@@ -30,11 +30,11 @@ export const Partners = () => {
             </span>
             <span className="relative max-w-full break-words">
               {" "}
-              from our event
+              from the event
             </span>
           </pre>
         </Box>
-        <Box className={"grid grid-cols-2 lg:grid-cols-6 !lg:gap-8 !gap-4"}>
+        <Box className={"grid align-middle justify-center items-center grid-cols-2 lg:grid-cols-4 !lg:gap-8 !gap-4"}>
           {sponsors.map((sponsor, index) => {
             return (
               <Box
