@@ -139,7 +139,7 @@ export const AboutUsLinkWithTransition = styled(Box)({
   background: "transparent",
 });
 
-export const HomeButton = styled("a")({
+export const HomeButton = styled(Box)({
   fontSize: "14px",
   fontWeight: 500,
   fontStyle: "normal",
