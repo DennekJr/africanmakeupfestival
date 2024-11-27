@@ -20,9 +20,9 @@ export const PARTNERS_MENU: Record<string, PartnersIcons> = {
     disabled: false,
   },
   rejuvenee: {
-    id: "Rejuvenee-new-logo",
-    name: "Rejuvenee-new-logo",
-    src: "/images/sponsor/Rejuvenee-new-logo.webp",
+    id: "Rejuva",
+    name: "Rejuva skincare",
+    src: "/images/sponsor/rejuva.webp",
     disabled: false,
   },
   herel: {
@@ -37,4 +37,10 @@ export const PARTNERS_MENU: Record<string, PartnersIcons> = {
     src: "/images/sponsor/splice.svg",
     disabled: false,
   },
+  annyRoberts: {
+    id: "ar",
+    name: "ar",
+    src: "/images/sponsor/annyRoberts.webp",
+    disabled: false
+  }
 };

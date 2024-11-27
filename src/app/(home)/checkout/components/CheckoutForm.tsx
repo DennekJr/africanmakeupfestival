@@ -15,7 +15,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import {
   formatCurrency,
-  getTicketCost,
+  getTicketCost
 } from "@/app/(home)/checkout/components/utils";
 
 const billingFormValues = {

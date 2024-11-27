@@ -8,8 +8,10 @@ import {
 } from "@/app/(home)/components/newHome/utils";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const SkinCareAdventure = () => {
+  const router = useRouter();
   return (
     <SkinCareAdventuresImageWithTransition>
       <Box className={"max-w-[1320px] flex mx-auto relative"}>
@@ -70,7 +72,7 @@ export const SkinCareAdventure = () => {
                 <Box className={"content-center items-center md:ml-[15px]"}>
                   <AgoraTransitionBox className={"w-full"}>
                     <HomeButton
-                      href={"/ticket"}
+                      onClick={() => router.push("/ticket")}
                       className={
                         "mt-[20px] md:mt-[20px] md:mb-[10px] hover:cursor-pointer inline-block align-top bg-[#FE9E11]"
                       }

@@ -29,7 +29,7 @@ export const WhoAreWe = () => {
             <Typography>Who We Are</Typography>
             <h1 className={"break-words " +
               "text-[27px] md:text-[44px] lg:text-[60px]"}>
-              Expert aestheticians, hands-on skincare workshops, and a world of beauty tips await you at our <span
+              Expert aestheticians, hands-on skincare workshops, and a world of beauty tips await you at the <span
               className={"text-[#FE9E11]"}>skincare festival</span>
             </h1>
           </Box>
