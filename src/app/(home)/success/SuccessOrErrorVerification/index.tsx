@@ -33,6 +33,7 @@ export const SuccessOrErrorVerification = () => {
   const reference = searchParams?.get("reference");
   const paymentType = searchParams?.get("payment");
   const sessionId = searchParams?.get("sessionId");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [metaData, setMetaData] = React.useState<any>(null);
   const checkStatus = async () => {
     if (paymentType !== "stripe") {
