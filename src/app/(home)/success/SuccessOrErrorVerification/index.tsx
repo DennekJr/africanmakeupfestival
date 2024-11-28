@@ -98,7 +98,7 @@ export const SuccessOrErrorVerification = () => {
       setIsSuccess(true);
       const result = await VerifyStripeTransaction(sessionId);
       if (result.status === "complete") {
-        console.log("result", result);
+        setPurchaseType(result.metadata.type);
         if (result.metadata.type === "ticket") {
           const ticketData = {
             buyerForm: JSON.parse(result.metadata.buyerForm),
@@ -109,7 +109,6 @@ export const SuccessOrErrorVerification = () => {
             ticketData: ticketData,
             purchaseType: "ticket"
           };
-          setPurchaseType("ticket");
           setMetaData(stripeMetaData);
           setCurrency((result.currency as string).toUpperCase());
           setTotal(result.amount_total);
