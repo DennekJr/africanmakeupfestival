@@ -143,7 +143,7 @@ export const HiddenFormDropdown = ({
                       className={"capitalize hover:!bg-gray-100 px-4"}
                       value={ticket.ticketName}
                     >
-                      {ticket.ticketName}
+                      {ticket.ticketName.toUpperCase()}
                     </MenuItem>
                   );
                 })}
@@ -200,7 +200,7 @@ export const HiddenFormDropdown = ({
                                     className={"capitalize"}
                                     value={ticket.ticketName}
                                   >
-                                    {ticket.ticketName}
+                                    {ticket.ticketName.toUpperCase()}
                                   </MenuItem>
                                 </CssSelectField>
                               </FormControl>
