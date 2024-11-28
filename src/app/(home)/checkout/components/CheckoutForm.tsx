@@ -88,6 +88,7 @@ const CheckoutForm = () => {
         otherTicketForms: formValues,
       },
       total: total,
+      tickets: tickets,
       purchaseType: "ticket",
     };
     const response = await fetch("/api/stripe", {

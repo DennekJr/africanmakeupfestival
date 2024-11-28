@@ -17,6 +17,7 @@ export async function POST(request) {
       metadata = {
         "buyerForm": JSON.stringify(items.ticketData.buyerForm),
         "otherTicketForms": JSON.stringify(otherForms),
+        "tickets": JSON.stringify(items.tickets),
         "type": "ticket"
       };
     }

@@ -103,6 +103,7 @@ export const SuccessOrErrorVerification = () => {
             buyerForm: JSON.parse(result.metadata.buyerForm),
             otherTicketForms: JSON.parse(result.metadata.otherTicketForms)[0]
           };
+          const tickets = JSON.parse(result.metadata.tickets);
           const stripeMetaData = {
             ticketData: ticketData,
             purchaseType: "ticket"
@@ -120,6 +121,13 @@ export const SuccessOrErrorVerification = () => {
             UnitNumber: result.amount_total
           };
           await PostTransaction(transactionToPost);
+          const template = SendEmailTemplate({
+            name: result.customer_details.name,
+            total: result.amount_total,
+            tickets: tickets,
+            reference: sessionId?.slice(-10)
+          });
+          await sendEmail(result.customer_details.email, template);
         }
       }
     }
