@@ -45,6 +45,7 @@ export const SuccessOrErrorVerification = () => {
         const transactionData = result.transactionData;
         const isBoothPurchase =
           transactionData.metadata.purchaseType === "booth";
+        setPurchaseType(transactionData.metadata.purchaseType);
         if (!isBoothPurchase) {
           await PostPaystackTicketPurchases({ transactionData });
         } else {
