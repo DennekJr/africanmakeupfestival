@@ -206,7 +206,7 @@ export const SuccessOrErrorVerification = () => {
               className={"text-black mr-2"}
             />
             <h3 className={"text-black"}>
-              Order Confirmation Code: {reference || sessionId.slice(-10)}
+              Order Confirmation Code: {reference || sessionId?.slice(-10)}
             </h3>
           </Box>
         </Box>
