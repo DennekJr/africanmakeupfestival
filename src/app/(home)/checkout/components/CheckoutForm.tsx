@@ -81,6 +81,7 @@ const CheckoutForm = () => {
         };
         stripeData.push(item);
       });
+    console.log("Stripe Data", stripeData);
     const ticketPurchaseData = {
       stripeCheckoutData: stripeData,
       ticketData: {
