@@ -125,7 +125,7 @@ export const SuccessOrErrorVerification = () => {
             name: result.customer_details.name,
             total: result.amount_total,
             tickets: tickets,
-            reference: sessionId?.slice(-10)
+            reference: result.id.slice(-10)
           });
           await sendEmail(result.customer_details.email, template);
         }
