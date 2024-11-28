@@ -61,11 +61,11 @@ export const SendEmailTemplate = ({
   </style>
 </head>
 <body>
-<div>
-<div style="width: 100%; align-self: end"><img src="https://africaskincarefestival.com/images/Email_Logo.png" style="height: auto; align-self: end; justify-content: end; background: transparent; width: 100%" alt="asf logo" /></div>
-<img src="https://africaskincarefestival.com/images/Email_Logo.png" style="height: auto; width: 100%" alt="asf logo" />
+<div style="position: relative">
+<div style="position: absolute; top: 0; right: 0; width: 100%; align-self: end"><img src="https://africaskincarefestival.com/images/Email_Logo.png" style="height: auto; align-self: end; justify-content: end; background: transparent; width: 100%" alt="asf logo" /></div>
 <h3>SEE YOU THERE!</h3>
 <h3>Thank you for your <span style="color: #C43C2A">#ASF</span> purchase!</h3>
+<h3>Invoice #${reference}</h3>
 <h4>Hi ${name},</h4>  
 <p>Thanks for your order - your confirmation number is <span style="color: #C43C2A">${reference}</span>.
 Full details of your order can be found below.</p>
