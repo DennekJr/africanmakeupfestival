@@ -77,6 +77,11 @@ export const getTicketCost = (ticket) => {
     ? RegularTicket * ticket.value
     : VIPTicket * ticket.value;
 };
+export const getTicketValue = (ticket) => {
+  return ticket.ticketName === "regular"
+    ? RegularTicket
+    : VIPTicket;
+};
 
 export const formatCurrency = (x: number) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

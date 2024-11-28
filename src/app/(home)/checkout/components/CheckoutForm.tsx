@@ -15,7 +15,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import {
   formatCurrency,
-  getTicketCost
+  getTicketCost, getTicketValue
 } from "@/app/(home)/checkout/components/utils";
 
 const billingFormValues = {
@@ -66,7 +66,7 @@ const CheckoutForm = () => {
     Object.values(tickets)
       .filter((item) => item.value > 0)
       .map((ticket) => {
-        const value = getTicketCost(ticket);
+        const value = getTicketValue(ticket);
         console.log("Values", ticket, value);
         const item = {
           price_data: {
