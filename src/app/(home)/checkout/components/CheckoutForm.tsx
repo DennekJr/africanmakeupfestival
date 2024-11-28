@@ -67,6 +67,7 @@ const CheckoutForm = () => {
       .filter((item) => item.value > 0)
       .map((ticket) => {
         const value = getTicketCost(ticket);
+        console.log("Values", ticket, value);
         const item = {
           price_data: {
             currency: "ngn",
