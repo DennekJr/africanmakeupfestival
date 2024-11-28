@@ -22,9 +22,7 @@ export const PurchaseDetailTable = ({
   currency: string;
 }) => {
   const getTicketValue = (ticketName) => {
-    return ticketName === "regular"
-      ? RegularTicket
-      : VIPTicket;
+    return ticketName === "regular" ? RegularTicket : VIPTicket;
   };
   const mainBuyer = Object.keys(metaData.buyerForm).includes("form_booth")
     ? (metaData.buyerForm as ExhibitionBoothBillingInfo)
@@ -43,6 +41,7 @@ export const PurchaseDetailTable = ({
           data: TicketBilingInfo;
         }
       );
+  console.log("Other tickets in form", metaData.otherTicketForms, otherTicketForms);
   const mappedDataArray =
     metaData.otherTicketForms === undefined
       ? []

@@ -6,7 +6,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(request) {
   try {
     const { items } = await request.json(); // Assuming you're sending 'email' and 'amount' in the request body
-    console.log("items", items);
     let metadata = {};
     if (items.purchaseType === "ticket") {
       const otherForms = Object.entries(items.ticketData.otherTicketForms).filter(([key, values]) => key !== "data" && key !== "id" && values !== "").map(([key, values]) => {
@@ -16,10 +15,10 @@ export async function POST(request) {
         return [key, rest];
       });
       metadata = {
-        "mainTicket": JSON.stringify(items.ticketData.buyerForm),
-        "otherTickets": JSON.stringify(otherForms)
+        "buyerForm": JSON.stringify(items.ticketData.buyerForm),
+        "otherTicketForms": JSON.stringify(otherForms),
+        "type": "ticket"
       };
-      console.log("otherForms", items.ticketData.buyerForm);
     }
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card", "link"],
@@ -30,7 +29,6 @@ export async function POST(request) {
       cancel_url: process.env.BASE_URL + `ticket`,
       metadata: metadata
     });
-    console.log("session", session);
     const itemData = items.ticketData;
 
     // return new Response(JSON.stringify({ session: session, ticketData: items.ticketData }), {
