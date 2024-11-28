@@ -163,7 +163,6 @@ export const SuccessOrErrorVerification = () => {
             ? metaData?.ticketData
             : metaData.boothData
         }
-        purchaseMethod={"stripe"}
         currency={currency}
         total={total}
       />;
