@@ -23,6 +23,7 @@ export async function POST(request) {
     const db = client.db("africaskincarefestival"); // Replace with your database name
     // Get the data from the request body
     const {ticketData, session} = await request.json();
+    console.log(ticketData);
     Object.values(ticketData.buyerForm).map(async (detail) => {
       const TicketName = Object.keys(ticketData.buyerForm)[0];
       const buyerTicketPurchaseDetails = {
@@ -67,7 +68,7 @@ export async function POST(request) {
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
       };
-      await db.collection('Ticket-Purchases').insertOne(BuyerTicketPurchase);
+      await db.collection("ticket-purchases").insertOne(BuyerTicketPurchase);
     })
     return new Response(JSON.stringify('Data successfully added to Ticket-Purchases'), {
       status: 201,

@@ -111,7 +111,7 @@ export const SuccessOrErrorVerification = () => {
           setMetaData(stripeMetaData);
           setCurrency((result.currency as string).toUpperCase());
           setTotal(result.amount_total);
-          await PostStripeTicketPurchases(ticketData);
+          await PostStripeTicketPurchases({ ticketData });
           const transactionToPost = {
             Paystack_Id: (result.id as string).slice(-10),
             Stripe_Id: "",
