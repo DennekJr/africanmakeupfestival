@@ -1,7 +1,9 @@
 "use client";
 import * as React from "react";
+import { useEffect, useRef } from "react";
 import {
-  PostPaystackTicketPurchases, PostStripeTicketPurchases,
+  PostPaystackTicketPurchases,
+  PostStripeTicketPurchases,
   PostTransaction,
   sendEmail,
   VerifyPaystackTransaction,
@@ -10,7 +12,6 @@ import {
 import Box from "@mui/material/Box";
 import { Button, CircularProgress } from "@mui/material";
 import { notFound, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { PurchaseDetailTable } from "@/app/(home)/success/SuccessOrErrorVerification/PurchaseDetailTable";
@@ -27,12 +28,12 @@ export const SuccessOrErrorVerification = () => {
   const [currency, setCurrency] = React.useState("");
   const [total, setTotal] = React.useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [metaData, setMetaData] = React.useState<any>();
-  const [purchaseType, setPurchaseType] = React.useState("");
+  // const [metaData, setMetaData] = React.useState({});
   const searchParams = useSearchParams();
   const reference = searchParams?.get("reference");
   const paymentType = searchParams?.get("payment");
   const sessionId = searchParams?.get("sessionId");
+  const [metaData, setMetaData] = React.useState<any>(null);
   const checkStatus = async () => {
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
@@ -45,7 +46,6 @@ export const SuccessOrErrorVerification = () => {
         const transactionData = result.transactionData;
         const isBoothPurchase =
           transactionData.metadata.purchaseType === "booth";
-        setPurchaseType(transactionData.metadata.purchaseType);
         if (!isBoothPurchase) {
           await PostPaystackTicketPurchases({ transactionData });
         } else {
@@ -98,37 +98,35 @@ export const SuccessOrErrorVerification = () => {
       setIsSuccess(true);
       const result = await VerifyStripeTransaction(sessionId);
       if (result.status === "complete") {
-        setPurchaseType(result.metadata.type);
-        if (result.metadata.type === "ticket") {
-          const ticketData = {
-            buyerForm: JSON.parse(result.metadata.buyerForm),
-            otherTicketForms: JSON.parse(result.metadata.otherTicketForms)[0]
-          };
-          const tickets = JSON.parse(result.metadata.tickets);
-          const stripeMetaData = {
-            ticketData: ticketData,
-            purchaseType: "ticket"
-          };
-          setMetaData(stripeMetaData);
-          setCurrency((result.currency as string).toUpperCase());
-          setTotal(result.amount_total);
-          await PostStripeTicketPurchases({ ticketData });
-          const transactionToPost = {
-            Paystack_Id: (result.id as string).slice(-10),
-            Stripe_Id: "",
-            Currency: result.currency,
-            Email: result.customer_details.email,
-            UnitNumber: result.amount_total
-          };
-          await PostTransaction(transactionToPost);
-          const template = SendEmailTemplate({
-            name: result.customer_details.name,
-            total: result.amount_total,
-            tickets: tickets,
-            reference: result.id.slice(-10)
-          });
-          await sendEmail(result.customer_details.email, template);
-        }
+        // if (result.metadata.type === "ticket") {
+        const ticketData = {
+          buyerForm: JSON.parse(result.metadata.buyerForm),
+          otherTicketForms: JSON.parse(result.metadata.otherTicketForms)[0]
+        };
+        const tickets = JSON.parse(result.metadata.tickets);
+        const data = {
+          ticketData: ticketData
+        };
+        setMetaData(data);
+        setCurrency((result.currency as string).toUpperCase());
+        setTotal(result.amount_total);
+        await PostStripeTicketPurchases({ ticketData });
+        const transactionToPost = {
+          Paystack_Id: (result.id as string).slice(-10),
+          Stripe_Id: "",
+          Currency: result.currency,
+          Email: result.customer_details.email,
+          UnitNumber: result.amount_total
+        };
+        await PostTransaction(transactionToPost);
+        const template = SendEmailTemplate({
+          name: result.customer_details.name,
+          total: result.amount_total,
+          tickets: tickets,
+          reference: result.id.slice(-10)
+        });
+        await sendEmail(result.customer_details.email, template);
+        // }
       }
     }
   };
@@ -140,7 +138,7 @@ export const SuccessOrErrorVerification = () => {
       checkStatus();
       // console.log("sessionId", sessionId, reference);
     }
-  }, []);
+  }, [reference, sessionId]);
   if (sessionId === null && reference === null) return notFound();
   const handlePrint = () => {
     if (typeof window !== "undefined") {
@@ -162,29 +160,16 @@ export const SuccessOrErrorVerification = () => {
       </Box>
     );
   }
-  console.log(metaData, purchaseType);
   const renderPurchaseTable = () => {
-    if (purchaseType && metaData) {
-      return <PurchaseDetailTable
-        metaData={
-          purchaseType === "ticket"
-            ? metaData?.ticketData
-            : metaData.boothData
-        }
-        currency={currency}
-        total={total}
-      />;
-    } else {
-      return <Box
-        sx={{
-          display: "flex",
-          height: "100vh",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <CircularProgress />
-      </Box>;
+    if (metaData && metaData) {
+      console.log("MetaData", metaData);
+      return (
+        <PurchaseDetailTable
+          metaData={metaData?.ticketData}
+          currency={currency}
+          total={total}
+        />
+      );
     }
   };
   return (
@@ -221,7 +206,6 @@ export const SuccessOrErrorVerification = () => {
         <Box className={"text-left w-full"}>
           <h3 className={"text-black text-lg mb-2"}>Purchase Details</h3>
           <Box className={"border border-midGrey rounded-lg"}>
-            {/*// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain*/}
             {renderPurchaseTable()}
           </Box>
           <Box>

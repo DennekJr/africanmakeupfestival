@@ -21,6 +21,7 @@ export const PurchaseDetailTable = ({
   total: number;
   currency: string;
 }) => {
+  console.log("MetaData", metaData);
   const getTicketValue = (ticketName) => {
     return ticketName === "regular" ? RegularTicket : VIPTicket;
   };
@@ -41,7 +42,11 @@ export const PurchaseDetailTable = ({
           data: TicketBilingInfo;
         }
       );
-  console.log("Other tickets in form", metaData.otherTicketForms, otherTicketForms);
+  console.log(
+    "Other tickets in form",
+    metaData.otherTicketForms,
+    otherTicketForms
+  );
   const mappedDataArray =
     metaData.otherTicketForms === undefined
       ? []

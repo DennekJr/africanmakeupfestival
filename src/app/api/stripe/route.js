@@ -18,7 +18,7 @@ export async function POST(request) {
         "buyerForm": JSON.stringify(items.ticketData.buyerForm),
         "otherTicketForms": JSON.stringify(otherForms),
         "tickets": JSON.stringify(items.tickets),
-        "type": "ticket"
+        "type": JSON.stringify(items.ticketData.type)
       };
     }
     const session = await stripe.checkout.sessions.create({
