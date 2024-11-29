@@ -1,6 +1,6 @@
 import clientPromise from "@/app/lib/mongo/mongodb.js";
 
-export async function GET() {
+export async function GET(request) {
   try {
     // const authHeader = req.headers.get('Authorization');
     // if (!authHeader || !authHeader.startsWith('Bearer ')) {
