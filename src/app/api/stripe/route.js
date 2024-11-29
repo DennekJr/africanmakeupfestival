@@ -30,6 +30,9 @@ export async function POST(request) {
       line_items: items.stripeCheckoutData,
       success_url: process.env.BASE_URL + "success?payment=stripe&sessionId={CHECKOUT_SESSION_ID}",
       cancel_url: process.env.BASE_URL + `ticket`,
+      invoice_creation: {
+        enabled: true
+      },
       metadata: metadata
     });
     const itemData = items.ticketData;
