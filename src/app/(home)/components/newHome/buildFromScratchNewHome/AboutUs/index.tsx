@@ -17,9 +17,8 @@ export const AboutUs = () => {
     const response = await fetch("/api/generateSponsorCode", {
       method: "GET"
     });
-    console.log(response);
     const data = await response.json();
-    console.log(data);
+    console.log("sponsor found", data);
   }
 
   useEffect(() => {

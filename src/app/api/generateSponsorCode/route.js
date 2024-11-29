@@ -14,10 +14,13 @@ export async function GET() {
     // const token = authHeader.split(' ')[1];
     const client = await clientPromise;
     const db = client.db("africaskincarefestival"); // Replace with your database name
-    const tickets = await db.collection("sponsors").find({}).toArray();
-    console.log(tickets);
+    const dbSponsors = await db.collection("sponsors").find({}).toArray();
+    const sponsor = await dbSponsors.find((sponsor) => sponsor.name === "piggyvest");
+    console.log("tickets", sponsor);
 
-    return new Response(JSON.stringify(tickets), {
+    console.log("SPONSORS", sponsor, tickets);
+
+    return new Response(JSON.stringify(sponsor), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });
