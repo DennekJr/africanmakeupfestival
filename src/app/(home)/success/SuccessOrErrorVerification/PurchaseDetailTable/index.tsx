@@ -18,10 +18,10 @@ export const PurchaseDetailTable = ({
       | { [ticket: string]: { name: string; value: string }[] }[]
       | ExhibitionBoothBillingInfo;
     otherTicketForms: { id: string; data: TicketBilingInfo } | undefined;
-    paymentType: string;
   };
   total: number;
   currency: string;
+  paymentType: string;
 }) => {
   const getTicketValue = (ticketName) => {
     return ticketName.toLowerCase() === "regular" ? RegularTicket : VIPTicket;
