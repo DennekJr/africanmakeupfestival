@@ -12,15 +12,18 @@ export async function GET() {
 
     // Extract the Bearer token
     // const token = authHeader.split(' ')[1];
+    const { searchParams } = new URL(request.url);
+    const sponsorName = searchParams.get("sponsor");
+    const ticketType = searchParams.get("ticket");
     const client = await clientPromise;
     const db = client.db("africaskincarefestival"); // Replace with your database name
     const dbSponsors = await db.collection("sponsors").find({}).toArray();
     const sponsor = await dbSponsors.find((sponsor) => sponsor.name === "piggyvest");
     console.log("tickets", sponsor);
 
-    console.log("SPONSORS", sponsor, dbSponsors);
+    console.log("SPONSORS", sponsor, dbSponsors, sponsorName, ticketType);
 
-    return new Response(JSON.stringify(sponsor), {
+    return new Response(JSON.stringify({ sponsor: sponsor, name: sponsorName, ticketName: ticketType }), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });

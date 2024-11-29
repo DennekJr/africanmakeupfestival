@@ -14,7 +14,7 @@ import { useEffect } from "react";
 export const AboutUs = () => {
 
   async function getSecureInfo() {
-    const response = await fetch("/api/generateSponsorCode", {
+    const response = await fetch(`/api/generateSponsorCode?sponsor=${"piggyvest"}&ticket=${"VIP"}`, {
       method: "GET"
     });
     const data = await response.json();
