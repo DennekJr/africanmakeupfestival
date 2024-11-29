@@ -1,7 +1,9 @@
 "use client";
 import * as React from "react";
+import { useEffect, useRef } from "react";
 import {
   PostPaystackTicketPurchases,
+  PostStripeTicketPurchases,
   PostTransaction,
   sendEmail,
   VerifyPaystackTransaction,
@@ -9,8 +11,7 @@ import {
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import Box from "@mui/material/Box";
 import { Button, CircularProgress } from "@mui/material";
-import { notFound, useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { notFound, useRouter, useSearchParams } from "next/navigation";
 import CheckIcon from "@mui/icons-material/Check";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { PurchaseDetailTable } from "@/app/(home)/success/SuccessOrErrorVerification/PurchaseDetailTable";
@@ -21,24 +22,19 @@ import { HandlePaystackBoothPurhase } from "@/app/(home)/exhibit/register/Paysta
 import { formatCurrency } from "@/app/(home)/checkout/components/utils";
 
 export const SuccessOrErrorVerification = () => {
+  const router = useRouter();
   const hasRun = useRef(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [currency, setCurrency] = React.useState("");
   const [total, setTotal] = React.useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [metaData, setMetaData] = React.useState<any>();
+  // const [metaData, setMetaData] = React.useState({});
   const searchParams = useSearchParams();
   const reference = searchParams?.get("reference");
   const paymentType = searchParams?.get("payment");
   const sessionId = searchParams?.get("sessionId");
-  useEffect(() => {
-    if (hasRun.current) return; // Prevent double invocation
-    hasRun.current = true;
-    if (reference || sessionId) {
-      checkStatus();
-      // console.log("sessionId", sessionId, reference);
-    }
-  }, [sessionId, reference]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [metaData, setMetaData] = React.useState<any>(null);
   const checkStatus = async () => {
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
@@ -65,7 +61,7 @@ export const SuccessOrErrorVerification = () => {
           Object.values(
             transactionData.metadata.ticketData.buyerForm as {
               [ticket: string]: { name: string; value: string }[];
-            }[]
+            }[],
           ).map(async (detail) => {
             email = detail[0][4].value;
           });
@@ -85,7 +81,7 @@ export const SuccessOrErrorVerification = () => {
         } else {
           Object.values(
             transactionData.metadata.ticketData
-              .buyerForm as initialCheckoutStateType["billingInfo"]
+              .buyerForm as initialCheckoutStateType["billingInfo"],
           ).map(
             async (detail) =>
               (name = `${detail[0][0].value} ${detail[0][1].value}`),
@@ -98,19 +94,60 @@ export const SuccessOrErrorVerification = () => {
           reference: transactionData.reference
         });
         await sendEmail(email, template);
-      }
+      } else router.push("/checkout");
     } else {
-      await VerifyStripeTransaction(sessionId);
+      setIsSuccess(true);
+      const result = await VerifyStripeTransaction(sessionId);
+      if (result.status === "complete") {
+        // if (result.metadata.type === "ticket") {
+        const ticketData = {
+          buyerForm: JSON.parse(result.metadata.buyerForm),
+          otherTicketForms: JSON.parse(result.metadata.otherTicketForms)
+        };
+        console.log("ticketData", ticketData);
+        const tickets = JSON.parse(result.metadata.tickets);
+        const data = {
+          ticketData: ticketData
+        };
+        setMetaData(data);
+        setCurrency((result.currency as string).toUpperCase());
+        setTotal(result.amount_total);
+        await PostStripeTicketPurchases({ ticketData });
+        const transactionToPost = {
+          Paystack_Id: (result.id as string).slice(-10),
+          Stripe_Id: "",
+          Currency: result.currency,
+          Email: result.customer_details.email,
+          UnitNumber: result.amount_total
+        };
+        await PostTransaction(transactionToPost);
+        const template = SendEmailTemplate({
+          name: result.customer_details.name,
+          total: result.amount_total,
+          tickets: tickets,
+          reference: result.id.slice(-10)
+        });
+        await sendEmail(result.customer_details.email, template);
+        // }
+      }
     }
   };
-
+  useEffect(() => {
+    if (hasRun.current) return; // Prevent double invocation
+    hasRun.current = true;
+    if (reference || sessionId) {
+      console.log("Checking Status");
+      checkStatus();
+      // console.log("sessionId", sessionId, reference);
+    }
+  }, [reference, sessionId]);
+  if (sessionId === null && reference === null) return notFound();
   const handlePrint = () => {
     if (typeof window !== "undefined") {
       window.print();
     }
   };
 
-  if (!sessionId || !reference) return notFound();
   if (!isSuccess) {
     return (
       <Box
@@ -125,6 +162,18 @@ export const SuccessOrErrorVerification = () => {
       </Box>
     );
   }
+  const renderPurchaseTable = () => {
+    if (metaData && metaData) {
+      return (
+        <PurchaseDetailTable
+          paymentType={paymentType === "stripe" ? "stripe" : "paystack"}
+          metaData={metaData?.ticketData}
+          currency={currency}
+          total={total}
+        />
+      );
+    }
+  };
   return (
     <AgoraBox
       className={
@@ -152,23 +201,14 @@ export const SuccessOrErrorVerification = () => {
               className={"text-black mr-2"}
             />
             <h3 className={"text-black"}>
-              Order Confirmation Code: {reference}
+              Order Confirmation Code: {reference || sessionId?.slice(-10)}
             </h3>
           </Box>
         </Box>
         <Box className={"text-left w-full"}>
           <h3 className={"text-black text-lg mb-2"}>Purchase Details</h3>
           <Box className={"border border-midGrey rounded-lg"}>
-            {/*// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain*/}
-            <PurchaseDetailTable
-              metaData={
-                metaData?.purchaseType === "ticket"
-                  ? metaData?.ticketData
-                  : metaData.boothData
-              }
-              currency={currency}
-              total={total}
-            />
+            {renderPurchaseTable()}
           </Box>
           <Box>
             <Button

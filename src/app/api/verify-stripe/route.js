@@ -2,10 +2,11 @@ import axios from "axios";
 
 export async function GET(request) {
   const url = new URL(request.url);
-  const reference = url.searchParams.get("reference");
+  const sessionId = url.searchParams.get("sessionId");
+  console.log(sessionId, request.url);
 
-  if (!reference) {
-    return new Response(JSON.stringify({ error: "No reference found" }), {
+  if (!sessionId) {
+    return new Response(JSON.stringify({ error: "No stripe session found" }), {
       status: 400
     });
   }
@@ -13,21 +14,19 @@ export async function GET(request) {
   try {
     // Verify the payment with Paystack
     const verifyResponse = await axios.get(
-      `https://api.paystack.co/transaction/verify/${reference}`,
+      `https://api.stripe.com/v1/checkout/sessions/${sessionId}`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`
+          Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`
         }
       }
     );
-
-    const transaction = verifyResponse.data.data;
-
-    if (transaction.status === "success") {
+    const transaction = await verifyResponse;
+    if (transaction.status === 200) {
       // Payment was successful
-      console.log("Payment verified:", transaction);
+      const transactionData = transaction.data;
       return new Response(
-        JSON.stringify({ message: "Payment verified", transaction }),
+        JSON.stringify({ message: "Payment verified", transactionData }),
         { status: 200 }
       );
     } else {

@@ -6,20 +6,22 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(request) {
   try {
     const { items } = await request.json(); // Assuming you're sending 'email' and 'amount' in the request body
-    console.log("items", items);
     let metadata = {};
     if (items.purchaseType === "ticket") {
+      console.log("otherTicketForms", items.ticketData.otherTicketForms);
       const otherForms = Object.entries(items.ticketData.otherTicketForms).filter(([key, values]) => key !== "data" && key !== "id" && values !== "").map(([key, values]) => {
         // Remove the unwanted fields from the values object
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { form_confirmEmail, ...rest } = values;
-        return [key, rest];
+        return { [key]: rest };
       });
+      console.log("otherForms", otherForms);
       metadata = {
-        "mainTicket": JSON.stringify(items.ticketData.buyerForm),
-        "otherTickets": JSON.stringify(otherForms)
+        "buyerForm": JSON.stringify(items.ticketData.buyerForm),
+        "otherTicketForms": JSON.stringify(otherForms),
+        "tickets": JSON.stringify(items.tickets),
+        "type": JSON.stringify(items.ticketData.type)
       };
-      console.log("otherForms", items.ticketData.buyerForm);
     }
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card", "link"],
@@ -28,9 +30,11 @@ export async function POST(request) {
       line_items: items.stripeCheckoutData,
       success_url: process.env.BASE_URL + "success?payment=stripe&sessionId={CHECKOUT_SESSION_ID}",
       cancel_url: process.env.BASE_URL + `ticket`,
+      invoice_creation: {
+        enabled: true
+      },
       metadata: metadata
     });
-    console.log("session", session);
     const itemData = items.ticketData;
 
     // return new Response(JSON.stringify({ session: session, ticketData: items.ticketData }), {
