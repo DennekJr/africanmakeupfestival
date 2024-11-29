@@ -12,6 +12,7 @@ import {
 } from "../../../lib/features/checkout/checkoutSlice";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 import { getTicketCost } from "@/app/(home)/checkout/components/utils";
+import { AgoraBox } from "@/app/(home)/components/newHome/utils";
 
 export const TicketPurchase = () => {
   const initialState = [
@@ -21,6 +22,7 @@ export const TicketPurchase = () => {
 
   const [isOpen, setIsOpen] = useState(initialState);
   const [error, setError] = useState("");
+  const [limitError, setLimitError] = useState("");
   const ticketNumbers = useAppSelector((state) => state.checkout.tickets);
   const values = useMemo(() => ticketNumbers, [ticketNumbers]);
   const router = useRouter();
@@ -42,6 +44,17 @@ export const TicketPurchase = () => {
   };
   const handleChange = (math: string, id: string) => {
     setError("");
+    setLimitError("");
+    const count = values.reduce((acc, ticket) => {
+      return acc + ticket.value;
+    }, 0);
+    if (count === 3 && math === "plus") {
+      setLimitError("You can only purchase up to 3 tickets at a time.");
+      setTimeout(() => {
+        setLimitError("");
+      }, 3000);
+      return;
+    }
     const newState = values.map((ticketValue) => {
       if (ticketValue.ticketName !== id) {
         return ticketValue;
@@ -148,7 +161,9 @@ export const TicketPurchase = () => {
         );
       })}
       <Box className="py-10 lg:py-12 flex flex-col justify-center">
-        <p className="text-center text-warning text-lg font-medium">{error}</p>
+        <AgoraBox className="transition-all text-center text-warning text-lg font-medium">{error}</AgoraBox>
+        <AgoraBox
+          className="swiper-fade transition-all text-center text-warning text-lg font-medium">{limitError}</AgoraBox>
         <button
           onClick={handleProceedToCheckout}
           className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 py-4 rounded-full mx-auto min-w-[80%]"

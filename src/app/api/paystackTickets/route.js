@@ -21,7 +21,6 @@ export async function GET() {
 export async function POST(request) {
   try {
     const client = await clientPromise;
-    console.log("client", clientPromise);
     const db = client.db("africaskincarefestival"); // Replace with your database name
     // Get the data from the request body
     const { transactionData } = await request.json();

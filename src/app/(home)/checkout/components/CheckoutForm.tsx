@@ -15,7 +15,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import {
   formatCurrency,
-  getTicketCost
+  getTicketCost, getTicketValue
 } from "@/app/(home)/checkout/components/utils";
 
 const billingFormValues = {
@@ -32,7 +32,6 @@ const CheckoutForm = () => {
   const router = useRouter();
   const {
     tickets,
-    formErrors,
     total,
     payStackCheckout,
     billingInfo,
@@ -66,7 +65,8 @@ const CheckoutForm = () => {
     Object.values(tickets)
       .filter((item) => item.value > 0)
       .map((ticket) => {
-        const value = getTicketCost(ticket);
+        const value = getTicketValue(ticket);
+        console.log("Values", ticket, value);
         const item = {
           price_data: {
             currency: "ngn",
@@ -88,6 +88,7 @@ const CheckoutForm = () => {
         otherTicketForms: formValues,
       },
       total: total,
+      tickets: tickets,
       purchaseType: "ticket",
     };
     const response = await fetch("/api/stripe", {
@@ -97,16 +98,13 @@ const CheckoutForm = () => {
         items: ticketPurchaseData, // Example item,
       }),
     });
-    const { session, itemData } = await response.json();
-    console.log("session", session, itemData);
+    const { session } = await response.json();
     const sessionId = session.id;
     const stripe = await stripePromise;
     if (stripe === null) return;
     if ("redirectToCheckout" in stripe) {
       const { error } = await stripe.redirectToCheckout({ sessionId });
       if (error) console.warn("Stripe Booth payment error:", error.message);
-    }
-    if (Object.keys(formErrors).length === 0) {
     }
   };
 
@@ -200,7 +198,7 @@ const CheckoutForm = () => {
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                CONTINUE TO LOCAL PAYMENT - coming soon
+                Pay with Paystack
               </span>
             </button>
             <button
@@ -210,7 +208,7 @@ const CheckoutForm = () => {
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                CONTINUE TO INTERNATIONAL PAYMENT - coming soon
+                Pay with Stripe
               </span>
             </button>
           </Box>
