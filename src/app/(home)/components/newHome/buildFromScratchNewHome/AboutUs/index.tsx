@@ -9,8 +9,22 @@ import {
 import Image from "next/image";
 import { ourObjectives } from "@/app/(home)/components/newHome/buildFromScratchNewHome/AboutUs/aboutus.contants";
 import { CircleTwoTone } from "@mui/icons-material";
+import { useEffect } from "react";
 
 export const AboutUs = () => {
+
+  async function getSecureInfo() {
+    const response = await fetch("/api/generateSponsorCode", {
+      method: "GET"
+    });
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getSecureInfo();
+  }, []);
   return (
     <Box>
       <section>
