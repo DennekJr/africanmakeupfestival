@@ -18,7 +18,7 @@ export async function GET() {
     const sponsor = await dbSponsors.find((sponsor) => sponsor.name === "piggyvest");
     console.log("tickets", sponsor);
 
-    console.log("SPONSORS", sponsor, tickets);
+    console.log("SPONSORS", sponsor, dbSponsors);
 
     return new Response(JSON.stringify(sponsor), {
       status: 200,
