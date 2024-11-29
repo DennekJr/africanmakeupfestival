@@ -47,7 +47,10 @@ export const PurchaseDetailTable = ({
     metaData.otherTicketForms === undefined
       ? []
       : (otherTicketForms as TicketBilingInfo[]).map((ticketFromForm) => {
-        const ticket = paymentType === "stripe" ? Object.values(ticketFromForm)[0] as TicketBilingInfo : ticketFromForm;
+        const ticket =
+          paymentType === "stripe"
+            ? (Object.values(ticketFromForm)[0] as TicketBilingInfo)
+            : ticketFromForm;
         if (
           ticket.Ticket === "" ||
           ticket.Ticket === undefined ||
