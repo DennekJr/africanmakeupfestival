@@ -10,20 +10,21 @@ import { ExhibitionBoothBillingInfo } from "@/app/lib/features/exhibition/exhibi
 export const PurchaseDetailTable = ({
                                       metaData,
                                       total,
-                                      currency
+                                      currency,
+                                      paymentType
                                     }: {
   metaData: {
     buyerForm:
       | { [ticket: string]: { name: string; value: string }[] }[]
       | ExhibitionBoothBillingInfo;
     otherTicketForms: { id: string; data: TicketBilingInfo } | undefined;
+    paymentType: string;
   };
   total: number;
   currency: string;
 }) => {
-  console.log("MetaData", metaData);
   const getTicketValue = (ticketName) => {
-    return ticketName === "regular" ? RegularTicket : VIPTicket;
+    return ticketName.toLowerCase() === "regular" ? RegularTicket : VIPTicket;
   };
   const mainBuyer = Object.keys(metaData.buyerForm).includes("form_booth")
     ? (metaData.buyerForm as ExhibitionBoothBillingInfo)
@@ -42,15 +43,11 @@ export const PurchaseDetailTable = ({
           data: TicketBilingInfo;
         }
       );
-  console.log(
-    "Other tickets in form",
-    metaData.otherTicketForms,
-    otherTicketForms
-  );
   const mappedDataArray =
     metaData.otherTicketForms === undefined
       ? []
-      : (otherTicketForms as TicketBilingInfo[]).map((ticket) => {
+      : (otherTicketForms as TicketBilingInfo[]).map((ticketFromForm) => {
+        const ticket = paymentType === "stripe" ? Object.values(ticketFromForm)[0] as TicketBilingInfo : ticketFromForm;
         if (
           ticket.Ticket === "" ||
           ticket.Ticket === undefined ||

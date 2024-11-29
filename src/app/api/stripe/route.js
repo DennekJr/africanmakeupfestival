@@ -8,12 +8,14 @@ export async function POST(request) {
     const { items } = await request.json(); // Assuming you're sending 'email' and 'amount' in the request body
     let metadata = {};
     if (items.purchaseType === "ticket") {
+      console.log("otherTicketForms", items.ticketData.otherTicketForms);
       const otherForms = Object.entries(items.ticketData.otherTicketForms).filter(([key, values]) => key !== "data" && key !== "id" && values !== "").map(([key, values]) => {
         // Remove the unwanted fields from the values object
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { form_confirmEmail, ...rest } = values;
-        return [key, rest];
+        return { [key]: rest };
       });
+      console.log("otherForms", otherForms);
       metadata = {
         "buyerForm": JSON.stringify(items.ticketData.buyerForm),
         "otherTicketForms": JSON.stringify(otherForms),

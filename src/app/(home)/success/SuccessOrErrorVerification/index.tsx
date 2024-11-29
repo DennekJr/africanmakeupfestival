@@ -102,8 +102,9 @@ export const SuccessOrErrorVerification = () => {
         // if (result.metadata.type === "ticket") {
         const ticketData = {
           buyerForm: JSON.parse(result.metadata.buyerForm),
-          otherTicketForms: JSON.parse(result.metadata.otherTicketForms)[0]
+          otherTicketForms: JSON.parse(result.metadata.otherTicketForms)
         };
+        console.log("ticketData", ticketData);
         const tickets = JSON.parse(result.metadata.tickets);
         const data = {
           ticketData: ticketData
@@ -163,9 +164,9 @@ export const SuccessOrErrorVerification = () => {
   }
   const renderPurchaseTable = () => {
     if (metaData && metaData) {
-      console.log("MetaData", metaData);
       return (
         <PurchaseDetailTable
+          paymentType={paymentType === "stripe" ? "stripe" : "paystack"}
           metaData={metaData?.ticketData}
           currency={currency}
           total={total}
