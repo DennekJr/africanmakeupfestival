@@ -18,10 +18,7 @@ export async function GET(request) {
     const client = await clientPromise;
     const db = client.db("africaskincarefestival"); // Replace with your database name
     const dbSponsors = await db.collection("sponsors").find({}).toArray();
-    const sponsor = await dbSponsors.find((sponsor) => sponsor.name === "piggyvest");
-    console.log("tickets", sponsor);
-
-    console.log("SPONSORS", sponsor, dbSponsors, sponsorName, ticketType);
+    const sponsor = await dbSponsors.find((sponsor) => sponsor.name === sponsorName);
 
     return new Response(JSON.stringify({ sponsor: sponsor, name: sponsorName, ticketName: ticketType }), {
       status: 200,
