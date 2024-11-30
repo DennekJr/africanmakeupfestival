@@ -19,13 +19,15 @@ export async function GET(request) {
     const db = client.db("africaskincarefestival"); // Replace with your database name
     const dbSponsors = await db.collection("sponsors").find({}).toArray();
     const sponsor = await dbSponsors.find((sponsor) => sponsor.name === sponsorName && sponsor.key === token);
+    const codes = await db.collection("ticket-codes").find({}).toArray();
+    const sponsorGeneratedCodes = codes.filter((code) => code.sponsorName === sponsor.name).length;
     if (sponsor === undefined) {
       return new Response(JSON.stringify({ error: "Unauthorised sponsor name" }), {
         status: 401,
         headers: { "Content-Type": "application/json" }
       });
     }
-    if (sponsor.allocatedTickets === sponsor.validatedCodes.length) {
+    if (sponsor.allocatedTickets === sponsorGeneratedCodes) {
       return new Response(JSON.stringify({ error: "You've reached the maximum amount of sponsors allocated to your company" }), {
         status: 401,
         headers: { "Content-Type": "application/json" }
@@ -41,17 +43,17 @@ export async function GET(request) {
       }
       return result;
     }
-
     const code = generateAlphanumericCode(4);
-    const SponsosredTicket = {
+    const SponsoredTicket = {
       sponsorName: sponsor.name,
       code: code,
-      allocatedTicketsLeft: sponsor.allocatedTickets - 1,
+      allocatedTicketsLeft: (sponsor.allocatedTickets - sponsorGeneratedCodes) - 1,
       ticketType: ticketType,
+      isValidated: false,
       createdAt: new Date()
     };
-    await db.collection("ticket-codes").insertOne(SponsosredTicket);
-    return new Response(JSON.stringify(SponsosredTicket), {
+    await db.collection("ticket-codes").insertOne(SponsoredTicket);
+    return new Response(JSON.stringify(SponsoredTicket), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });
