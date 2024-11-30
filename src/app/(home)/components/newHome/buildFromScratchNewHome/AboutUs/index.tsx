@@ -10,6 +10,7 @@ import Image from "next/image";
 import { ourObjectives } from "@/app/(home)/components/newHome/buildFromScratchNewHome/AboutUs/aboutus.contants";
 import { CircleTwoTone } from "@mui/icons-material";
 import { useEffect } from "react";
+import process from "process";
 
 export const AboutUs = () => {
 
@@ -17,7 +18,7 @@ export const AboutUs = () => {
     const response = await fetch(`/api/generateSponsorCode?sponsor=piggyvest&ticket=VIP`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer a3663818-1b47-4028-b29a-8f19f35e495a`
+        Authorization: `Bearer ${process.env.PIGGYVEST_TOKEN}`
       }
     });
     const data = await response.json();
