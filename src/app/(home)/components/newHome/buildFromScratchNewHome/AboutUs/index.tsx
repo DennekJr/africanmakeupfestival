@@ -17,7 +17,7 @@ export const AboutUs = () => {
     const response = await fetch(`/api/generateSponsorCode?sponsor=piggyvest&ticket=VIP`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ` + process.env.PIGGYVEST_TOKEN
+        Authorization: `Bearer a3663818-1b47-4028-b29a-8f19f35e495a`
       }
     });
     const data = await response.json();
