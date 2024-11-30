@@ -2,7 +2,7 @@ import clientPromise from "@/app/lib/mongo/mongodb.js";
 
 export async function GET(request) {
   try {
-    const authHeader = req.headers.get("Authorization");
+    const authHeader = request.headers.get("Authorization");
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return new Response(JSON.stringify({ error: "Unauthorized: Bearer token missing or invalid" }), {
         status: 401,
