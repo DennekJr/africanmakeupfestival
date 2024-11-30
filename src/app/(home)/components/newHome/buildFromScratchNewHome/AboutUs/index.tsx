@@ -15,7 +15,10 @@ export const AboutUs = () => {
 
   async function getSecureInfo() {
     const response = await fetch(`/api/generateSponsorCode?sponsor=piggyvest&ticket=VIP`, {
-      method: "GET"
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ` + process.env.PIGGYVEST_TOKEN
+      }
     });
     const data = await response.json();
     console.log("sponsor found", data);
