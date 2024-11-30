@@ -8,7 +8,7 @@ import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFo
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
 import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
-import { initiatePaystackTransaction } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
+// import { initiatePaystackTransaction } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
 import { loadStripe } from "@stripe/stripe-js";
@@ -33,7 +33,7 @@ const CheckoutForm = () => {
   const {
     tickets,
     total,
-    payStackCheckout,
+    // payStackCheckout,
     billingInfo,
     formValues,
   } = useAppSelector((state) => state.checkout);
@@ -108,21 +108,21 @@ const CheckoutForm = () => {
     }
   };
 
-  const handlePaystackPayment = async () => {
-    const ticketPurchaseData = {
-      payStackCheckout: payStackCheckout,
-      ticketData: {
-        buyerForm: billingInfo,
-        otherTicketForms: formValues,
-      },
-      tickets: tickets,
-    };
-    const req = await initiatePaystackTransaction(ticketPurchaseData);
-    if (req) {
-      const authUrl = req.paystackData.data.authorization_url;
-      router.push(authUrl);
-    }
-  };
+  // const handlePaystackPayment = async () => {
+  //   const ticketPurchaseData = {
+  //     payStackCheckout: payStackCheckout,
+  //     ticketData: {
+  //       buyerForm: billingInfo,
+  //       otherTicketForms: formValues,
+  //     },
+  //     tickets: tickets,
+  //   };
+  //   const req = await initiatePaystackTransaction(ticketPurchaseData);
+  //   if (req) {
+  //     const authUrl = req.paystackData.data.authorization_url;
+  //     router.push(authUrl);
+  //   }
+  // };
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -191,20 +191,20 @@ const CheckoutForm = () => {
               </div>
             </Box>
 
-            <button
-              onClick={handlePaystackPayment}
-              type={"submit"}
-              disabled={true}
-              className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
-            >
-              <span className="text-center w-full h-full">
-                Pay with Paystack
-              </span>
-            </button>
+            {/*<button*/}
+            {/*  onClick={handlePaystackPayment}*/}
+            {/*  type={"submit"}*/}
+            {/*  disabled={true}*/}
+            {/*  className="invisible animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"*/}
+            {/*>*/}
+            {/*  <span className="text-center w-full h-full">*/}
+            {/*    Pay with Paystack*/}
+            {/*  </span>*/}
+            {/*</button>*/}
             <button
               onClick={handleStripePayment}
               type={"submit"}
-              disabled={true}
+              disabled={false}
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
