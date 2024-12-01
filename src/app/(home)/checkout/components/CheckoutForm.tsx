@@ -66,7 +66,6 @@ const CheckoutForm = () => {
       .filter((item) => item.value > 0)
       .map((ticket) => {
         const value = getTicketValue(ticket);
-        console.log("Values", ticket, value);
         const item = {
           price_data: {
             currency: "ngn",
@@ -208,7 +207,7 @@ const CheckoutForm = () => {
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                Pay with Stripe
+                Pay now
               </span>
             </button>
           </Box>

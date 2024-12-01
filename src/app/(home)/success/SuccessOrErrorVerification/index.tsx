@@ -123,7 +123,7 @@ export const SuccessOrErrorVerification = () => {
         await PostTransaction(transactionToPost);
         const template = SendEmailTemplate({
           name: result.customer_details.name,
-          total: result.amount_total,
+          total: result.amount_total / 100,
           tickets: tickets,
           reference: result.id.slice(-10)
         });
