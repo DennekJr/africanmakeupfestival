@@ -221,7 +221,7 @@ export const SuccessOrErrorVerification = () => {
         </Box>
         <Box
           className={
-            "flex w-full justify-between text-lightSecondary py-4 font-semibold"
+            "flex w-full flex-col md:flex-row justify-between text-lightSecondary py-4 font-semibold"
           }
         >
           <Box>contact@africaskincarefestival.com</Box>
