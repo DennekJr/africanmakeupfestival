@@ -77,8 +77,8 @@ export const initialFormValue = {
   form_organisation: "",
   form_organisationWebsite: "",
   form_organisationRole: "",
-  Ticket: "Delegate", // Default ticket type
-  quantity: 1,
+  Ticket: "", // Default ticket type
+  quantity: 0
 };
 
 export type initialCheckoutStateType = {

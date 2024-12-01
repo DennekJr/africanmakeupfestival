@@ -2,12 +2,14 @@
 import * as React from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Box } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
-import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
+import {
+  BillingFormSchema
+} from "../../../lib/features/checkout/checkoutSlice";
 // import { initiatePaystackTransaction } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -15,8 +17,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as process from "process";
 import {
   formatCurrency,
-  getTicketCost, getTicketValue
+  getTicketCost,
+  getTicketValue
 } from "@/app/(home)/checkout/components/utils";
+import {
+  AgoraTransitionBox
+} from "@/app/(home)/components/newHome/utils";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -42,68 +48,129 @@ const CheckoutForm = () => {
       router.push("/ticket");
     }
   }, [router, total]);
-
   const formik = useFormik({
     initialValues: billingFormValues,
     validationSchema: BillingFormSchema,
+    validateOnBlur: true,
+    validateOnMount: true,
     onSubmit: async () => {},
   });
+  const [disabled, setDisabled] = useState(false);
+  const [error, setError] = useState("");
+  const totalValue = useMemo(
+    () => tickets.reduce((sum, ticket) => sum + ticket.value, 0),
+    [tickets]
+  );
+
+  function validateOtherTicketForm() {
+    let isDisabled = false;
+    Object.values(billingInfo).map((ticket) => {
+      ticket.map((tickets) => {
+        if (tickets.value === "" || Object.keys(billingInfo)[0] === "") {
+          isDisabled = true;
+          setDisabled(true);
+          isDisabled = true;
+          setError("Complete form to proceed to payment");
+          setTimeout(() => {
+            setError("");
+            isDisabled = false;
+            setDisabled(false);
+          }, 3000);
+        } else {
+          setDisabled(false);
+          isDisabled = false;
+        }
+      });
+    });
+    if (totalValue > 1) {
+      if (Object.values(formValues).slice(2).length === 0) {
+        setDisabled(true);
+        isDisabled = true;
+        setError("Please fill other forms to proceed to payment");
+        setTimeout(() => {
+          setError("");
+          isDisabled = false;
+          setDisabled(false);
+        }, 3000);
+      }
+      Object.values(formValues).slice(2).map((ticket) => {
+        const hasEmptyValues = Object.values(ticket as unknown as object).some(value => value === "");
+        if (hasEmptyValues) {
+          setDisabled(hasEmptyValues);
+          isDisabled = hasEmptyValues;
+          setError("Complete other forms to proceed to payment");
+          setTimeout(() => {
+            setError("");
+            isDisabled = false;
+            setDisabled(false);
+          }, 3000);
+        }
+      });
+    }
+    return isDisabled;
+    // return false; // No errors
+  }
 
   const handleStripePayment = async (e) => {
     e.preventDefault();
-    const stripePromise = loadStripe(
-      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
-    );
-    const stripeData: {
-      price_data: {
-        currency: string;
-        product_data: { name: string };
-        unit_amount: number;
-      };
-      quantity: number;
-    }[] = [];
-    Object.values(tickets)
-      .filter((item) => item.value > 0)
-      .map((ticket) => {
-        const value = getTicketValue(ticket);
-        const item = {
-          price_data: {
-            currency: "ngn",
-            product_data: {
-              name:
-                String(ticket.ticketName).charAt(0).toUpperCase() +
-                String(ticket.ticketName).slice(1),
-            },
-            unit_amount: value * 100,
-          },
-          quantity: ticket.value,
+    // Check billing info for empty fields
+    // check other forms if more than one ticket for error
+    if (!validateOtherTicketForm()) {
+      formik.handleSubmit();
+      const stripePromise = loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
+      );
+      const stripeData: {
+        price_data: {
+          currency: string;
+          product_data: { name: string };
+          unit_amount: number;
         };
-        stripeData.push(item);
+        quantity: number;
+      }[] = [];
+      Object.values(tickets)
+        .filter((item) => item.value > 0)
+        .map((ticket) => {
+          const value = getTicketValue(ticket);
+          const item = {
+            price_data: {
+              currency: "ngn",
+              product_data: {
+                name:
+                  String(ticket.ticketName).charAt(0).toUpperCase() +
+                  String(ticket.ticketName).slice(1)
+              },
+              unit_amount: value * 100
+            },
+            quantity: ticket.value
+          };
+          stripeData.push(item);
+        });
+      const ticketPurchaseData = {
+        stripeCheckoutData: stripeData,
+        ticketData: {
+          buyerForm: billingInfo,
+          otherTicketForms: formValues
+        },
+        total: total,
+        tickets: tickets,
+        purchaseType: "ticket"
+      };
+      const response = await fetch("/api/stripe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: ticketPurchaseData // Example item,
+        })
       });
-    const ticketPurchaseData = {
-      stripeCheckoutData: stripeData,
-      ticketData: {
-        buyerForm: billingInfo,
-        otherTicketForms: formValues,
-      },
-      total: total,
-      tickets: tickets,
-      purchaseType: "ticket",
-    };
-    const response = await fetch("/api/stripe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        items: ticketPurchaseData, // Example item,
-      }),
-    });
-    const { session } = await response.json();
-    const sessionId = session.id;
-    const stripe = await stripePromise;
-    if (stripe === null) return;
-    if ("redirectToCheckout" in stripe) {
-      const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) console.warn("Stripe Booth payment error:", error.message);
+      const { session } = await response.json();
+      const sessionId = session.id;
+      const stripe = await stripePromise;
+      if (stripe === null) return;
+      if ("redirectToCheckout" in stripe) {
+        const { error } = await stripe.redirectToCheckout({ sessionId });
+        if (error) console.warn("Stripe Booth payment error:", error.message);
+      }
     }
   };
 
@@ -201,15 +268,18 @@ const CheckoutForm = () => {
             {/*  </span>*/}
             {/*</button>*/}
             <button
-              onClick={handleStripePayment}
+              onClick={async (e) => {
+                await handleStripePayment(e);
+              }}
               type={"submit"}
-              disabled={false}
+              disabled={disabled}
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
-              <span className="text-center w-full h-full">
-                Pay now
-              </span>
+              <span className="text-center w-full h-full">Pay now</span>
             </button>
+            <AgoraTransitionBox className="transition-all text-center text-warning text-lg font-medium">
+              {error}
+            </AgoraTransitionBox>
           </Box>
         </Box>
         <HiddenFormDropdown
@@ -219,13 +289,15 @@ const CheckoutForm = () => {
           }
           displayTicketDropdown={true}
         />
-        <HiddenFormDropdown
-          title={"Assign other tickets to different e-mail addresses?"}
-          subTitle={
-            "Tickets will only be assigned to the email address(es) you provide"
-          }
-          displayTicketDropdown={false}
-        />
+        {totalValue > 1 && (
+          <HiddenFormDropdown
+            title={"Assign other tickets to different e-mail addresses?"}
+            subTitle={
+              "Tickets will only be assigned to the email address(es) you provide"
+            }
+            displayTicketDropdown={false}
+          />
+        )}
       </Box>
       {/*{showAlert && <Alert severity="error">Please fill in the proper values.</Alert>}*/}
     </form>
