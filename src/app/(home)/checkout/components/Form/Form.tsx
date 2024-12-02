@@ -31,6 +31,7 @@ export const BillingForm = ({ ticket }: { ticket: string }) => {
     initialValues: initialFormValue,
     validationSchema: OtherOrdersFormSchema,
     validateOnBlur: true,
+    validateOnMount: true,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
