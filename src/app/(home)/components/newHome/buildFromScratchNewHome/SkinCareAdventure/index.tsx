@@ -72,7 +72,7 @@ export const SkinCareAdventure = () => {
                 <Box className={"content-center items-center md:ml-[15px]"}>
                   <AgoraTransitionBox className={"w-full"}>
                     <HomeButton
-                      onClick={() => router.push("https://tix.africa/discover/asf2024/checkout?step=tickets")}
+                      onClick={() => router.push("/ticket")}
                       className={
                         "mt-[20px] md:mt-[20px] md:mb-[10px] hover:cursor-pointer inline-block align-top bg-[#FE9E11]"
                       }
