@@ -9,25 +9,8 @@ import {
 import Image from "next/image";
 import { ourObjectives } from "@/app/(home)/components/newHome/buildFromScratchNewHome/AboutUs/aboutus.contants";
 import { CircleTwoTone } from "@mui/icons-material";
-import { useEffect } from "react";
-import process from "process";
 
 export const AboutUs = () => {
-
-  async function getSecureInfo() {
-    const response = await fetch(`/api/generateSponsorCode?sponsor=piggyvest&ticket=VIP`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.PIGGYVEST_TOKEN}`
-      }
-    });
-    const data = await response.json();
-    console.log("sponsor found", data);
-  }
-
-  useEffect(() => {
-    getSecureInfo();
-  }, []);
   return (
     <Box>
       <section>

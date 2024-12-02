@@ -35,6 +35,7 @@ export const CheckoutClientForm = () => {
     const billingData = { ticket: myTicket.ticketName, data: newState };
     setValues(newState);
     dispatch(setBillingInfo(billingData));
+    dispatch(setFormErrors(formik.errors));
   };
   const handlePhoneInputChange = (number, field) => {
     const newState = values.map((item) => {
@@ -71,9 +72,12 @@ export const CheckoutClientForm = () => {
   const formik = useFormik({
     initialValues: initialFormData,
     validationSchema: BillingFormSchema,
+    validateOnMount: true,
+    validateOnBlur: true,
     onSubmit: async () => {
     },
   });
+
   return (
     <FormGroup className={"!grid lg:!grid-cols-2 !gap-5 fields"}>
       {values.map((field, index) => {

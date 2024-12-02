@@ -11,7 +11,12 @@ import {
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import Box from "@mui/material/Box";
 import { Button, CircularProgress } from "@mui/material";
-import { notFound, useRouter, useSearchParams } from "next/navigation";
+import {
+  notFound,
+  usePathname,
+  useRouter,
+  useSearchParams
+} from "next/navigation";
 import CheckIcon from "@mui/icons-material/Check";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { PurchaseDetailTable } from "@/app/(home)/success/SuccessOrErrorVerification/PurchaseDetailTable";
@@ -20,9 +25,11 @@ import { SendEmailTemplate } from "@/app/SendEmailTemplate";
 import { initialCheckoutStateType } from "@/app/lib/features/checkout/checkoutSlice";
 import { HandlePaystackBoothPurhase } from "@/app/(home)/exhibit/register/PaystackCall";
 import { formatCurrency } from "@/app/(home)/checkout/components/utils";
+import QRCode from "qrcode";
 
 export const SuccessOrErrorVerification = () => {
   const router = useRouter();
+  const pathname = usePathname(); // Gets the path without the domain (e.g., '/about')
   const hasRun = useRef(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [currency, setCurrency] = React.useState("");
@@ -33,8 +40,21 @@ export const SuccessOrErrorVerification = () => {
   const reference = searchParams?.get("reference");
   const paymentType = searchParams?.get("payment");
   const sessionId = searchParams?.get("sessionId");
+  const fullUrl = `${typeof window !== "undefined" ? window.location.origin : ""}${pathname}${searchParams?.toString() ? `?${searchParams?.toString()}` : ""}`;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [metaData, setMetaData] = React.useState<any>(null);
+
+  const generateQRBase64 = async () => {
+    return await new Promise((resolve, reject) => {
+      QRCode.toDataURL(fullUrl, function(err, code) {
+        if (err) {
+          reject(reject);
+          return;
+        }
+        resolve(code);
+      });
+    });
+  };
   const checkStatus = async () => {
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
@@ -91,7 +111,8 @@ export const SuccessOrErrorVerification = () => {
           name: name,
           total: dataToStore.payStackCheckout.total,
           tickets: dataToStore.tickets,
-          reference: transactionData.reference
+          reference: transactionData.reference,
+          imageUrl: ""
         });
         await sendEmail(email, template);
       } else router.push("/checkout");
@@ -104,7 +125,6 @@ export const SuccessOrErrorVerification = () => {
           buyerForm: JSON.parse(result.metadata.buyerForm),
           otherTicketForms: JSON.parse(result.metadata.otherTicketForms)
         };
-        console.log("ticketData", ticketData);
         const tickets = JSON.parse(result.metadata.tickets);
         const data = {
           ticketData: ticketData
@@ -121,11 +141,13 @@ export const SuccessOrErrorVerification = () => {
           UnitNumber: result.amount_total
         };
         await PostTransaction(transactionToPost);
+        const qrCodeBase64 = await generateQRBase64();
         const template = SendEmailTemplate({
           name: result.customer_details.name,
-          total: result.amount_total,
+          total: result.amount_total / 100,
           tickets: tickets,
-          reference: result.id.slice(-10)
+          reference: result.id.slice(-10),
+          imageUrl: qrCodeBase64 as string
         });
         await sendEmail(result.customer_details.email, template);
         // }
@@ -221,12 +243,29 @@ export const SuccessOrErrorVerification = () => {
         </Box>
         <Box
           className={
-            "flex w-full justify-between text-lightSecondary py-4 font-semibold"
+            "flex w-full flex-col md:flex-row justify-between text-lightSecondary py-4 font-semibold"
           }
         >
           <Box>contact@africaskincarefestival.com</Box>
           <Box>+234 907 158 2383</Box>
         </Box>
+        {/*<Box>*/}
+        {/*  <QRImage*/}
+        {/*    text={fullUrl}*/}
+        {/*    options={{*/}
+        {/*      type: 'image/jpeg',*/}
+        {/*      quality: 0.3,*/}
+        {/*      errorCorrectionLevel: 'M',*/}
+        {/*      margin: 3,*/}
+        {/*      scale: 4,*/}
+        {/*      width: 200,*/}
+        {/*      color: {*/}
+        {/*        dark: '#C43C2A',*/}
+        {/*        light: '#F5F5F5',*/}
+        {/*      },*/}
+        {/*    }}*/}
+        {/*  />*/}
+        {/*</Box>*/}
       </Box>
     </AgoraBox>
   );

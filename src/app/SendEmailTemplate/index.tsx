@@ -1,26 +1,35 @@
-import { formatCurrency, getTicketCost } from "@/app/(home)/checkout/components/utils";
+"use client";
+import {
+  formatCurrency,
+  getTicketCost
+} from "@/app/(home)/checkout/components/utils";
 
 export const SendEmailTemplate = ({
   name,
   total,
   tickets,
   reference,
+                                    imageUrl
 }: {
   name: string;
   total: number;
   tickets: { ticketName: string; value: number }[];
   reference: string;
+  imageUrl: string;
 }) => {
+
   const TicketRows = () => {
-    return Object.values(tickets).map((ticket) => {
-      if (ticket.value < 1) return;
-      const value = getTicketCost(ticket);
-      return `<tr>
+    return Object.values(tickets)
+      .map((ticket) => {
+        if (ticket.value < 1) return;
+        const value = getTicketCost(ticket);
+        return `<tr>
         <td colspan="2" style="border: 1px solid #ddd; padding: 8px;">${ticket.ticketName.toUpperCase()}</td>
         <td colspan="2" style="border: 1px solid #ddd; padding: 8px;">${ticket.value}</td>
         <td colspan="2" style="border: 1px solid #ddd; padding: 8px; text-align: right">NGN ${formatCurrency(value)}</td>
       </tr>`;
-    }).join("");
+      })
+      .join("");
   };
   return `
   <!DOCTYPE html>
@@ -69,7 +78,6 @@ export const SendEmailTemplate = ({
 <h4>Hi ${name},</h4>  
 <p>Thanks for your order - your confirmation number is <span style="color: #C43C2A">${reference}</span>.
 Full details of your order can be found below.</p>
-<p>Please note this email cannot be used for entry.</p>
 <h3>Ticket Details</h3>
 <table style="width: 100%; margin: 0; padding: 0;">
   <thead>
@@ -86,11 +94,17 @@ Full details of your order can be found below.</p>
         <td colspan="2" style="padding: 8px; font-weight: bold;"></td>
       </tr>
       <tr style="margin-top: 20px;">
-        <td colspan="4" style="padding: 8px; font-weight: bold; text-align: right"><strong>Subtotal</strong></td>
+        <td colspan="4" style="padding: 8px; font-weight: bold; text-align: right"><strong>Total</strong></td>
         <td colspan="2" style="padding: 8px; font-weight: bold; text-align: right">NGN ${formatCurrency(total)}</td>
       </tr>
   </tbody>
 </table>
+<div style="width: 100%; padding: 10px; display: flex; justify-content: center; align-items: center; text-align: center;"><img src="${imageUrl}" alt="QR Code" style="width: 120px; height: 120px;"></div>
+<footer style="text-align: center; margin-top: 20px;">
+<div><a href="https://africaskincarefestival.com">Africa Skincare Festival</a></div>
+<div>contact@africaskincarefestival.com</div>
+<div>+234 907 158 2383</div>
+</footer>
 </div>
 </body>
 </html>
