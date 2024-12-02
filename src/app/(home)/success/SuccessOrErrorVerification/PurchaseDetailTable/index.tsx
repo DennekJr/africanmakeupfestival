@@ -71,6 +71,8 @@ export const PurchaseDetailTable = ({
           ]
         };
       });
+  console.log("Object.keys(metaData.buyerForm).includes(form_booth)", Object.keys(metaData.buyerForm).includes("form_booth"));
+  const mainBuyerForm = paymentType === "stripe" ? mainBuyer[0] : mainBuyer[0];
   return (
     <Box className={"w-full"}>
       <Box
@@ -81,53 +83,7 @@ export const PurchaseDetailTable = ({
         <Box className={"font-semibold"}>Ticket</Box>
         <Box className={"font-semibold"}>{mainBuyerTicket}</Box>
       </Box>
-      {/*//  If the data comes from a booth, we need to map the data to the correct format*/}
-      {Object.keys(metaData.buyerForm).includes("form_booth") && (
-        <Box>
-          <Box
-            className={
-              "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
-            }
-          >
-            <Box>Booth</Box>
-            <Box>{mainBuyer.form_booth as string}</Box>
-          </Box>
-          <Box
-            className={
-              "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
-            }
-          >
-            <Box>Company Name</Box>
-            <Box>{mainBuyer.form_companyName as string}</Box>
-          </Box>
-          <Box
-            className={
-              "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
-            }
-          >
-            <Box>Contact Name</Box>
-            <Box>{mainBuyer.form_contactName as string}</Box>
-          </Box>
-          <Box
-            className={
-              "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
-            }
-          >
-            <Box>Job Title</Box>
-            <Box>{mainBuyer.form_jobTitle as string}</Box>
-          </Box>
-          <Box
-            className={
-              "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
-            }
-          >
-            <Box>Phone Number</Box>
-            <Box>{mainBuyer.form_phoneNumber as string}</Box>
-          </Box>
-        </Box>
-      )}
-      {!Object.keys(metaData.buyerForm).includes("form_booth") &&
-        mainBuyer[0][0].map((ticketData, index) => {
+      {mainBuyerForm.map((ticketData, index) => {
           if (
             ticketData.name === "First Name" ||
             ticketData.name === "Last Name" ||
