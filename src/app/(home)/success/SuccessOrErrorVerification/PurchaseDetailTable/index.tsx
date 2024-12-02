@@ -127,7 +127,8 @@ export const PurchaseDetailTable = ({
         </Box>
       )}
       {!Object.keys(metaData.buyerForm).includes("form_booth") &&
-        mainBuyer[0].map((ticketData, index) => {
+        mainBuyer[0][0].map((ticketData, index) => {
+          console.log("ticket map", typeof ticketData);
           if (
             ticketData.name === "First Name" ||
             ticketData.name === "Last Name" ||
