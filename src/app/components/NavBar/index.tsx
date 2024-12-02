@@ -113,7 +113,7 @@ export default function NavBar() {
                 sx={{ display: "block" }}
               >
                   {id === "getTicket" ? (
-                    <WhiteTicketButton name={name} href={"/ticket"} />
+                    <WhiteTicketButton name={name} href={"https://tix.africa/discover/asf2024/checkout?step=tickets"} />
                   ) : (
                     <TransparentArrowButton name={name} to={route} />
                   )}
