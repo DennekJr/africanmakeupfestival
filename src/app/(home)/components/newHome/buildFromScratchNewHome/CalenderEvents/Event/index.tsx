@@ -59,7 +59,7 @@ export const Event = ({ event }: { event: CalenderEventTypes }) => {
         }, 0);
         dispatch(setBillingTotal(newTotal));
         dispatch(setTickets(newState));
-        router.push("https://tix.africa/discover/asf2024/checkout?step=tickets");
+        router.push("/ticket");
       };
       return (
         <HomeButton
