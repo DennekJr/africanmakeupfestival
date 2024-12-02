@@ -56,6 +56,7 @@ export const SuccessOrErrorVerification = () => {
     });
   };
   const checkStatus = async () => {
+    const qrCodeBase64 = await generateQRBase64();
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
       if (result.transactionData.status === "success") {
@@ -112,7 +113,7 @@ export const SuccessOrErrorVerification = () => {
           total: dataToStore.payStackCheckout.total,
           tickets: dataToStore.tickets,
           reference: transactionData.reference,
-          imageUrl: ""
+          imageUrl: qrCodeBase64 as string
         });
         await sendEmail(email, template);
       } else router.push("/checkout");
@@ -120,7 +121,6 @@ export const SuccessOrErrorVerification = () => {
       setIsSuccess(true);
       const result = await VerifyStripeTransaction(sessionId);
       if (result.status === "complete") {
-        // if (result.metadata.type === "ticket") {
         const ticketData = {
           buyerForm: JSON.parse(result.metadata.buyerForm),
           otherTicketForms: JSON.parse(result.metadata.otherTicketForms)
@@ -141,7 +141,6 @@ export const SuccessOrErrorVerification = () => {
           UnitNumber: result.amount_total
         };
         await PostTransaction(transactionToPost);
-        const qrCodeBase64 = await generateQRBase64();
         const template = SendEmailTemplate({
           name: result.customer_details.name,
           total: result.amount_total / 100,
