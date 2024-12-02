@@ -71,7 +71,6 @@ export const PurchaseDetailTable = ({
           ]
         };
       });
-  console.log("Object.keys(metaData.buyerForm).includes(form_booth)", Object.keys(metaData.buyerForm).includes("form_booth"));
   const mainBuyerForm = paymentType === "stripe" ? mainBuyer[0] : mainBuyer[0];
   return (
     <Box className={"w-full"}>
