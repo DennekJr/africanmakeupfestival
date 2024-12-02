@@ -158,7 +158,6 @@ export const SuccessOrErrorVerification = () => {
     if (hasRun.current) return; // Prevent double invocation
     hasRun.current = true;
     if (reference || sessionId) {
-      console.log("Checking Status");
       checkStatus();
       // console.log("sessionId", sessionId, reference);
     }

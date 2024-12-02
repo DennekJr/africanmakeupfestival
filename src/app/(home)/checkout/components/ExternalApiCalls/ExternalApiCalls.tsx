@@ -12,7 +12,7 @@ export const PostPaystackTicketPurchases = async (ticketData) => {
 
     const data = await response.json(); // Parse the JSON response
     if (response.ok) {
-      console.log("Ticket posted successfully:", data);
+      console.log("Ticket posted successfully:");
     } else {
       console.error("Error posting ticket:", data);
     }
@@ -33,7 +33,7 @@ export const PostStripeTicketPurchases = async (ticketData) => {
 
     const data = await response.json(); // Parse the JSON response
     if (response.ok) {
-      console.log("Ticket posted successfully:", data);
+      console.log("Ticket posted successfully:");
     } else {
       console.error("Error posting ticket:", data);
     }
@@ -54,7 +54,7 @@ export const PostTransaction = async (ticketData) => {
 
     const data = await response.json(); // Parse the JSON response
     if (response.ok) {
-      console.log("Ticket posted successfully:", data);
+      console.log("Ticket posted successfully");
     } else {
       console.error("Error posting ticket:", data);
     }
@@ -118,7 +118,7 @@ export const sendEmail = async (email, template) => {
     });
     const data = await response.json();
     if (response.ok) {
-      console.log("Email sent successfully to Zoho Mail", data);
+      console.log("Email sent successfully to Zoho Mail");
     } else {
       console.error("Error sending email:", data);
     }
@@ -140,7 +140,7 @@ export const sendContactUsEmail = async (email, template) => {
     });
     const data = await response.json();
     if (response.ok) {
-      console.log("Email sent successfully to Zoho Mail", data);
+      console.log("Email sent successfully to Zoho Mail");
     } else {
       console.error("Error sending email:", data);
     }
