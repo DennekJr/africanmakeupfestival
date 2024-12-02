@@ -7,9 +7,7 @@ import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
-import {
-  BillingFormSchema
-} from "../../../lib/features/checkout/checkoutSlice";
+import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
 // import { initiatePaystackTransaction } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
@@ -20,9 +18,8 @@ import {
   getTicketCost,
   getTicketValue
 } from "@/app/(home)/checkout/components/utils";
-import {
-  AgoraTransitionBox
-} from "@/app/(home)/components/newHome/utils";
+import { AgoraTransitionBox } from "@/app/(home)/components/newHome/utils";
+import { initiatePaystackTransaction } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -36,13 +33,8 @@ const billingFormValues = {
 
 const CheckoutForm = () => {
   const router = useRouter();
-  const {
-    tickets,
-    total,
-    // payStackCheckout,
-    billingInfo,
-    formValues,
-  } = useAppSelector((state) => state.checkout);
+  const { tickets, total, payStackCheckout, billingInfo, formValues } =
+    useAppSelector((state) => state.checkout);
   useEffect(() => {
     if (total === 0) {
       router.push("/ticket");
@@ -93,19 +85,23 @@ const CheckoutForm = () => {
           setDisabled(false);
         }, 3000);
       }
-      Object.values(formValues).slice(2).map((ticket) => {
-        const hasEmptyValues = Object.values(ticket as unknown as object).some(value => value === "");
-        if (hasEmptyValues) {
-          setDisabled(hasEmptyValues);
-          isDisabled = hasEmptyValues;
-          setError("Complete other forms to proceed to payment");
-          setTimeout(() => {
-            setError("");
-            isDisabled = false;
-            setDisabled(false);
-          }, 3000);
-        }
-      });
+      Object.values(formValues)
+        .slice(2)
+        .map((ticket) => {
+          const hasEmptyValues = Object.values(
+            ticket as unknown as object
+          ).some((value) => value === "");
+          if (hasEmptyValues) {
+            setDisabled(hasEmptyValues);
+            isDisabled = hasEmptyValues;
+            setError("Complete other forms to proceed to payment");
+            setTimeout(() => {
+              setError("");
+              isDisabled = false;
+              setDisabled(false);
+            }, 3000);
+          }
+        });
     }
     return isDisabled;
     // return false; // No errors
@@ -138,7 +134,7 @@ const CheckoutForm = () => {
               product_data: {
                 name:
                   String(ticket.ticketName).charAt(0).toUpperCase() +
-                  String(ticket.ticketName).slice(1)
+                  String(ticket.ticketName).slice(1),
               },
               unit_amount: value * 100
             },
@@ -161,7 +157,7 @@ const CheckoutForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           items: ticketPurchaseData // Example item,
-        })
+        }),
       });
       const { session } = await response.json();
       const sessionId = session.id;
@@ -174,21 +170,23 @@ const CheckoutForm = () => {
     }
   };
 
-  // const handlePaystackPayment = async () => {
-  //   const ticketPurchaseData = {
-  //     payStackCheckout: payStackCheckout,
-  //     ticketData: {
-  //       buyerForm: billingInfo,
-  //       otherTicketForms: formValues,
-  //     },
-  //     tickets: tickets,
-  //   };
-  //   const req = await initiatePaystackTransaction(ticketPurchaseData);
-  //   if (req) {
-  //     const authUrl = req.paystackData.data.authorization_url;
-  //     router.push(authUrl);
-  //   }
-  // };
+  const handlePaystackPayment = async () => {
+    if (!validateOtherTicketForm()) {
+      const ticketPurchaseData = {
+        payStackCheckout: payStackCheckout,
+        ticketData: {
+          buyerForm: billingInfo,
+          otherTicketForms: formValues
+        },
+        tickets: tickets
+      };
+      const req = await initiatePaystackTransaction(ticketPurchaseData);
+      if (req) {
+        const authUrl = req.paystackData.data.authorization_url;
+        router.push(authUrl);
+      }
+    }
+  };
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -257,16 +255,16 @@ const CheckoutForm = () => {
               </div>
             </Box>
 
-            {/*<button*/}
-            {/*  onClick={handlePaystackPayment}*/}
-            {/*  type={"submit"}*/}
-            {/*  disabled={true}*/}
-            {/*  className="invisible animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"*/}
-            {/*>*/}
-            {/*  <span className="text-center w-full h-full">*/}
-            {/*    Pay with Paystack*/}
-            {/*  </span>*/}
-            {/*</button>*/}
+            <button
+              onClick={handlePaystackPayment}
+              type={"submit"}
+              disabled={disabled}
+              className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+            >
+              <span className="text-center w-full h-full">
+                Use Local Payment
+              </span>
+            </button>
             <button
               onClick={async (e) => {
                 await handleStripePayment(e);
@@ -275,7 +273,9 @@ const CheckoutForm = () => {
               disabled={disabled}
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
-              <span className="text-center w-full h-full">Pay now</span>
+              <span className="text-center w-full h-full">
+                Use International Payment
+              </span>
             </button>
             <AgoraTransitionBox className="transition-all text-center text-warning text-lg font-medium">
               {error}
