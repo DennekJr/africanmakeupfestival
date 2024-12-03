@@ -13,7 +13,7 @@ export const TicketBox = styled(Box)(({}) => ({
   "&::before, &::after": {
     content: "\"\"",
     position: "absolute",
-    top: "47%",
+    top: "48.5%",
     width: "80px", // Adjust size of the curve
     height: "80px", // Adjust size of the curve
     backgroundColor: "#F5F5F5",

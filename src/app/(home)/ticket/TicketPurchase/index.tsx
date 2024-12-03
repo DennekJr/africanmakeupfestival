@@ -106,18 +106,18 @@ export const TicketPurchase = () => {
                     </Box>
                     <TicketTag ticket={ticket} />
                   </Box>
-                  <div>
-                    <div
-                      className="list-disc text-[#504E56] pt-2"
+                  <Box className={"!mt-2"}>
+                    <Box
+                      className="list-disc text-lightSecondary pt-2"
                       style={{ position: "relative" }}
                     >
-                      <Box className={"flex flex-col pt-2 text-"}>
+                      <Box className={"flex flex-col pt-2 text-sm leading-8"}>
                         {ticket.benefits.map((benefit, index) => {
                           return <li key={index}>{benefit}</li>;
                         })}
                       </Box>
-                    </div>
-                  </div>
+                    </Box>
+                  </Box>
                 </Box>
                 <Box className="space-y-4 flex items-center justify-between">
                   <div className="flex gap-4 lg:gap-6">
