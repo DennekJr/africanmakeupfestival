@@ -23,7 +23,7 @@ export const CountryPhoneInput = (props) => {
       className={
         "text-[#1E1C21] w-full PhoneInputInput"
       }
-      country={"Nigeria"}
+      country={"ng"}
       onBlur={() => {
         setIsTyping(true);
       }}
