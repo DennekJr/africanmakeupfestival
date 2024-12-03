@@ -1,47 +1,32 @@
 "use client";
 import Box from "@mui/material/Box";
-import { Collapse } from "@mui/material";
 import React, { useMemo, useState } from "react";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
-import { Minus, Plus, TicketTag } from "./utils";
+import { Minus, Plus, TicketBox, TicketContent, TicketTag } from "./utils";
 import { FortyFiveDegreeArrow } from "../../../(home)/sponsor/Hero/utils";
 import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
 import {
-  setTickets, setBillingTotal
+  setTickets,
+  setBillingTotal
 } from "../../../lib/features/checkout/checkoutSlice";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
-import { getTicketCost } from "@/app/(home)/checkout/components/utils";
+import {
+  formatCurrency,
+  getTicketCost
+} from "@/app/(home)/checkout/components/utils";
 import { AgoraBox } from "@/app/(home)/components/newHome/utils";
 
 export const TicketPurchase = () => {
-  const initialState = [
-    { ticketName: "regular", isOpen: false },
-    { ticketName: "vip", isOpen: false }
-  ];
-
-  const [isOpen, setIsOpen] = useState(initialState);
   const [error, setError] = useState("");
   const [limitError, setLimitError] = useState("");
-  const ticketNumbers = useAppSelector((state) => state.checkout.tickets);
+  const { tickets: ticketNumbers, total } = useAppSelector(
+    (state) => state.checkout
+  );
   const values = useMemo(() => ticketNumbers, [ticketNumbers]);
   const router = useRouter();
   const tickets = useMemo(() => Object.values(TICKETPURCHASEMENU), []);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const handleClick = (id: string) => {
-    const newState = isOpen.map((item) => {
-      if (item.ticketName !== id) {
-        return item;
-      } else {
-        return {
-          ...item,
-          isOpen: !item.isOpen,
-        };
-      }
-    });
-    setIsOpen(newState);
-  };
   const handleChange = (math: string, id: string) => {
     setError("");
     setLimitError("");
@@ -83,94 +68,123 @@ export const TicketPurchase = () => {
   };
 
   const handleProceedToCheckout = () => {
-    const hasAddedTicket = values.some(ticket => ticket.value > 0);
+    const hasAddedTicket = values.some((ticket) => ticket.value > 0);
     if (hasAddedTicket) {
       router.push("/checkout");
     } else {
       setError("Please select ticket(s) to proceed to checkout");
     }
-  }
+  };
   return (
     <>
-      {tickets.map((ticket, index) => {
-        const open = isOpen.find((item) => {
-          if (item.ticketName === ticket.id) {
-            return item.isOpen;
-          }
-          return false;
-        });
-        const ticketNumber = values.find((item) => {
-          if (item.ticketName === ticket.id) {
-            return item.value;
-          }
-          return 0;
-        });
-        return (
-          <Box
-            key={index}
-            className="border-b border-lightSecondary p-5 lg:p-8 space-y-6"
-          >
-            <Box className="space-y-2 lg:space-y-4">
-              <Box className="flex flex-col-reverse lg:grid grid-cols-5 gap-2">
-                <Box className="col-span-4 space-y-1">
-                  <p className="text-2xl lg:text-3xl xl:text-6xl font-medium text-black">
-                    {ticket.title}
-                  </p>
-                  <p className="text-sm lg:text-base text-lightSecondary">{ticket.subTitle}</p>
-                </Box>
-                <TicketTag ticket={ticket} />
-              </Box>
-              <div data-state={open?.isOpen}>
-                <button
-                  type="button"
-                  onClick={() => handleClick(ticket.id)}
-                  className="flex items-center gap-2 text-midPrimary"
-                >
-                  <span>See more</span>
-                  {open?.isOpen ? <ExpandLess /> : <ExpandMore />}
-                </button>
-                <div
-                  className="list-disc text-[#504E56] pt-2"
-                  style={{ position: "relative" }}
-                >
-                  <Collapse in={open?.isOpen} timeout="auto" unmountOnExit>
-                    <Box className={"flex flex-col pt-2 text-lightSecondary"}>
-                      {ticket.benefits.map((benefit, index) => {
-                        return <li key={index}>{benefit}</li>;
-                      })}
+      <TicketBox>
+        <TicketContent className={""}>
+          {tickets.map((ticket, index) => {
+            const ticketNumber = values.find((item) => {
+              if (item.ticketName === ticket.id) {
+                return item.value;
+              }
+              return 0;
+            });
+            return (
+              <Box
+                key={index}
+                className={
+                  "bg-textColor rounded-2xl border-b border-dashed border-lightGrey py-10 lg:py-16 p-8 lg:p-8 space-y-6" +
+                  `${index === tickets.length - 1 ? "" : " border-b-[8px]"}`
+                }
+              >
+                <Box className="space-y-2 lg:space-y-4">
+                  <Box className="flex flex-col-reverse lg:grid grid-cols-5 gap-2">
+                    <Box className="col-span-4 space-y-1">
+                      <p className="text-2xl lg:text-3xl xl:text-6xl font-medium text-black">
+                        {ticket.title}
+                      </p>
+                      <p className="text-sm lg:text-base text-lightSecondary">
+                        {ticket.subTitle}
+                      </p>
                     </Box>
-                  </Collapse>
-                </div>
-              </div>
+                    <TicketTag ticket={ticket} />
+                  </Box>
+                  <div>
+                    <div
+                      className="list-disc text-[#504E56] pt-2"
+                      style={{ position: "relative" }}
+                    >
+                      <Box className={"flex flex-col pt-2 text-"}>
+                        {ticket.benefits.map((benefit, index) => {
+                          return <li key={index}>{benefit}</li>;
+                        })}
+                      </Box>
+                    </div>
+                  </div>
+                </Box>
+                <Box className="space-y-4 flex items-center justify-between">
+                  <div className="flex gap-4 lg:gap-6">
+                    <p className="text-2xl lg:text-3xl xl:text-5xl text-black font-medium">
+                      {ticket.price}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center gap-5 !mt-0">
+                    <Minus
+                      handleClick={() => handleChange("minus", ticket.id)}
+                    />
+                    <p className="text-2xl lg:text-3xl xl:text-5xl font-medium text-black">
+                      {ticketNumber?.value ?? 0}
+                    </p>
+                    <Plus handleClick={() => handleChange("plus", ticket.id)} />
+                  </div>
+                </Box>
+              </Box>
+            );
+          })}
+        </TicketContent>
+      </TicketBox>
+      <Box className={"my-8 flex"}>
+        {ticketNumbers.map((ticket, index) => {
+          return (
+            <Box
+              key={index}
+              className={
+                "bg-textColor text-lightSecondary mr-4 p-4 rounded-2xl"
+              }
+            >
+              <span>{ticket.ticketName.toUpperCase()}</span>
+              <span
+                className={"ml-2 text-primary p-1 px-2 bg-pink rounded-2xl"}
+              >
+                {ticket.value}
+              </span>
             </Box>
-            <Box className="space-y-4">
-              <div className="flex gap-4 lg:gap-6">
-                <p className="text-2xl lg:text-3xl xl:text-5xl text-black font-medium">
-                  {ticket.price}
-                </p>
-              </div>
-              <div className="flex items-center gap-5">
-                <Minus handleClick={() => handleChange("minus", ticket.id)} />
-                <p className="text-2xl lg:text-3xl xl:text-5xl font-medium text-black">
-                  {ticketNumber?.value ?? 0}
-                </p>
-                <Plus handleClick={() => handleChange("plus", ticket.id)} />
-              </div>
-            </Box>
-          </Box>
-        );
-      })}
-      <Box className="py-10 lg:py-12 flex flex-col justify-center">
-        <AgoraBox className="transition-all text-center text-warning text-lg font-medium">{error}</AgoraBox>
-        <AgoraBox
-          className="swiper-fade transition-all text-center text-warning text-lg font-medium">{limitError}</AgoraBox>
-        <button
-          onClick={handleProceedToCheckout}
-          className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-[#FCFCFC] hover:bg-[#0A090B]/90 h-14 px-6 py-4 rounded-full mx-auto min-w-[80%]"
+          );
+        })}
+      </Box>
+      <Box className="py-2 lg:py-4 flex flex-col justify-center bg-textColor rounded-2xl">
+        <AgoraBox className="transition-all text-center text-warning text-lg font-medium">
+          {error}
+        </AgoraBox>
+        <AgoraBox className="swiper-fade transition-all text-center text-warning text-lg font-medium">
+          {limitError}
+        </AgoraBox>
+        <Box
+          className={
+            "flex flex-col items-center gap-4 lg:flex-row justify-between p-5 lg:p-8 font-medium text-black"
+          }
         >
-          <span>PROCEED TO CHECK OUT</span>
-          <FortyFiveDegreeArrow />
-        </button>
+          <Box
+            className={"flex flex-col gap-2 text-2xl lg:text-3xl xl:text-5xl"}
+          >
+            <span className="text-lightSecondary">Total</span>
+            <span>NGN&nbsp;{formatCurrency(total)}</span>
+          </Box>
+          <button
+            onClick={handleProceedToCheckout}
+            className="inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-textColor hover:bg-primary/90 h-14 px-6 py-4 rounded-full"
+          >
+            <span>PROCEED TO CHECK OUT</span>
+            <FortyFiveDegreeArrow />
+          </button>
+        </Box>
       </Box>
     </>
   );

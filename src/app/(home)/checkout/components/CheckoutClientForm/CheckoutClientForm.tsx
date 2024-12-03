@@ -16,6 +16,7 @@ import { initialFormData } from "@/app/(home)/exhibit/register/RegisterBoothForm
 
 export const CheckoutClientForm = () => {
   const [values, setValues] = useState(initialValues);
+  const [country, setCountry] = useState({ label: "Nigeria", value: "Nigeria" });
   const { myTicket, total } = useAppSelector((state) => state.checkout);
   const dispatch = useAppDispatch();
   const handleInputChange = (e, name) => {
@@ -64,6 +65,7 @@ export const CheckoutClientForm = () => {
         };
       }
     });
+    setCountry(country);
     const billingData = { ticket: myTicket.ticketName, data: newState };
     setValues(newState);
     dispatch(setBillingInfo(billingData));
@@ -103,6 +105,7 @@ export const CheckoutClientForm = () => {
             <FormControl key={index} className={"space-y-2"}>
               <CountryDropdown
                 key={index}
+                value={country}
                 onChange={(e) => handleCountryDropdownChange(e, field.name)}
               />
               {values[field.name] == "" && <Typography color={'error text-[0.75rem]'}>Select a country</Typography>}

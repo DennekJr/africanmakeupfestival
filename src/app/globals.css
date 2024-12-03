@@ -25,12 +25,12 @@ a,
 button,
 textarea,
 button,
-input,
-select,
+  /*input,*/
+  /*select,*/
 option,
 nav,
 section,
-div,
+  /*div,*/
 aside {
   font-family: font-geist, sans-serif !important;
   font-weight: 300;

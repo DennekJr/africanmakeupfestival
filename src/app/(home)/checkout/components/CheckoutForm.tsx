@@ -283,7 +283,7 @@ const CheckoutForm = () => {
           </Box>
         </Box>
         <HiddenFormDropdown
-          title={"Select the ticket that belongs to you."}
+          title={"Select your ticket."}
           subTitle={
             "Tickets will only be assigned to the email address(es) you provide"
           }
@@ -291,9 +291,9 @@ const CheckoutForm = () => {
         />
         {totalValue > 1 && (
           <HiddenFormDropdown
-            title={"Assign other tickets to different e-mail addresses?"}
+            title={"Assign other tickets"}
             subTitle={
-              "Tickets will only be assigned to the email address(es) you provide"
+              "Tickets will only be assigned to the email address(es) you have provided"
             }
             displayTicketDropdown={false}
           />
