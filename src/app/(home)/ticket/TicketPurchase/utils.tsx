@@ -38,7 +38,7 @@ export const TicketContent = styled(Box)({
 export const Plus = ({ handleClick }: {handleClick: () => void}) => {
   return <div
     role="button"
-    className="p-2 h-auto aspect-square bg-black rounded-full text-white"
+    className="p-2 h-auto aspect-square bg-primary rounded-md text-white"
     onClick={handleClick}
   >
     <svg
@@ -63,7 +63,7 @@ export const Minus = ({ handleClick }: {handleClick: () => void}) => {
   return <div
     role="button"
     onClick={handleClick}
-    className="p-2 h-auto bg-[#C8C8CB] text-[#504E56] rounded-full"
+    className="p-2 h-auto bg-midGrey text-[#504E56] rounded-md"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
