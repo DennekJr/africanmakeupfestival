@@ -55,15 +55,15 @@ export const BillingForm = ({ ticket }: { ticket: string }) => {
       <FormControl className={"space-y-2"}>
         <BillingTextField id={'form_confirmEmail'} name={'Confirm Email'} ticket={ticket} formik={formik} handleChange={handleChange} />
       </FormControl>
-      <FormControl className={"space-y-2"}>
-        <BillingTextField id={'form_organisation'} name={'Organisation'} ticket={ticket} formik={formik} handleChange={handleChange} />
-      </FormControl>
-      <FormControl className={"space-y-2"}>
-        <BillingTextField id={'form_organisationWebsite'} name={'Organisation Website'} ticket={ticket} formik={formik} handleChange={handleChange} />
-      </FormControl>
-      <FormControl className={"space-y-2"}>
-        <BillingTextField id={'form_organisationRole'} name={'Organisation Role'} ticket={ticket} formik={formik} handleChange={handleChange} />
-      </FormControl>
+      {/*<FormControl className={"space-y-2"}>*/}
+      {/*  <BillingTextField id={'form_organisation'} name={'Organisation'} ticket={ticket} formik={formik} handleChange={handleChange} />*/}
+      {/*</FormControl>*/}
+      {/*<FormControl className={"space-y-2"}>*/}
+      {/*  <BillingTextField id={'form_organisationWebsite'} name={'Organisation Website'} ticket={ticket} formik={formik} handleChange={handleChange} />*/}
+      {/*</FormControl>*/}
+      {/*<FormControl className={"space-y-2"}>*/}
+      {/*  <BillingTextField id={'form_organisationRole'} name={'Organisation Role'} ticket={ticket} formik={formik} handleChange={handleChange} />*/}
+      {/*</FormControl>*/}
     </form>
   );
 };

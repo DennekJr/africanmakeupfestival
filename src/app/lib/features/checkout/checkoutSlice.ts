@@ -6,9 +6,9 @@ export type TicketBilingInfo = {
   form_lastName: string;
   form_email: string;
   form_confirmEmail: string;
-  form_organisation: string;
-  form_organisationWebsite: string;
-  form_organisationRole: string;
+  // form_organisation: string;
+  // form_organisationWebsite: string;
+  // form_organisationRole: string;
   Ticket: string;
   quantity: number;
 };
@@ -25,12 +25,12 @@ export const OtherOrdersFormSchema = Yup.object().shape({
   form_confirmEmail: Yup.string()
     .oneOf([Yup.ref('form_email')], 'Email must match')
     .required("Required"),
-  form_organisation: Yup.string()
-    .required("Required"),
-  form_organisationWebsite: Yup.string()
-    .required("Required"),
-  form_organisationRole: Yup.string()
-    .required("Required"),
+  // form_organisation: Yup.string()
+  //   .required("Required"),
+  // form_organisationWebsite: Yup.string()
+  //   .required("Required"),
+  // form_organisationRole: Yup.string()
+  //   .required("Required"),
   form_email: Yup.string().email("Invalid email").required("Required"),
 });
 export const BillingFormSchema = Yup.object().shape({
@@ -45,12 +45,12 @@ export const BillingFormSchema = Yup.object().shape({
   'Confirm Email': Yup.string()
     .oneOf([Yup.ref('Email')], 'Email must match')
     .required("Required"),
-  'Organisation': Yup.string()
-    .required("Required"),
-  'Organisation Website': Yup.string()
-    .required("Required"),
-  'Organisation Role': Yup.string()
-    .required("Required"),
+  // 'Organisation': Yup.string()
+  //   .required("Required"),
+  // 'Organisation Website': Yup.string()
+  //   .required("Required"),
+  // 'Organisation Role': Yup.string()
+  //   .required("Required"),
   'How did you hear about the event': Yup.string()
     .required("Required"),
   'Email': Yup.string().email("Invalid email").required("Required"),
@@ -63,9 +63,9 @@ export const initialValues = [
   { name: "Country", value: "" },
   { name: "Email", value: "" },
   { name: "Confirm Email", value: "" },
-  { name: "Organisation", value: "" },
-  { name: "Organisation Website", value: "" },
-  { name: "Organisation Role", value: "" },
+  // { name: "Organisation", value: "" },
+  // { name: "Organisation Website", value: "" },
+  // { name: "Organisation Role", value: "" },
   { name: "How did you hear about the event", value: "" },
 ];
 
@@ -74,9 +74,9 @@ export const initialFormValue = {
   form_lastName: "",
   form_email: "",
   form_confirmEmail: "",
-  form_organisation: "",
-  form_organisationWebsite: "",
-  form_organisationRole: "",
+  // form_organisation: "",
+  // form_organisationWebsite: "",
+  // form_organisationRole: "",
   Ticket: "", // Default ticket type
   quantity: 0
 };
@@ -92,9 +92,9 @@ export type initialCheckoutStateType = {
     'Email': string,
     "First Name": string,
     "Last Name": string,
-    'Organisation': string,
-    "Organisation Role": string,
-    "Organisation Website": string,
+    // 'Organisation': string,
+    // "Organisation Role": string,
+    // "Organisation Website": string,
   };
   billingInfo: { [ticket: string]: { name: string; value: string }[] };
   leftOverTicketFormValues: unknown[];
@@ -119,9 +119,9 @@ const initialState: initialCheckoutStateType = {
     'Email': "",
     "First Name": "",
     "Last Name": "",
-    'Organisation': "",
-    "Organisation Role": "",
-    "Organisation Website": "",
+    // 'Organisation': "",
+    // "Organisation Role": "",
+    // "Organisation Website": "",
 },
   otherTicketFormErrors: { id: "", data: initialFormValue },
   billingInfo: {
@@ -132,9 +132,9 @@ const initialState: initialCheckoutStateType = {
       { name: "Country", value: "" },
       { name: "Email", value: "" },
       { name: "Confirm Email", value: "" },
-      { name: "Organisation", value: "" },
-      { name: "Organisation Website", value: "" },
-      { name: "Organisation Role", value: "" },
+      // { name: "Organisation", value: "" },
+      // { name: "Organisation Website", value: "" },
+      // { name: "Organisation Role", value: "" },
       { name: "How did you hear about the event", value: "" },
     ],
   },

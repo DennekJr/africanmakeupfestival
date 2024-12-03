@@ -32,12 +32,12 @@ export async function POST(request) {
         form_lastName: detail[0][1].value,
         form_email: detail[0][4].value,
         form_confirmEmail: detail[0][5].value,
-        form_organisation: detail[0][6].value,
-        form_organisationWebsite: detail[0][7].value,
-        form_organisationRole: detail[0][8].value,
+        // form_organisation: detail[0][6].value,
+        // form_organisationWebsite: detail[0][7].value,
+        // form_organisationRole: detail[0][8].value,
         Ticket: TicketName.toUpperCase(), // Default ticket type
         form_phoneNumber: detail[0][2].value,
-        form_howDidYouHearAboutEvent: detail[0][9].value,
+        form_howDidYouHearAboutEvent: detail[0][6].value,
         form_country: detail[0][3].value
       }
       const BuyerTicketPurchase = {
