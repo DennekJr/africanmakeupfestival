@@ -2,11 +2,43 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { TicketPurchaseTypes } from "@/app/(home)/ticket/TicketPurchase/ticketPurchase.types";
+import { styled } from "@mui/material/styles";
 
+export const TicketBox = styled(Box)(({}) => ({
+  position: "relative",
+  borderRadius: "20px",
+  overflow: "hidden",
+  // zIndex: 5,
+
+  "&::before, &::after": {
+    content: "\"\"",
+    position: "absolute",
+    top: "47%",
+    width: "80px", // Adjust size of the curve
+    height: "80px", // Adjust size of the curve
+    backgroundColor: "#F5F5F5",
+    borderRadius: "35%", // Creates the circular shape
+    transform: "translateY(-50%)",
+    zIndex: 1
+  },
+
+  "&::before": {
+    left: "-40px" // Adjust for proper alignment on the left
+  },
+
+  "&::after": {
+    right: "-40px" // Adjust for proper alignment on the right
+  }
+}));
+
+export const TicketContent = styled(Box)({
+  position: "relative"
+  // zIndex: 2,
+});
 export const Plus = ({ handleClick }: {handleClick: () => void}) => {
   return <div
     role="button"
-    className="p-2 h-auto aspect-square bg-black rounded-full text-white"
+    className="p-2 h-auto aspect-square bg-primary rounded-md text-white"
     onClick={handleClick}
   >
     <svg
@@ -31,7 +63,7 @@ export const Minus = ({ handleClick }: {handleClick: () => void}) => {
   return <div
     role="button"
     onClick={handleClick}
-    className="p-2 h-auto bg-[#C8C8CB] text-[#504E56] rounded-full"
+    className="p-2 h-auto bg-midGrey text-[#504E56] rounded-md"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

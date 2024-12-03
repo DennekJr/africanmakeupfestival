@@ -25,10 +25,10 @@ export const HiddenFormDropdown = ({
   subTitle: string;
   displayTicketDropdown: boolean;
 }) => {
-  const [displaySelectMenu, setDisplaySelectMenu] = React.useState(false);
+  const [displaySelectMenu, setDisplaySelectMenu] = React.useState(true);
   const [tickets, setTickets] = React.useState<{ ticketName: string; value: number; }[]>([]);
   const [displaySelectTicketError, setDisplaySelectTicketError] =
-    React.useState("");
+    React.useState("true");
   const {
     tickets: Tickets,
     myTicket,
@@ -43,17 +43,8 @@ export const HiddenFormDropdown = ({
     setTickets(Tickets);
   }, [tickets]);
   const handleDisplaySelectMenu = () => {
-    if (title.includes("Assign")) {
-      if (!displaySelectMenu) {
-        if (displaySelectTicketError == "true") {
-          setDisplaySelectTicketError("false");
-        } else {
-          setDisplaySelectTicketError("true");
-        }
-      }
-    } else {
-      setDisplaySelectMenu(!displaySelectMenu);
-    }
+    setDisplaySelectTicketError("true");
+    setDisplaySelectMenu(true);
   };
   const handleChange = (e) => {
     dispatch(setMyTicket({ ticketName: e.target.value, value: 1 }));
@@ -75,7 +66,6 @@ export const HiddenFormDropdown = ({
       }
     });
     setTickets(leftOverTickets);
-    setDisplaySelectTicketError("true");
     dispatch(setLeftoverTickets(leftOverTickets));
     dispatch(setLeftOverTicketsForms(newArr));
   };
@@ -100,7 +90,7 @@ export const HiddenFormDropdown = ({
             position: "relative",
             transitionDuration: "0",
             animationName: "",
-            display: displaySelectMenu ? "block" : "none",
+            display: "block"
           }}
         >
           <div

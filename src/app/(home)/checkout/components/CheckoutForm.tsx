@@ -262,7 +262,7 @@ const CheckoutForm = () => {
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                Use Local Payment
+                Checkout with Paystack
               </span>
             </button>
             <button
@@ -274,7 +274,7 @@ const CheckoutForm = () => {
               className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
             >
               <span className="text-center w-full h-full">
-                Use International Payment
+                Checkout with Stripe
               </span>
             </button>
             <AgoraTransitionBox className="transition-all text-center text-warning text-lg font-medium">
@@ -283,7 +283,7 @@ const CheckoutForm = () => {
           </Box>
         </Box>
         <HiddenFormDropdown
-          title={"Select the ticket that belongs to you."}
+          title={"Select your ticket."}
           subTitle={
             "Tickets will only be assigned to the email address(es) you provide"
           }
@@ -291,11 +291,11 @@ const CheckoutForm = () => {
         />
         {totalValue > 1 && (
           <HiddenFormDropdown
-            title={"Assign other tickets to different e-mail addresses?"}
+            title={"Assign other tickets"}
             subTitle={
-              "Tickets will only be assigned to the email address(es) you provide"
+              "Tickets will only be assigned to the email address(es) you have provided"
             }
-            displayTicketDropdown={false}
+            displayTicketDropdown={true}
           />
         )}
       </Box>

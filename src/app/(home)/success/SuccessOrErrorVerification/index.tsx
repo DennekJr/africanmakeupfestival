@@ -134,8 +134,8 @@ export const SuccessOrErrorVerification = () => {
         setTotal(result.amount_total);
         await PostStripeTicketPurchases({ ticketData });
         const transactionToPost = {
-          Paystack_Id: (result.id as string).slice(-10),
-          Stripe_Id: "",
+          Paystack_Id: "",
+          Stripe_Id: result.id as string,
           Currency: result.currency,
           Email: result.customer_details.email,
           UnitNumber: result.amount_total
