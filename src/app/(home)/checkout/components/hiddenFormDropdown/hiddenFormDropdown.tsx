@@ -43,17 +43,8 @@ export const HiddenFormDropdown = ({
     setTickets(Tickets);
   }, [tickets]);
   const handleDisplaySelectMenu = () => {
-    // if (title.includes("Assign")) {
-    //   if (!displaySelectMenu) {
-    //     if (displaySelectTicketError == "true") {
-    //       setDisplaySelectTicketError("false");
-    //     } else {
     setDisplaySelectTicketError("true");
-    //     }
-    //   }
-    // } else {
     setDisplaySelectMenu(true);
-    // }
   };
   const handleChange = (e) => {
     dispatch(setMyTicket({ ticketName: e.target.value, value: 1 }));
