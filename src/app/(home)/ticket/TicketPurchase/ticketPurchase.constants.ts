@@ -7,24 +7,27 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
     id: "regular",
     title: "Regular",
     subTitle:
-      "Perfect for attendees who wish to explore event activities with no major commitment",
+      "This ticket is perfect for anyone looking to experience the Africa Skincare Festival and discover the best of African skincare in an exciting and interactive environment!",
     benefits: [
-      "Access to exhibitions",
-      "Access to main-stage sessions",
-      "Access to any perks from partners",
+      "Full Access to the Exhibition Area: Explore a variety of booths showcasing top skincare brands and products",
+      "Live Demonstrations: Witness product demos and learn skincare tips directly from experts",
+      "Product Sampling: Try out samples of innovative skincare products from featured brands.",
+      "Panel discussions: Attend select sessions focused on skincare routines, trends, and beauty business secrets.",
+      "Networking Opportunities: Connect with like-minded skincare enthusiasts and discover new brands."
     ],
     price: "NGN " + formatCurrency(RegularTicket)
   },
   vip: {
     id: "vip",
     title: "VIP",
-    subTitle: "Unlock Premium Perks and Privileges.",
+    subTitle: "This ticket is perfect for those looking to elevate their festival experience and enjoy VIP-level access to everything the Africa Skincare Festival has to offer!",
     benefits: [
-      "Access to the exhibitors",
-      "Priority access to all sessions",
-      "Access to all forums",
-      "Access to the night festival",
-      "Access to Vip lounges"
+      "Fast-Track Entry: Skip the lines and enjoy priority access to the event.",
+      "Exclusive VIP Lounge Access: Relax and network in a dedicated lounge with complimentary refreshments.",
+      "Reserved Seating: Enjoy priority seating at all keynote speeches, panel discussions, and workshops",
+      "VIP Gift Bag: Receive a luxury gift bag filled with exclusive skincare products, samples, and goodies from leading brands",
+      "Personalized Skincare Consultations: Get one-on-one advice from top skincare experts.",
+      "Exclusive Networking Opportunities: Connect with industry leaders, brand founders, and influencers in an intimate setting."
     ],
     price: "NGN " + formatCurrency(VIPTicket)
   },
