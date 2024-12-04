@@ -13,7 +13,8 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
       "Live Demonstrations: Witness product demos and learn skincare tips directly from experts",
       "Product Sampling: Try out samples of innovative skincare products from featured brands.",
       "Panel discussions: Attend select sessions focused on skincare routines, trends, and beauty business secrets.",
-      "Networking Opportunities: Connect with like-minded skincare enthusiasts and discover new brands."
+      "Networking Opportunities: Connect with like-minded skincare enthusiasts and discover new brands.",
+      "Access to Night Festival"
     ],
     price: "NGN " + formatCurrency(RegularTicket)
   },
@@ -27,7 +28,8 @@ export const TICKETPURCHASEMENU: Record<string, TicketPurchaseTypes> = {
       "Reserved Seating: Enjoy priority seating at all keynote speeches, panel discussions, and workshops",
       "VIP Gift Bag: Receive a luxury gift bag filled with exclusive skincare products, samples, and goodies from leading brands",
       "Personalized Skincare Consultations: Get one-on-one advice from top skincare experts.",
-      "Exclusive Networking Opportunities: Connect with industry leaders, brand founders, and influencers in an intimate setting."
+      "Exclusive Networking Opportunities: Connect with industry leaders, brand founders, and influencers in an intimate setting.",
+      "Access to Night Festival"
     ],
     price: "NGN " + formatCurrency(VIPTicket)
   },
