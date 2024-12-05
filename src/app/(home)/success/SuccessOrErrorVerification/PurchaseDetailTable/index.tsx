@@ -77,21 +77,23 @@ export const PurchaseDetailTable = ({
         <Box>Tickets Bought</Box>
       </Box>
       {tickets.map((ticket, index) => {
-        if (ticket.value === 0) return;
-        return (
-          <Box
-            key={index}
-            className={
-              "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
-            }
-          >
-            <Box>{ticket.ticketName.toUpperCase()}</Box>
-            <Box>
-              {ticket.value}&nbsp;-&nbsp;NGN&nbsp;
-              {formatCurrency(getTicketCost(ticket))}
+        if (ticket.value > 0) {
+          return (
+            <Box
+              key={index}
+              className={
+                "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
+              }
+            >
+              <Box>{ticket.ticketName.toUpperCase()} <span
+                className={"italic text-[.8rem] xl:text-[1rem]"}>x&nbsp;{ticket.value}</span></Box>
+              <Box>
+                {currency.toUpperCase()}&nbsp;
+                {formatCurrency(getTicketCost(ticket))}
+              </Box>
             </Box>
-          </Box>
-        );
+          );
+        }
       })}
       <Box
         className={
