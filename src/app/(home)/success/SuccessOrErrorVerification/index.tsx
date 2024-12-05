@@ -43,6 +43,7 @@ export const SuccessOrErrorVerification = () => {
   const fullUrl = `${typeof window !== "undefined" ? window.location.origin : ""}${pathname}${searchParams?.toString() ? `?${searchParams?.toString()}` : ""}`;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [metaData, setMetaData] = React.useState<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
   const generateQRBase64 = async () => {
     return await new Promise((resolve, reject) => {
@@ -123,11 +124,13 @@ export const SuccessOrErrorVerification = () => {
       if (result.status === "complete") {
         const ticketData = {
           buyerForm: JSON.parse(result.metadata.buyerForm),
-          otherTicketForms: JSON.parse(result.metadata.otherTicketForms)
+          tickets: JSON.parse(result.metadata.tickets)
+          // otherTicketForms: JSON.parse(result.metadata.otherTicketForms)
         };
         const tickets = JSON.parse(result.metadata.tickets);
         const data = {
-          ticketData: ticketData
+          ticketData: ticketData,
+          tickets: tickets
         };
         setMetaData(data);
         setCurrency((result.currency as string).toUpperCase());
@@ -182,6 +185,7 @@ export const SuccessOrErrorVerification = () => {
       </Box>
     );
   }
+
   const renderPurchaseTable = () => {
     if (metaData && metaData) {
       return (
@@ -190,6 +194,7 @@ export const SuccessOrErrorVerification = () => {
           metaData={metaData?.ticketData}
           currency={currency}
           total={total}
+          tickets={metaData?.tickets}
         />
       );
     }
