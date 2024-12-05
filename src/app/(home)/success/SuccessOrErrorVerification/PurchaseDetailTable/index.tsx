@@ -1,5 +1,8 @@
 import Box from "@mui/material/Box";
-import { formatCurrency, getTicketCost } from "@/app/(home)/checkout/components/utils";
+import {
+  formatCurrency,
+  getTicketCost
+} from "@/app/(home)/checkout/components/utils";
 import { ExhibitionBoothBillingInfo } from "@/app/lib/features/exhibition/exhibitionSlice";
 
 export const PurchaseDetailTable = ({
@@ -83,7 +86,10 @@ export const PurchaseDetailTable = ({
             }
           >
             <Box>{ticket.ticketName.toUpperCase()}</Box>
-            <Box>{ticket.value}&nbsp;-&nbsp;NGN&nbsp;{formatCurrency(getTicketCost(ticket))}</Box>
+            <Box>
+              {ticket.value}&nbsp;-&nbsp;NGN&nbsp;
+              {formatCurrency(getTicketCost(ticket))}
+            </Box>
           </Box>
         );
       })}
