@@ -1,6 +1,8 @@
 "use client";
 import Marquee from "react-fast-marquee";
 import { MarqueeStarIcon } from "../../../utils";
+import PlaceIcon from "@mui/icons-material/Place";
+
 export const MarqueeSlide = () => {
   return (
     <Marquee
@@ -9,18 +11,18 @@ export const MarqueeSlide = () => {
       direction={"left"}
       loop={0}
     >
+      <PlaceIcon className={"scale-150"} />
       <span className="px-12">
         Herel Play, Ikoyi, Lagos, Nigeria. See you there!
       </span>
       <MarqueeStarIcon />
       <span className="px-12">Sat, 21th December, 2024</span>
-      <MarqueeStarIcon />
+      <PlaceIcon className={"scale-150"} />
       <span className="px-12">
         Herel Play, Ikoyi, Lagos, Nigeria. See you there!
       </span>
       <MarqueeStarIcon />
       <span className="px-12">Sun, 22th December, 2024</span>
-      <MarqueeStarIcon />
     </Marquee>
   );
 };
