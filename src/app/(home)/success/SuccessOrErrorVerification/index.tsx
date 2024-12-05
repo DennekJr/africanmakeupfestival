@@ -111,7 +111,7 @@ export const SuccessOrErrorVerification = () => {
         }
         const template = SendEmailTemplate({
           name: name,
-          total: dataToStore.payStackCheckout.total,
+          total: result.transactionData.amount,
           tickets: dataToStore.tickets,
           reference: transactionData.reference,
           imageUrl: qrCodeBase64 as string
@@ -146,7 +146,7 @@ export const SuccessOrErrorVerification = () => {
         await PostTransaction(transactionToPost);
         const template = SendEmailTemplate({
           name: result.customer_details.name,
-          total: result.amount_total / 100,
+          total: result.amount_total,
           tickets: tickets,
           reference: result.id.slice(-10),
           imageUrl: qrCodeBase64 as string
