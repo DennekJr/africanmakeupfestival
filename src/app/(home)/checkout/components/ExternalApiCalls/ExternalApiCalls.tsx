@@ -1,4 +1,3 @@
-import { TicketBilingInfo } from "@/app/lib/features/checkout/checkoutSlice";
 
 export const PostPaystackTicketPurchases = async (ticketData) => {
   try {
@@ -67,7 +66,6 @@ type ticketPurchaseDataType = {
   payStackCheckout: { email: string; total: number };
   ticketData: {
     buyerForm: { [ticket: string]: { name: string; value: string }[] };
-    otherTicketForms: { id: string; data: TicketBilingInfo };
   };
   tickets: { ticketName: string; value: number }[];
 };

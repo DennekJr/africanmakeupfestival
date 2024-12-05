@@ -2,13 +2,12 @@
 import * as React from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Box } from "@mui/material";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../lib/hooks";
 import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
-// import { initiatePaystackTransaction } from "../../../(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
 import { loadStripe } from "@stripe/stripe-js";
@@ -33,7 +32,7 @@ const billingFormValues = {
 
 const CheckoutForm = () => {
   const router = useRouter();
-  const { tickets, total, payStackCheckout, billingInfo, formValues } =
+  const { tickets, total, payStackCheckout, billingInfo } =
     useAppSelector((state) => state.checkout);
   useEffect(() => {
     if (total === 0) {
@@ -49,10 +48,6 @@ const CheckoutForm = () => {
   });
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState("");
-  const totalValue = useMemo(
-    () => tickets.reduce((sum, ticket) => sum + ticket.value, 0),
-    [tickets]
-  );
 
   function validateOtherTicketForm() {
     let isDisabled = false;
@@ -74,37 +69,7 @@ const CheckoutForm = () => {
         }
       });
     });
-    if (totalValue > 1) {
-      if (Object.values(formValues).slice(2).length === 0) {
-        setDisabled(true);
-        isDisabled = true;
-        setError("Please fill other forms to proceed to payment");
-        setTimeout(() => {
-          setError("");
-          isDisabled = false;
-          setDisabled(false);
-        }, 3000);
-      }
-      Object.values(formValues)
-        .slice(2)
-        .map((ticket) => {
-          const hasEmptyValues = Object.values(
-            ticket as unknown as object
-          ).some((value) => value === "");
-          if (hasEmptyValues) {
-            setDisabled(hasEmptyValues);
-            isDisabled = hasEmptyValues;
-            setError("Complete other forms to proceed to payment");
-            setTimeout(() => {
-              setError("");
-              isDisabled = false;
-              setDisabled(false);
-            }, 3000);
-          }
-        });
-    }
     return isDisabled;
-    // return false; // No errors
   }
 
   const handleStripePayment = async (e) => {
@@ -146,7 +111,6 @@ const CheckoutForm = () => {
         stripeCheckoutData: stripeData,
         ticketData: {
           buyerForm: billingInfo,
-          otherTicketForms: formValues
         },
         total: total,
         tickets: tickets,
@@ -176,7 +140,6 @@ const CheckoutForm = () => {
         payStackCheckout: payStackCheckout,
         ticketData: {
           buyerForm: billingInfo,
-          otherTicketForms: formValues
         },
         tickets: tickets
       };
@@ -289,17 +252,7 @@ const CheckoutForm = () => {
           }
           displayTicketDropdown={true}
         />
-        {totalValue > 1 && (
-          <HiddenFormDropdown
-            title={"Assign other tickets"}
-            subTitle={
-              "Tickets will only be assigned to the email address(es) you have provided"
-            }
-            displayTicketDropdown={true}
-          />
-        )}
       </Box>
-      {/*{showAlert && <Alert severity="error">Please fill in the proper values.</Alert>}*/}
     </form>
   );
 };
