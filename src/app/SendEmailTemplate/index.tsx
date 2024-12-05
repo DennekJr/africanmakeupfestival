@@ -95,7 +95,7 @@ Full details of your order can be found below.</p>
       </tr>
       <tr style="margin-top: 20px;">
         <td colspan="4" style="padding: 8px; font-weight: bold; text-align: right"><strong>Total</strong></td>
-        <td colspan="2" style="padding: 8px; font-weight: bold; text-align: right">NGN ${formatCurrency(total)}</td>
+        <td colspan="2" style="padding: 8px; font-weight: bold; text-align: right">NGN ${formatCurrency(total / 100)}</td>
       </tr>
   </tbody>
 </table>
