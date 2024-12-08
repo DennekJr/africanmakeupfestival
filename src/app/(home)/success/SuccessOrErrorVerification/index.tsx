@@ -6,6 +6,7 @@ import {
   PostStripeTicketPurchases,
   PostTransaction,
   sendEmail,
+  TransactionExists,
   VerifyPaystackTransaction,
   VerifyStripeTransaction
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
@@ -57,6 +58,11 @@ export const SuccessOrErrorVerification = () => {
     });
   };
   const checkStatus = async () => {
+    // await GetAllCampaignLists();
+    const isReferenceOrSessionIdInDB = await TransactionExists(
+      reference,
+      sessionId
+    );
     const qrCodeBase64 = await generateQRBase64();
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
@@ -69,11 +75,6 @@ export const SuccessOrErrorVerification = () => {
         const transactionData = result.transactionData;
         const isBoothPurchase =
           transactionData.metadata.purchaseType === "booth";
-        if (!isBoothPurchase) {
-          await PostPaystackTicketPurchases({ transactionData });
-        } else {
-          await HandlePaystackBoothPurhase({ transactionData });
-        }
         let email = "";
         let total = "";
         if (isBoothPurchase) {
@@ -89,34 +90,42 @@ export const SuccessOrErrorVerification = () => {
           });
           total = formatCurrency(dataToStore.payStackCheckout.total);
         }
-        const transactionToPost = {
-          Paystack_Id: transactionData.reference,
-          Stripe_Id: "",
-          Currency: result.transactionData.currency,
-          Email: email,
-          UnitNumber: total
-        };
-        await PostTransaction(transactionToPost);
-        let name = "";
-        if (transactionData.metadata.purchaseType === "booth") {
-          name = transactionData.metadata.boothData.buyerForm.form_contactName;
-        } else {
-          Object.values(
-            transactionData.metadata.ticketData
-              .buyerForm as initialCheckoutStateType["billingInfo"],
-          ).map(
-            async (detail) =>
-              (name = `${detail[0][0].value} ${detail[0][1].value}`),
-          );
+        if (!isReferenceOrSessionIdInDB) {
+          if (!isBoothPurchase) {
+            await PostPaystackTicketPurchases({ transactionData });
+          } else {
+            await HandlePaystackBoothPurhase({ transactionData });
+          }
+          const transactionToPost = {
+            Paystack_Id: transactionData.reference,
+            Stripe_Id: "",
+            Currency: result.transactionData.currency,
+            Email: email,
+            UnitNumber: total
+          };
+          await PostTransaction(transactionToPost);
+          let name = "";
+          if (transactionData.metadata.purchaseType === "booth") {
+            name =
+              transactionData.metadata.boothData.buyerForm.form_contactName;
+          } else {
+            Object.values(
+              transactionData.metadata.ticketData
+                .buyerForm as initialCheckoutStateType["billingInfo"]
+            ).map(
+              async (detail) =>
+                (name = `${detail[0][0].value} ${detail[0][1].value}`)
+            );
+          }
+          const template = SendEmailTemplate({
+            name: name,
+            total: result.transactionData.amount,
+            tickets: dataToStore.tickets,
+            reference: transactionData.reference,
+            imageUrl: qrCodeBase64 as string
+          });
+          await sendEmail(email, template);
         }
-        const template = SendEmailTemplate({
-          name: name,
-          total: result.transactionData.amount,
-          tickets: dataToStore.tickets,
-          reference: transactionData.reference,
-          imageUrl: qrCodeBase64 as string
-        });
-        await sendEmail(email, template);
       } else router.push("/checkout");
     } else {
       setIsSuccess(true);
@@ -125,7 +134,6 @@ export const SuccessOrErrorVerification = () => {
         const ticketData = {
           buyerForm: JSON.parse(result.metadata.buyerForm),
           tickets: JSON.parse(result.metadata.tickets)
-          // otherTicketForms: JSON.parse(result.metadata.otherTicketForms)
         };
         const tickets = JSON.parse(result.metadata.tickets);
         const data = {
@@ -135,23 +143,25 @@ export const SuccessOrErrorVerification = () => {
         setMetaData(data);
         setCurrency((result.currency as string).toUpperCase());
         setTotal(result.amount_total);
-        await PostStripeTicketPurchases({ ticketData });
-        const transactionToPost = {
-          Paystack_Id: "",
-          Stripe_Id: result.id as string,
-          Currency: result.currency,
-          Email: result.customer_details.email,
-          UnitNumber: result.amount_total
-        };
-        await PostTransaction(transactionToPost);
-        const template = SendEmailTemplate({
-          name: result.customer_details.name,
-          total: result.amount_total,
-          tickets: tickets,
-          reference: result.id.slice(-10),
-          imageUrl: qrCodeBase64 as string
-        });
-        await sendEmail(result.customer_details.email, template);
+        if (!isReferenceOrSessionIdInDB) {
+          await PostStripeTicketPurchases({ data, sessionId });
+          const transactionToPost = {
+            Paystack_Id: "",
+            Stripe_Id: result.id as string,
+            Currency: result.currency,
+            Email: result.customer_details.email,
+            UnitNumber: result.amount_total
+          };
+          await PostTransaction(transactionToPost);
+          const template = SendEmailTemplate({
+            name: result.customer_details.name,
+            total: result.amount_total,
+            tickets: tickets,
+            reference: result.id.slice(-10),
+            imageUrl: qrCodeBase64 as string
+          });
+          await sendEmail(result.customer_details.email, template);
+        }
         // }
       }
     }
