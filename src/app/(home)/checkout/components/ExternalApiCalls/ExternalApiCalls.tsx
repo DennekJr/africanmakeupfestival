@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const PostPaystackTicketPurchases = async (ticketData) => {
   try {
     const response = await fetch("/api/paystackTickets", {
@@ -189,32 +187,6 @@ export const GetAllCampaignLists = async () => {
     }
   } catch (error) {
     console.error("Error:", error);
-  }
-};
-export const CreateCampaignList = async () => {
-  const url = "https://campaigns.zoho.com/api/v1.1/lists";
-  const token = "f1754e073c3a4d3c537c5f56d258dd348c8a956e53"; // Replace with your OAuth token
-
-  const data = {
-    list_name: "New Subscribers",
-    description: "Mailing list for new subscribers.",
-    create_type: "Private" // Options: 'Public' or 'Private'
-  };
-
-  try {
-    const response = await axios.post(url, data, {
-      headers: {
-        Authorization: `Zoho-oauthtoken ${token}`,
-        ContentType: "application/json"
-      }
-    });
-
-    console.log("Mailing list created successfully:", response.data);
-  } catch (error) {
-    console.error(
-      "Error creating mailing list:",
-      error.response?.data || error.message
-    );
   }
 };
 
