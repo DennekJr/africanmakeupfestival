@@ -49,7 +49,7 @@ export async function GET() {
       headers: { "Content-Type": "application/json" }
     });
   } catch (error) {
-    console.error("Error fetching mailing lists:", error.response?.data || error.message);
+    console.error("Error fetching mailing lists:", error);
   }
 }
 //
