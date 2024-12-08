@@ -22,9 +22,9 @@ export async function POST(request) {
     const client = await clientPromise;
     const db = client.db("africaskincarefestival"); // Replace with your database name
     // Get the data from the request body
-    const {ticketData, session} = await request.json();
-    Object.values(ticketData.buyerForm).map(async (detail) => {
-      const TicketName = Object.keys(ticketData.buyerForm)[0];
+    const { data, sessionId } = await request.json();
+    Object.values(data.ticketData.buyerForm).map(async (detail) => {
+      const TicketName = Object.keys(data.ticketData.buyerForm)[0];
       const buyerTicketPurchaseDetails = {
         form_firstName: detail[0][0].value,
         form_lastName: detail[0][1].value,
@@ -37,32 +37,15 @@ export async function POST(request) {
       }
       const BuyerTicketPurchase = {
         Paystack_Id: '',
-        Stripe_Id: session.id,
+        Stripe_Id: sessionId,
         Access_Code: '',
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
+        Tickets: data.tickets
       };
       await db.collection("ticket-purchases").insertOne(BuyerTicketPurchase);
     });
     // Array to add other ticket forms
-    Object.values(ticketData.otherTicketForms).map(async (forms) => {
-      if(forms === 'undefined' || forms === '' || forms.form_firstName === '') return;
-      const buyerTicketPurchaseDetails = {
-        form_firstName: forms.form_firstName,
-        form_lastName: forms.form_lastName,
-        form_email: forms.form_email,
-        form_confirmEmail: forms.form_confirmEmail,
-        Ticket: forms.Ticket.split("-")[0].toUpperCase(), // Default ticket type
-      }
-      const BuyerTicketPurchase = {
-        Paystack_Id: '',
-        Stripe_Id: session.id,
-        Access_Code: '',
-        Created_At: new Date(),
-        TicketDetails: buyerTicketPurchaseDetails,
-      };
-      await db.collection("ticket-purchases").insertOne(BuyerTicketPurchase);
-    })
     return new Response(JSON.stringify('Data successfully added to Ticket-Purchases'), {
       status: 201,
       headers: { 'Content-Type': 'application/json' },

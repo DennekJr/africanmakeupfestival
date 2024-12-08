@@ -43,6 +43,7 @@ export async function POST(request) {
         // Access_Code: ticketData,
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
+        Tickets: transactionData.metadata.tickets
       };
       await db.collection("ticket-purchases").insertOne(BuyerTicketPurchase);
     });
