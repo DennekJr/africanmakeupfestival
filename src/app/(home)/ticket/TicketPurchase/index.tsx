@@ -137,7 +137,7 @@ export const TicketPurchase = () => {
             type={"text"}
             name={"Invite Code"}
             helperText={inviteCodeError}
-            error={inviteCodeError}
+            error={Boolean(inviteCodeError)}
           />
           <ValidateCodeButton onClick={handleInviteCodeCheck} type={"submit"} name={"Submit"} />
         </FormGroup>
