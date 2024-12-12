@@ -76,9 +76,6 @@ export type initialCheckoutStateType = {
   leftOverTicketFormValues: unknown[];
   total: number;
   payStackCheckout: {email: string, total: number};
-  validatedCode: string;
-  isInvited: boolean;
-  ticketData: object;
 };
 
 const initialState: initialCheckoutStateType = {
@@ -113,9 +110,6 @@ const initialState: initialCheckoutStateType = {
   },
   total: 0,
   payStackCheckout: {email: '', total: 0},
-  validatedCode: "",
-  isInvited: false,
-  ticketData: {}
 };
 
 export const RegularTicket = 10000;
@@ -128,6 +122,7 @@ export const checkoutSlice = createSlice({
     setTickets: (state, action) => {
       state.tickets = action.payload;
     },
+
     setFormValues: (state, action) => {
       state.formValues = {
         ...state.formValues,
@@ -152,15 +147,9 @@ export const checkoutSlice = createSlice({
         [`${action.payload.ticket}`]: action.payload.data,
       };
     },
-    setTicketData: (state, action) => {
-      state.ticketData = action.payload;
-    },
 
     setBillingTotal: (state, action) => {
       state.total = action.payload;
-    },
-    setValidatedCode: (state, action) => {
-      state.validatedCode = action.payload;
     },
 
     // Set the leftover value as an array of leftover paystackTickets
@@ -200,7 +189,5 @@ export const {
   setBillingTotal,
   setFormErrors,
   setPayStackCheckoutData,
-  setValidatedCode,
-  setTicketData
 } = checkoutSlice.actions;
 export default checkoutSlice.reducer;
