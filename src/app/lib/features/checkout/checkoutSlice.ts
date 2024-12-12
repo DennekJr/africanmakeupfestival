@@ -78,7 +78,7 @@ export type initialCheckoutStateType = {
   payStackCheckout: {email: string, total: number};
   validatedCode: string;
   isInvited: boolean;
-  setTicketData: object;
+  ticketData: object;
 };
 
 const initialState: initialCheckoutStateType = {
@@ -115,7 +115,7 @@ const initialState: initialCheckoutStateType = {
   payStackCheckout: {email: '', total: 0},
   validatedCode: "",
   isInvited: false,
-  setTicketData: {}
+  ticketData: {}
 };
 
 export const RegularTicket = 10000;
