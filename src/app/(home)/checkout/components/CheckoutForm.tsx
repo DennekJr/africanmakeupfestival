@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
-import { useAppSelector } from "../../../lib/hooks";
-import { BillingFormSchema } from "../../../lib/features/checkout/checkoutSlice";
+import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
+import { BillingFormSchema, setTicketData } from "../../../lib/features/checkout/checkoutSlice";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
 import { loadStripe } from "@stripe/stripe-js";
@@ -18,7 +18,10 @@ import {
   getTicketValue
 } from "@/app/(home)/checkout/components/utils";
 import { AgoraTransitionBox } from "@/app/(home)/components/newHome/utils";
-import { initiatePaystackTransaction } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
+import {
+  initiatePaystackTransaction,
+  UploadSponsoredTicket
+} from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -32,10 +35,11 @@ const billingFormValues = {
 
 const CheckoutForm = () => {
   const router = useRouter();
-  const { tickets, total, payStackCheckout, billingInfo } =
+  const dispatch = useAppDispatch();
+  const { tickets, total, payStackCheckout, billingInfo, validatedCode } =
     useAppSelector((state) => state.checkout);
   useEffect(() => {
-    if (total === 0) {
+    if (total === 0 && validatedCode.length === 0) {
       router.push("/ticket");
     }
   }, [router, total]);
@@ -123,6 +127,7 @@ const CheckoutForm = () => {
           items: ticketPurchaseData // Example item,
         }),
       });
+      dispatch(setTicketData(ticketPurchaseData.ticketData));
       const { session } = await response.json();
       const sessionId = session.id;
       const stripe = await stripePromise;
@@ -143,12 +148,26 @@ const CheckoutForm = () => {
         },
         tickets: tickets
       };
+      dispatch(setTicketData(ticketPurchaseData.ticketData));
       const req = await initiatePaystackTransaction(ticketPurchaseData);
       if (req) {
         const authUrl = req.paystackData.data.authorization_url;
         router.push(authUrl);
       }
     }
+  };
+
+  const handleValidatedCodePayment = async () => {
+    const ticketPurchaseData = {
+      ticketData: {
+        buyerForm: billingInfo
+      },
+      tickets: tickets,
+      code: validatedCode
+    };
+    await UploadSponsoredTicket(ticketPurchaseData);
+
+    router.push("/success?code=" + validatedCode);
   };
 
   return (
@@ -186,6 +205,13 @@ const CheckoutForm = () => {
                 Billing Information
               </p>
             </Box>
+            <HiddenFormDropdown
+              title={"Select your ticket."}
+              subTitle={
+                "Tickets will only be assigned to the email address(es) you provide"
+              }
+              displayTicketDropdown={true}
+            />
             <Box className={"space-y-5"}>
               <CheckoutClientForm />
             </Box>
@@ -218,40 +244,49 @@ const CheckoutForm = () => {
               </div>
             </Box>
 
-            <button
-              onClick={handlePaystackPayment}
-              type={"submit"}
-              disabled={disabled}
-              className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
-            >
-              <span className="text-center w-full h-full">
-                Checkout with Paystack
-              </span>
-            </button>
-            <button
-              onClick={async (e) => {
-                await handleStripePayment(e);
-              }}
-              type={"submit"}
-              disabled={disabled}
-              className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
-            >
+            {validatedCode.length === 0 && (
+              <button
+                onClick={handlePaystackPayment}
+                type={"submit"}
+                disabled={disabled}
+                className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+              >
+                <span className="text-center w-full h-full">
+                  Checkout with Paystack
+                </span>
+              </button>
+            )}
+            {validatedCode.length === 0 && (
+              <button
+                onClick={async (e) => {
+                  await handleStripePayment(e);
+                }}
+                type={"submit"}
+                disabled={disabled}
+                className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+              >
               <span className="text-center w-full h-full">
                 Checkout with Stripe
               </span>
-            </button>
+              </button>
+            )}
+            {validatedCode.length > 0 && (
+              <button
+                onClick={handleValidatedCodePayment}
+                type={"submit"}
+                disabled={disabled}
+                className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
+              >
+              <span className="text-center w-full h-full">
+                Submit
+              </span>
+              </button>
+            )}
             <AgoraTransitionBox className="transition-all text-center text-warning text-lg font-medium">
               {error}
             </AgoraTransitionBox>
           </Box>
         </Box>
-        <HiddenFormDropdown
-          title={"Select your ticket."}
-          subTitle={
-            "Tickets will only be assigned to the email address(es) you provide"
-          }
-          displayTicketDropdown={true}
-        />
       </Box>
     </form>
   );

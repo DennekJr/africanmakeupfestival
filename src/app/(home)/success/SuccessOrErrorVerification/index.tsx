@@ -2,6 +2,7 @@
 import * as React from "react";
 import { useEffect, useRef } from "react";
 import {
+  GetSponsoredTicket,
   PostPaystackTicketPurchases,
   PostStripeTicketPurchases,
   PostTransaction,
@@ -41,6 +42,7 @@ export const SuccessOrErrorVerification = () => {
   const reference = searchParams?.get("reference");
   const paymentType = searchParams?.get("payment");
   const sessionId = searchParams?.get("sessionId");
+  const code = searchParams?.get("code");
   const fullUrl = `${typeof window !== "undefined" ? window.location.origin : ""}${pathname}${searchParams?.toString() ? `?${searchParams?.toString()}` : ""}`;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [metaData, setMetaData] = React.useState<any>(null);
@@ -57,15 +59,61 @@ export const SuccessOrErrorVerification = () => {
       });
     });
   };
+  const renderValidatedCodeCheckout = async () => {
+    const isCodeInDb = await TransactionExists(
+      reference,
+      sessionId,
+      code
+    );
+    const qrCodeBase64 = await generateQRBase64();
+    const ticketPurchaseData = await GetSponsoredTicket(code);
+    if (ticketPurchaseData) {
+      setMetaData(ticketPurchaseData);
+      setIsSuccess(true);
+      setCurrency("NGN");
+      setTotal(0);
+      let email = "";
+      let name = "";
+      Object.values(
+        ticketPurchaseData.ticketData.buyerForm as {
+          [ticket: string]: { name: string; value: string }[];
+        }[]
+      ).map(async (detail) => {
+        email = detail[0][4].value;
+        name = `${detail[0][0].value} ${detail[0][1].value}`;
+      });
+      const transactionToPost = {
+        Paystack_Id: "",
+        Stripe_Id: "",
+        Code: ticketPurchaseData.code,
+        Currency: "NGN",
+        Email: email,
+        UnitNumber: 0
+      };
+      if (!isCodeInDb) {
+        await PostTransaction(transactionToPost);
+        const template = SendEmailTemplate({
+          name: name,
+          total: 0,
+          tickets: ticketPurchaseData.tickets,
+          reference: ticketPurchaseData.code,
+          imageUrl: qrCodeBase64 as string,
+          isInvited: true
+        });
+        await sendEmail(email, template);
+      }
+    }
+  };
   const checkStatus = async () => {
-    // await GetAllCampaignLists();
     const isReferenceOrSessionIdInDB = await TransactionExists(
       reference,
-      sessionId
+      sessionId,
+      code
     );
     const qrCodeBase64 = await generateQRBase64();
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
+      console.log("Result from db", result);
       if (result.transactionData.status === "success") {
         setCurrency(result.transactionData.currency);
         setTotal(result.transactionData.amount);
@@ -86,7 +134,8 @@ export const SuccessOrErrorVerification = () => {
               [ticket: string]: { name: string; value: string }[];
             }[],
           ).map(async (detail) => {
-            email = detail[0][4].value;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            email = (detail[4] as any).value;
           });
           total = formatCurrency(dataToStore.payStackCheckout.total);
         }
@@ -113,16 +162,18 @@ export const SuccessOrErrorVerification = () => {
               transactionData.metadata.ticketData
                 .buyerForm as initialCheckoutStateType["billingInfo"]
             ).map(
-              async (detail) =>
-                (name = `${detail[0][0].value} ${detail[0][1].value}`)
-            );
+              async (detail) => {
+                console.log("Billing info", detail);
+                name = `${detail[0].value} ${detail[1].value}`;
+              });
           }
           const template = SendEmailTemplate({
             name: name,
             total: result.transactionData.amount,
             tickets: dataToStore.tickets,
             reference: transactionData.reference,
-            imageUrl: qrCodeBase64 as string
+            imageUrl: qrCodeBase64 as string,
+            isInvited: false
           });
           await sendEmail(email, template);
         }
@@ -158,7 +209,8 @@ export const SuccessOrErrorVerification = () => {
             total: result.amount_total,
             tickets: tickets,
             reference: result.id.slice(-10),
-            imageUrl: qrCodeBase64 as string
+            imageUrl: qrCodeBase64 as string,
+            isInvited: false
           });
           await sendEmail(result.customer_details.email, template);
         }
@@ -172,9 +224,11 @@ export const SuccessOrErrorVerification = () => {
     if (reference || sessionId) {
       checkStatus();
       // console.log("sessionId", sessionId, reference);
+    } else {
+      renderValidatedCodeCheckout();
     }
   }, [reference, sessionId]);
-  if (sessionId === null && reference === null) return notFound();
+  if (sessionId === null && reference === null && code === null) return notFound();
   const handlePrint = () => {
     if (typeof window !== "undefined") {
       window.print();
@@ -198,9 +252,10 @@ export const SuccessOrErrorVerification = () => {
 
   const renderPurchaseTable = () => {
     if (metaData && metaData) {
+      console.log(metaData);
       return (
         <PurchaseDetailTable
-          paymentType={paymentType === "stripe" ? "stripe" : "paystack"}
+          paymentType={code ? "code" : reference ? "paystack" : "stripe"}
           metaData={metaData?.ticketData}
           currency={currency}
           total={total}
@@ -236,7 +291,7 @@ export const SuccessOrErrorVerification = () => {
               className={"text-black mr-2"}
             />
             <h3 className={"text-black"}>
-              Order Confirmation Code: {reference || sessionId?.slice(-10)}
+              Order Confirmation Code: {reference || sessionId?.slice(-10) || code}
             </h3>
           </Box>
         </Box>

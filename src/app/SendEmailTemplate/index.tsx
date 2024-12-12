@@ -9,20 +9,22 @@ export const SendEmailTemplate = ({
   total,
   tickets,
   reference,
-                                    imageUrl
+                                    imageUrl,
+                                    isInvited
 }: {
   name: string;
   total: number;
   tickets: { ticketName: string; value: number }[];
   reference: string;
   imageUrl: string;
+  isInvited: boolean;
 }) => {
 
   const TicketRows = () => {
     return Object.values(tickets)
       .map((ticket) => {
         if (ticket.value < 1) return;
-        const value = getTicketCost(ticket);
+        const value = isInvited ? 0 : getTicketCost(ticket);
         return `<tr>
         <td colspan="2" style="border: 1px solid #ddd; padding: 8px;">${ticket.ticketName.toUpperCase()}</td>
         <td colspan="2" style="border: 1px solid #ddd; padding: 8px;">${ticket.value}</td>

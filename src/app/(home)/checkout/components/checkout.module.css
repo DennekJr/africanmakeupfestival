@@ -1,3 +1,7 @@
 .fields .MuiOutlinedInput-notchedOutline {
     border-color: #D0D4DD !important;
 }
+
+.mui-rg9sn3-MuiInputBase-input-MuiOutlinedInput-input {
+    color: #000000 !important;
+}

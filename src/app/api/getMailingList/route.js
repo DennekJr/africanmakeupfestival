@@ -1,16 +1,14 @@
-// import axios from "axios";
+import axios from "axios";
 
 export async function POST() {
   try {
     // Parse the request body
 
-    const response = await axios.post("https://campaigns.zoho.com/api/v1.1/getmailinglists", {
-      headers: {
-        "Authorization": "Zoho-oauthtoken " + process.env.ZOHO_API_SECRET // Replace with your Paystack secret key
-      }
-    });
-
-    // Check if the request to Paystack was successful
+    // const authCode = await axios.post("https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=1000.17NJQUTTFJLS32PZBKJ3GBKD0G0OZR&scope=ZohoCampaigns.contact.ALL&redirect_uri=https://africaskincarefestival.com/&access_type=offline");
+    // // https://africaskincarefestival.com/?code=1000.10f7b4cf4a9541849ac22f0dfc4e8cb7.c9498b84aaa4f616ffdfeab4517f4eaa&location=us&accounts-server=https%3A%2F%2Faccounts.zoho.com&
+    // const getAccessTokenWithCode = await axios.post(`https://accounts.zoho.com/oauth/v2/token?code=1000.10f7b4cf4a9541849ac22f0dfc4e8cb7.c9498b84aaa4f616ffdfeab4517f4eaa&client_id=1000.17NJQUTTFJLS32PZBKJ3GBKD0G0OZR&client_secret=3556e7f5508279bd806db80a52bf17265bc2ff6c9a&redirect_uri=https://africaskincarefestival.com/&grant_type=authorization_code`);
+    // const getCampaignList = await axios.get(`https://campaigns.zoho.com/api/v1.1/updatelistdetails?resfmt=JSON&listkey=[listkey]&newlistname=[give list name]&signupform=public`);
+    // // Check if the request to Paystack was successful
     if (response.status === 200) {
       return new Response(JSON.stringify({
         message: "Transaction initialized successfully",
@@ -36,9 +34,10 @@ export async function POST() {
 
 export async function GET() {
   try {
-    const response = await axios.get("https://campaigns.zoho.com/api/v1.1/lists/3z7c30a055325ba9e71d6de851ab602379e2163a174bb5de0abee079da9140fa94", {
+    const response = await axios.get(`https://campaigns.zoho.com/api/v1.1/getcampaigndetails?&campaignkey=3z7c30a055325ba9e71d6de851ab602379e2163a174bb5de0abee079da9140fa94&authtoken=f1754e073c3a4d3c537c5f56d258dd348c8a956e53&scope=Zohocampaigns.campaign.READ`, {
       headers: {
-        Authorization: `Zoho-oauthtoken ${process.env.ZOHO_API_SECRET}`
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": `Zoho-oauthtoken f1754e073c3a4d3c537c5f56d258dd348c8a956e53`
       }
     });
 

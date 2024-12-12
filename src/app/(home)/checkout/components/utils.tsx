@@ -6,7 +6,33 @@ import {
 } from "@/app/lib/features/checkout/checkoutSlice";
 
 export const CssTextField = styled(TextField)({
-  // color: "#000000",
+  color: "#000000",
+  "& label": {
+    color: "#1E1C21"
+  },
+  "& fieldset": {
+    borderColor: "#D0D4DD"
+  },
+
+  "&:hover": {
+    "&& fieldset": {
+      borderColor: "#D0D4DD",
+      borderWidth: "2px"
+    }
+  },
+  "& textarea": {
+    color: "#000000"
+  },
+  "& .mui-rg9sn3-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill": {
+    WebkitBoxShadow: "0 0 0 100px white inset",
+    WebkitTextFillColor: "black"
+  },
+  " .mui-rg9sn3-MuiInputBase-input-MuiOutlinedInput-input": {
+    color: "#000000"
+  }
+});
+export const CssValidateTicketField = styled(TextField)({
+  color: "#000000",
   "& label": {
     color: "#1E1C21",
   },
