@@ -23,9 +23,6 @@ export const PurchaseDetailTable = ({
   paymentType: string;
   tickets: { ticketName: string; value: number }[];
 }) => {
-  // const getTicketValue = (ticketName) => {
-  //   return ticketName.toLowerCase() === "regular" ? RegularTicket : VIPTicket;
-  // };
   const mainBuyer = Object.keys(metaData.buyerForm).includes("form_booth")
     ? (metaData.buyerForm as ExhibitionBoothBillingInfo)
     : Object.values(
@@ -85,11 +82,15 @@ export const PurchaseDetailTable = ({
                 "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
               }
             >
-              <Box>{ticket.ticketName.toUpperCase()} <span
-                className={"italic text-[.8rem] xl:text-[1rem]"}>x&nbsp;{ticket.value}</span></Box>
+              <Box>
+                {ticket.ticketName.toUpperCase()}{" "}
+                <span className={"italic text-[.8rem] xl:text-[1rem]"}>
+                  x&nbsp;{ticket.value}
+                </span>
+              </Box>
               <Box>
                 {currency.toUpperCase()}&nbsp;
-                {formatCurrency(getTicketCost(ticket))}
+                {formatCurrency(paymentType === "code" ? 0 : getTicketCost(ticket))}
               </Box>
             </Box>
           );

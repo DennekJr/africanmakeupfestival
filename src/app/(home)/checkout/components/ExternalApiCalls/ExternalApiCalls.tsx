@@ -174,7 +174,7 @@ export const GetAllCampaignLists = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
-      }
+      },
     });
 
     const data = await response.json();
@@ -209,14 +209,109 @@ export const VerifyStripeTransaction = async (stripeId) => {
   }
 };
 
-export const TransactionExists = async (reference, sessionId) => {
+export const TransactionExists = async (reference, sessionId, code) => {
   try {
     const response = await fetch(`/api/isReferenceOrSessionIdInDB`, {
       method: "POST",
       body: JSON.stringify({
         reference: reference,
-        sessionId: sessionId
+        sessionId: sessionId,
+        code: code
       }),
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+      // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+    } else {
+      console.error("Error initializing transaction:", data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+export const checkInviteCode = async (inviteCode) => {
+  try {
+    const response = await fetch(`/api/checkInviteCode`, {
+      method: "POST",
+      body: JSON.stringify({
+        inviteCode: inviteCode
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+      // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+    } else {
+      console.error("Error initializing transaction:", data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+export const UploadSponsoredTicket = async (sponsoredTicket) => {
+  try {
+    const response = await fetch(`/api/uploadSponsoredTicket`, {
+      method: "POST",
+      body: JSON.stringify({
+        sponsoredTicket: sponsoredTicket
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+      // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+    } else {
+      console.error("Error initializing transaction:", data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+export const GetSponsoredTicket = async (code) => {
+  try {
+    const response = await fetch(`/api/getSponsoredTicket`, {
+      method: "POST",
+      body: JSON.stringify({
+        code: code
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+      // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+    } else {
+      console.error("Error initializing transaction:", data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const GetExistingCampaigns = async () => {
+  try {
+    const response = await fetch(`/api/getMailingList`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json"
       }
