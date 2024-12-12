@@ -134,8 +134,9 @@ export const SuccessOrErrorVerification = () => {
               [ticket: string]: { name: string; value: string }[];
             }[],
           ).map(async (detail) => {
-            console.log(detail[4]);
-            email = detail[4].value;
+            {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/
+            }
+            email = (detail[4] as any).value;
           });
           total = formatCurrency(dataToStore.payStackCheckout.total);
         }
