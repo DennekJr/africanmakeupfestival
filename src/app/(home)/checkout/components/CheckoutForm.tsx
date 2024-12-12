@@ -205,6 +205,13 @@ const CheckoutForm = () => {
                 Billing Information
               </p>
             </Box>
+            <HiddenFormDropdown
+              title={"Select your ticket."}
+              subTitle={
+                "Tickets will only be assigned to the email address(es) you provide"
+              }
+              displayTicketDropdown={true}
+            />
             <Box className={"space-y-5"}>
               <CheckoutClientForm />
             </Box>
@@ -280,13 +287,6 @@ const CheckoutForm = () => {
             </AgoraTransitionBox>
           </Box>
         </Box>
-        <HiddenFormDropdown
-          title={"Select your ticket."}
-          subTitle={
-            "Tickets will only be assigned to the email address(es) you provide"
-          }
-          displayTicketDropdown={true}
-        />
       </Box>
     </form>
   );
