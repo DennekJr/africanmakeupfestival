@@ -2,18 +2,20 @@ import clientPromise from "@/app/lib/mongo/mongodb.js";
 
 export async function POST(request) {
   try {
-    const { sessionId, reference, code } = await request.json(); // Assuming you're sending 'email' and 'amount' in the request body
+    const { inviteCode } = await request.json();
+
+    // Extract the Bearer token
     const client = await clientPromise;
     const db = client.db("africaskincarefestival"); // Replace with your database name
-    const dbTransactions = await db.collection("transactions").find({}).toArray();
-    const transaction = await dbTransactions.find((dbTransaction) => dbTransaction.Paystack_Id === reference || dbTransaction.Stripe_Id === sessionId || dbTransaction.Code === code);
-    if (transaction === undefined) {
+    const codes = await db.collection("ticket-codes").find({}).toArray();
+    const codeFound = codes.find((code) => code.code === inviteCode);
+    if (!codeFound) {
       return new Response(JSON.stringify(false), {
-        status: 200,
+        status: 401,
         headers: { "Content-Type": "application/json" }
       });
     }
-    return new Response(JSON.stringify(transaction), {
+    return new Response(JSON.stringify(codeFound), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });

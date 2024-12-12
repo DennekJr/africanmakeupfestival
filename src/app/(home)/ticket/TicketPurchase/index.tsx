@@ -7,18 +7,25 @@ import { FortyFiveDegreeArrow } from "../../../(home)/sponsor/Hero/utils";
 import { TICKETPURCHASEMENU } from "./ticketPurchase.constants";
 import {
   setTickets,
-  setBillingTotal
+  setBillingTotal, setValidatedCode
 } from "../../../lib/features/checkout/checkoutSlice";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 import {
+  CssTextField,
   formatCurrency,
   getTicketCost
 } from "@/app/(home)/checkout/components/utils";
 import { AgoraBox } from "@/app/(home)/components/newHome/utils";
+import { checkInviteCode } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
+import { FormGroup } from "@mui/material";
+import { ValidateCodeButton } from "@/app/utils";
+import "../../checkout/components/checkout.module.css";
 
 export const TicketPurchase = () => {
   const [error, setError] = useState("");
   const [limitError, setLimitError] = useState("");
+  const [inviteCode, setInviteCode] = useState("");
+  const [inviteCodeError, setInviteCodeError] = useState("");
   const { tickets: ticketNumbers, total } = useAppSelector(
     (state) => state.checkout
   );
@@ -75,8 +82,66 @@ export const TicketPurchase = () => {
       setError("Please select ticket(s) to proceed to checkout");
     }
   };
+  const handleInviteCodeCheck = async () => {
+    const result = await checkInviteCode(inviteCode);
+    if (result) {
+      dispatch(setValidatedCode(result.code));
+      const newState = values.map((ticketValue) => {
+        if (ticketValue.ticketName !== result.ticketType.toLowerCase()) {
+          return ticketValue;
+        } else {
+          const newValue = 1;
+          return {
+            ...ticketValue,
+            value: newValue
+          };
+        }
+      });
+      const newTotal = 0;
+      dispatch(setTickets(newState));
+      dispatch(setBillingTotal(newTotal));
+      router.push("/checkout");
+    } else {
+      setInviteCodeError("Invalid invite code");
+    }
+  };
   return (
-    <>
+    <Box>
+      <Box className={"text-black px-8 bg-textColor rounded-2xl py-4 my-4"}>
+        <Box className={"text-xl lg:text-2xl xl:text-3xl"}>Were you invited? Validate your tickets</Box>
+        <FormGroup
+          className={"mb-4 my-1 py-4 text-lightSecondary flex !flex-row fields inputColor gap-2"}
+        >
+          <CssTextField
+            size="medium"
+            required
+            value={inviteCode}
+            onChange={(e) => {
+              setInviteCode(e.target.value);
+            }}
+            className="w-[65%] mb-[0] py-[10px] border-lightSecondary !outline-none !text-black placeholder:!text-lightSecondary"
+            style={{
+              boxShadow: "0 15px 15px -14px rgba(0, 0, 0, 0.01)",
+              color: "#000"
+            }}
+            sx={{
+              color: "#000"
+              // backgroundColor: "#000",
+            }}
+            slotProps={{
+              input: {
+                disableUnderline: true
+              }
+            }}
+            placeholder={"Invite Code"}
+            type={"text"}
+            name={"Invite Code"}
+            helperText={inviteCodeError}
+            error={inviteCodeError}
+          />
+          <ValidateCodeButton onClick={handleInviteCodeCheck} type={"submit"} name={"Submit"} />
+        </FormGroup>
+      </Box>
       <TicketBox>
         <TicketContent className={""}>
           {tickets.map((ticket, index) => {
@@ -186,6 +251,6 @@ export const TicketPurchase = () => {
           </button>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 };
