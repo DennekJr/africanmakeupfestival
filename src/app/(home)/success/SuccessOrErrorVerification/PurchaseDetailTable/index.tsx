@@ -40,7 +40,8 @@ export const PurchaseDetailTable = ({
         <Box className={"font-semibold"}>Ticket</Box>
         <Box className={"font-semibold"}>{mainBuyerTicket}</Box>
       </Box>
-      {mainBuyerForm.map((ticketData, index) => {
+      {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
+      {(mainBuyerForm as any).map((ticketData, index) => {
         if (
           ticketData.name === "First Name" ||
           ticketData.name === "Last Name" ||
@@ -72,9 +73,7 @@ export const PurchaseDetailTable = ({
         <Box>Tickets Bought</Box>
       </Box>
       {tickets.map((ticket, index) => {
-        console.log(getTicketCost(ticket), paymentType);
         const value = paymentType === "code" ? 0 : getTicketCost(ticket);
-        console.log(value);
         if (ticket.value > 0) {
           return (
             <Box
