@@ -113,6 +113,7 @@ export const SuccessOrErrorVerification = () => {
     const qrCodeBase64 = await generateQRBase64();
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
+      console.log("Result from db", result);
       if (result.transactionData.status === "success") {
         setCurrency(result.transactionData.currency);
         setTotal(result.transactionData.amount);
@@ -133,7 +134,8 @@ export const SuccessOrErrorVerification = () => {
               [ticket: string]: { name: string; value: string }[];
             }[],
           ).map(async (detail) => {
-            email = detail[0][4].value;
+            console.log(detail[4]);
+            email = detail[4].value;
           });
           total = formatCurrency(dataToStore.payStackCheckout.total);
         }
@@ -160,9 +162,10 @@ export const SuccessOrErrorVerification = () => {
               transactionData.metadata.ticketData
                 .buyerForm as initialCheckoutStateType["billingInfo"]
             ).map(
-              async (detail) =>
-                (name = `${detail[0][0].value} ${detail[0][1].value}`)
-            );
+              async (detail) => {
+                console.log("Billing info", detail);
+                name = `${detail[0].value} ${detail[1].value}`;
+              });
           }
           const template = SendEmailTemplate({
             name: name,
@@ -218,12 +221,11 @@ export const SuccessOrErrorVerification = () => {
   useEffect(() => {
     if (hasRun.current) return; // Prevent double invocation
     hasRun.current = true;
-    if (code) {
-      renderValidatedCodeCheckout();
-    }
     if (reference || sessionId) {
       checkStatus();
       // console.log("sessionId", sessionId, reference);
+    } else {
+      renderValidatedCodeCheckout();
     }
   }, [reference, sessionId]);
   if (sessionId === null && reference === null && code === null) return notFound();
@@ -250,9 +252,10 @@ export const SuccessOrErrorVerification = () => {
 
   const renderPurchaseTable = () => {
     if (metaData && metaData) {
+      console.log(metaData);
       return (
         <PurchaseDetailTable
-          paymentType={paymentType === "stripe" ? "stripe" : paymentType === "paystack" ? "paystack" : "code"}
+          paymentType={code ? "code" : reference ? "paystack" : "stripe"}
           metaData={metaData?.ticketData}
           currency={currency}
           total={total}

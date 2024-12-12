@@ -23,15 +23,14 @@ export const PurchaseDetailTable = ({
   paymentType: string;
   tickets: { ticketName: string; value: number }[];
 }) => {
-  const mainBuyer = Object.keys(metaData.buyerForm).includes("form_booth")
-    ? (metaData.buyerForm as ExhibitionBoothBillingInfo)
-    : Object.values(
+  const mainBuyer = Object.values(
       metaData.buyerForm as {
         [ticket: string]: { name: string; value: string }[];
       }[]
     )[0];
   const mainBuyerTicket = Object.keys(metaData.buyerForm)[0].toUpperCase();
-  const mainBuyerForm = paymentType === "stripe" ? mainBuyer[0] : mainBuyer[0];
+  const mainBuyerForm = paymentType === "code" ? mainBuyer[0] : mainBuyer;
+  console.log("mainBuyerForm", mainBuyerForm);
   return (
     <Box className={"w-full"}>
       <Box
@@ -74,6 +73,9 @@ export const PurchaseDetailTable = ({
         <Box>Tickets Bought</Box>
       </Box>
       {tickets.map((ticket, index) => {
+        console.log(getTicketCost(ticket), paymentType);
+        const value = paymentType === "code" ? 0 : getTicketCost(ticket);
+        console.log(value);
         if (ticket.value > 0) {
           return (
             <Box
@@ -90,7 +92,7 @@ export const PurchaseDetailTable = ({
               </Box>
               <Box>
                 {currency.toUpperCase()}&nbsp;
-                {formatCurrency(paymentType === "code" ? 0 : getTicketCost(ticket))}
+                {formatCurrency(value)}
               </Box>
             </Box>
           );
