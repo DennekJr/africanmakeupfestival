@@ -15,6 +15,15 @@ export async function POST(request) {
         headers: { "Content-Type": "application/json" }
       });
     }
+    db.collection("ticket-codes").updateOne(
+      { code: inviteCode }, // Filter to find the document
+      {
+        $set: {
+          status: "used",
+          updatedAt: new Date()
+        }
+      }
+    );
     return new Response(JSON.stringify(codeFound), {
       status: 200,
       headers: { "Content-Type": "application/json" }
