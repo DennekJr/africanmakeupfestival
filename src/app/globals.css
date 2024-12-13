@@ -49,6 +49,10 @@ input:is(:-webkit-autofill, :autofill) {
   background: none;
 }
 
+input, textarea {
+  color: black !important;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
