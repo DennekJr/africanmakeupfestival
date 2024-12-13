@@ -43,7 +43,7 @@ export async function GET(request) {
       }
       return result;
     }
-    const code = generateAlphanumericCode(4);
+    const code = generateAlphanumericCode(5);
     const SponsoredTicket = {
       sponsorName: sponsor.name,
       code: code,
