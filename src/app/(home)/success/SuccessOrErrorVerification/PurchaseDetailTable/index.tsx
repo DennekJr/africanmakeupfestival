@@ -16,7 +16,6 @@ export const PurchaseDetailTable = ({
     buyerForm:
       | { [ticket: string]: { name: string; value: string }[] }[]
       | ExhibitionBoothBillingInfo;
-    // otherTicketForms: { id: string; data: TicketBilingInfo } | undefined;
   };
   total: number;
   currency: string;
@@ -24,10 +23,10 @@ export const PurchaseDetailTable = ({
   tickets: { ticketName: string; value: number }[];
 }) => {
   const mainBuyer = Object.values(
-      metaData.buyerForm as {
-        [ticket: string]: { name: string; value: string }[];
-      }[]
-    )[0];
+    metaData.buyerForm as {
+      [ticket: string]: { name: string; value: string }[];
+    }[]
+  )[0];
   const mainBuyerTicket = Object.keys(metaData.buyerForm)[0].toUpperCase();
   const mainBuyerForm = paymentType === "code" ? mainBuyer[0] : mainBuyer;
   return (
