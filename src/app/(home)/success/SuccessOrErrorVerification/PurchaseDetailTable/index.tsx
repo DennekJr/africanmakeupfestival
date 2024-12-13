@@ -23,13 +23,18 @@ export const PurchaseDetailTable = ({
   paymentType: string;
   tickets: { ticketName: string; value: number }[];
 }) => {
-  const mainBuyer = Object.values(
+  // const getTicketValue = (ticketName) => {
+  //   return ticketName.toLowerCase() === "regular" ? RegularTicket : VIPTicket;
+  // };
+  const mainBuyer = Object.keys(metaData.buyerForm).includes("form_booth")
+    ? (metaData.buyerForm as ExhibitionBoothBillingInfo)
+    : Object.values(
       metaData.buyerForm as {
         [ticket: string]: { name: string; value: string }[];
       }[]
     )[0];
   const mainBuyerTicket = Object.keys(metaData.buyerForm)[0].toUpperCase();
-  const mainBuyerForm = paymentType === "code" ? mainBuyer[0] : mainBuyer;
+  const mainBuyerForm = paymentType === "stripe" ? mainBuyer[0] : mainBuyer[0];
   return (
     <Box className={"w-full"}>
       <Box
@@ -40,8 +45,7 @@ export const PurchaseDetailTable = ({
         <Box className={"font-semibold"}>Ticket</Box>
         <Box className={"font-semibold"}>{mainBuyerTicket}</Box>
       </Box>
-      {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
-      {(mainBuyerForm as any).map((ticketData, index) => {
+      {mainBuyerForm.map((ticketData, index) => {
         if (
           ticketData.name === "First Name" ||
           ticketData.name === "Last Name" ||
@@ -73,7 +77,6 @@ export const PurchaseDetailTable = ({
         <Box>Tickets Bought</Box>
       </Box>
       {tickets.map((ticket, index) => {
-        const value = paymentType === "code" ? 0 : getTicketCost(ticket);
         if (ticket.value > 0) {
           return (
             <Box
@@ -82,15 +85,11 @@ export const PurchaseDetailTable = ({
                 "flex text-lightSecondary justify-between p-4 border-b border-midGrey"
               }
             >
-              <Box>
-                {ticket.ticketName.toUpperCase()}{" "}
-                <span className={"italic text-[.8rem] xl:text-[1rem]"}>
-                  x&nbsp;{ticket.value}
-                </span>
-              </Box>
+              <Box>{ticket.ticketName.toUpperCase()} <span
+                className={"italic text-[.8rem] xl:text-[1rem]"}>x&nbsp;{ticket.value}</span></Box>
               <Box>
                 {currency.toUpperCase()}&nbsp;
-                {formatCurrency(value)}
+                {formatCurrency(getTicketCost(ticket))}
               </Box>
             </Box>
           );
