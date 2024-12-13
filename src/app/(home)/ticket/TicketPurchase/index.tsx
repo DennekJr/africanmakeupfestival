@@ -108,9 +108,9 @@ export const TicketPurchase = () => {
   return (
     <Box>
       <Box className={"text-black px-8 bg-textColor rounded-2xl py-4 my-4"}>
-        <Box className={"text-xl lg:text-2xl xl:text-3xl"}>Were you invited? Validate your tickets</Box>
+        <Box className={"text-xl lg:text-2xl xl:text-3xl"}>Have you been invited? Confirm your tickets here.</Box>
         <FormGroup
-          className={"mb-4 my-1 py-4 text-lightSecondary flex !flex-row fields inputColor gap-2"}
+          className={"mb-4 my-1 py-4 text-lightSecondary flex flex-col md:!flex-row fields inputColor gap-2"}
         >
           <CssTextField
             size="medium"
