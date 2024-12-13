@@ -13,16 +13,15 @@ export async function GET(request) {
     // Extract the Bearer token
     const token = authHeader.split(" ")[1];
     const { searchParams } = new URL(request.url);
-    const sponsorName = searchParams.get("sponsor");
     const ticketType = searchParams.get("ticket");
     const client = await clientPromise;
     const db = client.db("africaskincarefestival"); // Replace with your database name
     const dbSponsors = await db.collection("sponsors").find({}).toArray();
-    const sponsor = await dbSponsors.find((sponsor) => sponsor.name === sponsorName && sponsor.key === token);
+    const sponsor = await dbSponsors.find((sponsor) => sponsor.key === token);
     const codes = await db.collection("ticket-codes").find({}).toArray();
     const sponsorGeneratedCodes = codes.filter((code) => code.sponsorName === sponsor.name).length;
     if (sponsor === undefined) {
-      return new Response(JSON.stringify({ error: "Unauthorised sponsor name" }), {
+      return new Response(JSON.stringify({ error: "Unauthorised sponsor" }), {
         status: 401,
         headers: { "Content-Type": "application/json" }
       });
