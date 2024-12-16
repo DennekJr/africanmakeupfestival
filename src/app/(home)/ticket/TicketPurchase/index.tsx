@@ -108,9 +108,12 @@ export const TicketPurchase = () => {
   return (
     <Box>
       <Box className={"text-black px-8 bg-textColor rounded-2xl py-4 my-4"}>
-        <Box className={"text-xl lg:text-2xl xl:text-3xl"}>Were you invited? Validate your tickets</Box>
+        <Box className={"flex flex-col"}>
+          <span className={"text-xl lg:text-2xl xl:text-3xl"}>Were you invited?</span>
+          <span className={"text-lightSecondary my-2"}>Validate your tickets</span>
+        </Box>
         <FormGroup
-          className={"mb-4 my-1 py-4 text-lightSecondary flex !flex-row fields inputColor gap-2"}
+          className={"text-lightSecondary flex !flex-row fields inputColor"}
         >
           <CssTextField
             size="medium"
@@ -119,7 +122,7 @@ export const TicketPurchase = () => {
             onChange={(e) => {
               setInviteCode(e.target.value);
             }}
-            className="w-[65%] mb-[0] py-[10px] border-lightSecondary !outline-none !text-black placeholder:!text-lightSecondary"
+            className="w-full sm:w-[68%] !my-4 py-[10px] border-lightSecondary !outline-none !text-black placeholder:!text-lightSecondary sm:!mr-2"
             style={{
               boxShadow: "0 15px 15px -14px rgba(0, 0, 0, 0.01)",
               color: "#000"
@@ -139,7 +142,7 @@ export const TicketPurchase = () => {
             helperText={inviteCodeError}
             error={Boolean(inviteCodeError)}
           />
-          <ValidateCodeButton onClick={handleInviteCodeCheck} name={"Submit"} />
+          <ValidateCodeButton onClick={handleInviteCodeCheck} name={"Validate"} />
         </FormGroup>
       </Box>
       <TicketBox>

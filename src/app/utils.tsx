@@ -53,7 +53,7 @@ export const ValidateCodeButton = ({ name, onClick }: { name: string, onClick: (
     // <Box className="relative flex bg-primary text-textColor">
     <Box
       onClick={onClick}
-      className="relative hover:bg-primary/80 bg-primary text-textColor overflow-hidden !rounded-none inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-text-Color h-14 px-6 py-4 w-f md:w-[50%] lg:w-[30%]"
+      className="relative hover:bg-primary/80 bg-primary text-textColor overflow-hidden inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-text-Color h-14 px-6 py-4 my-4 w-f w-full sm:w-[30%] rounded-full"
     >
       <span>{name}</span>
     </Box>
