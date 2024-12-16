@@ -7,7 +7,10 @@ import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
-import { BillingFormSchema, setTicketData } from "../../../lib/features/checkout/checkoutSlice";
+import {
+  BillingFormSchema,
+  setTicketData
+} from "../../../lib/features/checkout/checkoutSlice";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
 import { loadStripe } from "@stripe/stripe-js";
@@ -22,6 +25,7 @@ import {
   initiatePaystackTransaction,
   UploadSponsoredTicket
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
+import InfoIcon from "@mui/icons-material/Info";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -265,9 +269,9 @@ const CheckoutForm = () => {
                 disabled={disabled}
                 className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
               >
-              <span className="text-center w-full h-full">
-                Checkout with Stripe
-              </span>
+                <span className="text-center w-full h-full">
+                  Checkout with Stripe
+                </span>
               </button>
             )}
             {validatedCode.length > 0 && (
@@ -277,11 +281,14 @@ const CheckoutForm = () => {
                 disabled={disabled}
                 className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
               >
-              <span className="text-center w-full h-full">
-                Submit
-              </span>
+                <span className="text-center w-full h-full">Submit</span>
               </button>
             )}
+            <Box className={"w-full flex items-center justify-center py-2 opacity-35"} spacing={2}>
+              <InfoIcon className={"text-primary !text-md"} />
+              <span className={"text-lightSecondary text-sm italic"}>Bank transfer via Paystack is preferred due to card payment issues.</span>
+              {/*<Alert severity="info" className={''}>Prefered payment is bank transfer with paystack as there seems to be an issue with card payments.</Alert>*/}
+            </Box>
             <AgoraTransitionBox className="transition-all text-center text-warning text-lg font-medium">
               {error}
             </AgoraTransitionBox>

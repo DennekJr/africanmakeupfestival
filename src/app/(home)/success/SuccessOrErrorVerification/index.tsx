@@ -113,7 +113,6 @@ export const SuccessOrErrorVerification = () => {
     const qrCodeBase64 = await generateQRBase64();
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
-      console.log("Result from db", result);
       if (result.transactionData.status === "success") {
         setCurrency(result.transactionData.currency);
         setTotal(result.transactionData.amount);
@@ -163,7 +162,6 @@ export const SuccessOrErrorVerification = () => {
                 .buyerForm as initialCheckoutStateType["billingInfo"]
             ).map(
               async (detail) => {
-                console.log("Billing info", detail);
                 name = `${detail[0].value} ${detail[1].value}`;
               });
           }
@@ -223,7 +221,6 @@ export const SuccessOrErrorVerification = () => {
     hasRun.current = true;
     if (reference || sessionId) {
       checkStatus();
-      // console.log("sessionId", sessionId, reference);
     } else {
       renderValidatedCodeCheckout();
     }
@@ -252,7 +249,6 @@ export const SuccessOrErrorVerification = () => {
 
   const renderPurchaseTable = () => {
     if (metaData && metaData) {
-      console.log(metaData);
       return (
         <PurchaseDetailTable
           paymentType={code ? "code" : reference ? "paystack" : "stripe"}
