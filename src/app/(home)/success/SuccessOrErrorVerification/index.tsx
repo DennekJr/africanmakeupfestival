@@ -79,8 +79,8 @@ export const SuccessOrErrorVerification = () => {
           [ticket: string]: { name: string; value: string }[];
         }[]
       ).map(async (detail) => {
-        email = detail[0][4].value;
-        name = `${detail[0][0].value} ${detail[0][1].value}`;
+        email = detail[4].value;
+        name = `${detail[0].value} ${detail[1].value}`;
       });
       const transactionToPost = {
         Paystack_Id: "",
