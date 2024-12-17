@@ -79,8 +79,10 @@ export const SuccessOrErrorVerification = () => {
           [ticket: string]: { name: string; value: string }[];
         }[]
       ).map(async (detail) => {
-        email = detail[4].value;
-        name = `${detail[0].value} ${detail[1].value}`;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        email = (detail[4] as any).value;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        name = `${(detail[0] as any).value} ${(detail[1] as any).value}`;
       });
       const transactionToPost = {
         Paystack_Id: "",
