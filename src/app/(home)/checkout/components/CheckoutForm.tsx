@@ -25,7 +25,7 @@ import {
   initiatePaystackTransaction,
   UploadSponsoredTicket
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
-import InfoIcon from "@mui/icons-material/Info";
+import { setPaymentMethod } from "@/app/lib/features/register/registerSlice";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -153,6 +153,7 @@ const CheckoutForm = () => {
         tickets: tickets
       };
       dispatch(setTicketData(ticketPurchaseData.ticketData));
+      dispatch(setPaymentMethod("paystack"));
       const req = await initiatePaystackTransaction(ticketPurchaseData);
       if (req) {
         const authUrl = req.paystackData.data.authorization_url;
@@ -284,11 +285,6 @@ const CheckoutForm = () => {
                 <span className="text-center w-full h-full">Submit</span>
               </button>
             )}
-            <Box className={"w-full flex items-center justify-center py-2 opacity-35"}>
-              <InfoIcon className={"text-primary !text-md"} />
-              <span className={"text-lightSecondary text-sm italic"}>Bank transfer via Paystack is preferred due to card payment issues.</span>
-              {/*<Alert severity="info" className={''}>Prefered payment is bank transfer with paystack as there seems to be an issue with card payments.</Alert>*/}
-            </Box>
             <AgoraTransitionBox className="transition-all text-center text-warning text-lg font-medium">
               {error}
             </AgoraTransitionBox>
