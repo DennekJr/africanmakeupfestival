@@ -8,7 +8,7 @@ import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFo
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 import {
-  BillingFormSchema,
+  BillingFormSchema, setPaystackCheckoutData,
   setTicketData
 } from "../../../lib/features/checkout/checkoutSlice";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
@@ -25,6 +25,7 @@ import {
   initiatePaystackTransaction,
   UploadSponsoredTicket
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
+import { setPaymentMethod } from "@/app/lib/features/register/registerSlice";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -152,6 +153,7 @@ const CheckoutForm = () => {
         tickets: tickets
       };
       dispatch(setTicketData(ticketPurchaseData.ticketData));
+      dispatch(setPaymentMethod("paystack"));
       const req = await initiatePaystackTransaction(ticketPurchaseData);
       if (req) {
         const authUrl = req.paystackData.data.authorization_url;

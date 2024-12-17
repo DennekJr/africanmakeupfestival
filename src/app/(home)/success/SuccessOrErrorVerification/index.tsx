@@ -60,11 +60,7 @@ export const SuccessOrErrorVerification = () => {
     });
   };
   const renderValidatedCodeCheckout = async () => {
-    const isCodeInDb = await TransactionExists(
-      reference,
-      sessionId,
-      code
-    );
+    const isCodeInDb = await TransactionExists(reference, sessionId, code);
     const qrCodeBase64 = await generateQRBase64();
     const ticketPurchaseData = await GetSponsoredTicket(code);
     if (ticketPurchaseData) {
@@ -77,7 +73,7 @@ export const SuccessOrErrorVerification = () => {
       Object.values(
         ticketPurchaseData.ticketData.buyerForm as {
           [ticket: string]: { name: string; value: string }[];
-        }[]
+        }[],
       ).map(async (detail) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         email = (detail[4] as any).value;
@@ -161,11 +157,10 @@ export const SuccessOrErrorVerification = () => {
           } else {
             Object.values(
               transactionData.metadata.ticketData
-                .buyerForm as initialCheckoutStateType["billingInfo"]
-            ).map(
-              async (detail) => {
-                name = `${detail[0].value} ${detail[1].value}`;
-              });
+                .buyerForm as initialCheckoutStateType["billingInfo"],
+            ).map(async (detail) => {
+              name = `${detail[0].value} ${detail[1].value}`;
+            });
           }
           const template = SendEmailTemplate({
             name: name,
@@ -227,7 +222,8 @@ export const SuccessOrErrorVerification = () => {
       renderValidatedCodeCheckout();
     }
   }, [reference, sessionId]);
-  if (sessionId === null && reference === null && code === null) return notFound();
+  if (sessionId === null && reference === null && code === null)
+    return notFound();
   const handlePrint = () => {
     if (typeof window !== "undefined") {
       window.print();
@@ -289,7 +285,8 @@ export const SuccessOrErrorVerification = () => {
               className={"text-black mr-2"}
             />
             <h3 className={"text-black"}>
-              Order Confirmation Code: {reference || sessionId?.slice(-10) || code}
+              Order Confirmation Code:{" "}
+              {reference || sessionId?.slice(-10) || code}
             </h3>
           </Box>
         </Box>

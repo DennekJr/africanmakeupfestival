@@ -28,6 +28,7 @@ export const PurchaseDetailTable = ({
     }[],
   )[0];
   const mainBuyerTicket = Object.keys(metaData.buyerForm)[0].toUpperCase();
+  const mainBuyerForm = paymentType === "code" ? mainBuyer : mainBuyer;
   return (
     <Box className={"w-full"}>
       <Box
@@ -39,7 +40,7 @@ export const PurchaseDetailTable = ({
         <Box className={"font-semibold"}>{mainBuyerTicket}</Box>
       </Box>
       {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
-      {(mainBuyer as any).map((ticketData, index) => {
+      {(mainBuyerForm as any).map((ticketData, index) => {
         if (
           ticketData.name === "First Name" ||
           ticketData.name === "Last Name" ||
