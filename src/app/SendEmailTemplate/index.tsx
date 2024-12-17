@@ -78,8 +78,8 @@ export const SendEmailTemplate = ({
 <h3>Thank you for your <span style="color: #C43C2A">#ASF</span> purchase!</h3>
 <h3>Invoice #${reference}</h3>
 <h4>Hi ${name},</h4>  
-<p>Thanks for your order - your confirmation number is <span style="color: #C43C2A">${reference}</span>.
-Full details of your order can be found below.</p>
+<p>Thanks for your ${isInvited ? "accepting our invite!" : "order"} - your confirmation number is <span style="color: #C43C2A">${reference}</span>.
+Full details of your ${isInvited ? "invitation" : "order"} can be found below.</p>
 <h3>Ticket Details</h3>
 <table style="width: 100%; margin: 0; padding: 0;">
   <thead>

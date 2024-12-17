@@ -28,19 +28,18 @@ export async function POST(request) {
     Object.values(buyerForm).map(async (detail) => {
       const TicketName = Object.keys(buyerForm)[0];
       const buyerTicketPurchaseDetails = {
-        form_firstName: detail[0][0].value,
-        form_lastName: detail[0][1].value,
-        form_email: detail[0][4].value,
-        form_confirmEmail: detail[0][5].value,
+        form_firstName: detail[0].value,
+        form_lastName: detail[1].value,
+        form_email: detail[4].value,
+        form_confirmEmail: detail[5].value,
         Ticket: TicketName.toUpperCase(), // Default ticket type
-        form_phoneNumber: detail[0][2].value,
-        form_howDidYouHearAboutEvent: detail[0][6].value,
-        form_country: detail[0][3].value
+        form_phoneNumber: detail[2].value,
+        form_howDidYouHearAboutEvent: detail[6].value,
+        form_country: detail[3].value
       }
       const BuyerTicketPurchase = {
         Paystack_Id: transactionData.reference,
         Stripe_Id: '',
-        // Access_Code: ticketData,
         Created_At: new Date(),
         TicketDetails: buyerTicketPurchaseDetails,
         Tickets: transactionData.metadata.tickets

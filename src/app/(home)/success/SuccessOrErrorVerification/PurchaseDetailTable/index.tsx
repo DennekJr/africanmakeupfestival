@@ -25,10 +25,10 @@ export const PurchaseDetailTable = ({
   const mainBuyer = Object.values(
     metaData.buyerForm as {
       [ticket: string]: { name: string; value: string }[];
-    }[]
+    }[],
   )[0];
   const mainBuyerTicket = Object.keys(metaData.buyerForm)[0].toUpperCase();
-  const mainBuyerForm = paymentType === "code" ? mainBuyer[0] : mainBuyer;
+  const mainBuyerForm = paymentType === "code" ? mainBuyer : mainBuyer;
   return (
     <Box className={"w-full"}>
       <Box
