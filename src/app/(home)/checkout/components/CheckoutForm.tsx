@@ -8,7 +8,7 @@ import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFo
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 import {
-  BillingFormSchema,
+  BillingFormSchema, setPaystackCheckoutData,
   setTicketData
 } from "../../../lib/features/checkout/checkoutSlice";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
@@ -22,7 +22,7 @@ import {
 } from "@/app/(home)/checkout/components/utils";
 import { AgoraTransitionBox } from "@/app/(home)/components/newHome/utils";
 import {
-  initiatePaystackTransaction,
+  initiatePaystackTransaction, PostBookingConfirmation,
   UploadSponsoredTicket
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { setPaymentMethod } from "@/app/lib/features/register/registerSlice";
@@ -157,7 +157,23 @@ const CheckoutForm = () => {
       const req = await initiatePaystackTransaction(ticketPurchaseData);
       if (req) {
         const authUrl = req.paystackData.data.authorization_url;
-        router.push(authUrl);
+        // router.push(authUrl);
+        const paystackData = {
+          checkoutUrl: authUrl,
+          accessCode: req.paystackData.data.access_code,
+          reference: req.paystackData.data.reference
+        };
+        dispatch(setPaystackCheckoutData(paystackData));
+        const bookingConfirmation = {
+          Paystack_Id: req.paystackData.data.reference,
+          Stripe_Id: "",
+          Total: total,
+          Paystack_access_code: req.paystackData.data.access_code,
+          Created_At: new Date(),
+          TicketDetails: ticketPurchaseData
+        };
+        await PostBookingConfirmation(bookingConfirmation);
+        router.push("/booking-confirmation?reference=" + req.paystackData.data.reference);
       }
     }
   };
@@ -207,7 +223,7 @@ const CheckoutForm = () => {
                 </p>
               </Box>
               <p className="text-[#0A090B] text-4xl xl:text-5xl 2xl:text-6xl font-medium">
-                Billing Information
+                Personal Information
               </p>
             </Box>
             <HiddenFormDropdown

@@ -88,7 +88,7 @@ export const TicketPurchase = () => {
       dispatch(setValidatedCode(result.code));
       const newState = values.map((ticketValue) => {
         if (ticketValue.ticketName !== result.ticketType.toLowerCase()) {
-          return ticketValue;
+          return { ticketName: ticketValue.ticketName, value: 0 };
         } else {
           const newValue = 1;
           return {
