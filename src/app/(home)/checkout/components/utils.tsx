@@ -29,6 +29,9 @@ export const CssTextField = styled(TextField)({
   },
   " .mui-rg9sn3-MuiInputBase-input-MuiOutlinedInput-input": {
     color: "#000000"
+  },
+  " input:Webkit-autofill, textarea:Webkit-autofill": {
+    background: "none"
   }
 });
 export const CssValidateTicketField = styled(TextField)({
