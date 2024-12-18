@@ -111,6 +111,9 @@ export const TicketPurchase = () => {
         setLoading(false);
         setInviteCodeError("Invalid invite code");
       }, 500);
+      setTimeout(() => {
+        setInviteCodeError("");
+      }, 3000);
     }
   };
   return (
