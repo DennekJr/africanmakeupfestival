@@ -58,7 +58,6 @@ export const ValidateCodeButton = ({ name, onClick, loading }: {
   return (
     // <Box className="relative flex bg-primary text-textColor">
     <Box
-      loading={loading}
       onClick={onClick}
       className="relative transition-all hover:cursor-pointer hover:bg-primary/80 bg-primary text-textColor overflow-hidden inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-text-Color h-14 px-6 py-4 my-4 w-f w-full sm:w-[30%] rounded-full"
     >
