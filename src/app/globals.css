@@ -42,10 +42,12 @@ select {
   -webkit-background-clip: text !important;
   background-clip: text !important;
 }
-input:-webkit-autofill {
+
+input:-webkit-autofill, textarea:-webkit-autofill {
   transition: background-color 5000s;
 }
-input:is(:-webkit-autofill, :autofill) {
+
+input:is(:-webkit-autofill, :autofill), textarea:is(:-webkit-autofill, :autofill) {
   background: none;
 }
 
@@ -62,6 +64,11 @@ body {
 .MuiPaper-root {
   position: absolute !important;
   margin: 0 !important;
+}
+
+.mui-1l6dzgv-MuiFormHelperText-root {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 @layer utilities {

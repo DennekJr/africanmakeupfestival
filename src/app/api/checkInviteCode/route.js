@@ -8,7 +8,7 @@ export async function POST(request) {
     const client = await clientPromise;
     const db = client.db("africaskincarefestival"); // Replace with your database name
     const codes = await db.collection("ticket-codes").find({}).toArray();
-    const codeFound = codes.find((code) => code.code === inviteCode);
+    const codeFound = codes.find((code) => code.code === inviteCode.toLowerCase());
     if (!codeFound) {
       return new Response(JSON.stringify(false), {
         status: 401,

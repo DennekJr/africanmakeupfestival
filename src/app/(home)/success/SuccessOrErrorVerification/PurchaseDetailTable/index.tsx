@@ -69,7 +69,7 @@ export const PurchaseDetailTable = ({
           "flex text-lightSecondary font-semibold justify-center p-4 border-b border-midGrey"
         }
       >
-        <Box>Tickets Bought</Box>
+        <Box>{paymentType === "code" ? "Ticket Reserved" : "Tickets Bought"}</Box>
       </Box>
       {tickets.map((ticket, index) => {
         const value = paymentType === "code" ? 0 : getTicketCost(ticket);

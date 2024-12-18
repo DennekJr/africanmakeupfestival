@@ -36,8 +36,6 @@ export const BillingFormSchema = Yup.object().shape({
   'Confirm Email': Yup.string()
     .oneOf([Yup.ref('Email')], 'Email must match')
     .required("Required"),
-  'How did you hear about the event': Yup.string()
-    .required("Required"),
   'Email': Yup.string().email("Invalid email").required("Required"),
 });
 
@@ -48,7 +46,6 @@ export const initialValues = [
   { name: "Country", value: "Nigeria" },
   { name: "Email", value: "" },
   { name: "Confirm Email", value: "" },
-  { name: "How did you hear about the event", value: "" },
 ];
 
 export const initialFormValue = {
@@ -79,6 +76,8 @@ export type initialCheckoutStateType = {
   validatedCode: string;
   isInvited: boolean;
   ticketData: object;
+  paystackCheckoutData: object;
+  paymentMethod: string;
 };
 
 const initialState: initialCheckoutStateType = {
@@ -108,14 +107,15 @@ const initialState: initialCheckoutStateType = {
       { name: "Country", value: "" },
       { name: "Email", value: "" },
       { name: "Confirm Email", value: "" },
-      { name: "How did you hear about the event", value: "" },
     ],
   },
   total: 0,
   payStackCheckout: {email: '', total: 0},
   validatedCode: "",
   isInvited: false,
-  ticketData: {}
+  ticketData: {},
+  paystackCheckoutData: {},
+  paymentMethod: ""
 };
 
 export const RegularTicket = 10000;
@@ -162,7 +162,9 @@ export const checkoutSlice = createSlice({
     setValidatedCode: (state, action) => {
       state.validatedCode = action.payload;
     },
-
+    setPaymentMethod: (state, action) => {
+      state.paymentMethod = action.payload;
+    },
     // Set the leftover value as an array of leftover paystackTickets
     setLeftoverTickets: (state, action) => {
       action.payload.forEach((ticket, index) => {
@@ -172,11 +174,12 @@ export const checkoutSlice = createSlice({
       });
       state.leftOverTickets = action.payload;
     },
-
     setLeftOverTicketsForms: (state, action) => {
       state.leftOverTicketFormValues = action.payload;
     },
-
+    setPaystackCheckoutData: (state, action) => {
+      state.paystackCheckoutData = action.payload;
+    },
     resetTickets: (state) => {
       state.tickets.forEach((ticket) => (ticket.value = 0));
       state.leftOverTickets = [];
@@ -201,6 +204,8 @@ export const {
   setFormErrors,
   setPayStackCheckoutData,
   setValidatedCode,
-  setTicketData
+  setTicketData,
+  setPaystackCheckoutData,
+  setPaymentMethod
 } = checkoutSlice.actions;
 export default checkoutSlice.reducer;
