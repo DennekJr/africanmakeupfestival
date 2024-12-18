@@ -66,6 +66,11 @@ body {
   margin: 0 !important;
 }
 
+.mui-1l6dzgv-MuiFormHelperText-root {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
