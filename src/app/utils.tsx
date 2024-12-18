@@ -2,9 +2,9 @@
 import { styled } from "@mui/system";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
-import { LocalActivity } from "@mui/icons-material";
+import { LocalActivity, SendOutlined } from "@mui/icons-material";
 import React from "react";
-import Image from "next/image";
+import { LoadingOutlined } from "@ant-design/icons";
 
 export const WhiteBGButton = styled(Button)({
   background: "#ffffff",
@@ -62,8 +62,8 @@ export const ValidateCodeButton = ({ name, onClick, loading }: {
       className="relative transition-all hover:cursor-pointer hover:bg-primary/80 bg-primary text-textColor overflow-hidden inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-text-Color h-14 px-6 py-4 my-4 w-f w-full sm:w-[30%] rounded-full"
     >
       <span className={"hover:cursor-pointer"}>{name}</span>
-      {loading &&
-        <Image src={"images/loadingSpinner.svg"} width={25} height={25} className={"animate-spin"} alt={"spinner"} />}
+      {loading ?
+        <LoadingOutlined className={"animate-spin"} /> : <SendOutlined className={"!w-[15px] !h-[15px]"} />}
     </Box>
     // </Box>
   )
