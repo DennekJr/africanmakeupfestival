@@ -207,7 +207,7 @@ const CheckoutForm = () => {
                 </p>
               </Box>
               <p className="text-[#0A090B] text-4xl xl:text-5xl 2xl:text-6xl font-medium">
-                Billing Information
+                Personal Information
               </p>
             </Box>
             <HiddenFormDropdown

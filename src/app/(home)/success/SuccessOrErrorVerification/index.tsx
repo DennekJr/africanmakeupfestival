@@ -265,7 +265,7 @@ export const SuccessOrErrorVerification = () => {
       }
     >
       <Box className={"flex flex-col items-center justify-center"}>
-        <Box className={"bg-primary w-fit p-4 mb-12"}>
+        <Box className={"bg-primary w-fit p-4 " + `${code ? "mb-6" : "mb-12"}`}>
           <CheckIcon
             sx={{ fontSize: "4rem" }}
             className={"text-textColor text-[150px]"}
@@ -276,7 +276,7 @@ export const SuccessOrErrorVerification = () => {
             "text-center text-[27px] md:text-[44px] lg:text-[3em] text-black font-bold"
           }
         >
-          Payment Completed
+          {(reference || sessionId) ? "Payment Completed" : "Reservation Successful"}
         </h1>
         <Box className={"bg-lightGrey  mb-12"}>
           <Box className={"flex items-center justify-center p-2"}>

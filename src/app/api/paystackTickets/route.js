@@ -34,7 +34,6 @@ export async function POST(request) {
         form_confirmEmail: detail[5].value,
         Ticket: TicketName.toUpperCase(), // Default ticket type
         form_phoneNumber: detail[2].value,
-        form_howDidYouHearAboutEvent: detail[6].value,
         form_country: detail[3].value
       }
       const BuyerTicketPurchase = {

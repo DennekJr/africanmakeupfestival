@@ -3,6 +3,8 @@ import { styled } from "@mui/system";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import { LocalActivity } from "@mui/icons-material";
+import React from "react";
+import Image from "next/image";
 
 export const WhiteBGButton = styled(Button)({
   background: "#ffffff",
@@ -48,14 +50,20 @@ export const PrimaryButton = ({ name }: { name: string }) => {
     ;
 };
 
-export const ValidateCodeButton = ({ name, onClick }: { name: string, onClick: () => void }) => {
+export const ValidateCodeButton = ({ name, onClick, loading }: {
+  name: string,
+  onClick: () => void,
+  loading: boolean
+}) => {
   return (
     // <Box className="relative flex bg-primary text-textColor">
     <Box
       onClick={onClick}
-      className="relative hover:bg-primary/80 bg-primary text-textColor overflow-hidden inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-text-Color h-14 px-6 py-4 my-4 w-f w-full sm:w-[30%] rounded-full"
+      className="relative transition-all hover:cursor-pointer hover:bg-primary/80 bg-primary text-textColor overflow-hidden inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-text-Color h-14 px-6 py-4 my-4 w-f w-full sm:w-[30%] rounded-full"
     >
-      <span>{name}</span>
+      <span className={"hover:cursor-pointer"}>{name}</span>
+      {loading &&
+        <Image src={"images/loadingSpinner.svg"} width={25} height={25} className={"animate-spin"} alt={"spinner"} />}
     </Box>
     // </Box>
   )
