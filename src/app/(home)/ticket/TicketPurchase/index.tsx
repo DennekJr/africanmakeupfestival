@@ -87,7 +87,6 @@ export const TicketPurchase = () => {
     setLoading(true);
     const result = await checkInviteCode(inviteCode);
     if (result) {
-      setLoading(false);
       dispatch(setValidatedCode(result.code));
       const newState = values.map((ticketValue) => {
         if (ticketValue.ticketName !== result.ticketType.toLowerCase()) {
@@ -103,10 +102,15 @@ export const TicketPurchase = () => {
       const newTotal = 0;
       dispatch(setTickets(newState));
       dispatch(setBillingTotal(newTotal));
-      router.push("/checkout");
+      setTimeout(() => {
+        setLoading(false);
+        router.push("/checkout");
+      }, 500);
     } else {
-      setLoading(false);
-      setInviteCodeError("Invalid invite code");
+      setTimeout(() => {
+        setLoading(false);
+        setInviteCodeError("Invalid invite code");
+      }, 500);
     }
   };
   return (
