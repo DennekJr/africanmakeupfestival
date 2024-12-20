@@ -72,7 +72,7 @@ export const HiddenFormDropdown = ({
   };
 
   return (
-    <Box className="space-y-6 px-6 xl:px-0">
+    <Box className="space-y-6 px-0">
       {displayTicketDropdown && (
         <div
           className={"grid lg:grid-cols-11"}
