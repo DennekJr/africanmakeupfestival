@@ -35,6 +35,11 @@ export const HiddenFormDropdown = ({
   }, [leftOverTickets, tickets]);
   useEffect(() => {
     setTickets(Tickets);
+    const totalValue = tickets.reduce((total, ticket) => total + ticket.value, 0);
+    if (totalValue === 1) {
+      const ticket = tickets.find(ticket => ticket.value === 1);
+      dispatch(setMyTicket({ ticketName: ticket?.ticketName, value: 1 }));
+    }
   }, [tickets]);
 
   const handleChange = (e) => {
@@ -67,7 +72,7 @@ export const HiddenFormDropdown = ({
   };
 
   return (
-    <Box className="space-y-6 xl:px-0">
+    <Box className="space-y-6 px-0">
       {displayTicketDropdown && (
         <div
           className={"grid lg:grid-cols-11"}

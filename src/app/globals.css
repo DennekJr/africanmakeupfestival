@@ -51,6 +51,12 @@ input:is(:-webkit-autofill, :autofill), textarea:is(:-webkit-autofill, :autofill
   background: none;
 }
 
+input:-webkit-autofill, textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px white inset !important; /* Replace 'white' with your desired background */
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s; /* Keeps the applied background */
+}
+
 input, textarea {
   color: black !important;
 }
