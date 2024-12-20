@@ -22,6 +22,7 @@ import { ValidateCodeButton } from "@/app/utils";
 import "../../checkout/components/checkout.module.css";
 
 export const TicketPurchase = () => {
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [limitError, setLimitError] = useState("");
   const [inviteCode, setInviteCode] = useState("");
@@ -83,12 +84,13 @@ export const TicketPurchase = () => {
     }
   };
   const handleInviteCodeCheck = async () => {
+    setLoading(true);
     const result = await checkInviteCode(inviteCode);
     if (result) {
       dispatch(setValidatedCode(result.code));
       const newState = values.map((ticketValue) => {
         if (ticketValue.ticketName !== result.ticketType.toLowerCase()) {
-          return ticketValue;
+          return { ticketName: ticketValue.ticketName, value: 0 };
         } else {
           const newValue = 1;
           return {
@@ -100,9 +102,18 @@ export const TicketPurchase = () => {
       const newTotal = 0;
       dispatch(setTickets(newState));
       dispatch(setBillingTotal(newTotal));
-      router.push("/checkout");
+      setTimeout(() => {
+        setLoading(false);
+        router.push("/checkout");
+      }, 500);
     } else {
-      setInviteCodeError("Invalid invite code");
+      setTimeout(() => {
+        setLoading(false);
+        setInviteCodeError("Invalid invite code");
+      }, 500);
+      setTimeout(() => {
+        setInviteCodeError("");
+      }, 3000);
     }
   };
   return (
@@ -142,7 +153,7 @@ export const TicketPurchase = () => {
             helperText={inviteCodeError}
             error={Boolean(inviteCodeError)}
           />
-          <ValidateCodeButton onClick={handleInviteCodeCheck} name={"Validate"} />
+          <ValidateCodeButton loading={loading} onClick={handleInviteCodeCheck} name={"Validate"} />
         </FormGroup>
       </Box>
       <TicketBox>

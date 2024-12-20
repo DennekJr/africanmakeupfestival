@@ -7,7 +7,10 @@ import "./checkout.module.css";
 import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFormDropdown/hiddenFormDropdown";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
-import { BillingFormSchema, setTicketData } from "../../../lib/features/checkout/checkoutSlice";
+import {
+  BillingFormSchema,
+  setTicketData
+} from "../../../lib/features/checkout/checkoutSlice";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
 import { loadStripe } from "@stripe/stripe-js";
@@ -22,6 +25,7 @@ import {
   initiatePaystackTransaction,
   UploadSponsoredTicket
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
+import { setPaymentMethod } from "@/app/lib/features/register/registerSlice";
 
 const billingFormValues = {
   "Confirm Email": "",
@@ -149,6 +153,7 @@ const CheckoutForm = () => {
         tickets: tickets
       };
       dispatch(setTicketData(ticketPurchaseData.ticketData));
+      dispatch(setPaymentMethod("paystack"));
       const req = await initiatePaystackTransaction(ticketPurchaseData);
       if (req) {
         const authUrl = req.paystackData.data.authorization_url;
@@ -202,7 +207,7 @@ const CheckoutForm = () => {
                 </p>
               </Box>
               <p className="text-[#0A090B] text-4xl xl:text-5xl 2xl:text-6xl font-medium">
-                Billing Information
+                Personal Information
               </p>
             </Box>
             <HiddenFormDropdown
@@ -265,9 +270,9 @@ const CheckoutForm = () => {
                 disabled={disabled}
                 className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
               >
-              <span className="text-center w-full h-full">
-                Checkout with Stripe
-              </span>
+                <span className="text-center w-full h-full">
+                  Checkout with Stripe
+                </span>
               </button>
             )}
             {validatedCode.length > 0 && (
@@ -277,9 +282,7 @@ const CheckoutForm = () => {
                 disabled={disabled}
                 className="animation-hover inline-flex items-center justify-center gap-3 ease-in-out duration-500 whitespace-nowrap text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 !bg-[#0A090B] text-gray-100 hover:bg-[$0A090B]/90 h-14 px-6 py-4 rounded-full relative w-full"
               >
-              <span className="text-center w-full h-full">
-                Submit
-              </span>
+                <span className="text-center w-full h-full">Submit</span>
               </button>
             )}
             <AgoraTransitionBox className="transition-all text-center text-warning text-lg font-medium">

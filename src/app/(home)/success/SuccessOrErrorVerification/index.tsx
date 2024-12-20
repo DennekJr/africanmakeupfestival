@@ -60,11 +60,7 @@ export const SuccessOrErrorVerification = () => {
     });
   };
   const renderValidatedCodeCheckout = async () => {
-    const isCodeInDb = await TransactionExists(
-      reference,
-      sessionId,
-      code
-    );
+    const isCodeInDb = await TransactionExists(reference, sessionId, code);
     const qrCodeBase64 = await generateQRBase64();
     const ticketPurchaseData = await GetSponsoredTicket(code);
     if (ticketPurchaseData) {
@@ -77,10 +73,12 @@ export const SuccessOrErrorVerification = () => {
       Object.values(
         ticketPurchaseData.ticketData.buyerForm as {
           [ticket: string]: { name: string; value: string }[];
-        }[]
+        }[],
       ).map(async (detail) => {
-        email = detail[0][4].value;
-        name = `${detail[0][0].value} ${detail[0][1].value}`;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        email = (detail[4] as any).value;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        name = `${(detail[0] as any).value} ${(detail[1] as any).value}`;
       });
       const transactionToPost = {
         Paystack_Id: "",
@@ -113,7 +111,6 @@ export const SuccessOrErrorVerification = () => {
     const qrCodeBase64 = await generateQRBase64();
     if (paymentType !== "stripe") {
       const result = await VerifyPaystackTransaction(reference);
-      console.log("Result from db", result);
       if (result.transactionData.status === "success") {
         setCurrency(result.transactionData.currency);
         setTotal(result.transactionData.amount);
@@ -160,12 +157,10 @@ export const SuccessOrErrorVerification = () => {
           } else {
             Object.values(
               transactionData.metadata.ticketData
-                .buyerForm as initialCheckoutStateType["billingInfo"]
-            ).map(
-              async (detail) => {
-                console.log("Billing info", detail);
-                name = `${detail[0].value} ${detail[1].value}`;
-              });
+                .buyerForm as initialCheckoutStateType["billingInfo"],
+            ).map(async (detail) => {
+              name = `${detail[0].value} ${detail[1].value}`;
+            });
           }
           const template = SendEmailTemplate({
             name: name,
@@ -223,12 +218,12 @@ export const SuccessOrErrorVerification = () => {
     hasRun.current = true;
     if (reference || sessionId) {
       checkStatus();
-      // console.log("sessionId", sessionId, reference);
     } else {
       renderValidatedCodeCheckout();
     }
   }, [reference, sessionId]);
-  if (sessionId === null && reference === null && code === null) return notFound();
+  if (sessionId === null && reference === null && code === null)
+    return notFound();
   const handlePrint = () => {
     if (typeof window !== "undefined") {
       window.print();
@@ -252,7 +247,6 @@ export const SuccessOrErrorVerification = () => {
 
   const renderPurchaseTable = () => {
     if (metaData && metaData) {
-      console.log(metaData);
       return (
         <PurchaseDetailTable
           paymentType={code ? "code" : reference ? "paystack" : "stripe"}
@@ -271,7 +265,7 @@ export const SuccessOrErrorVerification = () => {
       }
     >
       <Box className={"flex flex-col items-center justify-center"}>
-        <Box className={"bg-primary w-fit p-4 mb-12"}>
+        <Box className={"bg-primary w-fit p-4 " + `${code ? "mb-6" : "mb-12"}`}>
           <CheckIcon
             sx={{ fontSize: "4rem" }}
             className={"text-textColor text-[150px]"}
@@ -282,7 +276,7 @@ export const SuccessOrErrorVerification = () => {
             "text-center text-[27px] md:text-[44px] lg:text-[3em] text-black font-bold"
           }
         >
-          Payment Completed
+          {(reference || sessionId) ? "Payment Completed" : "Reservation Successful"}
         </h1>
         <Box className={"bg-lightGrey  mb-12"}>
           <Box className={"flex items-center justify-center p-2"}>
@@ -291,7 +285,8 @@ export const SuccessOrErrorVerification = () => {
               className={"text-black mr-2"}
             />
             <h3 className={"text-black"}>
-              Order Confirmation Code: {reference || sessionId?.slice(-10) || code}
+              Order Confirmation Code:{" "}
+              {reference || sessionId?.slice(-10) || code}
             </h3>
           </Box>
         </Box>

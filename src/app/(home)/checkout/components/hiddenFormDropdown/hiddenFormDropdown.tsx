@@ -91,7 +91,7 @@ export const HiddenFormDropdown = ({
               className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base leading-[22.4px] font-normal text-[#1E1C21]"
               htmlFor=":rh:-form-item"
             >
-              Select the ticket that belongs to you
+              Select ticket
             </label>
             <FormControl fullWidth>
               <CssSelectField

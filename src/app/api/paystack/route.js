@@ -1,8 +1,11 @@
 import axios from 'axios';
+import clientPromise from "@/app/lib/mongo/mongodb.js";
 
 export async function POST(request) {
   try {
     // Parse the request body
+    const client = await clientPromise;
+    const db = client.db("africaskincarefestival");
     const { email, amount, ticketData } = await request.json(); // Assuming you're sending 'email' and 'amount' in the request body
 
     // Initialize Paystack transaction
@@ -17,7 +20,13 @@ export async function POST(request) {
         'Content-Type': 'application/json',
       }
     });
-
+    const bookingConfirmation = {
+      Paystack_Id: paystackResponse.data.data.reference,
+      Stripe_Id: "",
+      Created_At: new Date(),
+      TicketDetails: ticketData
+    };
+    await db.collection("booking-confirmations").insertOne(bookingConfirmation);
     // Check if the request to Paystack was successful
     if (paystackResponse.status === 200) {
       const paystackData = paystackResponse.data;
