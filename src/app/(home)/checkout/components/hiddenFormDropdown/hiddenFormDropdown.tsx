@@ -35,9 +35,7 @@ export const HiddenFormDropdown = ({
   }, [leftOverTickets, tickets]);
   useEffect(() => {
     setTickets(Tickets);
-    console.log(tickets, tickets.length);
     const totalValue = tickets.reduce((total, ticket) => total + ticket.value, 0);
-    console.log("totalValue", totalValue);
     if (totalValue === 1) {
       const ticket = tickets.find(ticket => ticket.value === 1);
       dispatch(setMyTicket({ ticketName: ticket?.ticketName, value: 1 }));
