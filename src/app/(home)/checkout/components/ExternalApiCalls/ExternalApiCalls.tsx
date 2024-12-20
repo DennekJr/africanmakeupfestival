@@ -101,6 +101,50 @@ export const initiatePaystackTransaction = async ({
   }
 };
 
+export const PostBookingConfirmation = async (ticketData: object) => {
+  try {
+    const response = await fetch("/api/booking-confirmation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(ticketData)
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+      // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+    } else {
+      console.error("Error initializing transaction:", data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+export const GetBookingConfirmation = async (paystackOrStripeId: object) => {
+  try {
+    const response = await fetch(`/api/booking-confirmation?id=${paystackOrStripeId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+      // Redirect user to the Paystack payment URL using data.transactionData.accessCode
+    } else {
+      console.error("Error initializing transaction:", data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 export const sendEmail = async (email, template) => {
   try {
     const response = await fetch("/api/sendEmail", {
@@ -244,7 +288,7 @@ export const checkInviteCode = async (inviteCode) => {
       }),
       headers: {
         "Content-Type": "application/json"
-      }
+      },
     });
 
     const data = await response.json();
@@ -268,7 +312,7 @@ export const UploadSponsoredTicket = async (sponsoredTicket) => {
       }),
       headers: {
         "Content-Type": "application/json"
-      }
+      },
     });
 
     const data = await response.json();
@@ -292,7 +336,7 @@ export const GetSponsoredTicket = async (code) => {
       }),
       headers: {
         "Content-Type": "application/json"
-      }
+      },
     });
 
     const data = await response.json();
@@ -314,7 +358,7 @@ export const GetExistingCampaigns = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
-      }
+      },
     });
 
     const data = await response.json();

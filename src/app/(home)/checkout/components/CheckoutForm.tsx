@@ -8,13 +8,11 @@ import { HiddenFormDropdown } from "../../../(home)/checkout/components/hiddenFo
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
 import {
-  BillingFormSchema,
+  BillingFormSchema, setPaystackCheckoutData,
   setTicketData
 } from "../../../lib/features/checkout/checkoutSlice";
 import { CheckoutClientForm } from "@/app/(home)/checkout/components/CheckoutClientForm/CheckoutClientForm";
 import { useFormik } from "formik";
-import { loadStripe } from "@stripe/stripe-js";
-import * as process from "process";
 import {
   formatCurrency,
   getTicketCost,
@@ -22,7 +20,7 @@ import {
 } from "@/app/(home)/checkout/components/utils";
 import { AgoraTransitionBox } from "@/app/(home)/components/newHome/utils";
 import {
-  initiatePaystackTransaction,
+  initiatePaystackTransaction, PostBookingConfirmation,
   UploadSponsoredTicket
 } from "@/app/(home)/checkout/components/ExternalApiCalls/ExternalApiCalls";
 import { setPaymentMethod } from "@/app/lib/features/register/registerSlice";
@@ -86,9 +84,6 @@ const CheckoutForm = () => {
     // check other forms if more than one ticket for error
     if (!validateOtherTicketForm()) {
       formik.handleSubmit();
-      const stripePromise = loadStripe(
-        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
-      );
       const stripeData: {
         price_data: {
           currency: string;
@@ -134,12 +129,16 @@ const CheckoutForm = () => {
       dispatch(setTicketData(ticketPurchaseData.ticketData));
       const { session } = await response.json();
       const sessionId = session.id;
-      const stripe = await stripePromise;
-      if (stripe === null) return;
-      if ("redirectToCheckout" in stripe) {
-        const { error } = await stripe.redirectToCheckout({ sessionId });
-        if (error) console.warn("Stripe Booth payment error:", error.message);
-      }
+      const bookingConfirmation = {
+        Paystack_Id: "",
+        Stripe_Id: sessionId,
+        Total: total,
+        Paystack_access_code: "",
+        Created_At: new Date(),
+        TicketDetails: ticketPurchaseData
+      };
+      await PostBookingConfirmation(bookingConfirmation);
+      router.push("/booking-confirmation?sessionId=" + sessionId);
     }
   };
 
@@ -157,7 +156,22 @@ const CheckoutForm = () => {
       const req = await initiatePaystackTransaction(ticketPurchaseData);
       if (req) {
         const authUrl = req.paystackData.data.authorization_url;
-        router.push(authUrl);
+        const paystackData = {
+          checkoutUrl: authUrl,
+          accessCode: req.paystackData.data.access_code,
+          reference: req.paystackData.data.reference
+        };
+        dispatch(setPaystackCheckoutData(paystackData));
+        const bookingConfirmation = {
+          Paystack_Id: req.paystackData.data.reference,
+          Stripe_Id: "",
+          Total: total,
+          Paystack_access_code: req.paystackData.data.access_code,
+          Created_At: new Date(),
+          TicketDetails: ticketPurchaseData
+        };
+        await PostBookingConfirmation(bookingConfirmation);
+        router.push("/booking-confirmation?reference=" + req.paystackData.data.reference);
       }
     }
   };
@@ -171,7 +185,6 @@ const CheckoutForm = () => {
       code: validatedCode
     };
     await UploadSponsoredTicket(ticketPurchaseData);
-
     router.push("/success?code=" + validatedCode);
   };
 

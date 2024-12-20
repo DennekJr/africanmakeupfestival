@@ -23,6 +23,7 @@ export async function POST(request) {
     const bookingConfirmation = {
       Paystack_Id: paystackResponse.data.data.reference,
       Stripe_Id: "",
+      Paystack_access_code: paystackResponse.data.data.access_code,
       Created_At: new Date(),
       TicketDetails: ticketData
     };

@@ -2,13 +2,6 @@ import axios from "axios";
 
 export async function POST() {
   try {
-    // Parse the request body
-
-    // const authCode = await axios.post("https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=1000.17NJQUTTFJLS32PZBKJ3GBKD0G0OZR&scope=ZohoCampaigns.contact.ALL&redirect_uri=https://africaskincarefestival.com/&access_type=offline");
-    // // https://africaskincarefestival.com/?code=1000.10f7b4cf4a9541849ac22f0dfc4e8cb7.c9498b84aaa4f616ffdfeab4517f4eaa&location=us&accounts-server=https%3A%2F%2Faccounts.zoho.com&
-    // const getAccessTokenWithCode = await axios.post(`https://accounts.zoho.com/oauth/v2/token?code=1000.10f7b4cf4a9541849ac22f0dfc4e8cb7.c9498b84aaa4f616ffdfeab4517f4eaa&client_id=1000.17NJQUTTFJLS32PZBKJ3GBKD0G0OZR&client_secret=3556e7f5508279bd806db80a52bf17265bc2ff6c9a&redirect_uri=https://africaskincarefestival.com/&grant_type=authorization_code`);
-    // const getCampaignList = await axios.get(`https://campaigns.zoho.com/api/v1.1/updatelistdetails?resfmt=JSON&listkey=[listkey]&newlistname=[give list name]&signupform=public`);
-    // // Check if the request to Paystack was successful
     if (response.status === 200) {
       return new Response(JSON.stringify({
         message: "Transaction initialized successfully",
